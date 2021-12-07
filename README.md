@@ -1,21 +1,64 @@
 CloudGraph GCP Provider
 =======================
 
-Scan cloud infrastructure via the [GCP SDK ](https://github.com/google/google-api-javascript-client)
+Use the CloudGraph GCP Provider to scan and normalize cloud infrastructure using the [GCP Client Libraries](https://github.com/googleapis/google-cloud-node)
 
-# Development
+<!-- toc -->
+- [Install](#install)
+- [Authentication](#authentication)
+- [Multi Account](#multi-account)
+- [Configuration](#configuration)
+- [Supported Services](#supported-services)
+<!-- tocstop -->
 
-Install all the dependencies:
+# Install
+
+Install the GCP provider in CloudGraph
+
 ```
-yarn
+cg init gcp
 ```
 
-Generate types and compile:
+# Authentication
+
+Authenticate the CloudGraph GCP Provider using service account keys:
+
+- [Create service account key(s)](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#iam-service-account-keys-create-gcloud)
+
+# Multi Account
+
+CloudGraph is able to scan multiple GCP [service accounts](https://cloud.google.com/iam/docs/service-accounts) at once. This is done by entering a project ID and the [service account key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating) file location for each service account when running `cg init`. All resources will be tagged with a `projectId` so you can query resources specific to a project or query resources **across** accounts!
+
+# Configuration
+
+CloudGraph creates a configuration file at:
+
+- UNIX: `~/.config/cloudgraph/.cloud-graphrc.json`
+- Windows: `%LOCALAPPDATA%\cloudgraph/.cloud-graphrc.json`
+
+NOTE: CloudGraph will output where it stores the configuration file and provider data as part of the `cg init` command
+
+CloudGraph will generate this configuration file when you run `cg init gcp`. You may update it manually or by running `cg init gcp` again.
+
 ```
-yarn build
+"gcp": {
+  "accounts": [
+    {
+      "projectId": "autocloud-sandbox",
+      "keyFilename": "/Users/me/gcp_key.json"
+    }
+  ],
+  "regions": "global,us-central1,us-east1",
+  "resources": "vpc,projects"
+}
 ```
 
-## Testing
-<!-- testing -->
+CloudGraph GCP Provider will ask you what regions you would like to crawl and will by default crawl for **all** supported resources in **selected** regions in the **default** account. You can update the `regions` or `resources` fields in the `cloud-graphrc.json` file to change this behavior. You can also select which `resources` to crawl in the `cg init gcp` command by passing the the `-r` flag: `cg init gcp -r`
 
-<!-- testingstop -->
+# Supported Services
+
+| Service | Relations |
+| ------------------------ | ------------------------ |
+| projects                 | vpc                      |
+| vpc                      | project                  |
+

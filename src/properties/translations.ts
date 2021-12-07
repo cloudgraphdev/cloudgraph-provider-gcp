@@ -44,5 +44,4 @@ export default {
   objectsCanBePublic: 'Objects can be public',
   bucketSizeDisclaimer: (num: number): string =>
     `(limited to the first ${num} objects)`,
-  accountFor: (org: string): string => `AWS Account for ${org}`,
 }

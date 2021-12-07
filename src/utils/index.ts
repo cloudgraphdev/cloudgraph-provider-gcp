@@ -1,6 +1,7 @@
 import CloudGraph from '@cloudgraph/sdk'
 import camelCase from 'lodash/camelCase'
 import relations from '../enums/relations'
+import environment from '../config/environment'
 
 const { logger } = CloudGraph
 
@@ -57,31 +58,6 @@ export function initTestConfig(): void {
   jest.setTimeout(900000)
 }
 
-export function generateAzureErrorLog(
-  service: string,
-  functionName: string,
-  err?: any
-): void {
-  if (err.statusCode === 400) {
-    err.retryable = true
-  }
-  const notAuthorized = 'not authorized' // part of the error string aws passes back for permissions errors
-  const accessDenied = 'AccessDeniedException' // an error code aws sometimes sends back for permissions errors
-  const throttling = 'Throttling'
-
-  if (err?.code !== throttling) {
-    logger.warn(
-      `There was a problem getting data for service ${service}, CG encountered an error calling ${functionName}`
-    )
-    if (err?.message?.includes(notAuthorized) || err?.code === accessDenied) {
-      logger.warn(err.message)
-    }
-    logger.debug(err)
-  } else {
-    logger.debug(`Rate exceeded for ${service}:${functionName}. Retrying...`)
-  }
-}
-
 export const settleAllPromises = async (
   promises: Promise<any>[]
 ): Promise<any[]> =>
@@ -108,3 +84,22 @@ export const sortResourcesDependencies = (resourceNames: string[]): string[] =>
     }
     return 0
   })
+
+export function initTestEndpoint(service?: string): string | undefined {
+  const endpoint =
+    (environment.NODE_ENV === 'test' && environment.GCP_ENDPOINT) ||
+    undefined
+  service && endpoint && logger.info(`${service} getData in test mode!`)
+  return endpoint
+}
+  
+export function generateGcpErrorLog(
+  service: string,
+  functionName: string,
+  err?: Error
+): void {
+  logger.warn(
+    `There was a problem getting data for service ${service}, CG encountered an error calling ${functionName}`
+  )
+  logger.debug(err.message)
+}

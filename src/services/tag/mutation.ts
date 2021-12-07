@@ -1,5 +1,5 @@
-export default `mutation($input: [AddawsTagInput!]!) {
-  addawsTag(input: $input, upsert: true) {
+export default `mutation($input: [AddgcpTagInput!]!) {
+  addgcpTag(input: $input, upsert: true) {
     numUids
   }
 }`;

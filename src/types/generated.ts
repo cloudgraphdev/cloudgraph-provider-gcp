@@ -17,8 +17,37 @@ export type Tag = {
   value?: Maybe<Scalars['String']>;
 };
 
-export type AzureTag = {
+export type GcpProject = {
+  id: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
+  parent?: Maybe<Scalars['String']>;
+  state?: Maybe<Scalars['String']>;
+  displayName?: Maybe<Scalars['String']>;
+  createTime?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+  deleteTime?: Maybe<Scalars['String']>;
+  etag?: Maybe<Scalars['String']>;
+  labels?: Maybe<Array<Maybe<Tag>>>;
+  vpc?: Maybe<Array<Maybe<GcpVpcConnector>>>;
+};
+
+export type GcpTag = {
   id: Scalars['String'];
   key: Scalars['String'];
   value: Scalars['String'];
+};
+
+export type GcpVpcConnector = {
+  id: Scalars['String'];
+  projectId: Scalars['String'];
+  region?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  network?: Maybe<Scalars['String']>;
+  ipCidrRange?: Maybe<Scalars['String']>;
+  state?: Maybe<Scalars['String']>;
+  minThroughput?: Maybe<Scalars['Int']>;
+  maxThroughput?: Maybe<Scalars['Int']>;
+  connectedProjects?: Maybe<Array<Maybe<Scalars['String']>>>;
+  subnet?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
 };

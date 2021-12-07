@@ -1,10 +1,14 @@
-// import services from './services'
-import AzureTag from '../services/tag'
+import services from './services'
+import GcpProject from '../services/project'
+import GcpVpc from '../services/vpc'
+import GcpTag from '../services/tag'
 
 /**
- * serviceMap is an object that contains all currently supported services for AWS
+ * serviceMap is an object that contains all currently supported services
  * serviceMap is used by the serviceFactory to produce instances of service classes
  */
 export default {
-  tag: AzureTag,
+  [services.projects]: GcpProject,
+  [services.vpc]: GcpVpc,
+  tag: GcpTag,
 }
