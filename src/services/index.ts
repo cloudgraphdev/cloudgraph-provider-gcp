@@ -9,6 +9,7 @@ import path from 'path'
 import regions from '../enums/regions'
 import resources from '../enums/resources'
 import serviceMap from '../enums/serviceMap'
+import schemasMap from '../enums/schemasMap'
 import services from '../enums/services'
 import { GcpCredentials, rawDataInterface } from '../types'
 import {
@@ -22,6 +23,7 @@ export const enums = {
   services,
   regions,
   resources,
+  schemasMap,
 }
 
 export default class Provider extends CloudGraph.Client {
