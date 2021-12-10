@@ -45,10 +45,14 @@ CloudGraph will generate this configuration file when you run `cg init gcp`. You
   "accounts": [
     {
       "projectId": "autocloud-sandbox",
-      "keyFilename": "/Users/me/gcp_key.json"
+      "keyFilename": "/Users/me/autocloud-sandbox.json"
+    },
+    {
+      "projectId": "cloudgraph-sample",
+      "keyFilename": "/Users/me/cloudgraph-sample.json"
     }
   ],
-  "regions": "global,us-central1,us-east1",
+  "regions": "us-central1,us-east1",
   "resources": "vpc,projects"
 }
 ```
