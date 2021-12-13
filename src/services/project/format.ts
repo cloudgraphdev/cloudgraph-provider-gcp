@@ -24,7 +24,7 @@ export default ({
     updateTime,
     deleteTime,
     etag,
-    labels,
+    labels = {},
   } = service
 
   return {
