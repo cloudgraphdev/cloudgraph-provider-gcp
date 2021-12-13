@@ -1,8 +1,9 @@
 import cuid from 'cuid'
-import { google } from '@google-cloud/vpc-access/build/protos/protos'
+import { google } from '@google-cloud/resource-manager/build/protos/protos'
 import { GcpProject } from '../../types/generated'
 import { RawGcpProject } from './data'
 import { toISOString } from '../../utils/dateutils'
+import { enumKeyToString } from '../../utils/format'
 
 export default ({
   service,
@@ -26,14 +27,11 @@ export default ({
     labels,
   } = service
 
-  const states = Object.keys(google.cloud.vpcaccess.v1.Connector.State)
-  const stateIndex = google.cloud.vpcaccess.v1.Connector.State[state]
-
   return {
     id,
     name,
     parent,
-    state: states[stateIndex],
+    state: enumKeyToString(google.cloud.resourcemanager.v3.Project.State, state),
     displayName,
     createTime: toISOString(createTime?.seconds?.toString()),
     updateTime: toISOString(updateTime?.seconds?.toString()),

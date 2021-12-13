@@ -14,3 +14,9 @@ export const obfuscateSensitiveString = (s: string): string => {
   const stars = '*'.repeat(Math.min(30, s.length - 6))
   return s.slice(0, 3) + stars + s.slice(stars.length + 3, s.length)
 }
+
+export const enumKeyToString = (enumType: any, key: any): string => {
+  const keys = Object.keys(enumType)
+  const stateIndex = enumType[key]
+  return keys[stateIndex]
+}

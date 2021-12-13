@@ -1,6 +1,7 @@
 import { google } from '@google-cloud/vpc-access/build/protos/protos'
 import { GcpVpcConnector } from '../../types/generated'
 import { RawGcpVpc } from './data'
+import { enumKeyToString } from '../../utils/format'
 
 export default ({
   service,
@@ -22,9 +23,6 @@ export default ({
     subnet,
   } = service
 
-  const states = Object.keys(google.cloud.vpcaccess.v1.Connector.State)
-  const stateIndex = google.cloud.vpcaccess.v1.Connector.State[state]
-
   return {
     id: name,
     projectId: account,
@@ -32,7 +30,7 @@ export default ({
     name,
     network,
     ipCidrRange,
-    state: states[stateIndex],
+    state: enumKeyToString(google.cloud.vpcaccess.v1.Connector.State, state),
     minThroughput,
     maxThroughput,
     connectedProjects,
