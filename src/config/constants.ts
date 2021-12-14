@@ -1,7 +1,7 @@
 import { regionMap } from '../enums/regions'
 import services from '../enums/services'
 
-export const GLOBAL_REGION = regionMap.global
+export const GLOBAL_REGION = 'global'
 export const DEFAULT_REGION = regionMap.usEast1
 export const DEFAULT_RESOURCES = Object.values(services).join(',')
 export const ENV_VAR_CREDS_LOG = 'Using ENV variable credentials'
