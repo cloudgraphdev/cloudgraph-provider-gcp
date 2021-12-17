@@ -52,6 +52,6 @@ export default async ({
       generateGcpErrorLog(serviceName, 'resourceManager:getIamPolicy', error)
     }
 
-    // logger.debug(lt.foundProjects(projectList.length))
+    logger.debug(lt.foundPolicies(policyList.length))
     resolve(groupBy(policyList, 'region'))
   })
