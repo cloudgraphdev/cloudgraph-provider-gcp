@@ -1,4 +1,3 @@
-import util from 'util'
 import { Tag } from '../types/generated'
 import { TagMap } from '../types'
 
