@@ -20,7 +20,7 @@ export default {
   */
   foundProjects: (num: number): string => `Found ${num} Projects`,
   /**
-  * VPC
+  * IAM
   */
   foundPolicies: (num: number): string => `Found ${num} IAM Policies`
 }

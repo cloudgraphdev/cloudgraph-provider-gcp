@@ -33,7 +33,7 @@ export default async ({
       .flatMap(resource => Object.entries(resource)[0][1])
 
     /**
-     * Get all the IAM policies
+     * Get all the IAM policies for projects
      */
     try {
       const projectsClient = new ProjectsClient({ ...config, apiEndpoint });
