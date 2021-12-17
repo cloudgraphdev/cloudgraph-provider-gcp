@@ -1,0 +1,32 @@
+type gcpIamPolicy @key(fields: "id") {
+  id: String! @id @search(by: [hash])
+  projectId: String! @search(by: [hash, regexp])
+  version: Int @search
+  bindings: [gcpIamBinding]
+  etag: String @search(by: [hash, regexp])
+  project: [gcpProject] @hasInverse(field: iamPolicy)
+}
+
+type gcpIamBinding
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  role: String @search(by: [hash, regexp])
+  members: [String] @search(by: [hash])
+  condition: gcpIamBindingExpr
+}
+
+type gcpIamBindingExpr
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  expression: String @search(by: [hash, regexp])
+  title: String @search(by: [hash, regexp])
+  description: String @search(by: [hash, regexp])
+  location: String @search(by: [hash, regexp])
+}

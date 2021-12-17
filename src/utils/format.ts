@@ -1,3 +1,4 @@
+import util from 'util'
 import { Tag } from '../types/generated'
 import { TagMap } from '../types'
 
@@ -19,4 +20,8 @@ export const enumKeyToString = (enumType: any, key: any): string => {
   const keys = Object.keys(enumType)
   const stateIndex = enumType[key]
   return keys[stateIndex]
+}
+
+export const etagToString = (etag: string | Uint8Array): string => {
+  return etag instanceof Uint8Array ? Buffer.from(etag).toString('base64') : etag
 }

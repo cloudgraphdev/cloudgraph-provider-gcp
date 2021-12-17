@@ -22,5 +22,6 @@ export interface GcpCredentials {
 export interface rawDataInterface {
   name: string
   projectId?: string
+  region?: string
   data: any
 }

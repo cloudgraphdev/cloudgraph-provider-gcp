@@ -38,7 +38,7 @@ export default {
   // accessApproval: 'access-approval',
   // accessContextManager: 'access-context-manager',
   // auth: 'auth',
-  // iam: 'iam',
+  iam: 'iam',
   // iap: 'iap',
   // kms: 'kms',
   // orgPolicies: 'org-policies',
