@@ -2,9 +2,10 @@ type gcpTag @key(fields: "id") {
   id: String! @id @search(by: [hash])
   key: String! @search(by: [hash, regexp])
   value: String! @search(by: [hash, regexp])
+  kms: [gcpKmsKeyRing]
 }
 
-type Tag
+type gcpRawTag
   @generate(
     query: { get: false, query: false, aggregate: false }
     mutation: { add: false, delete: false }

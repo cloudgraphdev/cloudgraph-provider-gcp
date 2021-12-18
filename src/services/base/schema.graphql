@@ -1,0 +1,11 @@
+interface gcpBaseResource 
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    id: String! @id @search(by: [hash])
+    projectId: String! @search(by: [hash, regexp])
+    region: String @search(by: [hash, regexp])
+    name: String @search(by: [hash, regexp])
+  }

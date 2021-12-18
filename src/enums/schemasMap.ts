@@ -5,6 +5,7 @@ import services from './services'
  */
 export default {
   [services.projects]: 'gcpProject',
+  [services.kms]: 'gcpKmsKeyRing',
   [services.vpc]: 'gcpVpcConnector',
   tag: 'gcpTag',
 }

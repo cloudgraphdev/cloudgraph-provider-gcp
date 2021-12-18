@@ -1,4 +1,6 @@
 export const regionMap = {
+  // Global
+  global: 'global',
   // US
   usCentral1: 'us-central1',               
   usEast1: 'us-east1',                 
@@ -31,6 +33,8 @@ export const regionMap = {
 }
 
 const {
+  // Global
+  global,
   // US
   usCentral1,               
   usEast1,                 
@@ -63,6 +67,8 @@ const {
 } = regionMap
 
 export default [
+  // Global
+  global,
   // US
   usCentral1,               
   usEast1,                 

@@ -43,6 +43,28 @@ export default ({
     }
   }
 
+  /**
+   * Find kms
+   */
+  const kmss: {
+    name: string
+    data: { [property: string]: any[] }
+  } = data.find(({ name }) => name === services.kms)
+  if (kmss?.data?.[region]) {
+    const kms = kmss.data[region].find(
+      ({ projectId }: RawGcpVpc) => projectId === id
+    )
+
+    if (kms) {
+      connections.push({
+        id: kms.name,
+        resourceType: services.kms,
+        relation: 'child',
+        field: 'kms',
+      })
+    }
+  }
+
   const result = {
     [id]: connections,
   }
