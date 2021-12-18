@@ -64,6 +64,6 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 | Service                  | Relations                |
 | ------------------------ | ------------------------ |
 | kms                      | project                  |
-| projects                 | vpc                      |
+| projects                 | vpc, kms                 |
 | vpc                      | project                  |
 
