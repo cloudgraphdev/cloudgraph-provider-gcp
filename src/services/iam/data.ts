@@ -3,10 +3,12 @@ import { ProjectsClient } from '@google-cloud/resource-manager'
 import { google } from '@google-cloud/resource-manager/build/protos/protos'
 import CloudGraph from '@cloudgraph/sdk'
 import groupBy from 'lodash/groupBy'
+import { RawGcpProject } from './../project/data'
 import gcpLoggerText from '../../properties/logger'
 import { GcpServiceInput } from '../../types'
 import { initTestEndpoint, generateGcpErrorLog } from '../../utils'
 import { GLOBAL_REGION } from '../../config/constants'
+import services from '../../enums/services'
 
 const lt = { ...gcpLoggerText }
 const { logger } = CloudGraph
@@ -27,17 +29,19 @@ export default async ({
 }> =>
   new Promise(async resolve => {
     const policyList: RawGcpIamPolicy[] = []
-    const resources: any = rawData
-      .flatMap(({ data }) => data)
-      .filter(resource => Object.keys(resource).length)
-      .flatMap(resource => Object.entries(resource)[0][1])
+
+    /**
+     * Find Projects
+     */
+    const projects: RawGcpProject[] = 
+      rawData.find(({ name }) => name === services.projects)?.data[GLOBAL_REGION] || []
 
     /**
      * Get all the IAM policies for projects
      */
     try {
       const projectsClient = new ProjectsClient({ ...config, apiEndpoint });
-      for (const { name } of resources) {
+      for (const { name } of projects) {
         const response = await projectsClient.getIamPolicy({ resource: name })
         if (response && response[0]) {
           policyList.push({
