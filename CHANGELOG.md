@@ -1,3 +1,17 @@
+# [0.2.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.1.0...0.2.0) (2021-12-21)
+
+
+### Bug Fixes
+
+* **iam:** log found policies ([1efc1fa](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/1efc1fae362e42a85b80f5ba5a40724c6d54f9d0))
+* **iam:** remove unused import ([6ef1970](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/6ef19703bc9967ba06755d1f285a32ebcc009104))
+* **iam:** restrict resources for iam ([afd15dd](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/afd15ddc094c8ad5f6448256b5a3db2c3c4ea543))
+
+
+### Features
+
+* **iam:** add iam service/initial connections ([4c7bdbc](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/4c7bdbc52458ab24e1ca334b872b0ced89cd088c))
+
 # [0.1.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.0.0...0.1.0) (2021-12-15)
 
 
