@@ -1,6 +1,7 @@
 import { ServiceConnection } from '@cloudgraph/sdk'
-import { RawGcpVpc } from '../vpc/data'
-import { RawGcpProject } from './data'
+import { RawGcpProject } from '../project/data'
+import { RawGcpIamPolicy } from './data'
+import { GLOBAL_REGION } from '../../config/constants'
 
 import services from '../../enums/services'
 
@@ -11,34 +12,34 @@ export default ({
   region,
 }: {
   account: string
-  service: RawGcpProject
+  service: RawGcpIamPolicy
   data: { name: string; data: { [property: string]: any[] } }[]
   region: string
 }): {
   [property: string]: ServiceConnection[]
 } => {
-  const { name: id } = service
+  const { id, resource } = service
   const connections: ServiceConnection[] = []
 
   /**
-   * Find VPCs
+   * Find Projects
    */
-  const vpcs: {
+  const projects: {
     name: string
     data: { [property: string]: any[] }
-  } = data.find(({ name }) => name === services.vpc)
+  } = data.find(({ name }) => name === services.projects)
 
-  if (vpcs?.data?.[region]) {
-    const vpc = vpcs.data[region].find(
-      ({ projectId }: RawGcpVpc) => projectId === service.projectId
+  if (projects?.data?.[GLOBAL_REGION]) {
+    const project = projects.data[GLOBAL_REGION].find(
+      ({ name }: RawGcpProject) => name === resource
     )
 
-    if (vpc) {
+    if (project) {
       connections.push({
-        id: vpc.name,
-        resourceType: services.vpc,
+        id: project.name,
+        resourceType: services.projects,
         relation: 'child',
-        field: 'vpc',
+        field: 'project',
       })
     }
   }

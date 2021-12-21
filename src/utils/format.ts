@@ -20,3 +20,7 @@ export const enumKeyToString = (enumType: any, key: any): string => {
   const stateIndex = enumType[key]
   return keys[stateIndex]
 }
+
+export const etagToString = (etag: string | Uint8Array): string => {
+  return etag instanceof Uint8Array ? Buffer.from(etag).toString('base64') : etag
+}

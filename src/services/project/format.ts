@@ -15,9 +15,9 @@ export default ({
   region: string
 }): GcpProject => {
   const {
-    projectId: id = cuid(),
     name,
     parent,
+    projectId,
     state,
     displayName,
     createTime,
@@ -28,9 +28,10 @@ export default ({
   } = service
 
   return {
-    id,
+    id: name,
     name,
     parent,
+    projectId,
     state: enumKeyToString(google.cloud.resourcemanager.v3.Project.State, state),
     displayName,
     createTime: toISOString(createTime?.seconds?.toString()),

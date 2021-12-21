@@ -6,5 +6,6 @@ import services from './services'
 export default {
   [services.projects]: 'gcpProject',
   [services.vpc]: 'gcpVpcConnector',
+  [services.iam]: 'gcpIamPolicy',
   tag: 'gcpTag',
 }
