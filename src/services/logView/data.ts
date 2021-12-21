@@ -11,7 +11,7 @@ import { GLOBAL_REGION } from '../../config/constants'
 
 const lt = { ...gcpLoggerText }
 const { logger } = CloudGraph
-const serviceName = 'Log Sink'
+const serviceName = 'Log View'
 const apiEndpoint = initTestEndpoint(serviceName)
 
 export interface RawGcpLogView extends google.logging.v2.ILogView { 
