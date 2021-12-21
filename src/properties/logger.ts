@@ -22,5 +22,11 @@ export default {
   /**
   * IAM
   */
-  foundPolicies: (num: number): string => `Found ${num} IAM Policies`
+  foundPolicies: (num: number): string => `Found ${num} IAM Policies`,
+  /**
+  * Logging
+  */
+  foundLogBuckets: (num: number): string => `Found ${num} Log Buckets`,
+  foundLogSinks: (num: number): string => `Found ${num} Log Sinks`,
+  foundLogViews: (num: number): string => `Found ${num} Log Views`
 }

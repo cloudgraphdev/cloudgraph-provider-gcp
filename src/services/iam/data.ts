@@ -12,12 +12,12 @@ import services from '../../enums/services'
 
 const lt = { ...gcpLoggerText }
 const { logger } = CloudGraph
-const serviceName = 'IAM'
+const serviceName = 'IAM Policy'
 const apiEndpoint = initTestEndpoint(serviceName)
 
 export interface RawGcpIamPolicy extends google.iam.v1.IPolicy { 
   id: string
-  resource: string
+  projectId: string
   region: string
 }
 
@@ -29,12 +29,13 @@ export default async ({
 }> =>
   new Promise(async resolve => {
     const policyList: RawGcpIamPolicy[] = []
+    const { projectId } = config
 
     /**
      * Find Projects
      */
     const projects: RawGcpProject[] = 
-      rawData.find(({ name }) => name === services.projects)?.data[GLOBAL_REGION] || []
+      rawData.find(({ name }) => name === services.project)?.data[GLOBAL_REGION] || []
 
     /**
      * Get all the IAM policies for projects
@@ -47,7 +48,7 @@ export default async ({
           policyList.push({
             id: cuid(),
             ...response[0],
-            resource: name,
+            projectId,
             region: GLOBAL_REGION,
           })
         }

@@ -1,6 +1,6 @@
 import { ServiceConnection } from '@cloudgraph/sdk'
-import { RawGcpProject } from '../project/data'
-import { RawGcpIamPolicy } from './data'
+import { RawGcpLogView } from '../logView/data'
+import { RawGcpLogBucket } from './data'
 import { GLOBAL_REGION } from '../../config/constants'
 
 import services from '../../enums/services'
@@ -12,34 +12,34 @@ export default ({
   region,
 }: {
   account: string
-  service: RawGcpIamPolicy
+  service: RawGcpLogBucket
   data: { name: string; data: { [property: string]: any[] } }[]
   region: string
 }): {
   [property: string]: ServiceConnection[]
 } => {
-  const { id, resource } = service
+  const { name: id } = service
   const connections: ServiceConnection[] = []
 
   /**
-   * Find Projects
+   * Find Log Views
    */
-  const projects: {
+  const views: {
     name: string
     data: { [property: string]: any[] }
-  } = data.find(({ name }) => name === services.projects)
+  } = data.find(({ name }) => name === services.logView)
 
-  if (projects?.data?.[GLOBAL_REGION]) {
-    const project = projects.data[GLOBAL_REGION].find(
-      ({ name }: RawGcpProject) => name === resource
+  if (views?.data?.[GLOBAL_REGION]) {
+    const view = views.data[GLOBAL_REGION].find(
+      ({ bucketName }: RawGcpLogView) => bucketName === id
     )
 
-    if (project) {
+    if (view) {
       connections.push({
-        id: project.name,
-        resourceType: services.projects,
+        id: view.name,
+        resourceType: services.logView,
         relation: 'child',
-        field: 'project',
+        field: 'logView',
       })
     }
   }

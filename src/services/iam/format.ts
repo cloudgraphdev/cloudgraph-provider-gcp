@@ -14,6 +14,7 @@ export default ({
 }): GcpIamPolicy => {
   const {
     id,
+    projectId,
     version,
     bindings,
     etag,
@@ -21,7 +22,7 @@ export default ({
 
   return {
     id,
-    projectId: account,
+    projectId,
     version,
     bindings: bindings.map(binding => ({
       id: cuid(),

@@ -13,7 +13,9 @@ export default ({
   region: string
 }): GcpVpcConnector => {
   const {
+    id,
     name,
+    projectId,
     network,
     ipCidrRange,
     state,
@@ -24,8 +26,8 @@ export default ({
   } = service
 
   return {
-    id: name,
-    projectId: account,
+    id,
+    projectId,
     region,
     name,
     network,

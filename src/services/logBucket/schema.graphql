@@ -1,0 +1,14 @@
+type gcpLogBucket @key(fields: "id") {
+  id: String! @id @search(by: [hash])
+  projectId: String @search(by: [hash, regexp])
+  name: String @search(by: [hash, regexp])
+  region: String @search(by: [hash, regexp])
+  description: String @search(by: [hash, regexp])
+  createTime: String @search(by: [hash, regexp])
+  updateTime: String @search(by: [hash, regexp])
+  retentionDays: Int @search
+  locked: Boolean @search
+  lifecycleState: String @search(by: [hash, regexp])
+  logView: [gcpLogView] @hasInverse(field: logBucket)
+  project: [gcpProject] @hasInverse(field: logBucket)
+}

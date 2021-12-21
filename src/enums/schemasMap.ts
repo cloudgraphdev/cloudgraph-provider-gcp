@@ -4,8 +4,11 @@ import services from './services'
  * schemasMap is an object that contains schemas name by resource
  */
 export default {
-  [services.projects]: 'gcpProject',
+  [services.project]: 'gcpProject',
   [services.vpc]: 'gcpVpcConnector',
-  [services.iam]: 'gcpIamPolicy',
+  [services.iamPolicy]: 'gcpIamPolicy',
+  [services.logBucket]: 'gcpLogBucket',
+  [services.logSink]: 'gcpLogSink',
+  [services.logView]: 'gcpLogView',
   tag: 'gcpTag',
 }

@@ -11,6 +11,11 @@ export type Scalars = {
   Float: number;
 };
 
+export type GcpBigQueryOptions = {
+  usePartitionedTables?: Maybe<Scalars['Boolean']>;
+  usesTimestampColumnPartitioning?: Maybe<Scalars['Boolean']>;
+};
+
 export type GcpIamBinding = {
   id: Scalars['String'];
   role?: Maybe<Scalars['String']>;
@@ -34,6 +39,63 @@ export type GcpIamPolicy = {
   project?: Maybe<Array<Maybe<GcpProject>>>;
 };
 
+export type GcpLogBucket = {
+  id: Scalars['String'];
+  projectId?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  region?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  createTime?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+  retentionDays?: Maybe<Scalars['Int']>;
+  locked?: Maybe<Scalars['Boolean']>;
+  lifecycleState?: Maybe<Scalars['String']>;
+  logView?: Maybe<Array<Maybe<GcpLogView>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
+export type GcpLogExclusion = {
+  id: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  filter?: Maybe<Scalars['String']>;
+  disabled?: Maybe<Scalars['Boolean']>;
+  createTime?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+};
+
+export type GcpLogSink = {
+  id: Scalars['String'];
+  projectId?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  region?: Maybe<Scalars['String']>;
+  destination?: Maybe<Scalars['String']>;
+  filter?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  disabled?: Maybe<Scalars['Boolean']>;
+  exclusions?: Maybe<Array<Maybe<GcpLogExclusion>>>;
+  outputVersionFormat?: Maybe<Scalars['String']>;
+  writerIdentity?: Maybe<Scalars['String']>;
+  includeChildren?: Maybe<Scalars['Boolean']>;
+  bigqueryOptions?: Maybe<GcpBigQueryOptions>;
+  createTime?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
+export type GcpLogView = {
+  id: Scalars['String'];
+  projectId?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  region?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  createTime?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+  filter?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  logBucket?: Maybe<Array<Maybe<GcpLogBucket>>>;
+};
+
 export type GcpProject = {
   id: Scalars['String'];
   name?: Maybe<Scalars['String']>;
@@ -48,6 +110,9 @@ export type GcpProject = {
   labels?: Maybe<Array<Maybe<GcpRawTag>>>;
   vpc?: Maybe<Array<Maybe<GcpVpcConnector>>>;
   iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
+  logBucket?: Maybe<Array<Maybe<GcpLogBucket>>>;
+  logView?: Maybe<Array<Maybe<GcpLogView>>>;
+  logSink?: Maybe<Array<Maybe<GcpLogSink>>>;
 };
 
 export type GcpRawTag = {
