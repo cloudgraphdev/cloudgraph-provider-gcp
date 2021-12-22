@@ -105,6 +105,40 @@ export type GcpDisplayDevice = {
   enableDisplay?: Maybe<Scalars['Boolean']>;
 };
 
+export type GcpDnsManagedZone = {
+  id: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
+  projectId?: Maybe<Scalars['String']>;
+  region?: Maybe<Scalars['String']>;
+  kind?: Maybe<Scalars['String']>;
+  dnsName?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  nameServers?: Maybe<Array<Maybe<Scalars['String']>>>;
+  dnssecConfigKind?: Maybe<Scalars['String']>;
+  dnssecConfigState?: Maybe<Scalars['String']>;
+  dnssecConfigDefaultKeySpecs?: Maybe<Array<Maybe<GcpManagedZoneDnssecConfigDefaultKeySpec>>>;
+  dnssecConfigNonExistence?: Maybe<Scalars['String']>;
+  nameServerSet?: Maybe<Scalars['String']>;
+  visibility?: Maybe<Scalars['String']>;
+  privateVisibilityConfigKind?: Maybe<Scalars['String']>;
+  privateVisibilityConfigNetworks?: Maybe<Array<Maybe<GcpManagedZonePrivateVisibilityConfigNetwork>>>;
+  forwardingConfigKind?: Maybe<Scalars['String']>;
+  forwardingConfigTargetNameServers?: Maybe<Array<Maybe<GcpManagedZoneForwardingConfigTargetNameServer>>>;
+  labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
+  peeringConfigKind?: Maybe<Scalars['String']>;
+  peeringConfigTargetNetworkKind?: Maybe<Scalars['String']>;
+  peeringConfigTargetNetworkUrl?: Maybe<Scalars['String']>;
+  peeringConfigTargetNetworkDeactivateTime?: Maybe<Scalars['String']>;
+  reverseLookupConfigKind?: Maybe<Scalars['String']>;
+  serviceDirectoryConfigKind?: Maybe<Scalars['String']>;
+  serviceDirectoryConfigNamespaceKind?: Maybe<Scalars['String']>;
+  serviceDirectoryConfigNamespaceUrl?: Maybe<Scalars['String']>;
+  serviceDirectoryConfigNamespaceDeactivateTime?: Maybe<Scalars['String']>;
+  cloudLoggingConfigKind?: Maybe<Scalars['String']>;
+  cloudLoggingConfigEnableLogging?: Maybe<Scalars['Boolean']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
 export type GcpDuration = {
   seconds?: Maybe<Scalars['String']>;
   nanos?: Maybe<Scalars['Int']>;
@@ -310,6 +344,27 @@ export type GcpLogView = {
   logBucket?: Maybe<Array<Maybe<GcpLogBucket>>>;
 };
 
+export type GcpManagedZoneDnssecConfigDefaultKeySpec = {
+  id: Scalars['String'];
+  kind?: Maybe<Scalars['String']>;
+  keyType?: Maybe<Scalars['String']>;
+  algorithm?: Maybe<Scalars['String']>;
+  keyLength?: Maybe<Scalars['Int']>;
+};
+
+export type GcpManagedZoneForwardingConfigTargetNameServer = {
+  id?: Maybe<Scalars['String']>;
+  kind?: Maybe<Scalars['String']>;
+  ipv4Address?: Maybe<Scalars['String']>;
+  forwardingPath?: Maybe<Scalars['String']>;
+};
+
+export type GcpManagedZonePrivateVisibilityConfigNetwork = {
+  id: Scalars['String'];
+  kind?: Maybe<Scalars['String']>;
+  networkUrl?: Maybe<Scalars['String']>;
+};
+
 export type GcpMetadata = {
   fingerprint?: Maybe<Scalars['String']>;
   items?: Maybe<Array<Maybe<GcpItems>>>;
@@ -377,6 +432,7 @@ export type GcpProject = {
   deleteTime?: Maybe<Scalars['String']>;
   etag?: Maybe<Scalars['String']>;
   labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
+  dnsManagedZones?: Maybe<Array<Maybe<GcpDnsManagedZone>>>;
   vpc?: Maybe<Array<Maybe<GcpVpcConnector>>>;
   kms?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;
   iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;

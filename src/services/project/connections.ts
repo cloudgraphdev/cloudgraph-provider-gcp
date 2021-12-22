@@ -3,6 +3,7 @@ import { rawDataInterface } from '../../types'
 import { RawGcpProject } from './data'
 import { GLOBAL_REGION } from '../../config/constants'
 import services from '../../enums/services'
+import { RawGcpManagedZone } from '../dnsManagedZone/data'
 
 export default ({
   service,
@@ -24,6 +25,35 @@ export default ({
       name: string
       data: { [property: string]: any[] }
     } = data.find(({ name }) => name === serviceName)
+    /**
+     * Find DNS Managed Zones
+     */
+    const dnsManagedZones: {
+      name: string
+      data: { [property: string]: any[] }
+    } = data.find(({ name }) => name === services.dnsManagedZone)
+
+    if (dnsManagedZones?.data?.[region]) {
+      const dnsManagedZone = dnsManagedZones.data[region].find(
+        ({ projectId }: RawGcpManagedZone) => projectId === id
+      )
+
+      if (dnsManagedZone) {
+        connections.push({
+          id: dnsManagedZone.name,
+          resourceType: services.dnsManagedZone,
+          relation: 'child',
+          field: 'dnsManagedZones',
+        })
+      }
+    }
+    /**
+     * Find VPCs
+     */
+    const vpcs: {
+      name: string
+      data: { [property: string]: any[] }
+    } = data.find(({ name }) => name === services.vpc)
 
     const regions = [region, GLOBAL_REGION]
     for (const region of regions) {

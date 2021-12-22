@@ -67,6 +67,7 @@ export default {
   subnet: 'subnet',
   // firebase: 'firebase',
   // monitoring: 'monitoring',
+  dnsManagedZone: 'dnsManagedZone',
   // dns: 'dns',
   // domains: 'domains',
   // ids: 'ids',
