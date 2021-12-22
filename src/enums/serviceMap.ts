@@ -2,6 +2,7 @@ import services from './services'
 import GcpProject from '../services/project'
 import GcpKms from '../services/kms'
 import GcpVpc from '../services/vpc'
+import GcpIam from '../services/iam'
 import GcpTag from '../services/tag'
 
 /**
@@ -12,5 +13,6 @@ export default {
   [services.projects]: GcpProject,
   [services.kms]: GcpKms,
   [services.vpc]: GcpVpc,
+  [services.iam]: GcpIam,
   tag: GcpTag,
 }

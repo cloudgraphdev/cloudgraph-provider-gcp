@@ -17,7 +17,7 @@ export default ({
 }): {
   [property: string]: ServiceConnection[]
 } => {
-  const { projectId: id } = service
+  const { name: id } = service
   const connections: ServiceConnection[] = []
 
   /**
@@ -30,7 +30,7 @@ export default ({
 
   if (vpcs?.data?.[region]) {
     const vpc = vpcs.data[region].find(
-      ({ projectId }: RawGcpVpc) => projectId === id
+      ({ projectId }: RawGcpVpc) => projectId === service.projectId
     )
 
     if (vpc) {

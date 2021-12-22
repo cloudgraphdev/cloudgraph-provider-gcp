@@ -67,10 +67,34 @@ export type GcpKmsKeyRing = GcpBaseResource & {
   project?: Maybe<Array<Maybe<GcpProject>>>;
 };
 
+export type GcpIamBinding = {
+  id: Scalars['String'];
+  role?: Maybe<Scalars['String']>;
+  members?: Maybe<Array<Maybe<Scalars['String']>>>;
+  condition?: Maybe<GcpIamBindingExpr>;
+};
+
+export type GcpIamBindingExpr = {
+  expression?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  location?: Maybe<Scalars['String']>;
+};
+
+export type GcpIamPolicy = {
+  id: Scalars['String'];
+  projectId: Scalars['String'];
+  version?: Maybe<Scalars['Int']>;
+  bindings?: Maybe<Array<Maybe<GcpIamBinding>>>;
+  etag?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
 export type GcpProject = {
   id: Scalars['String'];
   name?: Maybe<Scalars['String']>;
   parent?: Maybe<Scalars['String']>;
+  projectId?: Maybe<Scalars['String']>;
   state?: Maybe<Scalars['String']>;
   displayName?: Maybe<Scalars['String']>;
   createTime?: Maybe<Scalars['String']>;
@@ -86,6 +110,7 @@ export type GcpRawTag = {
   id: Scalars['String'];
   key?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
+  iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
 };
 
 export type GcpTag = {

@@ -2,6 +2,7 @@ type gcpProject @key(fields: "id") {
   id: String! @id @search(by: [hash])
   name: String @search(by: [hash, regexp])
   parent: String @search(by: [hash, regexp])
+  projectId: String @search(by: [hash, regexp])
   state: String @search(by: [hash, regexp])
   displayName: String @search(by: [hash, regexp])
   createTime: String @search(by: [hash, regexp])
@@ -11,4 +12,5 @@ type gcpProject @key(fields: "id") {
   labels: [gcpRawTag]
   vpc: [gcpVpcConnector] @hasInverse(field: project)
   kms: [gcpKmsKeyRing] @hasInverse(field: project)
+  iamPolicy: [gcpIamPolicy] @hasInverse(field: project)
 }

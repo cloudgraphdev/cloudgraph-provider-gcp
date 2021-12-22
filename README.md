@@ -4,6 +4,7 @@ CloudGraph GCP Provider
 Use the CloudGraph GCP Provider to scan and normalize cloud infrastructure using the [GCP Client Libraries](https://github.com/googleapis/google-cloud-node)
 
 <!-- toc -->
+- [CloudGraph GCP Provider](#cloudgraph-gcp-provider)
 - [Install](#install)
 - [Authentication](#authentication)
 - [Multi Account](#multi-account)
@@ -61,9 +62,11 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 
 # Supported Services
 
-| Service                  | Relations                |
-| ------------------------ | ------------------------ |
-| kms                      | project                  |
-| projects                 | vpc, kms                 |
-| vpc                      | project                  |
+| Service                  | Relations                     |
+| ------------------------ | ----------------------------- |
+| kms                      | project                       |
+| projects                 | vpc, kms                      |
+| projects                 | kms, iam, vpc                 |
+| vpc                      | projects                      |
+| iam                      | projects                      |
 

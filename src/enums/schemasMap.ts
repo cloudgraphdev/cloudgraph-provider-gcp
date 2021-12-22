@@ -7,5 +7,6 @@ export default {
   [services.projects]: 'gcpProject',
   [services.kms]: 'gcpKmsKeyRing',
   [services.vpc]: 'gcpVpcConnector',
+  [services.iam]: 'gcpIamPolicy',
   tag: 'gcpTag',
 }
