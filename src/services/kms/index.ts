@@ -4,7 +4,7 @@ import format from './format'
 import getData from './data'
 import mutation from './mutation'
 
-export default class GcpVpc extends BaseService implements Service {
+export default class GcpKms extends BaseService implements Service {
   format = format.bind(this)
 
   getData = getData.bind(this)

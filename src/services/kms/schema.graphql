@@ -19,7 +19,7 @@ type gcpKmsCryptoKey
     primaryImportTime: String @search(by: [hash, regexp])
     primaryImportFailureReason: String @search(by: [hash, regexp])
     primaryExternalProtectionLevelOptionsExternalKeyUri: String @search(by: [hash, regexp])
-    primaryReimportEligible: String @search(by: [hash, regexp])
+    primaryReimportEligible: Boolean @search
     purpose: String @search(by: [hash, regexp])
     createTime: String @search(by: [hash, regexp])
     nextRotationTime: String @search(by: [hash, regexp])
@@ -27,7 +27,7 @@ type gcpKmsCryptoKey
     versionTemplateAlgorithm: String @search(by: [hash, regexp])
     versionTemplateProtectionLevel: String @search(by: [hash, regexp])
     tags: [gcpRawTag]
-    importOnly: String @search(by: [hash, regexp])
+    importOnly: Boolean @search
     destroyScheduledDuration: String @search(by: [hash, regexp])
   }
 

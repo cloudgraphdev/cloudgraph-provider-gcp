@@ -18,6 +18,29 @@ export type GcpBaseResource = {
   name?: Maybe<Scalars['String']>;
 };
 
+export type GcpIamBinding = {
+  id: Scalars['String'];
+  role?: Maybe<Scalars['String']>;
+  members?: Maybe<Array<Maybe<Scalars['String']>>>;
+  condition?: Maybe<GcpIamBindingExpr>;
+};
+
+export type GcpIamBindingExpr = {
+  expression?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  location?: Maybe<Scalars['String']>;
+};
+
+export type GcpIamPolicy = {
+  id: Scalars['String'];
+  projectId: Scalars['String'];
+  version?: Maybe<Scalars['Int']>;
+  bindings?: Maybe<Array<Maybe<GcpIamBinding>>>;
+  etag?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
 export type GcpKmsCryptoKey = {
   name?: Maybe<Scalars['String']>;
   primaryName?: Maybe<Scalars['String']>;
@@ -34,7 +57,7 @@ export type GcpKmsCryptoKey = {
   primaryImportTime?: Maybe<Scalars['String']>;
   primaryImportFailureReason?: Maybe<Scalars['String']>;
   primaryExternalProtectionLevelOptionsExternalKeyUri?: Maybe<Scalars['String']>;
-  primaryReimportEligible?: Maybe<Scalars['String']>;
+  primaryReimportEligible?: Maybe<Scalars['Boolean']>;
   purpose?: Maybe<Scalars['String']>;
   createTime?: Maybe<Scalars['String']>;
   nextRotationTime?: Maybe<Scalars['String']>;
@@ -42,7 +65,7 @@ export type GcpKmsCryptoKey = {
   versionTemplateAlgorithm?: Maybe<Scalars['String']>;
   versionTemplateProtectionLevel?: Maybe<Scalars['String']>;
   tags?: Maybe<Array<Maybe<GcpRawTag>>>;
-  importOnly?: Maybe<Scalars['String']>;
+  importOnly?: Maybe<Scalars['Boolean']>;
   destroyScheduledDuration?: Maybe<Scalars['String']>;
 };
 
@@ -67,29 +90,6 @@ export type GcpKmsKeyRing = GcpBaseResource & {
   project?: Maybe<Array<Maybe<GcpProject>>>;
 };
 
-export type GcpIamBinding = {
-  id: Scalars['String'];
-  role?: Maybe<Scalars['String']>;
-  members?: Maybe<Array<Maybe<Scalars['String']>>>;
-  condition?: Maybe<GcpIamBindingExpr>;
-};
-
-export type GcpIamBindingExpr = {
-  expression?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
-  location?: Maybe<Scalars['String']>;
-};
-
-export type GcpIamPolicy = {
-  id: Scalars['String'];
-  projectId: Scalars['String'];
-  version?: Maybe<Scalars['Int']>;
-  bindings?: Maybe<Array<Maybe<GcpIamBinding>>>;
-  etag?: Maybe<Scalars['String']>;
-  project?: Maybe<Array<Maybe<GcpProject>>>;
-};
-
 export type GcpProject = {
   id: Scalars['String'];
   name?: Maybe<Scalars['String']>;
@@ -104,13 +104,13 @@ export type GcpProject = {
   labels?: Maybe<Array<Maybe<GcpRawTag>>>;
   vpc?: Maybe<Array<Maybe<GcpVpcConnector>>>;
   kms?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;
+  iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
 };
 
 export type GcpRawTag = {
   id: Scalars['String'];
   key?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
-  iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
 };
 
 export type GcpTag = {

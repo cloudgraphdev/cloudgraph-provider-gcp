@@ -1,6 +1,5 @@
 import { google } from '@google-cloud/kms/build/protos/protos'
 
-import t from '../../properties/translations'
 import { GcpKmsCryptoKey, GcpKmsKeyRing, GcpKmsImportJob } from '../../types/generated'
 import { RawGcpKms, RawGcpKmsCryptoKey } from './data'
 import { enumKeyToString, formatLabelsFromMap } from '../../utils/format'
@@ -47,7 +46,7 @@ const formatCryptoKey = ({
     primaryImportFailureReason: primary?.importFailureReason || '',
     primaryExternalProtectionLevelOptionsExternalKeyUri: 
       primary?.externalProtectionLevelOptions?.externalKeyUri || '',
-    primaryReimportEligible: primary?.reimportEligible ? t.yes : t.no,
+    primaryReimportEligible: primary?.reimportEligible || false,
     purpose: enumKeyToString(google.cloud.kms.v1.CryptoKey.CryptoKeyPurpose, purpose),
     createTime: toISOString(createTime?.seconds?.toString()),
     nextRotationTime: toISOString(nextRotationTime?.seconds?.toString()),
@@ -61,7 +60,7 @@ const formatCryptoKey = ({
       versionTemplate?.protectionLevel,
     ),
     tags: formatLabelsFromMap(Tags),
-    importOnly: importOnly ? t.yes : t.no,
+    importOnly,
     destroyScheduledDuration: toISOString(destroyScheduledDuration?.seconds?.toString()),
   }
 }
