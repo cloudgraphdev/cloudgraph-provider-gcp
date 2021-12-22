@@ -1,7 +1,7 @@
-import { GcpRawTag } from '../types/generated'
+import { GcpRawLabel } from '../types/generated'
 import { LabelMap } from '../types'
 
-export const formatLabelsFromMap = (labels: LabelMap): GcpRawTag[] => {
+export const formatLabelsFromMap = (labels: LabelMap): GcpRawLabel[] => {
   return Object.keys(labels).map(key => ({
     // We need an id here to enfore uniqueness for Dgraph, otherwise we get duplicate tags
     id:`${key}:${labels[key]}`,

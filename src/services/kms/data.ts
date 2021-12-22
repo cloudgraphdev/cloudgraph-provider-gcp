@@ -13,7 +13,7 @@ const apiEndpoint = initTestEndpoint(serviceName)
 
 export interface RawGcpKmsCryptoKey 
   extends Omit<google.cloud.kms.v1.ICryptoKey, 'labels'> {
-  Tags: LabelMap
+  Labels: LabelMap
 }
 
 export interface RawGcpKms extends google.cloud.kms.v1.IKeyRing {
@@ -21,7 +21,7 @@ export interface RawGcpKms extends google.cloud.kms.v1.IKeyRing {
   importJobs: google.cloud.kms.v1.IImportJob[]
   projectId: string
   region: string
-  Tags: LabelMap
+  Labels: LabelMap
 }
 
 export default async ({
@@ -47,7 +47,7 @@ export default async ({
           importJobs: [],
           projectId,
           region,
-          Tags: {},
+          Labels: {},
         }
 
         try {
@@ -56,10 +56,10 @@ export default async ({
             rawGcpKms.cryptoKeys.push({
               name,
               ...rest,
-              Tags: labels,
+              Labels: labels,
             })
             Object.keys(labels).forEach(key => {
-              rawGcpKms.Tags[`${name}:${key}`] = labels[key]
+              rawGcpKms.Labels[`${name}:${key}`] = labels[key]
             })
           }
         } catch (error) {

@@ -13,7 +13,7 @@ const formatCryptoKey = ({
   nextRotationTime,
   rotationPeriod,
   versionTemplate,
-  Tags = {},
+  Labels = {},
   importOnly,
   destroyScheduledDuration,
 }: RawGcpKmsCryptoKey): GcpKmsCryptoKey => {
@@ -59,7 +59,7 @@ const formatCryptoKey = ({
       google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionAlgorithm,
       versionTemplate?.protectionLevel,
     ),
-    tags: formatLabelsFromMap(Tags),
+    labels: formatLabelsFromMap(Labels),
     importOnly,
     destroyScheduledDuration: toISOString(destroyScheduledDuration?.seconds?.toString()),
   }
@@ -104,7 +104,7 @@ export default ({
     createTime,
     cryptoKeys,
     importJobs,
-    Tags,
+    Labels,
   } = service
 
   return {
@@ -115,6 +115,6 @@ export default ({
     createTime: toISOString(createTime.seconds.toString()),
     cryptoKeys: cryptoKeys?.map(cryptoKey => formatCryptoKey(cryptoKey)) || [],
     importJobs: importJobs?.map(importJob => formatImportJob(importJob)) || [],
-    tags: formatLabelsFromMap(Tags),
+    labels: formatLabelsFromMap(Labels),
   }
 }

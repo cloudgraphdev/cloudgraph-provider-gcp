@@ -64,7 +64,7 @@ export type GcpKmsCryptoKey = {
   rotationPeriod?: Maybe<Scalars['String']>;
   versionTemplateAlgorithm?: Maybe<Scalars['String']>;
   versionTemplateProtectionLevel?: Maybe<Scalars['String']>;
-  tags?: Maybe<Array<Maybe<GcpRawTag>>>;
+  labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
   importOnly?: Maybe<Scalars['Boolean']>;
   destroyScheduledDuration?: Maybe<Scalars['String']>;
 };
@@ -86,7 +86,7 @@ export type GcpKmsKeyRing = GcpBaseResource & {
   createTime?: Maybe<Scalars['String']>;
   cryptoKeys?: Maybe<Array<Maybe<GcpKmsCryptoKey>>>;
   importJobs?: Maybe<Array<Maybe<GcpKmsImportJob>>>;
-  tags?: Maybe<Array<Maybe<GcpRawTag>>>;
+  labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
 };
 
@@ -101,13 +101,13 @@ export type GcpProject = {
   updateTime?: Maybe<Scalars['String']>;
   deleteTime?: Maybe<Scalars['String']>;
   etag?: Maybe<Scalars['String']>;
-  labels?: Maybe<Array<Maybe<GcpRawTag>>>;
+  labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
   vpc?: Maybe<Array<Maybe<GcpVpcConnector>>>;
   kms?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;
   iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
 };
 
-export type GcpRawTag = {
+export type GcpRawLabel = {
   id: Scalars['String'];
   key?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;

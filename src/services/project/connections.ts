@@ -3,6 +3,7 @@ import { RawGcpVpc } from '../vpc/data'
 import { RawGcpProject } from './data'
 
 import services from '../../enums/services'
+import { RawGcpKms } from '../kms/data'
 
 export default ({
   account,
@@ -52,7 +53,7 @@ export default ({
   } = data.find(({ name }) => name === services.kms)
   if (kmss?.data?.[region]) {
     const kms = kmss.data[region].find(
-      ({ projectId }: RawGcpVpc) => projectId === id
+      ({ projectId }: RawGcpKms) => projectId === service.projectId
     )
 
     if (kms) {
