@@ -11,12 +11,6 @@ export type Scalars = {
   Float: number;
 };
 
-export type Tag = {
-  id: Scalars['String'];
-  key?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['String']>;
-};
-
 export type GcpIamBinding = {
   id: Scalars['String'];
   role?: Maybe<Scalars['String']>;
@@ -51,9 +45,15 @@ export type GcpProject = {
   updateTime?: Maybe<Scalars['String']>;
   deleteTime?: Maybe<Scalars['String']>;
   etag?: Maybe<Scalars['String']>;
-  labels?: Maybe<Array<Maybe<Tag>>>;
+  labels?: Maybe<Array<Maybe<GcpRawTag>>>;
   vpc?: Maybe<Array<Maybe<GcpVpcConnector>>>;
   iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
+};
+
+export type GcpRawTag = {
+  id: Scalars['String'];
+  key?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
 };
 
 export type GcpTag = {
