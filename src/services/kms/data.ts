@@ -5,6 +5,7 @@ import CloudGraph from '@cloudgraph/sdk'
 import gcpLoggerText from '../../properties/logger'
 import { GcpServiceInput, LabelMap } from '../../types'
 import { generateGcpErrorLog, initTestEndpoint } from '../../utils'
+import { GLOBAL_REGION } from '../../config/constants'
 
 const lt = { ...gcpLoggerText }
 const { logger } = CloudGraph
@@ -34,7 +35,8 @@ export default async ({
   const { projectId } = config
 
   const client = new KeyManagementServiceClient({ ...config, apiEndpoint });
-  for (const region of regions.split(',')) {
+  const allRegions = regions.split(',').concat([GLOBAL_REGION])
+  for (const region of allRegions) {
     try {
       const locationName = client.locationPath(projectId, region);
       const iterableKeyRings = client.listKeyRingsAsync({
