@@ -1,0 +1,40 @@
+type gcpDnsPolicyNetwork
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  ) {
+    id: String! @id @search(by: [hash])
+    kind: String @search(by: [hash, regexp])
+    networkUrl: String @search(by: [hash, regexp])
+  }
+
+type gcpDnsPolicyAlternativeNameServerConfigTargetNameServer
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  ) {
+    id: String! @id @search(by: [hash])
+    kind: String @search(by: [hash, regexp])
+    ipv4Address: String @search(by: [hash, regexp])
+    forwardingPath: String @search(by: [hash, regexp])
+  }
+
+type gcpDnsPolicy 
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  )
+  @key(fields: "id") {
+  id: String! @id @search(by: [hash])
+  name: String @search(by: [hash, regexp])
+  projectId: String @search(by: [hash, regexp])
+  region: String @search(by: [hash, regexp])
+  kind: String @search(by: [hash, regexp])
+  enableInboundForwarding: Boolean @search
+  description: String @search(by: [hash, regexp])
+  networks: [gcpDnsPolicyNetwork]
+  alternativeNameServerConfigKind: String @search(by: [hash, regexp])
+  alternativeNameServerConfigTargetNameServers: [gcpDnsPolicyAlternativeNameServerConfigTargetNameServer]
+  enableLogging: Boolean @search
+  project: [gcpProject] @hasInverse(field: dnsPolicies)
+}
