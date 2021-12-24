@@ -1,4 +1,4 @@
-type gcpManagedZoneDnssecConfigDefaultKeySpec
+type gcpDnsZoneDnssecConfigDefaultKeySpec
   @generate(
     query: { get: true, query: true, aggregate: true }
     mutation: { add: true, delete: false }
@@ -10,7 +10,7 @@ type gcpManagedZoneDnssecConfigDefaultKeySpec
     keyLength: Int @search
   }
 
-type gcpManagedZonePrivateVisibilityConfigNetwork
+type gcpDnsZonePrivateVisibilityConfigNetwork
   @generate(
     query: { get: true, query: true, aggregate: true }
     mutation: { add: true, delete: false }
@@ -20,7 +20,7 @@ type gcpManagedZonePrivateVisibilityConfigNetwork
     networkUrl: String @search(by: [hash, regexp])
   }
 
-type gcpManagedZoneForwardingConfigTargetNameServer
+type gcpDnsZoneForwardingConfigTargetNameServer
   @generate(
     query: { get: true, query: true, aggregate: true }
     mutation: { add: true, delete: false }
@@ -47,14 +47,14 @@ type gcpDnsManagedZone
   nameServers: [String] @search(by: [hash, regexp])
   dnssecConfigKind: String @search(by: [hash, regexp])
   dnssecConfigState: String @search(by: [hash, regexp])
-  dnssecConfigDefaultKeySpecs: [gcpManagedZoneDnssecConfigDefaultKeySpec]
+  dnssecConfigDefaultKeySpecs: [gcpDnsZoneDnssecConfigDefaultKeySpec]
   dnssecConfigNonExistence: String @search(by: [hash, regexp])
   nameServerSet: String @search(by: [hash, regexp])
   visibility: String @search(by: [hash, regexp])
   privateVisibilityConfigKind: String @search(by: [hash, regexp])
-  privateVisibilityConfigNetworks: [gcpManagedZonePrivateVisibilityConfigNetwork]
+  privateVisibilityConfigNetworks: [gcpDnsZonePrivateVisibilityConfigNetwork]
   forwardingConfigKind: String @search(by: [hash, regexp])
-  forwardingConfigTargetNameServers: [gcpManagedZoneForwardingConfigTargetNameServer]
+  forwardingConfigTargetNameServers: [gcpDnsZoneForwardingConfigTargetNameServer]
   labels: [gcpRawLabel]
   peeringConfigKind: String @search(by: [hash, regexp])
   peeringConfigTargetNetworkKind: String @search(by: [hash, regexp])

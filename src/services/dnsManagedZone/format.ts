@@ -78,6 +78,7 @@ export default ({
           forwardingPath,
         }}
     ) || [],
+    // TODO update label
     labels: Object.keys(labels).map(key => ({
       id: cuid(),
       key,

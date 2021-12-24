@@ -64,6 +64,8 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 
 | Service | Relations |
 | ------------------------ | ------------------------ |
+| dns (managed zone)       | project                  |
+| dns (policy)             | project                  |
 | firewall                 | network, project         |
 | folder                   | organization, project    |                        
 | kms                      | project                  |

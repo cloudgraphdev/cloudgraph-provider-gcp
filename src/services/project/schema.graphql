@@ -11,6 +11,7 @@ type gcpProject @key(fields: "id") {
   etag: String @search(by: [hash, regexp])
   labels: [gcpRawLabel]
   dnsManagedZones: [gcpDnsManagedZone] @hasInverse(field: project)
+  dnsPolicies: [gcpDnsPolicy] @hasInverse(field: project)
   vpc: [gcpVpcConnector] @hasInverse(field: project)
   kms: [gcpKmsKeyRing] @hasInverse(field: project)
   iamPolicy: [gcpIamPolicy] @hasInverse(field: project)

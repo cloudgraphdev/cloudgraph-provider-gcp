@@ -16,6 +16,7 @@ import GcpSecretManager from '../services/secretManager'
 import GcpNetwork from '../services/network'
 import GcpSubnet from '../services/subnet'
 import GcpVmInstance from '../services/vmInstance'
+import GcpDnsPolicy from '../services/dnsPolicies'
 
 /**
  * serviceMap is an object that contains all currently supported services
@@ -26,6 +27,7 @@ export default {
   [services.project]: GcpProject,
   [services.kms]: GcpKms,
   [services.dnsManagedZone]: GcpDnsManagedZone,
+  [services.dnsPolicy]: GcpDnsPolicy,
   [services.vpc]: GcpVpc,
   [services.iamPolicy]: GcpIam,
   [services.logBucket]: GcpLogBucket,

@@ -8,6 +8,7 @@ export default {
   [services.project]: 'gcpProject',
   [services.kms]: 'gcpKmsKeyRing',
   [services.dnsManagedZone]: 'gcpDnsManagedZone',
+  [services.dnsPolicy]: 'gcpDnsPolicy',
   [services.vpc]: 'gcpVpcConnector',
   [services.iamPolicy]: 'gcpIamPolicy',
   [services.logBucket]: 'gcpLogBucket',

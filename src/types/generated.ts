@@ -116,14 +116,14 @@ export type GcpDnsManagedZone = {
   nameServers?: Maybe<Array<Maybe<Scalars['String']>>>;
   dnssecConfigKind?: Maybe<Scalars['String']>;
   dnssecConfigState?: Maybe<Scalars['String']>;
-  dnssecConfigDefaultKeySpecs?: Maybe<Array<Maybe<GcpManagedZoneDnssecConfigDefaultKeySpec>>>;
+  dnssecConfigDefaultKeySpecs?: Maybe<Array<Maybe<GcpDnsZoneDnssecConfigDefaultKeySpec>>>;
   dnssecConfigNonExistence?: Maybe<Scalars['String']>;
   nameServerSet?: Maybe<Scalars['String']>;
   visibility?: Maybe<Scalars['String']>;
   privateVisibilityConfigKind?: Maybe<Scalars['String']>;
-  privateVisibilityConfigNetworks?: Maybe<Array<Maybe<GcpManagedZonePrivateVisibilityConfigNetwork>>>;
+  privateVisibilityConfigNetworks?: Maybe<Array<Maybe<GcpDnsZonePrivateVisibilityConfigNetwork>>>;
   forwardingConfigKind?: Maybe<Scalars['String']>;
-  forwardingConfigTargetNameServers?: Maybe<Array<Maybe<GcpManagedZoneForwardingConfigTargetNameServer>>>;
+  forwardingConfigTargetNameServers?: Maybe<Array<Maybe<GcpDnsZoneForwardingConfigTargetNameServer>>>;
   labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
   peeringConfigKind?: Maybe<Scalars['String']>;
   peeringConfigTargetNetworkKind?: Maybe<Scalars['String']>;
@@ -137,6 +137,55 @@ export type GcpDnsManagedZone = {
   cloudLoggingConfigKind?: Maybe<Scalars['String']>;
   cloudLoggingConfigEnableLogging?: Maybe<Scalars['Boolean']>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
+export type GcpDnsPolicy = {
+  id: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
+  projectId?: Maybe<Scalars['String']>;
+  region?: Maybe<Scalars['String']>;
+  kind?: Maybe<Scalars['String']>;
+  enableInboundForwarding?: Maybe<Scalars['Boolean']>;
+  description?: Maybe<Scalars['String']>;
+  networks?: Maybe<Array<Maybe<GcpDnsPolicyNetwork>>>;
+  alternativeNameServerConfigKind?: Maybe<Scalars['String']>;
+  alternativeNameServerConfigTargetNameServers?: Maybe<Array<Maybe<GcpDnsPolicyAlternativeNameServerConfigTargetNameServer>>>;
+  enableLogging?: Maybe<Scalars['Boolean']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
+export type GcpDnsPolicyAlternativeNameServerConfigTargetNameServer = {
+  id: Scalars['String'];
+  kind?: Maybe<Scalars['String']>;
+  ipv4Address?: Maybe<Scalars['String']>;
+  forwardingPath?: Maybe<Scalars['String']>;
+};
+
+export type GcpDnsPolicyNetwork = {
+  id: Scalars['String'];
+  kind?: Maybe<Scalars['String']>;
+  networkUrl?: Maybe<Scalars['String']>;
+};
+
+export type GcpDnsZoneDnssecConfigDefaultKeySpec = {
+  id: Scalars['String'];
+  kind?: Maybe<Scalars['String']>;
+  keyType?: Maybe<Scalars['String']>;
+  algorithm?: Maybe<Scalars['String']>;
+  keyLength?: Maybe<Scalars['Int']>;
+};
+
+export type GcpDnsZoneForwardingConfigTargetNameServer = {
+  id?: Maybe<Scalars['String']>;
+  kind?: Maybe<Scalars['String']>;
+  ipv4Address?: Maybe<Scalars['String']>;
+  forwardingPath?: Maybe<Scalars['String']>;
+};
+
+export type GcpDnsZonePrivateVisibilityConfigNetwork = {
+  id: Scalars['String'];
+  kind?: Maybe<Scalars['String']>;
+  networkUrl?: Maybe<Scalars['String']>;
 };
 
 export type GcpDuration = {
@@ -344,27 +393,6 @@ export type GcpLogView = {
   logBucket?: Maybe<Array<Maybe<GcpLogBucket>>>;
 };
 
-export type GcpManagedZoneDnssecConfigDefaultKeySpec = {
-  id: Scalars['String'];
-  kind?: Maybe<Scalars['String']>;
-  keyType?: Maybe<Scalars['String']>;
-  algorithm?: Maybe<Scalars['String']>;
-  keyLength?: Maybe<Scalars['Int']>;
-};
-
-export type GcpManagedZoneForwardingConfigTargetNameServer = {
-  id?: Maybe<Scalars['String']>;
-  kind?: Maybe<Scalars['String']>;
-  ipv4Address?: Maybe<Scalars['String']>;
-  forwardingPath?: Maybe<Scalars['String']>;
-};
-
-export type GcpManagedZonePrivateVisibilityConfigNetwork = {
-  id: Scalars['String'];
-  kind?: Maybe<Scalars['String']>;
-  networkUrl?: Maybe<Scalars['String']>;
-};
-
 export type GcpMetadata = {
   fingerprint?: Maybe<Scalars['String']>;
   items?: Maybe<Array<Maybe<GcpItems>>>;
@@ -433,6 +461,7 @@ export type GcpProject = {
   etag?: Maybe<Scalars['String']>;
   labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
   dnsManagedZones?: Maybe<Array<Maybe<GcpDnsManagedZone>>>;
+  dnsPolicies?: Maybe<Array<Maybe<GcpDnsPolicy>>>;
   vpc?: Maybe<Array<Maybe<GcpVpcConnector>>>;
   kms?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;
   iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
