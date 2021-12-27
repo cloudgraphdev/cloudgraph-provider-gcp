@@ -40,6 +40,7 @@ export default async ({
         if (response) {
           sinkList.push({
             id: response.name,
+            projectId,
             ...response,
             region: GLOBAL_REGION,
           })
