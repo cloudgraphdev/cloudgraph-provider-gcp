@@ -1,3 +1,10 @@
+## [0.2.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.2.0...0.2.1) (2021-12-27)
+
+
+### Bug Fixes
+
+* change Tag type naming to gcpRawTag ([5b77c85](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/5b77c85ac1836fe10d17ac669013316e2dd0a4ca))
+
 # [0.2.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.1.0...0.2.0) (2021-12-21)
 
 
