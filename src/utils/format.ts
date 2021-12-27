@@ -1,8 +1,8 @@
-import { Tag } from '../types/generated'
+import { GcpRawTag } from '../types/generated'
 import { TagMap } from '../types'
 
-export const formatTagsFromMap = (tags: TagMap): Tag[] => {
-  const result: Tag[] = []
+export const formatTagsFromMap = (tags: TagMap): GcpRawTag[] => {
+  const result: GcpRawTag[] = []
   for (const [key, value] of Object.entries(tags)) {
     // We need an id here to enfore uniqueness for Dgraph, otherwise we get duplicate tags
     result.push({ id: `${key}:${value}`, key, value })

@@ -9,7 +9,7 @@ type gcpProject @key(fields: "id") {
   updateTime: String @search(by: [hash, regexp])
   deleteTime: String @search(by: [hash, regexp])
   etag: String @search(by: [hash, regexp])
-  labels: [Tag]
+  labels: [gcpRawTag]
   vpc: [gcpVpcConnector] @hasInverse(field: project)
   iamPolicy: [gcpIamPolicy] @hasInverse(field: project)
 }
