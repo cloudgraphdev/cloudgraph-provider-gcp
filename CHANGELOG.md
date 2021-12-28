@@ -1,3 +1,16 @@
+# [0.3.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.2.1...0.3.0) (2021-12-28)
+
+
+### Bug Fixes
+
+* **logging:** add projectId on logSink ([6bb4d95](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/6bb4d95fc7e67b0fa73296d2836a43bb0cd7f392))
+* **logging:** update log view service name ([cfa0200](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/cfa020014f606e8e12517c2d52ecfa93d5d7ee50))
+
+
+### Features
+
+* **logging:** add logging services, update project connections ([a30c93d](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/a30c93d712bb75ecdc6dd456416c1280cedc13a5))
+
 ## [0.2.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.2.0...0.2.1) (2021-12-27)
 
 
