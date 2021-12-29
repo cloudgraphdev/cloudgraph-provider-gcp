@@ -18,6 +18,7 @@ export interface RawGcpKmsCryptoKey
 }
 
 export interface RawGcpKms extends google.cloud.kms.v1.IKeyRing {
+  id: string
   cryptoKeys: RawGcpKmsCryptoKey[]
   importJobs: google.cloud.kms.v1.IImportJob[]
   projectId: string
@@ -38,12 +39,13 @@ export default async ({
   const allRegions = regions.split(',').concat([GLOBAL_REGION])
   for (const region of allRegions) {
     try {
-      const locationName = client.locationPath(projectId, region);
+      const locationName = client.locationPath(projectId, region)
       const iterableKeyRings = client.listKeyRingsAsync({
         parent: locationName,
       })
       for await (const keyRing of iterableKeyRings) {
         const rawGcpKms = {
+          id: keyRing.name,
           ...keyRing,
           cryptoKeys: [],
           importJobs: [],

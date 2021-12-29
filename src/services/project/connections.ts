@@ -3,7 +3,6 @@ import { rawDataInterface } from '../../types'
 import { RawGcpProject } from './data'
 import { GLOBAL_REGION } from '../../config/constants'
 import services from '../../enums/services'
-import { RawGcpKms } from '../kms/data'
 
 export default ({
   account,
@@ -46,28 +45,6 @@ export default ({
           }
         }
       }
-    }
-  }
-
-  /**
-   * Find kms
-   */
-  const kmss: {
-    name: string
-    data: { [property: string]: any[] }
-  } = data.find(({ name }) => name === services.kms)
-  if (kmss?.data?.[region]) {
-    const kms = kmss.data[region].find(
-      ({ projectId }: RawGcpKms) => projectId === service.projectId
-    )
-
-    if (kms) {
-      connections.push({
-        id: kms.name,
-        resourceType: services.kms,
-        relation: 'child',
-        field: 'kms',
-      })
     }
   }
 
