@@ -3,6 +3,10 @@ export interface Tags {
   value: string
 }
 
+export interface TagMap {
+  [property: string]: string
+}
+
 export interface LabelMap {
   [property: string]: string
 }
