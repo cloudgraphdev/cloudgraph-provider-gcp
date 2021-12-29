@@ -1,3 +1,15 @@
+# [0.4.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.3.0...0.4.0) (2021-12-29)
+
+
+### Features
+
+* **cg-430:** add gcp kms ([398ceeb](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/398ceeb42bff3ddaa106e293b21b908f70eca419))
+* **kms:** kms <-> project connection updates ([eddb916](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/eddb916425081ce214d75fb7d46e64eb8a2c16ab))
+* **kms:** merge main ([89ccb8d](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/89ccb8d59e9de3eee67822ea9e88c8b811194777))
+* **kms:** remove tag/label ([f57a34a](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/f57a34a6e46873fb185a3d142e84fe5431a15fb4))
+* **kms:** small fixes ([d23beec](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/d23beece2bf60b0f0004103f5268f579b722f0dd))
+* **kms:** update labels ([6a865f3](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/6a865f313442148b3cf503c932ccb6995f62be40))
+
 # [0.3.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.2.1...0.3.0) (2021-12-28)
 
 
