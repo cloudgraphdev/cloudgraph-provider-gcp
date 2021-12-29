@@ -1,13 +1,22 @@
-import { GcpRawTag } from '../types/generated'
-import { TagMap } from '../types'
+import { GcpRawLabel, GcpRawTag } from '../types/generated'
+import { TagMap, LabelMap } from '../types'
+
+export const formatLabelsFromMap = (labels: LabelMap): GcpRawLabel[] => {
+  return Object.keys(labels).map(key => ({
+    // We need an id here to enfore uniqueness for Dgraph, otherwise we get duplicate tags
+    id:`${key}:${labels[key]}`,
+    key,
+    value: labels[key],
+  }))
+}
 
 export const formatTagsFromMap = (tags: TagMap): GcpRawTag[] => {
-  const result: GcpRawTag[] = []
-  for (const [key, value] of Object.entries(tags)) {
+  return Object.keys(tags).map(key => ({
     // We need an id here to enfore uniqueness for Dgraph, otherwise we get duplicate tags
-    result.push({ id: `${key}:${value}`, key, value })
-  }
-  return result
+    id:`${key}:${tags[key]}`,
+    key,
+    value: tags[key],
+  }))
 }
 
 export const obfuscateSensitiveString = (s: string): string => {
@@ -16,6 +25,8 @@ export const obfuscateSensitiveString = (s: string): string => {
 }
 
 export const enumKeyToString = (enumType: any, key: any): string => {
+  if (!key)
+    return '';
   const keys = Object.keys(enumType)
   const stateIndex = enumType[key]
   return keys[stateIndex]

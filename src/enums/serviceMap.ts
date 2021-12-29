@@ -1,5 +1,6 @@
 import services from './services'
 import GcpProject from '../services/project'
+import GcpKms from '../services/kms'
 import GcpVpc from '../services/vpc'
 import GcpIam from '../services/iam'
 import GcpTag from '../services/tag'
@@ -13,6 +14,7 @@ import GcpLogView from '../services/logView'
  */
 export default {
   [services.project]: GcpProject,
+  [services.kms]: GcpKms,
   [services.vpc]: GcpVpc,
   [services.iamPolicy]: GcpIam,
   [services.logBucket]: GcpLogBucket,

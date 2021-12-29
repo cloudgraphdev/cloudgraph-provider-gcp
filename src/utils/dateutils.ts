@@ -40,5 +40,5 @@ export const createDiffSecs = (startDate: Date): number =>
 
 export const toISOString = (seconds: string): string => {
   if (!seconds) return null
-  return new Date(parseInt(seconds) * 1000).toISOString()
+  return new Date(parseInt(seconds, 10) * 1000).toISOString()
 }

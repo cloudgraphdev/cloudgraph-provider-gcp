@@ -7,6 +7,10 @@ export interface TagMap {
   [property: string]: string
 }
 
+export interface LabelMap {
+  [property: string]: string
+}
+
 export interface GcpServiceInput {
   regions: string
   config: GcpCredentials

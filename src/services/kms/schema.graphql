@@ -1,0 +1,63 @@
+type gcpKmsCryptoKey
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+    name: String @search(by: [hash, regexp])
+    primaryName: String @search(by: [hash, regexp])
+    primaryState: String @search(by: [hash, regexp])
+    primaryProtectionLevel: String @search(by: [hash, regexp])
+    primaryAlgorithm: String @search(by: [hash, regexp])
+    primaryAttestationFormat: String @search(by: [hash, regexp])
+    primaryAttestationContent: String @search(by: [hash, regexp])
+    primaryCreateTime: String @search(by: [hash, regexp])
+    primaryGenerateTime: String @search(by: [hash, regexp])
+    primaryDestroyTime: String @search(by: [hash, regexp])
+    primaryDestroyEventTime: String @search(by: [hash, regexp])
+    primaryImportJob: String @search(by: [hash, regexp])
+    primaryImportTime: String @search(by: [hash, regexp])
+    primaryImportFailureReason: String @search(by: [hash, regexp])
+    primaryExternalProtectionLevelOptionsExternalKeyUri: String @search(by: [hash, regexp])
+    primaryReimportEligible: Boolean @search
+    purpose: String @search(by: [hash, regexp])
+    createTime: String @search(by: [hash, regexp])
+    nextRotationTime: String @search(by: [hash, regexp])
+    rotationPeriod: String @search(by: [hash, regexp])
+    versionTemplateAlgorithm: String @search(by: [hash, regexp])
+    versionTemplateProtectionLevel: String @search(by: [hash, regexp])
+    labels: [gcpRawLabel]
+    importOnly: Boolean @search
+    destroyScheduledDuration: String @search(by: [hash, regexp])
+  }
+
+type gcpKmsImportJob
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+    name: String @search(by: [hash, regexp])
+    importMethod: String @search(by: [hash, regexp])
+    protectionLevel: String @search(by: [hash, regexp])
+    createTime: String @search(by: [hash, regexp])
+    generateTime: String @search(by: [hash, regexp])
+    expireTime: String @search(by: [hash, regexp])
+    expireEventTime: String @search(by: [hash, regexp])
+    state: String @search(by: [hash, regexp])
+    attestationContent: String @search(by: [hash, regexp])
+    attestationFormat: String @search(by: [hash, regexp])
+  }
+
+type gcpKmsKeyRing implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    createTime: String @search(by: [hash, regexp])
+    cryptoKeys: [gcpKmsCryptoKey]
+    importJobs: [gcpKmsImportJob]
+    project: [gcpProject] @hasInverse(field: kms)
+  }

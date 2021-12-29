@@ -40,7 +40,7 @@ export default {
   // auth: 'auth',
   iamPolicy: 'iamPolicy',
   // iap: 'iap',
-  // kms: 'kms',
+  kms: 'kms',
   // orgPolicies: 'org-policies',
   // policyIntelligence: 'policy-intelligence',
   // policyTroubleshoot: 'policy-troubleshoot',

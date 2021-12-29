@@ -5,6 +5,7 @@ import services from './services'
  */
 export default {
   [services.project]: 'gcpProject',
+  [services.kms]: 'gcpKmsKeyRing',
   [services.vpc]: 'gcpVpcConnector',
   [services.iamPolicy]: 'gcpIamPolicy',
   [services.logBucket]: 'gcpLogBucket',
