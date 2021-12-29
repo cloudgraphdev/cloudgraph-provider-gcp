@@ -26,3 +26,14 @@ type gcpRawTag
   key: String
   value: String
 }
+
+type gcpRawLabel
+  @generate(
+    query: { get: false, query: false, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  key: String
+  value: String
+}

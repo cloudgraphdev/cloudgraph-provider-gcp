@@ -1,0 +1,134 @@
+type gcpBigQueryTableSchemaField
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  ) {
+    id: String! @id
+    name: String @search(by: [hash, regexp])
+    type: String @search(by: [hash, regexp])
+    mode: String @search(by: [hash, regexp])
+    description: String @search(by: [hash, regexp])
+    policyTagsNames: [String] @search(by: [hash, regexp])
+    maxLength: String @search(by: [hash, regexp])
+    precision: String @search(by: [hash, regexp])
+    scale: String @search(by: [hash, regexp])
+  }
+
+type gcpBigQueryTableViewUserDefinedFunctionResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  ) {
+    id: String! @id
+    resourceUri: String @search(by: [hash, regexp])
+    inlineCode: String @search(by: [hash, regexp])
+  }
+
+type gcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamilyColumn
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  ) {
+    id: String! @id
+    qualifierEncoded: String @search(by: [hash, regexp])
+    qualifierString: String @search(by: [hash, regexp])
+    fieldName: String @search(by: [hash, regexp])
+    type: String @search(by: [hash, regexp])
+    encoding: String @search(by: [hash, regexp])
+    onlyReadLatest: Boolean @search
+  }
+
+type gcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamily
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  ) {
+    id: String! @id
+    familyId: String @search(by: [hash, regexp])
+    type: String @search(by: [hash, regexp])
+    encoding: String @search(by: [hash, regexp])
+    columns: [gcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamilyColumn]
+    onlyReadLatest: Boolean @search
+  }
+
+type gcpBigQueryTable implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  )
+  @key(fields: "id") {
+    location: String @search(by: [hash, regexp])
+    description: String @search(by: [hash, regexp])
+    type: String @search(by: [hash, regexp])
+    friendlyName: String @search(by: [hash, regexp])
+    schemaFields: [gcpBigQueryTableSchemaField]
+    timePartitioningType: String @search(by: [hash, regexp])
+    timePartitioningExpirationMs: String @search(by: [hash, regexp])
+    timePartitioningField: String @search(by: [hash, regexp])
+    timePartitioningRequirePartitionFilter: Boolean @search
+    rangePartitioningField: String @search(by: [hash, regexp])
+    rangePartitioningRangeStart: String @search(by: [hash, regexp])
+    rangePartitioningRangeEnd: String @search(by: [hash, regexp])
+    rangePartitioningRangeInterval: String @search(by: [hash, regexp])
+    clusteringFields: [String] @search(by: [hash, regexp])
+    requirePartitionFilter: Boolean @search
+    numBytes: String @search(by: [hash, regexp])
+    numLongTermBytes: String @search(by: [hash, regexp])
+    numRows: String @search(by: [hash, regexp])
+    creationTime: String @search(by: [hash, regexp])
+    expirationTime: String @search(by: [hash, regexp])
+    lastModifiedTime: String @search(by: [hash, regexp])
+    viewQuery: String @search(by: [hash, regexp])
+    viewUserDefinedFunctionResources: [gcpBigQueryTableViewUserDefinedFunctionResource]
+    viewUseLegacySql: Boolean @search
+    materializedViewQuery: String @search(by: [hash, regexp])
+    materializedViewLastRefreshTime: String @search(by: [hash, regexp])
+    materializedViewEnableRefresh: Boolean @search
+    materializedViewRefreshIntervalMs: String @search(by: [hash, regexp])
+    externalDataConfigurationSourceUris: [String] @search(by: [hash, regexp])
+    externalDataConfigurationSchemaFields: [gcpBigQueryTableSchemaField]
+    externalDataConfigurationSourceFormat: String @search(by: [hash, regexp])
+    externalDataConfigurationMaxBadRecords: Int @Search
+    externalDataConfigurationAutodetect: Boolean @search
+    externalDataConfigurationIgnoreUnknownValues: Boolean @search
+    externalDataConfigurationCompression: String @search(by: [hash, regexp])
+    externalDataConfigurationCsvOptionsFieldDelimiter: String @search(by: [hash, regexp])
+    externalDataConfigurationCsvOptionsSkipLeadingRows: String @search(by: [hash, regexp])
+    externalDataConfigurationCsvOptionsQuote: String @search(by: [hash, regexp])
+    externalDataConfigurationCsvOptionsAllowQuotedNewlines: Boolean @search
+    externalDataConfigurationCsvOptionsAllowJaggedRows: Boolean @search
+    externalDataConfigurationCsvOptionsEncoding: String @search(by: [hash, regexp])
+    externalDataConfigurationBigtableOptionsColumnFamilies: [gcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamily]
+    externalDataConfigurationBigtableOptionsIgnoreUnspecifiedColumnFamilies: Boolean @search
+    externalDataConfigurationBigtableOptionsReadRowkeyAsString: Boolean @search
+    externalDataConfigurationGoogleSheetsOptionsSkipLeadingRows: String @search(by: [hash, regexp])
+    externalDataConfigurationGoogleSheetsOptionsRange: String @search(by: [hash, regexp])
+    externalDataConfigurationHivePartitioningOptionsMode: String @search(by: [hash, regexp])
+    externalDataConfigurationHivePartitioningOptionsSourceUriPrefix: String @search(by: [hash, regexp])
+    externalDataConfigurationHivePartitioningOptionsRequirePartitionFilter: Boolean @search
+    externalDataConfigurationHivePartitioningOptionsFields: [String] @search(by: [hash, regexp])
+    externalDataConfigurationConnectionId: String @search(by: [hash, regexp])
+    externalDataConfigurationDecimalTargetTypes: [String] @search(by: [hash, regexp])
+    externalDataConfigurationAvroOptionsUseAvroLogicalTypes: Boolean @search
+    externalDataConfigurationParquetOptionsEnumAsString: Boolean @search
+    externalDataConfigurationParquetOptionsEnableListInference: Boolean @search
+    streamingBufferEstimatedBytes: String @search(by: [hash, regexp])
+    streamingBufferEstimatedRows: String @search(by: [hash, regexp])
+    streamingBufferOldestEntryTime: String @search(by: [hash, regexp])
+    encryptionConfigurationKmsKeyName: String @search(by: [hash, regexp])
+    snapshotDefinitionBaseTableReferenceProjectId: String @search(by: [hash, regexp])
+    snapshotDefinitionBaseTableReferenceDatasetId: String @search(by: [hash, regexp])
+    snapshotDefinitionBaseTableReferenceTableId: String @search(by: [hash, regexp])
+    snapshotDefinitionSnapshotTime: String @search(by: [hash, regexp])
+  }
+
+type gcpBigQueryDataset implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  )
+  @key(fields: "id") {
+  friendlyName: String @search(by: [hash, regexp])
+  totalTables: Int @search
+  tables: [gcpBigQueryTable]
+}
