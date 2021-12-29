@@ -36,6 +36,7 @@
     "@google-cloud/kms": "^2.10.0",
     "@google-cloud/logging": "^9.6.4",
     "@google-cloud/resource-manager": "^3.0.0",
+    "@google-cloud/storage": "^5.16.1",
     "@google-cloud/vpc-access": "^1.1.2",
     "@graphql-tools/load-files": "6.3.2",
     "@graphql-tools/merge": "8.0.1",

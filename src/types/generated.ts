@@ -169,6 +169,7 @@ export type GcpProject = {
   logBucket?: Maybe<Array<Maybe<GcpLogBucket>>>;
   logView?: Maybe<Array<Maybe<GcpLogView>>>;
   logSink?: Maybe<Array<Maybe<GcpLogSink>>>;
+  storageBucket?: Maybe<Array<Maybe<GcpStorageBucket>>>;
 };
 
 export type GcpRawLabel = {
@@ -181,6 +182,43 @@ export type GcpRawTag = {
   id: Scalars['String'];
   key?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
+};
+
+export type GcpStorageBucket = {
+  id: Scalars['String'];
+  projectId: Scalars['String'];
+  region?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  kind?: Maybe<Scalars['String']>;
+  selfLink?: Maybe<Scalars['String']>;
+  projectNumber?: Maybe<Scalars['String']>;
+  metageneration?: Maybe<Scalars['String']>;
+  location?: Maybe<Scalars['String']>;
+  storageClass?: Maybe<Scalars['String']>;
+  etag?: Maybe<Scalars['String']>;
+  defaultEventBasedHold?: Maybe<Scalars['Boolean']>;
+  timeCreated?: Maybe<Scalars['String']>;
+  updated?: Maybe<Scalars['String']>;
+  labels?: Maybe<Array<Maybe<GcpRawTag>>>;
+  iamConfiguration?: Maybe<GcpStorageBucketIamConfiguration>;
+  locationType?: Maybe<Scalars['String']>;
+  satisfiesPZS?: Maybe<Scalars['Boolean']>;
+  rpo?: Maybe<Scalars['String']>;
+  baseUrl?: Maybe<Scalars['String']>;
+  pollIntervalMs?: Maybe<Scalars['Int']>;
+  userProject?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
+export type GcpStorageBucketIamConfiguration = {
+  bucketPolicyOnly?: Maybe<GcpStorageBucketIamConfigurationMetadata>;
+  uniformBucketLevelAccess?: Maybe<GcpStorageBucketIamConfigurationMetadata>;
+  publicAccessPrevention?: Maybe<Scalars['String']>;
+};
+
+export type GcpStorageBucketIamConfigurationMetadata = {
+  enabled?: Maybe<Scalars['Boolean']>;
+  lockedTime?: Maybe<Scalars['String']>;
 };
 
 export type GcpTag = {

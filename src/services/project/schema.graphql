@@ -16,4 +16,5 @@ type gcpProject @key(fields: "id") {
   logBucket: [gcpLogBucket] @hasInverse(field: project)
   logView: [gcpLogView] @hasInverse(field: project)
   logSink: [gcpLogSink] @hasInverse(field: project)
+  storageBucket: [gcpStorageBucket] @hasInverse(field: project)
 }
