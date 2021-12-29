@@ -4,15 +4,21 @@ import GcpKms from '../services/kms'
 import GcpVpc from '../services/vpc'
 import GcpIam from '../services/iam'
 import GcpTag from '../services/tag'
+import GcpLogBucket from '../services/logBucket'
+import GcpLogSink from '../services/logSink'
+import GcpLogView from '../services/logView'
 
 /**
  * serviceMap is an object that contains all currently supported services
  * serviceMap is used by the serviceFactory to produce instances of service classes
  */
 export default {
-  [services.projects]: GcpProject,
+  [services.project]: GcpProject,
   [services.kms]: GcpKms,
   [services.vpc]: GcpVpc,
-  [services.iam]: GcpIam,
+  [services.iamPolicy]: GcpIam,
+  [services.logBucket]: GcpLogBucket,
+  [services.logSink]: GcpLogSink,
+  [services.logView]: GcpLogView,
   tag: GcpTag,
 }

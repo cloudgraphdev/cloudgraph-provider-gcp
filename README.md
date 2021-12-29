@@ -54,7 +54,7 @@ CloudGraph will generate this configuration file when you run `cg init gcp`. You
     }
   ],
   "regions": "us-central1,us-east1",
-  "resources": "vpc,projects"
+  "resources": "vpc,project"
 }
 ```
 
@@ -62,10 +62,13 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 
 # Supported Services
 
-| Service                  | Relations                     |
-| ------------------------ | ----------------------------- |
-| kms                      | projects                      |
-| projects                 | kms, iam, vpc                 |
-| vpc                      | projects                      |
-| iam                      | projects                      |
+| Service | Relations |
+| ------------------------ | ------------------------ |
+| kms                      | projects                 |
+| iamPolicy                | project                  |
+| logBucket                | logView, project         |    
+| logSink                  | project                  |
+| logView                  | logBucket, project       |
+| project                  | iamPolicy, kms, vpc, logBucket, logSink, logView |
+| vpc                      | project                  |
 

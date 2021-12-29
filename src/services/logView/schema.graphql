@@ -1,0 +1,12 @@
+type gcpLogView {
+  id: String! @id @search(by: [hash])
+  projectId: String @search(by: [hash, regexp])
+  name: String @search(by: [hash, regexp])
+  region: String @search(by: [hash, regexp])
+  description: String @search(by: [hash, regexp])
+  createTime: String @search(by: [hash, regexp])
+  updateTime: String @search(by: [hash, regexp])
+  filter: String @search(by: [hash, regexp])
+  project: [gcpProject] @hasInverse(field: logView)
+  logBucket: [gcpLogBucket] @hasInverse(field: logView)
+}

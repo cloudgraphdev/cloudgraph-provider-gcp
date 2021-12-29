@@ -4,5 +4,6 @@
  * it might contain a array of dependant or childs that must be executed after the parent
  */
 export default {
-  projects: ['iam', 'vpc', 'kms'],
+  project: ['iamPolicy', 'kms', 'vpc', 'logBucket', 'logSink'],
+  logBucket: ['logView'],
 }

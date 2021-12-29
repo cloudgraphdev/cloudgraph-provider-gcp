@@ -1,0 +1,33 @@
+type gcpLogSink @key(fields: "id") {
+  id: String! @id @search(by: [hash])
+  projectId: String @search(by: [hash, regexp])
+  name: String @search(by: [hash, regexp])
+  region: String @search(by: [hash, regexp])
+  destination: String @search(by: [hash, regexp])
+  filter: String @search(by: [hash, regexp])
+  description: String @search(by: [hash, regexp])
+  disabled: Boolean @search
+  exclusions: [gcpLogExclusion]
+  outputVersionFormat: String @search(by: [hash, regexp])
+  writerIdentity: String @search(by: [hash, regexp])
+  includeChildren: Boolean @search
+  bigqueryOptions: gcpBigQueryOptions
+  createTime: String @search(by: [hash, regexp])
+  updateTime: String @search(by: [hash, regexp])
+  project: [gcpProject] @hasInverse(field: logSink)
+}
+
+type gcpLogExclusion {
+  id: String! @id @search(by: [hash])
+  name: String @search(by: [hash, regexp])
+  description: String @search(by: [hash, regexp])
+  filter: String @search(by: [hash, regexp])
+  disabled: Boolean @search
+  createTime: String @search(by: [hash, regexp])
+  updateTime: String @search(by: [hash, regexp])
+}
+
+type gcpBigQueryOptions {
+  usePartitionedTables: Boolean @search
+  usesTimestampColumnPartitioning: Boolean @search
+}
