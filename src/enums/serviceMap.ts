@@ -8,14 +8,14 @@ import GcpLogBucket from '../services/logBucket'
 import GcpLogSink from '../services/logSink'
 import GcpLogView from '../services/logView'
 import GcpStorageBucket from '../services/storageBucket'
-import GcpFirewallRule from '../services/firewall'
+import GcpFirewall from '../services/firewall'
 
 /**
  * serviceMap is an object that contains all currently supported services
  * serviceMap is used by the serviceFactory to produce instances of service classes
  */
 export default {
-  [services.firewall]: GcpFirewallRule,
+  [services.firewall]: GcpFirewall,
   [services.project]: GcpProject,
   [services.kms]: GcpKms,
   [services.vpc]: GcpVpc,
