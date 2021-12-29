@@ -104,7 +104,6 @@ export default ({
     createTime,
     cryptoKeys,
     importJobs,
-    Labels,
   } = service
 
   return {
@@ -115,6 +114,5 @@ export default ({
     createTime: toISOString(createTime.seconds.toString()),
     cryptoKeys: cryptoKeys?.map(cryptoKey => formatCryptoKey(cryptoKey)) || [],
     importJobs: importJobs?.map(importJob => formatImportJob(importJob)) || [],
-    labels: formatLabelsFromMap(Labels),
   }
 }

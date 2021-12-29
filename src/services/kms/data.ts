@@ -23,7 +23,6 @@ export interface RawGcpKms extends google.cloud.kms.v1.IKeyRing {
   importJobs: google.cloud.kms.v1.IImportJob[]
   projectId: string
   region: string
-  Labels: LabelMap
 }
 
 export default async ({
@@ -51,7 +50,6 @@ export default async ({
           importJobs: [],
           projectId,
           region,
-          Labels: {},
         }
 
         try {
@@ -61,9 +59,6 @@ export default async ({
               name,
               ...rest,
               Labels: labels,
-            })
-            Object.keys(labels).forEach(key => {
-              rawGcpKms.Labels[`${name}:${key}`] = labels[key]
             })
           }
         } catch (error) {

@@ -91,7 +91,6 @@ export type GcpKmsKeyRing = GcpBaseResource & {
   createTime?: Maybe<Scalars['String']>;
   cryptoKeys?: Maybe<Array<Maybe<GcpKmsCryptoKey>>>;
   importJobs?: Maybe<Array<Maybe<GcpKmsImportJob>>>;
-  labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
 };
 
