@@ -4,6 +4,7 @@ import services from './services'
  * schemasMap is an object that contains schemas name by resource
  */
 export default {
+  [services.firewall]: 'gcpFirewall',
   [services.project]: 'gcpProject',
   [services.kms]: 'gcpKmsKeyRing',
   [services.vpc]: 'gcpVpcConnector',

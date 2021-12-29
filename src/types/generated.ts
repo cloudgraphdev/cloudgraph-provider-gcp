@@ -23,6 +23,42 @@ export type GcpBigQueryOptions = {
   usesTimestampColumnPartitioning?: Maybe<Scalars['Boolean']>;
 };
 
+export type GcpFirewall = {
+  id: Scalars['String'];
+  projectId?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  region?: Maybe<Scalars['String']>;
+  allowed?: Maybe<Array<Maybe<GcpFirewallAccess>>>;
+  creationTimestamp?: Maybe<Scalars['String']>;
+  denied?: Maybe<Array<Maybe<GcpFirewallAccess>>>;
+  description?: Maybe<Scalars['String']>;
+  destinationRanges?: Maybe<Array<Maybe<Scalars['String']>>>;
+  direction?: Maybe<Scalars['String']>;
+  disabled?: Maybe<Scalars['Boolean']>;
+  kind?: Maybe<Scalars['String']>;
+  logConfig?: Maybe<GcpFirewallLogConfig>;
+  network?: Maybe<Scalars['String']>;
+  priority?: Maybe<Scalars['Int']>;
+  selfLink?: Maybe<Scalars['String']>;
+  sourceRanges?: Maybe<Array<Maybe<Scalars['String']>>>;
+  sourceServiceAccounts?: Maybe<Array<Maybe<Scalars['String']>>>;
+  sourceTags?: Maybe<Array<Maybe<Scalars['String']>>>;
+  targetServiceAccounts?: Maybe<Array<Maybe<Scalars['String']>>>;
+  targetTags?: Maybe<Array<Maybe<Scalars['String']>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
+export type GcpFirewallAccess = {
+  id: Scalars['String'];
+  ipProtocol?: Maybe<Scalars['String']>;
+  ports?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type GcpFirewallLogConfig = {
+  enable?: Maybe<Scalars['Boolean']>;
+  metadata?: Maybe<Scalars['String']>;
+};
+
 export type GcpIamBinding = {
   id: Scalars['String'];
   role?: Maybe<Scalars['String']>;
@@ -170,6 +206,7 @@ export type GcpProject = {
   logView?: Maybe<Array<Maybe<GcpLogView>>>;
   logSink?: Maybe<Array<Maybe<GcpLogSink>>>;
   storageBucket?: Maybe<Array<Maybe<GcpStorageBucket>>>;
+  firewall?: Maybe<Array<Maybe<GcpFirewall>>>;
 };
 
 export type GcpRawLabel = {

@@ -31,6 +31,7 @@ export default {
   // databaseMigration: 'database-migration',
   // datastore: 'datastore',
   // firestore: 'firestore',
+  firewall: 'firewall',
   // spanner: 'spanner',
   // sql: 'sql',
   // activeDirectory: 'active-directory',

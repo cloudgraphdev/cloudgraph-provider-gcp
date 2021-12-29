@@ -1,0 +1,46 @@
+type gcpFirewall {
+  id: String! @id @search(by: [hash])
+  projectId: String @search(by: [hash, regexp])
+  name: String @search(by: [hash, regexp])
+  region: String @search(by: [hash, regexp])
+  allowed: [gcpFirewallAccess]
+  creationTimestamp: String @search(by: [hash, regexp])
+  denied: [gcpFirewallAccess]
+  description: String @search(by: [hash, regexp])
+  destinationRanges: [String] @search(by: [hash])
+  direction: String @search(by: [hash, regexp])
+  disabled: Boolean @search
+  kind: String @search(by: [hash, regexp])
+  logConfig: gcpFirewallLogConfig
+  network: String @search(by: [hash, regexp])
+  priority: Int @search
+  selfLink: String @search(by: [hash, regexp])
+  sourceRanges: [String] @search(by: [hash])
+  sourceServiceAccounts: [String] @search(by: [hash])
+  sourceTags: [String] @search(by: [hash])
+  targetServiceAccounts: [String] @search(by: [hash])
+  targetTags: [String] @search(by: [hash])
+  project: [gcpProject] @hasInverse(field: firewall)
+}
+
+type gcpFirewallAccess
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  ipProtocol: String @search(by: [hash, regexp])
+  ports: [String] @search(by: [hash])
+}
+
+type gcpFirewallLogConfig
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  enable: Boolean @search
+  metadata: String @search(by: [hash, regexp])
+}
+
