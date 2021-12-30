@@ -1,0 +1,22 @@
+type gcpBigQueryConnection implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  )
+  @key(fields: "id") {
+  friendlyName: String @search(by: [hash, regexp])
+  description: String @search(by: [hash, regexp])
+  hasCredential: Boolean @search
+  creationTime: String @search(by: [hash, regexp])
+  lastModifiedTime: String @search(by: [hash, regexp])
+  cloudSqlInstanceId: String @search(by: [hash, regexp])
+  cloudSqlDatabase: String @search(by: [hash, regexp])
+  cloudSqlType: String @search(by: [hash, regexp])
+  awsCrossAccountRoleIamRoleId: String @search(by: [hash, regexp])
+  awsCrossAccountRoleIamUserId: String @search(by: [hash, regexp])
+  awsCrossAccountRoleExternalId: String @search(by: [hash, regexp])
+  awsAccessRoleIamRoleId: String @search(by: [hash, regexp])
+  awsAccessRoleIdentity: String @search(by: [hash, regexp])
+  cloudSpannerDatabase: String @search(by: [hash, regexp])
+  cloudSpannerUseParallelism: Boolean @search
+}

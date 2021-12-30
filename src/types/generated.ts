@@ -418,6 +418,24 @@ export type GcpBaseResource = {
   region?: Maybe<Scalars['String']>;
 };
 
+export type GcpBigQueryConnection = GcpBaseResource & {
+  friendlyName?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  hasCredential?: Maybe<Scalars['Boolean']>;
+  creationTime?: Maybe<Scalars['String']>;
+  lastModifiedTime?: Maybe<Scalars['String']>;
+  cloudSqlInstanceId?: Maybe<Scalars['String']>;
+  cloudSqlDatabase?: Maybe<Scalars['String']>;
+  cloudSqlType?: Maybe<Scalars['String']>;
+  awsCrossAccountRoleIamRoleId?: Maybe<Scalars['String']>;
+  awsCrossAccountRoleIamUserId?: Maybe<Scalars['String']>;
+  awsCrossAccountRoleExternalId?: Maybe<Scalars['String']>;
+  awsAccessRoleIamRoleId?: Maybe<Scalars['String']>;
+  awsAccessRoleIdentity?: Maybe<Scalars['String']>;
+  cloudSpannerDatabase?: Maybe<Scalars['String']>;
+  cloudSpannerUseParallelism?: Maybe<Scalars['Boolean']>;
+};
+
 export type GcpBigQueryDataset = GcpBaseResource & {
   friendlyName?: Maybe<Scalars['String']>;
   tables?: Maybe<Array<Maybe<GcpBigQueryTable>>>;

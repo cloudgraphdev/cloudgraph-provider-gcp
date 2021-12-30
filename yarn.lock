@@ -703,6 +703,13 @@
   dependencies:
     google-gax "^2.24.1"
 
+"@google-cloud/bigquery-connection@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@google-cloud/bigquery-connection/-/bigquery-connection-1.5.1.tgz#576b76fbb3c2334d5ea6a27ad8485aca65b18cb9"
+  integrity sha512-hHV+Pn6ze+eyQsrsfugugsbS2n3p2wcO0MGGqh1DkeqaXBoabV5Slx3FbGEF1jvlTpQqEtBl+aO/yq3jNeWz2Q==
+  dependencies:
+    google-gax "^2.24.1"
+
 "@google-cloud/bigquery@^5.9.3":
   version "5.9.3"
   resolved "https://registry.yarnpkg.com/@google-cloud/bigquery/-/bigquery-5.9.3.tgz#498e35dd0dce944a0fe8aa5a6a629809aed9b633"
