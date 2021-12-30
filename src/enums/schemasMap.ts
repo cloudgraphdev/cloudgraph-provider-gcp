@@ -6,6 +6,8 @@ import services from './services'
 export default {
   [services.firewall]: 'gcpFirewall',
   [services.project]: 'gcpProject',
+  [services.bigquery]: 'gcpBigQueryDataset',
+  [services.bigqueryConnection]: 'gcpBigQueryConnection',
   [services.kmsKeyRing]: 'gcpKmsKeyRing',
   [services.kmsCryptoKeys]: 'gcpKmsCryptoKey',
   [services.dnsManagedZone]: 'gcpDnsManagedZone',

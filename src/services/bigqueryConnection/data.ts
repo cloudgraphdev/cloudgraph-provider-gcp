@@ -8,9 +8,8 @@ import { generateGcpErrorLog, initTestEndpoint } from '../../utils'
 
 const lt = { ...gcpLoggerText }
 const { logger } = CloudGraph
-const serviceName = 'BigQuery'
+const serviceName = 'BigQuery Connection'
 const apiEndpoint = initTestEndpoint(serviceName)
-
 
 export interface RawGcpBigqueryConnection extends google.cloud.bigquery.connection.v1.IConnection {
   projectId: string
@@ -41,9 +40,9 @@ export default async ({
       }
     }
   } catch (error) {
-    generateGcpErrorLog(serviceName, 'bigquery:getDatasetsStream', error)
+    generateGcpErrorLog(serviceName, 'bigqueryConnection:listConnectionsAsync', error)
   }
-  // TODO 
-  // logger.debug(lt.foundVpcs(datasetsResult.length))
+
+  logger.debug(lt.foundResources(serviceName, connectionResult.length))
   return groupBy(connectionResult, 'region')
 }

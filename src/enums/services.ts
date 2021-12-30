@@ -32,6 +32,8 @@ export default {
   // metastore: 'metastore',
   // pubsub: 'pubsub',
   // bigtable: 'bigtable',
+  bigquery: 'bigquery',
+  bigqueryConnection: 'bigqueryConnection',
   // databaseMigration: 'database-migration',
   // datastore: 'datastore',
   // firestore: 'firestore',

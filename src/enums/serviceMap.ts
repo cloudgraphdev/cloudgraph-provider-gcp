@@ -1,5 +1,7 @@
 import services from './services'
 import GcpProject from '../services/project'
+import GcpBigQuery from '../services/bigquery'
+import GcpBigQueryConnection from '../services/bigqueryConnection'
 import GcpKmsKeyRing from '../services/kms'
 import GcpKmsCryptoKey from '../services/kmsCryptoKey'
 import GcpDnsManagedZone from '../services/dnsManagedZone'
@@ -37,6 +39,8 @@ import GcpComputeProject from '../services/computeProject'
 export default {
   [services.firewall]: GcpFirewall,
   [services.project]: GcpProject,
+  [services.bigquery]: GcpBigQuery,
+  [services.bigqueryConnection]: GcpBigQueryConnection,
   [services.kmsKeyRing]: GcpKmsKeyRing,
   [services.kmsCryptoKeys]: GcpKmsCryptoKey,
   [services.dnsManagedZone]: GcpDnsManagedZone,

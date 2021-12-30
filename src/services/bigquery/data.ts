@@ -46,7 +46,7 @@ export default async ({
   } catch (error) {
     generateGcpErrorLog(serviceName, 'bigquery:getDatasetsStream', error)
   }
-  // TODO 
-  logger.debug(lt.foundVpcs(datasetsResult.length))
+
+  logger.debug(lt.foundResources(serviceName, datasetsResult.length))
   return groupBy(datasetsResult, 'region')
 }
