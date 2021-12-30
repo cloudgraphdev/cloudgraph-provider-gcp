@@ -3,8 +3,6 @@ import { rawDataInterface } from '../../types'
 import { RawGcpProject } from './data'
 import { GLOBAL_REGION } from '../../config/constants'
 import services from '../../enums/services'
-import { RawGcpManagedZone } from '../dnsManagedZone/data'
-import { RawGcpPolicy } from '../dnsPolicies/data'
 
 export default ({
   service,

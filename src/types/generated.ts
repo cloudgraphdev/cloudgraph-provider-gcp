@@ -105,11 +105,7 @@ export type GcpDisplayDevice = {
   enableDisplay?: Maybe<Scalars['Boolean']>;
 };
 
-export type GcpDnsManagedZone = {
-  id: Scalars['String'];
-  name?: Maybe<Scalars['String']>;
-  projectId?: Maybe<Scalars['String']>;
-  region?: Maybe<Scalars['String']>;
+export type GcpDnsManagedZone = GcpBaseResource & {
   kind?: Maybe<Scalars['String']>;
   dnsName?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
@@ -139,11 +135,7 @@ export type GcpDnsManagedZone = {
   project?: Maybe<Array<Maybe<GcpProject>>>;
 };
 
-export type GcpDnsPolicy = {
-  id: Scalars['String'];
-  name?: Maybe<Scalars['String']>;
-  projectId?: Maybe<Scalars['String']>;
-  region?: Maybe<Scalars['String']>;
+export type GcpDnsPolicy = GcpBaseResource & {
   kind?: Maybe<Scalars['String']>;
   enableInboundForwarding?: Maybe<Scalars['Boolean']>;
   description?: Maybe<Scalars['String']>;
@@ -460,8 +452,8 @@ export type GcpProject = {
   deleteTime?: Maybe<Scalars['String']>;
   etag?: Maybe<Scalars['String']>;
   labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
-  dnsManagedZones?: Maybe<Array<Maybe<GcpDnsManagedZone>>>;
-  dnsPolicies?: Maybe<Array<Maybe<GcpDnsPolicy>>>;
+  dnsManagedZone?: Maybe<Array<Maybe<GcpDnsManagedZone>>>;
+  dnsPolicy?: Maybe<Array<Maybe<GcpDnsPolicy>>>;
   vpc?: Maybe<Array<Maybe<GcpVpcConnector>>>;
   kms?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;
   iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;

@@ -53,6 +53,9 @@ export interface RawGcpManagedZone {
   labels?: {
     [key: string]: string
   }
+  Labels?: {
+    [key: string]: string
+  }
   peeringConfig?: {
     kind?: string
     targetNetwork?: {
@@ -95,6 +98,7 @@ export default async ({
       zoneList.push({
         projectId: config.projectId,
         ...dnsZone,
+        Labels: dnsZone.labels,
         region: GLOBAL_REGION,
       })
     }

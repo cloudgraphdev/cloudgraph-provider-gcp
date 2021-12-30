@@ -31,16 +31,12 @@ type gcpDnsZoneForwardingConfigTargetNameServer
     forwardingPath: String @search(by: [hash, regexp])
   }
 
-type gcpDnsManagedZone 
+type gcpDnsManagedZone implements gcpBaseResource
   @generate(
     query: { get: true, query: true, aggregate: true }
     mutation: { add: true, delete: false }
   )
   @key(fields: "id") {
-  id: String! @id @search(by: [hash])
-  name: String @search(by: [hash, regexp])
-  projectId: String @search(by: [hash, regexp])
-  region: String @search(by: [hash, regexp])
   kind: String @search(by: [hash, regexp])
   dnsName: String @search(by: [hash, regexp])
   description: String @search(by: [hash, regexp])
@@ -67,5 +63,5 @@ type gcpDnsManagedZone
   serviceDirectoryConfigNamespaceDeactivateTime: String @search(by: [hash, regexp])
   cloudLoggingConfigKind: String @search(by: [hash, regexp])
   cloudLoggingConfigEnableLogging: Boolean @search
-  project: [gcpProject] @hasInverse(field: dnsManagedZones)
+  project: [gcpProject] @hasInverse(field: dnsManagedZone)
 }

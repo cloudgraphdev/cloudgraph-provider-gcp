@@ -1,5 +1,6 @@
 import cuid from 'cuid'
 import { GcpDnsManagedZone } from '../../types/generated'
+import { formatLabelsFromMap } from '../../utils/format'
 import { RawGcpManagedZone } from './data'
 
 export default ({
@@ -23,7 +24,7 @@ export default ({
     visibility,
     privateVisibilityConfig,
     forwardingConfig,
-    labels = {},
+    Labels = {},
     peeringConfig,
     reverseLookupConfig,
     serviceDirectoryConfig,
@@ -78,12 +79,7 @@ export default ({
           forwardingPath,
         }}
     ) || [],
-    // TODO update label
-    labels: Object.keys(labels).map(key => ({
-      id: cuid(),
-      key,
-      value: labels[key],
-    })),
+    labels: formatLabelsFromMap(Labels),
     peeringConfigKind: peeringConfig?.kind || '',
     peeringConfigTargetNetworkKind: peeringConfig?.targetNetwork?.kind || '',
     peeringConfigTargetNetworkUrl: peeringConfig?.targetNetwork?.networkUrl || '',
