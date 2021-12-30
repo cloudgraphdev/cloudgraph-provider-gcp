@@ -3,12 +3,12 @@ type gcpVpcConnector @key(fields: "id") {
   projectId: String! @search(by: [hash, regexp])
   region: String @search(by: [hash, regexp])
   name: String @search(by: [hash, regexp])
-  network: String @search(by: [hash, regexp])
   ipCidrRange: String @search(by: [hash, regexp])
   state: String @search(by: [hash, regexp]) 
   minThroughput: Int @search
   maxThroughput: Int @search
   connectedProjects: [String] @search(by: [hash])
-  subnet: String @search(by: [hash, regexp])
   project: [gcpProject] @hasInverse(field: vpc)
+  network: [gcpNetwork] @hasInverse(field: vpc)
+  subnet: [gcpSubnet] @hasInverse(field: vpc)
 }

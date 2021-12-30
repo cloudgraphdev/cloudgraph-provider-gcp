@@ -1,0 +1,44 @@
+type gcpNetwork implements gcpBaseResource @key(fields: "id") {
+  ipV4Range: String @search(by: [hash, regexp])
+  autoCreateSubnetworks: Boolean @search
+  creationTimestamp: String @search(by: [hash, regexp])
+  description: String @search(by: [hash, regexp])
+  gatewayIPv4: String @search(by: [hash, regexp])
+  kind: String @search(by: [hash, regexp])
+  mtu: Int @search
+  peerings: [gcpNetworkPeering]
+  routingConfig: gcpNetworkRoutingConfig
+  selfLink: String @search(by: [hash, regexp])
+  project: [gcpProject] @hasInverse(field: network)
+  subnet: [gcpSubnet] @hasInverse(field: network)
+  vpc: [gcpVpcConnector] @hasInverse(field: network)
+}
+
+type gcpNetworkPeering
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  autoCreateRoutes: Boolean @search
+  exchangeSubnetRoutes: Boolean @search
+  exportCustomRoutes: Boolean @search
+  exportSubnetRoutesWithPublicIp: Boolean @search
+  importCustomRoutes: Boolean @search
+  importSubnetRoutesWithPublicIp: Boolean @search
+  name: String @search(by: [hash, regexp])
+  network: String @search(by: [hash, regexp])
+  peerMtu: Int @search
+  state: String @search(by: [hash, regexp])
+  stateDetails: String @search(by: [hash, regexp])
+}
+
+type gcpNetworkRoutingConfig
+@generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  routingMode: String @search(by: [hash, regexp])
+}

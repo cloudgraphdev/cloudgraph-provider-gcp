@@ -12,6 +12,8 @@ import GcpFirewall from '../services/firewall'
 import GcpFolder from '../services/folder'
 import GcpOrganization from '../services/organization'
 import GcpSecretManager from '../services/secretManager'
+import GcpNetwork from '../services/network'
+import GcpSubnet from '../services/subnet'
 
 /**
  * serviceMap is an object that contains all currently supported services
@@ -30,5 +32,7 @@ export default {
   [services.folder]: GcpFolder,
   [services.organization]: GcpOrganization,
   [services.secretManager]: GcpSecretManager,
+  [services.network]: GcpNetwork,
+  [services.subnet]: GcpSubnet,
   tag: GcpTag,
 }

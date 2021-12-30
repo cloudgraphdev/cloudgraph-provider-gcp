@@ -15,5 +15,7 @@ export default {
   [services.folder]: 'gcpFolder',
   [services.organization]: 'gcpOrganization',
   [services.secretManager]: 'gcpSecret',
+  [services.network]: 'gcpNetwork',
+  [services.subnet]: 'gcpSubnet',
   tag: 'gcpTag',
 }

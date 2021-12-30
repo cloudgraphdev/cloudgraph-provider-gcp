@@ -1,0 +1,46 @@
+type gcpSubnet implements gcpBaseResource @key(fields: "id") {
+  creationTimestamp: String @search(by: [hash, regexp])
+  description: String @search(by: [hash, regexp])
+  enableFlowLogs: Boolean @search
+  fingerprint: String @search(by: [hash, regexp])
+  gatewayAddress: String @search(by: [hash, regexp])
+  ipCidrRange: String @search(by: [hash, regexp])
+  ipv6CidrRange: String @search(by: [hash, regexp])
+  kind: String @search(by: [hash, regexp])
+  logConfig: gcpSubnetLogConfig
+  privateIpGoogleAccess: Boolean @search
+  privateIpv6GoogleAccess: String @search(by: [hash, regexp])
+  purpose: String @search(by: [hash, regexp])
+  role: String @search(by: [hash, regexp])
+  secondaryIpRanges: [gcpSubnetSecondaryRange]
+  selfLink: String @search(by: [hash, regexp])
+  state: String @search(by: [hash, regexp])
+  project: [gcpProject] @hasInverse(field: subnet)
+  network: [gcpNetwork] @hasInverse(field: subnet)
+  vpc: [gcpVpcConnector] @hasInverse(field: subnet)
+}
+
+type gcpSubnetLogConfig
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  aggregationInterval: String @search(by: [hash, regexp])
+  enable: Boolean @search
+  filterExpr: String @search(by: [hash, regexp])
+  flowSampling: Int @search
+  metadata: String @search(by: [hash, regexp])
+  metadataFields: [String] @search(by: [hash])
+}
+
+type gcpSubnetSecondaryRange
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  ipCidrRange: String @search(by: [hash, regexp])
+  rangeName: String @search(by: [hash, regexp])
+}

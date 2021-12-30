@@ -204,6 +204,41 @@ export type GcpLogView = {
   logBucket?: Maybe<Array<Maybe<GcpLogBucket>>>;
 };
 
+export type GcpNetwork = GcpBaseResource & {
+  ipV4Range?: Maybe<Scalars['String']>;
+  autoCreateSubnetworks?: Maybe<Scalars['Boolean']>;
+  creationTimestamp?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  gatewayIPv4?: Maybe<Scalars['String']>;
+  kind?: Maybe<Scalars['String']>;
+  mtu?: Maybe<Scalars['Int']>;
+  peerings?: Maybe<Array<Maybe<GcpNetworkPeering>>>;
+  routingConfig?: Maybe<GcpNetworkRoutingConfig>;
+  selfLink?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
+  vpc?: Maybe<Array<Maybe<GcpVpcConnector>>>;
+};
+
+export type GcpNetworkPeering = {
+  id: Scalars['String'];
+  autoCreateRoutes?: Maybe<Scalars['Boolean']>;
+  exchangeSubnetRoutes?: Maybe<Scalars['Boolean']>;
+  exportCustomRoutes?: Maybe<Scalars['Boolean']>;
+  exportSubnetRoutesWithPublicIp?: Maybe<Scalars['Boolean']>;
+  importCustomRoutes?: Maybe<Scalars['Boolean']>;
+  importSubnetRoutesWithPublicIp?: Maybe<Scalars['Boolean']>;
+  name?: Maybe<Scalars['String']>;
+  network?: Maybe<Scalars['String']>;
+  peerMtu?: Maybe<Scalars['Int']>;
+  state?: Maybe<Scalars['String']>;
+  stateDetails?: Maybe<Scalars['String']>;
+};
+
+export type GcpNetworkRoutingConfig = {
+  routingMode?: Maybe<Scalars['String']>;
+};
+
 export type GcpOrganization = GcpBaseResource & {
   displayName?: Maybe<Scalars['String']>;
   directoryCustomerId?: Maybe<Scalars['String']>;
@@ -239,6 +274,8 @@ export type GcpProject = {
   folder?: Maybe<Array<Maybe<GcpFolder>>>;
   organization?: Maybe<Array<Maybe<GcpOrganization>>>;
   secretManager?: Maybe<Array<Maybe<GcpSecret>>>;
+  network?: Maybe<Array<Maybe<GcpNetwork>>>;
+  subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
 };
 
 export type GcpRawLabel = {
@@ -339,6 +376,43 @@ export type GcpStorageBucketIamConfigurationMetadata = {
   lockedTime?: Maybe<Scalars['String']>;
 };
 
+export type GcpSubnet = GcpBaseResource & {
+  creationTimestamp?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  enableFlowLogs?: Maybe<Scalars['Boolean']>;
+  fingerprint?: Maybe<Scalars['String']>;
+  gatewayAddress?: Maybe<Scalars['String']>;
+  ipCidrRange?: Maybe<Scalars['String']>;
+  ipv6CidrRange?: Maybe<Scalars['String']>;
+  kind?: Maybe<Scalars['String']>;
+  logConfig?: Maybe<GcpSubnetLogConfig>;
+  privateIpGoogleAccess?: Maybe<Scalars['Boolean']>;
+  privateIpv6GoogleAccess?: Maybe<Scalars['String']>;
+  purpose?: Maybe<Scalars['String']>;
+  role?: Maybe<Scalars['String']>;
+  secondaryIpRanges?: Maybe<Array<Maybe<GcpSubnetSecondaryRange>>>;
+  selfLink?: Maybe<Scalars['String']>;
+  state?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  network?: Maybe<Array<Maybe<GcpNetwork>>>;
+  vpc?: Maybe<Array<Maybe<GcpVpcConnector>>>;
+};
+
+export type GcpSubnetLogConfig = {
+  aggregationInterval?: Maybe<Scalars['String']>;
+  enable?: Maybe<Scalars['Boolean']>;
+  filterExpr?: Maybe<Scalars['String']>;
+  flowSampling?: Maybe<Scalars['Int']>;
+  metadata?: Maybe<Scalars['String']>;
+  metadataFields?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type GcpSubnetSecondaryRange = {
+  id: Scalars['String'];
+  ipCidrRange?: Maybe<Scalars['String']>;
+  rangeName?: Maybe<Scalars['String']>;
+};
+
 export type GcpTag = {
   id: Scalars['String'];
   key: Scalars['String'];
@@ -351,12 +425,12 @@ export type GcpVpcConnector = {
   projectId: Scalars['String'];
   region?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
-  network?: Maybe<Scalars['String']>;
   ipCidrRange?: Maybe<Scalars['String']>;
   state?: Maybe<Scalars['String']>;
   minThroughput?: Maybe<Scalars['Int']>;
   maxThroughput?: Maybe<Scalars['Int']>;
   connectedProjects?: Maybe<Array<Maybe<Scalars['String']>>>;
-  subnet?: Maybe<Scalars['String']>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
+  network?: Maybe<Array<Maybe<GcpNetwork>>>;
+  subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
 };
