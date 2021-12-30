@@ -136,25 +136,21 @@ export type GcpDnsManagedZone = GcpBaseResource & {
 };
 
 export type GcpDnsPolicy = GcpBaseResource & {
+  kind?: Maybe<Scalars['String']>;
+  enableInboundForwarding?: Maybe<Scalars['Boolean']>;
+  description?: Maybe<Scalars['String']>;
+  networks?: Maybe<Array<Maybe<GcpDnsPolicyNetwork>>>;
   alternativeNameServerConfigKind?: Maybe<Scalars['String']>;
   alternativeNameServerConfigTargetNameServers?: Maybe<Array<Maybe<GcpDnsPolicyAlternativeNameServerConfigTargetNameServer>>>;
-  description?: Maybe<Scalars['String']>;
-  enableInboundForwarding?: Maybe<Scalars['Boolean']>;
   enableLogging?: Maybe<Scalars['Boolean']>;
-  id: Scalars['String'];
-  kind?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  networks?: Maybe<Array<Maybe<GcpDnsPolicyNetwork>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
-  projectId?: Maybe<Scalars['String']>;
-  region?: Maybe<Scalars['String']>;
 };
 
 export type GcpDnsPolicyAlternativeNameServerConfigTargetNameServer = {
-  forwardingPath?: Maybe<Scalars['String']>;
   id: Scalars['String'];
-  ipv4Address?: Maybe<Scalars['String']>;
   kind?: Maybe<Scalars['String']>;
+  ipv4Address?: Maybe<Scalars['String']>;
+  forwardingPath?: Maybe<Scalars['String']>;
 };
 
 export type GcpDnsPolicyNetwork = {

@@ -3,8 +3,6 @@ import { rawDataInterface } from '../../types'
 import { RawGcpProject } from './data'
 import { GLOBAL_REGION } from '../../config/constants'
 import services from '../../enums/services'
-import { RawGcpManagedZone } from '../dnsManagedZone/data'
-import { RawGcpPolicy } from '../dnsPolicies/data'
 
 export default ({
   service,
@@ -26,71 +24,6 @@ export default ({
       name: string
       data: { [property: string]: any[] }
     } = data.find(({ name }) => name === serviceName)
-    /**
-     * Find DNS Managed Zones
-     */
-    const dnsManagedZones: {
-      name: string
-      data: { [property: string]: any[] }
-    } = data.find(({ name }) => name === services.dnsManagedZone)
-
-    if (dnsManagedZones?.data?.[region]) {
-      const dnsManagedZone = dnsManagedZones.data[region].find(
-        ({ projectId }: RawGcpManagedZone) => projectId === id
-      )
-
-      if (dnsManagedZone) {
-        connections.push({
-          id: dnsManagedZone.name,
-          resourceType: services.dnsManagedZone,
-          relation: 'child',
-          field: 'dnsManagedZones',
-        })
-      }
-    }
-    if (dnsManagedZones?.data?.[region]) {
-      const dnsManagedZone = dnsManagedZones.data[region].find(
-        ({ projectId }: RawGcpManagedZone) => projectId === id
-      )
-    
-      if (dnsManagedZone) {
-        connections.push({
-          id: dnsManagedZone.id,
-          resourceType: services.dnsManagedZone,
-          relation: 'child',
-          field: 'dnsManagedZones',
-        })
-      }
-    }
-    /**
-     * Find DNS Policies
-     */
-    const dnsPolicies: {
-      name: string
-      data: { [property: string]: any[] }
-    } = data.find(({ name }) => name === services.dnsPolicy)
-
-    if (dnsPolicies?.data?.[region]) {
-      const dnsPolicy = dnsPolicies.data[region].find(
-        ({ projectId }: RawGcpPolicy) => projectId === id
-      )
-
-      if (dnsPolicy) {
-        connections.push({
-          id: dnsPolicy.id,
-          resourceType: services.dnsPolicy,
-          relation: 'child',
-          field: 'dnsPolicies',
-        })
-      }
-    }
-    /**
-     * Find VPCs
-     */
-    const vpcs: {
-      name: string
-      data: { [property: string]: any[] }
-    } = data.find(({ name }) => name === services.vpc)
 
     const regions = [region, GLOBAL_REGION]
     for (const region of regions) {
