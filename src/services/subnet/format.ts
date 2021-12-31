@@ -51,7 +51,7 @@ export default ({
     logConfig: {
       enable: logConfig?.enable,
       filterExpr: logConfig?.filterExpr,
-      flowSampling: logConfig?.flowSampling,
+      flowSampling: logConfig?.flowSampling?.toString(),
       metadataFields: logConfig?.metadataFields,
       aggregationInterval: enumKeyToString(google.cloud.compute.v1.SubnetworkLogConfig.AggregationInterval, logConfig?.aggregationInterval),
       metadata: enumKeyToString(google.cloud.compute.v1.SubnetworkLogConfig.Metadata, logConfig?.metadata),

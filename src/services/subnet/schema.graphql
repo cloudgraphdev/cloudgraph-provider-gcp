@@ -29,7 +29,7 @@ type gcpSubnetLogConfig
   aggregationInterval: String @search(by: [hash, regexp])
   enable: Boolean @search
   filterExpr: String @search(by: [hash, regexp])
-  flowSampling: Int @search
+  flowSampling: String @search(by: [hash, regexp])
   metadata: String @search(by: [hash, regexp])
   metadataFields: [String] @search(by: [hash])
 }

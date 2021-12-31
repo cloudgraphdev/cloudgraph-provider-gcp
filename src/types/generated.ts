@@ -402,7 +402,7 @@ export type GcpSubnetLogConfig = {
   aggregationInterval?: Maybe<Scalars['String']>;
   enable?: Maybe<Scalars['Boolean']>;
   filterExpr?: Maybe<Scalars['String']>;
-  flowSampling?: Maybe<Scalars['Int']>;
+  flowSampling?: Maybe<Scalars['String']>;
   metadata?: Maybe<Scalars['String']>;
   metadataFields?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
