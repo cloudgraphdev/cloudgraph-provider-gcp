@@ -1,3 +1,10 @@
+# [0.5.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.4.0...0.5.0) (2022-01-03)
+
+
+### Features
+
+* **storageBucket:** add storage bucket service ([b7abdab](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/b7abdab2b1b3982c0149e36980bad733d1c4d73b))
+
 # [0.4.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.3.0...0.4.0) (2021-12-29)
 
 
