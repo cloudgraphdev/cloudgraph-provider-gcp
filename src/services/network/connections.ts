@@ -34,20 +34,22 @@ export default ({
       if (instances?.data?.[region]) {
         const filtered = instances.data[region].filter(
           ({ network, projectId }: rawDataInterface) => {
-            // expect full network URI and network name
-            const uri = (network?.indexOf('https://') === -1) ? toUri(projectId, network) : network
-            return projectId === service.projectId && uri === service.selfLink
+            return projectId === service.projectId && network
           }
         )
 
-        for (const instance of filtered) {
-          if (instance) {
-            connections.push({
-              id: instance.id,
-              resourceType: serviceName,
-              relation: 'child',
-              field: serviceName,
-            })
+        for (const { id, network, projectId } of filtered) {
+          for (const name of network) {
+            // expect full network URI and network name
+            const uri = (name?.indexOf('https://') === -1) ? toUri(projectId, name) : name
+            if (uri === service.selfLink) {
+              connections.push({
+                id,
+                resourceType: serviceName,
+                relation: 'child',
+                field: serviceName,
+              })
+            }
           }
         }
       }

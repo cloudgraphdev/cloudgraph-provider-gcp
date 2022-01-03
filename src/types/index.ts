@@ -28,6 +28,6 @@ export interface rawDataInterface {
   projectId?: string
   region?: string
   data: any
-  network?: string
-  subnet?: string
+  network?: string[]
+  subnet?: string[]
 }

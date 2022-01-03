@@ -17,5 +17,6 @@ export default {
   [services.secretManager]: 'gcpSecret',
   [services.network]: 'gcpNetwork',
   [services.subnet]: 'gcpSubnet',
+  [services.vmInstance]: 'gcpVmInstance',
   tag: 'gcpTag',
 }

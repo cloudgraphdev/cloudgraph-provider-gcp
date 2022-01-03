@@ -1,19 +1,20 @@
+import cuid from 'cuid'
 import { GcpRawLabel, GcpRawTag } from '../types/generated'
 import { TagMap, LabelMap } from '../types'
 
 export const formatLabelsFromMap = (labels: LabelMap): GcpRawLabel[] => {
-  return Object.keys(labels).map(key => ({
+  return Object.keys(labels || {}).map(key => ({
     // We need an id here to enfore uniqueness for Dgraph, otherwise we get duplicate tags
-    id:`${key}:${labels[key]}`,
+    id: cuid(),
     key,
     value: labels[key],
   }))
 }
 
 export const formatTagsFromMap = (tags: TagMap): GcpRawTag[] => {
-  return Object.keys(tags).map(key => ({
+  return Object.keys(tags || {}).map(key => ({
     // We need an id here to enfore uniqueness for Dgraph, otherwise we get duplicate tags
-    id:`${key}:${tags[key]}`,
+    id: cuid(),
     key,
     value: tags[key],
   }))

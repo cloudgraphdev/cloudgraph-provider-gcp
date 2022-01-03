@@ -11,11 +11,12 @@ const { logger } = CloudGraph
 const serviceName = 'VPC'
 const apiEndpoint = initTestEndpoint(serviceName)
 
-export interface RawGcpVpc extends Omit<google.cloud.vpcaccess.v1.IConnector, 'subnet'> {
+export interface RawGcpVpc extends Omit<google.cloud.vpcaccess.v1.IConnector, 'network'|'subnet'> {
   id: string
   projectId: string
   region: string
-  subnet: string
+  network: string[]
+  subnet: string[]
 }
 
 export default async ({
@@ -43,7 +44,8 @@ export default async ({
             vpcList.push({
               id: response.name,
               ...response,
-              subnet: response.subnet?.name,
+              network: [response.network],
+              subnet: [response.subnet?.name],
               projectId,
               region,
             })

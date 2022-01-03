@@ -23,4 +23,5 @@ type gcpProject @key(fields: "id") {
   secretManager: [gcpSecret] @hasInverse(field: project)
   network: [gcpNetwork] @hasInverse(field: project)
   subnet: [gcpSubnet] @hasInverse(field: project)
+  vmInstance: [gcpVmInstance] @hasInverse(field: project)
 }

@@ -31,17 +31,19 @@ export default ({
     for (const region of regions) {
       if (instances?.data?.[region]) {
         const filtered = instances.data[region].filter(
-          ({ subnet, projectId }: rawDataInterface) => projectId === service.projectId && subnet === service.name
+          ({ subnet, projectId }: rawDataInterface) => projectId === service.projectId && subnet
         )
 
-        for (const instance of filtered) {
-          if (instance) {
-            connections.push({
-              id: instance.id,
-              resourceType: serviceName,
-              relation: 'child',
-              field: serviceName,
-            })
+        for (const { id, subnet } of filtered) {
+          for (const name of subnet) {
+            if (name === service.selfLink) {
+              connections.push({
+                id,
+                resourceType: serviceName,
+                relation: 'child',
+                field: serviceName,
+              })
+            }
           }
         }
       }
