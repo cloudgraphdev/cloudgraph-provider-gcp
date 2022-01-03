@@ -1,0 +1,46 @@
+type gcpStorageBucket @key(fields: "id") {
+  id: String! @id @search(by: [hash])
+  projectId: String! @search(by: [hash, regexp])
+  region: String @search(by: [hash, regexp])
+  name: String @search(by: [hash, regexp])
+  kind: String @search(by: [hash, regexp])
+  selfLink: String @search(by: [hash, regexp])
+  projectNumber: String @search(by: [hash, regexp])
+  metageneration: String @search(by: [hash, regexp])
+  location: String @search(by: [hash, regexp])
+  storageClass: String @search(by: [hash, regexp])
+  etag: String @search(by: [hash, regexp])
+  defaultEventBasedHold: Boolean @search
+  timeCreated: String @search(by: [hash, regexp])
+  updated: String @search(by: [hash, regexp])
+  labels: [gcpRawTag]
+  iamConfiguration: gcpStorageBucketIamConfiguration
+  locationType: String @search(by: [hash, regexp])
+  satisfiesPZS: Boolean @search
+  rpo: String @search(by: [hash, regexp])
+  baseUrl: String @search(by: [hash, regexp])
+  pollIntervalMs: Int @search
+  userProject: String @search(by: [hash, regexp])
+  project: [gcpProject] @hasInverse(field: storageBucket)
+}
+
+type gcpStorageBucketIamConfiguration
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  bucketPolicyOnly: gcpStorageBucketIamConfigurationMetadata
+  uniformBucketLevelAccess: gcpStorageBucketIamConfigurationMetadata
+  publicAccessPrevention: String @search(by: [hash, regexp])
+}
+
+type gcpStorageBucketIamConfigurationMetadata
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  enabled: Boolean @search
+  lockedTime: String @search(by: [hash, regexp])
+}

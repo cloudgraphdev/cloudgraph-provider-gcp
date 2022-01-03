@@ -59,6 +59,7 @@ export default {
   logView: 'logView',
   // organizations: 'organizations',
   project: 'project',
+  storageBucket: 'storageBucket',
   // firebase: 'firebase',
   // monitoring: 'monitoring',
   // dns: 'dns',

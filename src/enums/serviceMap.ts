@@ -7,6 +7,7 @@ import GcpTag from '../services/tag'
 import GcpLogBucket from '../services/logBucket'
 import GcpLogSink from '../services/logSink'
 import GcpLogView from '../services/logView'
+import GcpStorageBucket from '../services/storageBucket'
 
 /**
  * serviceMap is an object that contains all currently supported services
@@ -20,5 +21,6 @@ export default {
   [services.logBucket]: GcpLogBucket,
   [services.logSink]: GcpLogSink,
   [services.logView]: GcpLogView,
+  [services.storageBucket]: GcpStorageBucket,
   tag: GcpTag,
 }

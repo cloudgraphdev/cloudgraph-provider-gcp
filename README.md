@@ -69,6 +69,7 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 | logBucket                | logView, project         |    
 | logSink                  | project                  |
 | logView                  | logBucket, project       |
-| project                  | iamPolicy, kms, vpc, logBucket, logSink, logView |
+| project                  | iamPolicy, kms, vpc, logBucket, logSink, logView, storageBucket |
+| storageBucket            | project                  |
 | vpc                      | project                  |
 
