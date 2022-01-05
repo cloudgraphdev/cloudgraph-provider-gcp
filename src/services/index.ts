@@ -47,7 +47,7 @@ export default class Provider extends CloudGraph.Client {
       },
       {
         type: 'input',
-        message: 'Please input a valid key file name: ',
+        message: 'Please input the path to your service account key file: ',
         name: 'keyFilename',
       },
       {
