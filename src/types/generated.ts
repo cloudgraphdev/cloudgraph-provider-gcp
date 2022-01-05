@@ -59,6 +59,18 @@ export type GcpFirewallLogConfig = {
   metadata?: Maybe<Scalars['String']>;
 };
 
+export type GcpFolder = GcpBaseResource & {
+  parent?: Maybe<Scalars['String']>;
+  displayName?: Maybe<Scalars['String']>;
+  state?: Maybe<Scalars['String']>;
+  createTime?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+  deleteTime?: Maybe<Scalars['String']>;
+  etag?: Maybe<Scalars['String']>;
+  organization?: Maybe<Array<Maybe<GcpOrganization>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
 export type GcpIamBinding = {
   id: Scalars['String'];
   role?: Maybe<Scalars['String']>;
@@ -187,6 +199,18 @@ export type GcpLogView = {
   logBucket?: Maybe<Array<Maybe<GcpLogBucket>>>;
 };
 
+export type GcpOrganization = GcpBaseResource & {
+  displayName?: Maybe<Scalars['String']>;
+  directoryCustomerId?: Maybe<Scalars['String']>;
+  state?: Maybe<Scalars['String']>;
+  createTime?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+  deleteTime?: Maybe<Scalars['String']>;
+  etag?: Maybe<Scalars['String']>;
+  folder?: Maybe<Array<Maybe<GcpFolder>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
 export type GcpProject = {
   id: Scalars['String'];
   name?: Maybe<Scalars['String']>;
@@ -207,6 +231,8 @@ export type GcpProject = {
   logSink?: Maybe<Array<Maybe<GcpLogSink>>>;
   storageBucket?: Maybe<Array<Maybe<GcpStorageBucket>>>;
   firewall?: Maybe<Array<Maybe<GcpFirewall>>>;
+  folder?: Maybe<Array<Maybe<GcpFolder>>>;
+  organization?: Maybe<Array<Maybe<GcpOrganization>>>;
 };
 
 export type GcpRawLabel = {

@@ -1,0 +1,11 @@
+type gcpFolder implements gcpBaseResource @key(fields: "id") {
+  parent: String @search(by: [hash, regexp])
+  displayName: String @search(by: [hash, regexp])
+  state: String @search(by: [hash, regexp])
+  createTime: String @search(by: [hash, regexp])
+  updateTime: String @search(by: [hash, regexp])
+  deleteTime: String @search(by: [hash, regexp])
+  etag: String @search(by: [hash, regexp])
+  organization: [gcpOrganization] @hasInverse(field: folder)
+  project: [gcpProject] @hasInverse(field: folder)
+}

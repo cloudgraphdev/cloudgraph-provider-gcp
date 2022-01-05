@@ -1,0 +1,11 @@
+type gcpOrganization implements gcpBaseResource @key(fields: "id") {
+  displayName: String @search(by: [hash, regexp])
+  directoryCustomerId: String @search(by: [hash, regexp])
+  state: String @search(by: [hash, regexp])
+  createTime: String @search(by: [hash, regexp])
+  updateTime: String @search(by: [hash, regexp])
+  deleteTime: String @search(by: [hash, regexp])
+  etag: String @search(by: [hash, regexp])
+  folder: [gcpFolder] @hasInverse(field: organization)
+  project: [gcpProject] @hasInverse(field: organization)
+}
