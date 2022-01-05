@@ -40,6 +40,7 @@ export default ({
     id,
     projectId,
     name,
+    region,
     allowed: allowed?.map(access => ({
       id: cuid(),
       ipProtocol: access?.IPProtocol,
