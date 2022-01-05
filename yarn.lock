@@ -634,6 +634,13 @@
     retry-request "^4.2.2"
     teeny-request "^7.0.0"
 
+"@google-cloud/compute@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@google-cloud/compute/-/compute-3.0.0.tgz#53b31da6f3646738a64eaeee682f6bce210d8d19"
+  integrity sha512-cfuEcfFtDDi/gGTAn9SfgSPyYhipIjLpw7SX4E+J5v1y5xr+Vx1Kfb0hGcgVb63RNPTA4YogiPzqnBoDKPJWiw==
+  dependencies:
+    google-gax "^2.24.1"
+
 "@google-cloud/kms@^2.10.0":
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/@google-cloud/kms/-/kms-2.10.0.tgz#2aecda0b7f485db6a4cf5849aea0ba2a2c7b2587"
