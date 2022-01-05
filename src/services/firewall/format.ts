@@ -6,11 +6,9 @@ import { enumKeyToString } from '../../utils/format'
 
 export default ({
   service,
-  account,
   region,
 }: {
   service: RawGcpFirewall
-  account: string
   region: string
 }): GcpFirewall => {
   const {
