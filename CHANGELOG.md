@@ -1,3 +1,16 @@
+# [0.6.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.5.0...0.6.0) (2022-01-05)
+
+
+### Bug Fixes
+
+* **firewall:** add region ([b5283b9](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/b5283b9ba55dc7c1cb99b57c76384d616f8be376))
+* **firewall:** drop account arg in format ([4de83a1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/4de83a1e3d25bfa8b8cd5737cc5758fb5c056deb))
+
+
+### Features
+
+* **firewall:** add firewall service ([fa320ff](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/fa320ff88babf73058bd41f135c38879196da34f))
+
 # [0.5.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.4.0...0.5.0) (2022-01-03)
 
 
