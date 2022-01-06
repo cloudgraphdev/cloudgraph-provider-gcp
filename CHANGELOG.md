@@ -1,3 +1,11 @@
+## [0.6.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.6.0...0.6.1) (2022-01-06)
+
+
+### Bug Fixes
+
+* **credentials:** update phrasing for key file input ([5da5594](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/5da55949e4768f7beba5657d4a6ca19d811e531a))
+* **enums:** drop unused resources file ([5d884d5](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/5d884d50d2438dc24b22e1f8e7036dfa361aaf8d))
+
 # [0.6.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.5.0...0.6.0) (2022-01-05)
 
 
