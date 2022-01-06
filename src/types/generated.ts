@@ -42,7 +42,6 @@ export type GcpFirewall = {
   disabled?: Maybe<Scalars['Boolean']>;
   kind?: Maybe<Scalars['String']>;
   logConfig?: Maybe<GcpFirewallLogConfig>;
-  network?: Maybe<Scalars['String']>;
   priority?: Maybe<Scalars['Int']>;
   selfLink?: Maybe<Scalars['String']>;
   sourceRanges?: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -50,6 +49,7 @@ export type GcpFirewall = {
   sourceTags?: Maybe<Array<Maybe<Scalars['String']>>>;
   targetServiceAccounts?: Maybe<Array<Maybe<Scalars['String']>>>;
   targetTags?: Maybe<Array<Maybe<Scalars['String']>>>;
+  network?: Maybe<Array<Maybe<GcpNetwork>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
 };
 
@@ -215,6 +215,7 @@ export type GcpNetwork = GcpBaseResource & {
   peerings?: Maybe<Array<Maybe<GcpNetworkPeering>>>;
   routingConfig?: Maybe<GcpNetworkRoutingConfig>;
   selfLink?: Maybe<Scalars['String']>;
+  firewall?: Maybe<Array<Maybe<GcpFirewall>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
   subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
   vpc?: Maybe<Array<Maybe<GcpVpcConnector>>>;

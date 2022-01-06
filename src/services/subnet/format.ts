@@ -62,7 +62,8 @@ export default ({
     role: enumKeyToString(google.cloud.compute.v1.Subnetwork.Role, role),
     secondaryIpRanges: secondaryIpRanges?.map(ranges => ({
       id: cuid(),
-      ...ranges,
+      ipCidrRange: ranges?.ipCidrRange,
+      rangeName: ranges?.rangeName,
     })),
     selfLink,
     state: enumKeyToString(google.cloud.compute.v1.Subnetwork.State, state),

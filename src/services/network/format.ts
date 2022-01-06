@@ -43,7 +43,16 @@ export default ({
     mtu,
     peerings: peerings?.map(peering => ({
       id: cuid(),
-      ...peering,
+      autoCreateRoutes: peering?.autoCreateRoutes,
+      exchangeSubnetRoutes: peering?.exchangeSubnetRoutes,
+      exportCustomRoutes: peering?.exportCustomRoutes,
+      exportSubnetRoutesWithPublicIp: peering?.exportSubnetRoutesWithPublicIp,
+      importCustomRoutes: peering?.importCustomRoutes,
+      importSubnetRoutesWithPublicIp: peering?.importSubnetRoutesWithPublicIp,
+      name: peering?.name,
+      network: peering?.network,
+      peerMtu: peering?.peerMtu,
+      stateDetails: peering?.stateDetails,
       state: enumKeyToString(google.cloud.compute.v1.NetworkPeering.State, peering?.state),
     })),
     routingConfig: {
