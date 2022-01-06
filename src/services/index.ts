@@ -7,7 +7,6 @@ import { isEmpty, merge, unionBy } from 'lodash'
 import path from 'path'
 
 import regions from '../enums/regions'
-import resources from '../enums/resources'
 import serviceMap from '../enums/serviceMap'
 import schemasMap from '../enums/schemasMap'
 import services from '../enums/services'
@@ -22,7 +21,6 @@ import { sortResourcesDependencies } from '../utils'
 export const enums = {
   services,
   regions,
-  resources,
   schemasMap,
 }
 
@@ -35,7 +33,6 @@ export default class Provider extends CloudGraph.Client {
   private properties: {
     services: { [key: string]: string }
     regions: string[]
-    resources: { [key: string]: string }
   }
 
   async askForGcpCredentials(): Promise<GcpCredentials> {
