@@ -1,3 +1,10 @@
+# [0.8.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.7.0...0.8.0) (2022-01-07)
+
+
+### Features
+
+* **secretManager:** add secret manager service ([f297f92](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/f297f928a9125e7c7973bfdd142a1e79b02465a7))
+
 # [0.7.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.6.1...0.7.0) (2022-01-07)
 
 
