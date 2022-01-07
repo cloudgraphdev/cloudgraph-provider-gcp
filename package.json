@@ -36,6 +36,7 @@
     "@google-cloud/compute": "^3.0.0",
     "@google-cloud/kms": "^2.10.0",
     "@google-cloud/compute": "^3.0.0",
+    "@google-cloud/kms": "^2.10.0",
     "@google-cloud/logging": "^9.6.4",
     "@google-cloud/dns": "^2.2.3",
     "@google-cloud/resource-manager": "^3.0.0",
