@@ -23,6 +23,11 @@ export type GcpBigQueryOptions = {
   usesTimestampColumnPartitioning?: Maybe<Scalars['Boolean']>;
 };
 
+export type GcpDuration = {
+  seconds?: Maybe<Scalars['String']>;
+  nanos?: Maybe<Scalars['Int']>;
+};
+
 export type GcpFirewall = {
   id: Scalars['String'];
   projectId?: Maybe<Scalars['String']>;
@@ -233,6 +238,7 @@ export type GcpProject = {
   firewall?: Maybe<Array<Maybe<GcpFirewall>>>;
   folder?: Maybe<Array<Maybe<GcpFolder>>>;
   organization?: Maybe<Array<Maybe<GcpOrganization>>>;
+  secretManager?: Maybe<Array<Maybe<GcpSecret>>>;
 };
 
 export type GcpRawLabel = {
@@ -245,6 +251,55 @@ export type GcpRawTag = {
   id: Scalars['String'];
   key?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
+};
+
+export type GcpSecret = GcpBaseResource & {
+  replication?: Maybe<GcpSecretReplication>;
+  createTime?: Maybe<Scalars['String']>;
+  labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
+  topics?: Maybe<Array<Maybe<GcpSecretReplicationStatusTopic>>>;
+  expireTime?: Maybe<Scalars['String']>;
+  ttl?: Maybe<GcpDuration>;
+  etag?: Maybe<Scalars['String']>;
+  rotation?: Maybe<GcpSecretReplicationStatusRotation>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
+export type GcpSecretReplication = {
+  automatic?: Maybe<GcpSecretReplicationAutomatic>;
+  userManaged?: Maybe<GcpSecretReplicationUserManagedStatus>;
+};
+
+export type GcpSecretReplicationAutomatic = {
+  customerManagedEncryption?: Maybe<GcpSecretReplicationCustomerManagedEncryption>;
+};
+
+export type GcpSecretReplicationCustomerManagedEncryption = {
+  kmsKeyName?: Maybe<Scalars['String']>;
+};
+
+export type GcpSecretReplicationStatusRotation = {
+  nextRotationTime?: Maybe<Scalars['String']>;
+  rotationPeriod?: Maybe<GcpDuration>;
+};
+
+export type GcpSecretReplicationStatusTopic = {
+  id: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
+};
+
+export type GcpSecretReplicationUserManagedStatus = {
+  replicas?: Maybe<Array<Maybe<GcpSecretReplicationUserManagedStatusReplicaStatus>>>;
+};
+
+export type GcpSecretReplicationUserManagedStatusCustomerManagedEncryptionStatus = {
+  kmsKeyVersionName?: Maybe<Scalars['String']>;
+};
+
+export type GcpSecretReplicationUserManagedStatusReplicaStatus = {
+  id: Scalars['String'];
+  location?: Maybe<Scalars['String']>;
+  customerManagedEncryption?: Maybe<GcpSecretReplicationUserManagedStatusCustomerManagedEncryptionStatus>;
 };
 
 export type GcpStorageBucket = {

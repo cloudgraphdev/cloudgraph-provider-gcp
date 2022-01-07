@@ -14,5 +14,6 @@ export default {
   [services.logView]: 'gcpLogView',
   [services.folder]: 'gcpFolder',
   [services.organization]: 'gcpOrganization',
+  [services.secretManager]: 'gcpSecret',
   tag: 'gcpTag',
 }

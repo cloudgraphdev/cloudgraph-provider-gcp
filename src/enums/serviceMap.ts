@@ -11,6 +11,7 @@ import GcpStorageBucket from '../services/storageBucket'
 import GcpFirewall from '../services/firewall'
 import GcpFolder from '../services/folder'
 import GcpOrganization from '../services/organization'
+import GcpSecretManager from '../services/secretManager'
 
 /**
  * serviceMap is an object that contains all currently supported services
@@ -28,5 +29,6 @@ export default {
   [services.storageBucket]: GcpStorageBucket,
   [services.folder]: GcpFolder,
   [services.organization]: GcpOrganization,
+  [services.secretManager]: GcpSecretManager,
   tag: GcpTag,
 }
