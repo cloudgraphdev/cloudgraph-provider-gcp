@@ -33,10 +33,11 @@
   },
   "dependencies": {
     "@cloudgraph/sdk": "0.4.0",
-    "@google-cloud/kms": "^2.10.0",
     "@google-cloud/compute": "^3.0.0",
+    "@google-cloud/kms": "^2.10.0",
     "@google-cloud/logging": "^9.6.4",
     "@google-cloud/resource-manager": "^3.0.0",
+    "@google-cloud/secret-manager": "^3.10.1",
     "@google-cloud/storage": "^5.16.1",
     "@google-cloud/vpc-access": "^1.1.2",
     "@graphql-tools/load-files": "6.3.2",

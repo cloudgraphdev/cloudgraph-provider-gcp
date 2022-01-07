@@ -1,0 +1,98 @@
+type gcpSecret implements gcpBaseResource @key(fields: "id") {
+  replication: gcpSecretReplication
+  createTime: String @search(by: [hash, regexp])
+  labels: [gcpRawLabel]
+  topics: [gcpSecretReplicationStatusTopic]
+  expireTime: String @search(by: [hash, regexp])
+  ttl: gcpDuration
+  etag: String @search(by: [hash, regexp])
+  rotation: gcpSecretReplicationStatusRotation
+  project: [gcpProject] @hasInverse(field: secretManager)
+}
+
+type gcpSecretReplication
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  automatic: gcpSecretReplicationAutomatic
+  userManaged: gcpSecretReplicationUserManagedStatus
+}
+
+type gcpSecretReplicationAutomatic
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  customerManagedEncryption: gcpSecretReplicationCustomerManagedEncryption
+}
+
+type gcpSecretReplicationCustomerManagedEncryption
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  kmsKeyName: String @search(by: [hash, regexp])
+}
+
+type gcpSecretReplicationUserManagedStatus
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  replicas: [gcpSecretReplicationUserManagedStatusReplicaStatus]
+}
+
+type gcpSecretReplicationUserManagedStatusReplicaStatus
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  location: String @search(by: [hash, regexp])
+  customerManagedEncryption: gcpSecretReplicationUserManagedStatusCustomerManagedEncryptionStatus
+}
+
+type gcpSecretReplicationUserManagedStatusCustomerManagedEncryptionStatus
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  kmsKeyVersionName: String @search(by: [hash, regexp])
+}
+
+type gcpSecretReplicationStatusTopic
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  name: String @search(by: [hash, regexp])
+}
+
+type gcpDuration
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  seconds: String @search(by: [hash, regexp])
+  nanos: Int @search
+}
+
+type gcpSecretReplicationStatusRotation
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  nextRotationTime: String @search(by: [hash, regexp])
+  rotationPeriod: gcpDuration
+}

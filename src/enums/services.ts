@@ -50,7 +50,7 @@ export default {
   // recaptcha: 'recaptcha',
   // resourceManager: 'resource-manager',
   // resourceSettings: 'resource-settings',
-  // secrets: 'secrets',
+  secretManager: 'secretManager',
   // iot: 'iot',
   // cloudShell: 'cloud-shell',
   // debug: 'debug',
