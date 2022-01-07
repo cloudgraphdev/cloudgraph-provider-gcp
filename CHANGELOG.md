@@ -1,3 +1,10 @@
+# [0.7.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.6.1...0.7.0) (2022-01-07)
+
+
+### Features
+
+* **resourceManager:** add folder/organization services ([f81cc25](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/f81cc25d94aa3024a1cae8e919a8d4027ea5be82))
+
 ## [0.6.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.6.0...0.6.1) (2022-01-06)
 
 
