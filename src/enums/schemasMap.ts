@@ -12,5 +12,7 @@ export default {
   [services.logBucket]: 'gcpLogBucket',
   [services.logSink]: 'gcpLogSink',
   [services.logView]: 'gcpLogView',
+  [services.folder]: 'gcpFolder',
+  [services.organization]: 'gcpOrganization',
   tag: 'gcpTag',
 }

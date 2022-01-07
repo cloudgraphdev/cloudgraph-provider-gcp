@@ -1,7 +1,6 @@
-import cuid from 'cuid'
 import { google } from '@google-cloud/resource-manager/build/protos/protos'
-import { GcpProject } from '../../types/generated'
-import { RawGcpProject } from './data'
+import { GcpFolder } from '../../types/generated'
+import { RawGcpFolder } from './data'
 import { toISOString } from '../../utils/dateutils'
 import { enumKeyToString } from '../../utils/format'
 
@@ -9,37 +8,33 @@ export default ({
   service,
   region,
 }: {
-  service: RawGcpProject
+  service: RawGcpFolder
   region: string
-}): GcpProject => {
+}): GcpFolder => {
   const {
+    id,
+    projectId,
     name,
     parent,
-    projectId,
-    state,
     displayName,
+    state,
     createTime,
     updateTime,
     deleteTime,
     etag,
-    labels = {},
   } = service
 
   return {
-    id: name,
+    id,
+    projectId,
+    region,
     name,
     parent,
-    projectId,
-    state: enumKeyToString(google.cloud.resourcemanager.v3.Project.State, state),
     displayName,
+    state: enumKeyToString(google.cloud.resourcemanager.v3.Folder.State, state),
     createTime: toISOString(createTime?.seconds?.toString()),
     updateTime: toISOString(updateTime?.seconds?.toString()),
     deleteTime: toISOString(deleteTime?.seconds?.toString()),
     etag,
-    labels: Object.keys(labels).map(key => ({
-      id: cuid(),
-      key,
-      value: labels[key],
-    })),
   }
 }

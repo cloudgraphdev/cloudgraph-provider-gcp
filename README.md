@@ -64,13 +64,15 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 
 | Service | Relations |
 | ------------------------ | ------------------------ |
-| kms                      | projects                 |
 | firewall                 | project                  |
+| folder                   | organization, project    |                        
+| kms                      | project                  |
 | iamPolicy                | project                  |
 | logBucket                | logView, project         |    
 | logSink                  | project                  |
 | logView                  | logBucket, project       |
-| project                  | firewall, iamPolicy, kms, vpc, logBucket, logSink, logView, storageBucket |
+| organization             | folder, project          |
+| project                  | firewall, folder, iamPolicy, kms, vpc, logBucket, logSink, logView, organization, storageBucket |
 | storageBucket            | project                  |
 | vpc                      | project                  |
 

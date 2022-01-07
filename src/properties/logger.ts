@@ -17,10 +17,6 @@ export default {
   */
   foundVpcs: (num: number): string => `Found ${num} VPCs`,
   /**
-  * Projects
-  */
-  foundProjects: (num: number): string => `Found ${num} Projects`,
-  /**
   * IAM
   */
   foundPolicies: (num: number): string => `Found ${num} IAM Policies`,

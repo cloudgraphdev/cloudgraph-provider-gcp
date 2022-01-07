@@ -5,12 +5,10 @@ import { GLOBAL_REGION } from '../../config/constants'
 import services from '../../enums/services'
 
 export default ({
-  account,
   service,
   data,
   region,
 }: {
-  account: string
   service: RawGcpProject
   data: { name: string; data: { [property: string]: any[] } }[]
   region: string
