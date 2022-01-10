@@ -29,7 +29,7 @@ export const enumKeyToString = (enumType: any, key: any): string => {
     return '';
   const keys = Object.keys(enumType)
   const stateIndex = enumType[key]
-  return keys[stateIndex]
+  return keys[stateIndex] || key
 }
 
 export const etagToString = (etag: string | Uint8Array): string => {

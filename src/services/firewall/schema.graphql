@@ -12,7 +12,6 @@ type gcpFirewall {
   disabled: Boolean @search
   kind: String @search(by: [hash, regexp])
   logConfig: gcpFirewallLogConfig
-  network: String @search(by: [hash, regexp])
   priority: Int @search
   selfLink: String @search(by: [hash, regexp])
   sourceRanges: [String] @search(by: [hash])
@@ -20,6 +19,7 @@ type gcpFirewall {
   sourceTags: [String] @search(by: [hash])
   targetServiceAccounts: [String] @search(by: [hash])
   targetTags: [String] @search(by: [hash])
+  network: [gcpNetwork] @hasInverse(field: firewall)
   project: [gcpProject] @hasInverse(field: firewall)
 }
 

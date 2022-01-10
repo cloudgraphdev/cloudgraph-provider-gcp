@@ -16,13 +16,11 @@ export default ({
     id,
     name,
     projectId,
-    network,
     ipCidrRange,
     state,
     minThroughput,
     maxThroughput,
     connectedProjects,
-    subnet,
   } = service
 
   return {
@@ -30,12 +28,10 @@ export default ({
     projectId,
     region,
     name,
-    network,
     ipCidrRange,
     state: enumKeyToString(google.cloud.vpcaccess.v1.Connector.State, state),
     minThroughput,
     maxThroughput,
     connectedProjects,
-    subnet: subnet?.name,
   }
 }
