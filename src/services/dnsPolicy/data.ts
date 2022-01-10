@@ -10,7 +10,7 @@ import { GLOBAL_REGION } from '../../config/constants'
 const lt = { ...gcpLoggerText }
 const { logger } = CloudGraph
 
-const serviceName = 'DNS Managed Zone'
+const serviceName = 'DNS Policy'
 const apiEndpoint = initTestEndpoint(serviceName)
 
 export interface RawGcpPolicy {
@@ -56,7 +56,7 @@ export default async ({
       })
     }
   } catch (error) {
-    generateGcpErrorLog(serviceName, 'vpc:listConnectors', error)
+    generateGcpErrorLog(serviceName, 'dns:listPolicies', error)
   }
 
   logger.debug(lt.foundResources(serviceName, policyList.length))

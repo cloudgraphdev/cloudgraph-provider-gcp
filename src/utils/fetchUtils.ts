@@ -1,5 +1,6 @@
 import { Service } from '@google-cloud/common'
 import fetch from 'node-fetch'
+import isEmpty from 'lodash/isEmpty'
 
 export const listData = async ({
     service,
@@ -23,20 +24,24 @@ export const listData = async ({
 
   let respJson = await resp.json()
   let pageToken = respJson.nextPageToken
-  fullData.push(...respJson[dataFieldName])
 
-  while (pageToken) {
-    resp = await fetch(`${apiUri}?pageToken=${pageToken}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${accessToken}`,
-      },
-    })
-    respJson = await resp.json()
-    pageToken = respJson.nextPageToken
+  if (isEmpty(respJson.error)) {
     fullData.push(...respJson[dataFieldName])
+
+    while (pageToken) {
+      resp = await fetch(`${apiUri}?pageToken=${pageToken}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`,
+        },
+      })
+      respJson = await resp.json()
+      pageToken = respJson.nextPageToken
+      fullData.push(...respJson[dataFieldName])
+    }
   }
+
   return fullData
 }
 

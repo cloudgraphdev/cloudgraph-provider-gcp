@@ -103,7 +103,7 @@ export default async ({
       })
     }
   } catch (error) {
-    generateGcpErrorLog(serviceName, 'vpc:listConnectors', error)
+    generateGcpErrorLog(serviceName, 'dns:listManagedZones', error)
   }
 
   logger.debug(lt.foundResources(serviceName, zoneList.length))
