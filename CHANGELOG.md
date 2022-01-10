@@ -1,3 +1,17 @@
+# [0.9.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.8.0...0.9.0) (2022-01-10)
+
+
+### Bug Fixes
+
+* **network:** add firewall connection, filter private fields ([852c788](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/852c78891acb14199f22ade79825227f536d3145))
+* **network:** update readme with firewall connection ([58b66ff](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/58b66ff56067824c3c105ee014df76b953df1312))
+* **subnet:** update flowSampling type ([62811a9](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/62811a960e481ac7a4c46d8543d03f0ec62c1dc0))
+
+
+### Features
+
+* **network:** add network/subnet services ([f827256](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/f8272566db2a0602de2a37d4907a154625795b6d))
+
 # [0.8.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.7.0...0.8.0) (2022-01-07)
 
 
