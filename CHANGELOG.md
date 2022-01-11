@@ -1,3 +1,10 @@
+# [0.10.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.9.0...0.10.0) (2022-01-11)
+
+
+### Features
+
+* **vmInstance:** add VM Instance service ([a113a0c](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/a113a0c8b9708f8dea1531072ab9eede80ee40fa))
+
 # [0.9.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.8.0...0.9.0) (2022-01-10)
 
 
