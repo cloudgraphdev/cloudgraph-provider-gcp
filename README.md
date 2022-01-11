@@ -71,11 +71,12 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 | logBucket                | logView, project         |    
 | logSink                  | project                  |
 | logView                  | logBucket, project       |
-| network                  | firewall, project, subnet, vpc     |
+| network                  | firewall, project, subnet, vmInstance, vpc     |
 | organization             | folder, project          |
-| project                  | firewall, folder, iamPolicy, kms, vpc, logBucket, logSink, logView, network, organization, secretManager, storageBucket, subnet |
+| project                  | ALL SERVICES             |
 | secretManager            | project                  |
 | storageBucket            | project                  |
-| subnet                   | project, network, vpc    |
+| subnet                   | project, network, vmInstance, vpc    |
+| vmInstance               | project, network, subnet |             
 | vpc                      | project, network, subnet |
 

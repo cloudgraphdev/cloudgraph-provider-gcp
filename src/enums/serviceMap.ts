@@ -14,6 +14,7 @@ import GcpOrganization from '../services/organization'
 import GcpSecretManager from '../services/secretManager'
 import GcpNetwork from '../services/network'
 import GcpSubnet from '../services/subnet'
+import GcpVmInstance from '../services/vmInstance'
 
 /**
  * serviceMap is an object that contains all currently supported services
@@ -34,5 +35,6 @@ export default {
   [services.secretManager]: GcpSecretManager,
   [services.network]: GcpNetwork,
   [services.subnet]: GcpSubnet,
+  [services.vmInstance]: GcpVmInstance,
   tag: GcpTag,
 }

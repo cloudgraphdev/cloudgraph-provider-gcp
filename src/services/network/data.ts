@@ -17,6 +17,7 @@ export interface RawGcpNetwork extends google.cloud.compute.v1.INetwork {
   id: string
   projectId: string
   region: string
+  subnet: string[]
 }
 
 export default async ({
@@ -42,6 +43,7 @@ export default async ({
           networksList.push({
             ...response,
             id: response.id?.toString() || cuid(),
+            subnet: response.subnetworks,
             projectId,
             region: GLOBAL_REGION,
           })

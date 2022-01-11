@@ -12,10 +12,11 @@ const { logger } = CloudGraph
 const serviceName = 'Subnet'
 const apiEndpoint = initTestEndpoint(serviceName)
 
-export interface RawGcpSubnet extends google.cloud.compute.v1.ISubnetwork {
+export interface RawGcpSubnet extends Omit<google.cloud.compute.v1.ISubnetwork, 'network'> {
   id: string
   projectId: string
   region: string
+  network: string[]
 }
 
 export default async ({
@@ -43,6 +44,7 @@ export default async ({
             subnetList.push({
               ...response,
               id: response.id?.toString() || cuid(),
+              network: [response.network],
               projectId,
               region,
             })

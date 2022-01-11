@@ -1,0 +1,295 @@
+type gcpVmInstance implements gcpBaseResource @key(fields: "id") {
+  advancedMachineFeatures: gcpAdvancedMachineFeatures
+  canIpForward: Boolean @search
+  confidentialInstanceConfig: gcpConfidentialInstanceConfig
+  cpuPlatform: String @search(by: [hash, regexp])
+  creationTimestamp: String @search(by: [hash, regexp])
+  deletionProtection: Boolean @search
+  description: String @search(by: [hash, regexp])
+  disks: [gcpAttachedDisk]
+  displayDevice: gcpDisplayDevice
+  fingerprint: String @search(by: [hash, regexp])
+  guestAccelerators: [gcpAcceleratorConfig]
+  hostname: String @search(by: [hash, regexp])
+  kind: String @search(by: [hash, regexp])
+  labelFingerprint: String @search(by: [hash, regexp])
+  labels: [gcpRawLabel]
+  lastStartTimestamp: String @search(by: [hash, regexp])
+  lastStopTimestamp: String @search(by: [hash, regexp])
+  lastSuspendedTimestamp: String @search(by: [hash, regexp])
+  machineType: String @search(by: [hash, regexp])
+  metadata: gcpMetadata
+  minCpuPlatform: String @search(by: [hash, regexp])
+  privateIpv6GoogleAccess: String @search(by: [hash, regexp])
+  reservationAffinity: gcpReservationAffinity
+  resourcePolicies: [String] @search(by: [hash])
+  satisfiesPzs: Boolean @search
+  scheduling: gcpScheduling
+  selfLink: String @search(by: [hash, regexp])
+  serviceAccounts: [gcpServiceAccount]
+  shieldedInstanceConfig: gcpShieldedInstanceConfig
+  shieldedInstanceIntegrityPolicy: gcpShieldedInstanceIntegrityPolicy
+  startRestricted: Boolean @search
+  status: String @search(by: [hash, regexp])
+  statusMessage: String @search(by: [hash, regexp])
+  tags: gcpComputeTags
+  zone: String @search(by: [hash, regexp])
+  project: [gcpProject] @hasInverse(field: vmInstance)
+  network: [gcpNetwork] @hasInverse(field: vmInstance)
+  subnet: [gcpSubnet] @hasInverse(field: vmInstance)
+}
+
+type gcpAdvancedMachineFeatures
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  enableNestedVirtualization: Boolean @search
+  threadsPerCore: Int @search
+}
+
+type gcpConfidentialInstanceConfig
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  enableConfidentialCompute: Boolean @search
+}
+
+type gcpAttachedDisk
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  autoDelete: Boolean @search
+  boot: Boolean @search
+  deviceName: String @search(by: [hash, regexp])
+  diskEncryptionKey: gcpCustomerEncryptionKey
+  diskSizeGb: String @search(by: [hash, regexp])
+  guestOsFeatures: [gcpGuestOsFeature]
+  index: Int @search
+  initializeParams: gcpAttachedDiskInitializeParams
+  interface: String @search(by: [hash, regexp])
+  kind: String @search(by: [hash, regexp])
+  licenses: [String] @search(by: [hash])
+  mode: String @search(by: [hash, regexp])
+  shieldedInstanceInitialState: gcpInitialStateConfig
+  source: String @search(by: [hash, regexp])
+  type: String @search(by: [hash, regexp])
+}
+
+type gcpCustomerEncryptionKey
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  kmsKeyName: String @search(by: [hash, regexp])
+  kmsKeyServiceAccount: String @search(by: [hash, regexp])
+  rawKey: String @search(by: [hash, regexp])
+  sha256: String @search(by: [hash, regexp])
+}
+
+type gcpGuestOsFeature
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  type: String @search(by: [hash, regexp])
+}
+
+type gcpAttachedDiskInitializeParams
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  description: String @search(by: [hash, regexp])
+  diskName: String @search(by: [hash, regexp])
+  diskSizeGb: String @search(by: [hash, regexp])
+  diskType: String @search(by: [hash, regexp])
+  labels: [gcpRawLabel]
+  onUpdateAction: String @search(by: [hash, regexp])
+  provisionedIops: String @search(by: [hash, regexp])
+  resourcePolicies: [String] @search(by: [hash])
+  sourceImage: String @search(by: [hash, regexp])
+  sourceImageEncryptionKey: gcpCustomerEncryptionKey
+  sourceSnapshot: String @search(by: [hash, regexp])
+  sourceSnapshotEncryptionKey: gcpCustomerEncryptionKey
+}
+
+type gcpInitialStateConfig
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  dbs: [gcpFileContentBuffer]
+  dbxs: [gcpFileContentBuffer]
+  keks: [gcpFileContentBuffer]
+  pk: gcpFileContentBuffer
+}
+
+type gcpDisplayDevice
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  enableDisplay: Boolean @search
+}
+
+type gcpAcceleratorConfig
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  acceleratorCount: Int @search
+  acceleratorType: String @search(by: [hash, regexp])
+}
+
+type gcpMetadata
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  fingerprint: String @search(by: [hash, regexp])
+  items: [gcpItems]
+  kind: String @search(by: [hash, regexp])
+}
+
+type gcpReservationAffinity
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  consumeReservationType: String @search(by: [hash, regexp])
+  key: String @search(by: [hash, regexp])
+  values: [String] @search(by: [hash])
+}
+
+type gcpScheduling
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  automaticRestart: Boolean @search
+  locationHint: String @search(by: [hash, regexp])
+  minNodeCpus: Int @search
+  nodeAffinities: [gcpSchedulingNodeAffinity]
+  onHostMaintenance: String @search(by: [hash, regexp])
+  preemptible: Boolean @search
+}
+
+type gcpServiceAccount
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  email: String @search(by: [hash, regexp])
+  scopes: [String] @search(by: [hash])
+}
+
+type gcpShieldedInstanceConfig
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  enableIntegrityMonitoring: Boolean @search
+  enableSecureBoot: Boolean @search
+  enableVtpm: Boolean @search
+}
+
+type gcpShieldedInstanceIntegrityPolicy
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  updateAutoLearnPolicy: Boolean @search
+}
+
+type gcpFileContentBuffer
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  content: String @search(by: [hash, regexp])
+  fileType: String @search(by: [hash, regexp])
+}
+
+type gcpAccessConfig
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  kind: String @search(by: [hash, regexp])
+  name: String @search(by: [hash, regexp])
+  natIP: String @search(by: [hash, regexp])
+  networkTier: String @search(by: [hash, regexp])
+  publicPtrDomainName: String @search(by: [hash, regexp])
+  setPublicPtr: Boolean @search
+  type: String @search(by: [hash, regexp])
+}
+
+type gcpAliasIpRange
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  ipCidrRange: String @search(by: [hash, regexp])
+  subnetworkRangeName: String @search(by: [hash, regexp])
+}
+
+type gcpSchedulingNodeAffinity
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  key: String @search(by: [hash, regexp])
+  operator: String @search(by: [hash, regexp])
+  values: [String] @search(by: [hash])
+}
+
+type gcpItems
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  key: String @search(by: [hash, regexp])
+  value: String @search(by: [hash, regexp])
+}
+
+type gcpComputeTags
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  fingerprint: String @search(by: [hash, regexp])
+  items: [String] @search(by: [hash])
+}
