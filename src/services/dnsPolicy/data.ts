@@ -20,10 +20,7 @@ export interface RawGcpPolicy {
   id?: string
   enableInboundForwarding?: boolean
   description?: string
-  networks?: {
-    kind?: string
-    networkUrl?: string
-  }[]
+  network: string[]
   alternativeNameServerConfig?: {
     kind: string
     targetNameServers: {
@@ -52,6 +49,7 @@ export default async ({
       policyList.push({
         projectId: config.projectId,
         ...dnsPolicy,
+        network: dnsPolicy?.networks?.map(network => network.networkUrl),
         region: GLOBAL_REGION,
       })
     }

@@ -17,7 +17,6 @@ export default ({
     kind,
     enableInboundForwarding,
     description,
-    networks,
     alternativeNameServerConfig,
     enableLogging,
   } = service
@@ -30,16 +29,6 @@ export default ({
     kind,
     enableInboundForwarding,
     description,
-    networks: networks?.map(({
-      kind: networkKind,
-      networkUrl,
-    }) => {
-      return {
-        id: cuid(), 
-        kind: networkKind,
-        networkUrl,
-      }
-    }) || [],
     alternativeNameServerConfigKind: alternativeNameServerConfig?.kind || '',
     alternativeNameServerConfigTargetNameServers: alternativeNameServerConfig?.targetNameServers?.map(({
       kind: targetNameServerKind,

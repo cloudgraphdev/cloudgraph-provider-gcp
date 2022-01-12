@@ -139,10 +139,10 @@ export type GcpDnsPolicy = GcpBaseResource & {
   kind?: Maybe<Scalars['String']>;
   enableInboundForwarding?: Maybe<Scalars['Boolean']>;
   description?: Maybe<Scalars['String']>;
-  networks?: Maybe<Array<Maybe<GcpDnsPolicyNetwork>>>;
   alternativeNameServerConfigKind?: Maybe<Scalars['String']>;
   alternativeNameServerConfigTargetNameServers?: Maybe<Array<Maybe<GcpDnsPolicyAlternativeNameServerConfigTargetNameServer>>>;
   enableLogging?: Maybe<Scalars['Boolean']>;
+  network?: Maybe<Array<Maybe<GcpNetwork>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
 };
 
@@ -151,12 +151,6 @@ export type GcpDnsPolicyAlternativeNameServerConfigTargetNameServer = {
   kind?: Maybe<Scalars['String']>;
   ipv4Address?: Maybe<Scalars['String']>;
   forwardingPath?: Maybe<Scalars['String']>;
-};
-
-export type GcpDnsPolicyNetwork = {
-  id: Scalars['String'];
-  kind?: Maybe<Scalars['String']>;
-  networkUrl?: Maybe<Scalars['String']>;
 };
 
 export type GcpDnsZoneDnssecConfigDefaultKeySpec = {
@@ -402,6 +396,7 @@ export type GcpNetwork = GcpBaseResource & {
   peerings?: Maybe<Array<Maybe<GcpNetworkPeering>>>;
   routingConfig?: Maybe<GcpNetworkRoutingConfig>;
   selfLink?: Maybe<Scalars['String']>;
+  dnsPolicy?: Maybe<Array<Maybe<GcpDnsPolicy>>>;
   firewall?: Maybe<Array<Maybe<GcpFirewall>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
   subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
