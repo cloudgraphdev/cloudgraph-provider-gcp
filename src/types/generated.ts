@@ -98,6 +98,235 @@ export type GcpAny = {
   value?: Maybe<Scalars['String']>;
 };
 
+export type GcpAsset = GcpBaseResource & {
+  updateTime?: Maybe<Scalars['String']>;
+  assetType?: Maybe<Scalars['String']>;
+  resource?: Maybe<GcpAssetResource>;
+  orgPolicy?: Maybe<Array<Maybe<GcpAssetOrgPolicy>>>;
+  accessPolicy?: Maybe<GcpAssetAccessPolicy>;
+  accessLevel?: Maybe<GcpAssetAccessLevel>;
+  servicePerimeter?: Maybe<GcpAssetServicePerimeter>;
+  osInventory?: Maybe<GcpAssetInventory>;
+  relatedAssets?: Maybe<GcpAssetRelatedAssets>;
+  ancestors?: Maybe<Array<Maybe<Scalars['String']>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
+export type GcpAssetAccessLevel = {
+  name?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  basic?: Maybe<GcpAssetBasicLevel>;
+  custom?: Maybe<GcpAssetCustomLevel>;
+  createTime?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+};
+
+export type GcpAssetAccessPolicy = {
+  name?: Maybe<Scalars['String']>;
+  parent?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  createTime?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+  etag?: Maybe<Scalars['String']>;
+};
+
+export type GcpAssetBasicLevel = {
+  conditions?: Maybe<Array<Maybe<GcpAssetCondition>>>;
+  combiningFunction?: Maybe<Scalars['String']>;
+};
+
+export type GcpAssetBooleanPolicy = {
+  enforced?: Maybe<Scalars['Boolean']>;
+};
+
+export type GcpAssetCondition = {
+  id: Scalars['String'];
+  ipSubnetworks?: Maybe<Array<Maybe<Scalars['String']>>>;
+  devicePolicy?: Maybe<GcpAssetDevicePolicy>;
+  requiredAccessLevels?: Maybe<Array<Maybe<Scalars['String']>>>;
+  negate?: Maybe<Scalars['Boolean']>;
+  members?: Maybe<Array<Maybe<Scalars['String']>>>;
+  regions?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type GcpAssetCustomLevel = {
+  expr?: Maybe<GcpExpr>;
+};
+
+export type GcpAssetDevicePolicy = {
+  requireScreenlock?: Maybe<Scalars['Boolean']>;
+  allowedEncryptionStatuses?: Maybe<Array<Maybe<Scalars['String']>>>;
+  osConstraints?: Maybe<Array<Maybe<GcpAssetOsConstraint>>>;
+  allowedDeviceManagementLevels?: Maybe<Array<Maybe<Scalars['String']>>>;
+  requireAdminApproval?: Maybe<Scalars['Boolean']>;
+  requireCorpOwned?: Maybe<Scalars['Boolean']>;
+};
+
+export type GcpAssetInventory = {
+  name?: Maybe<Scalars['String']>;
+  osInfo?: Maybe<GcpAssetOsInfo>;
+  items?: Maybe<Array<Maybe<GcpAssetItem>>>;
+  updateTime?: Maybe<Scalars['String']>;
+};
+
+export type GcpAssetItem = {
+  id: Scalars['String'];
+  key: Scalars['String'];
+  originType?: Maybe<Scalars['String']>;
+  createTime?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
+  installedPackage?: Maybe<GcpAssetSoftwarePackage>;
+  availablePackage?: Maybe<GcpAssetSoftwarePackage>;
+};
+
+export type GcpAssetListPolicy = {
+  allowedValues?: Maybe<Array<Maybe<Scalars['String']>>>;
+  deniedValues?: Maybe<Array<Maybe<Scalars['String']>>>;
+  allValues?: Maybe<Scalars['String']>;
+  suggestedValue?: Maybe<Scalars['String']>;
+  inheritFromParent?: Maybe<Scalars['Boolean']>;
+};
+
+export type GcpAssetOrgPolicy = {
+  id: Scalars['String'];
+  version?: Maybe<Scalars['Int']>;
+  constraint?: Maybe<Scalars['String']>;
+  etag?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+  listPolicy?: Maybe<GcpAssetListPolicy>;
+  booleanPolicy?: Maybe<GcpAssetBooleanPolicy>;
+};
+
+export type GcpAssetOsConstraint = {
+  id: Scalars['String'];
+  osType?: Maybe<Scalars['String']>;
+  minimumVersion?: Maybe<Scalars['String']>;
+  requireVerifiedChromeOs?: Maybe<Scalars['Boolean']>;
+};
+
+export type GcpAssetOsInfo = {
+  hostname?: Maybe<Scalars['String']>;
+  longName?: Maybe<Scalars['String']>;
+  shortName?: Maybe<Scalars['String']>;
+  version?: Maybe<Scalars['String']>;
+  architecture?: Maybe<Scalars['String']>;
+  kernelVersion?: Maybe<Scalars['String']>;
+  kernelRelease?: Maybe<Scalars['String']>;
+  osconfigAgentVersion?: Maybe<Scalars['String']>;
+};
+
+export type GcpAssetRelatedAsset = {
+  id: Scalars['String'];
+  asset?: Maybe<Scalars['String']>;
+  assetType?: Maybe<Scalars['String']>;
+  ancestors?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type GcpAssetRelatedAssets = {
+  relationshipAttributes?: Maybe<GcpAssetRelationshipAttributes>;
+  assets?: Maybe<Array<Maybe<GcpAssetRelatedAsset>>>;
+};
+
+export type GcpAssetRelationshipAttributes = {
+  type?: Maybe<Scalars['String']>;
+  sourceResourceType?: Maybe<Scalars['String']>;
+  targetResourceType?: Maybe<Scalars['String']>;
+  action?: Maybe<Scalars['String']>;
+};
+
+export type GcpAssetResource = {
+  version?: Maybe<Scalars['String']>;
+  discoveryDocumentUri?: Maybe<Scalars['String']>;
+  discoveryName?: Maybe<Scalars['String']>;
+  resourceUrl?: Maybe<Scalars['String']>;
+  parent?: Maybe<Scalars['String']>;
+  data?: Maybe<GcpStruct>;
+  location?: Maybe<Scalars['String']>;
+};
+
+export type GcpAssetServicePerimeter = {
+  name?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  createTime?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+  perimeterType?: Maybe<Scalars['String']>;
+  status?: Maybe<GcpAssetServicePerimeterConfig>;
+  spec?: Maybe<GcpAssetServicePerimeterConfig>;
+  useExplicitDryRunSpec?: Maybe<Scalars['Boolean']>;
+};
+
+export type GcpAssetServicePerimeterConfig = {
+  resources?: Maybe<Array<Maybe<Scalars['String']>>>;
+  accessLevels?: Maybe<Array<Maybe<Scalars['String']>>>;
+  restrictedServices?: Maybe<Array<Maybe<Scalars['String']>>>;
+  vpcAccessibleServices?: Maybe<GcpAssetVpcAccessibleServices>;
+};
+
+export type GcpAssetSoftwarePackage = {
+  yumPackage?: Maybe<GcpAssetVersionedPackage>;
+  aptPackage?: Maybe<GcpAssetVersionedPackage>;
+  zypperPackage?: Maybe<GcpAssetVersionedPackage>;
+  googetPackage?: Maybe<GcpAssetVersionedPackage>;
+  zypperPatch?: Maybe<GcpAssetZypperPatch>;
+  wuaPackage?: Maybe<GcpAssetWindowsUpdatePackage>;
+  qfePackage?: Maybe<GcpAssetWindowsQuickFixEngineeringPackage>;
+  cosPackage?: Maybe<GcpAssetVersionedPackage>;
+  windowsApplication?: Maybe<GcpAssetWindowsApplication>;
+};
+
+export type GcpAssetVersionedPackage = {
+  packageName?: Maybe<Scalars['String']>;
+  architecture?: Maybe<Scalars['String']>;
+  version?: Maybe<Scalars['String']>;
+};
+
+export type GcpAssetVpcAccessibleServices = {
+  enableRestriction?: Maybe<Scalars['Boolean']>;
+  allowedServices?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type GcpAssetWindowsApplication = {
+  displayName?: Maybe<Scalars['String']>;
+  displayVersion?: Maybe<Scalars['String']>;
+  publisher?: Maybe<Scalars['String']>;
+  installDate?: Maybe<Scalars['String']>;
+  helpLink?: Maybe<Scalars['String']>;
+};
+
+export type GcpAssetWindowsQuickFixEngineeringPackage = {
+  caption?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  hotFixId?: Maybe<Scalars['String']>;
+  installTime?: Maybe<Scalars['String']>;
+};
+
+export type GcpAssetWindowsUpdateCategory = {
+  id: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
+};
+
+export type GcpAssetWindowsUpdatePackage = {
+  title?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  categories?: Maybe<Array<Maybe<GcpAssetWindowsUpdateCategory>>>;
+  kbArticleIds?: Maybe<Array<Maybe<Scalars['String']>>>;
+  supportUrl?: Maybe<Scalars['String']>;
+  moreInfoUrls?: Maybe<Array<Maybe<Scalars['String']>>>;
+  updateId?: Maybe<Scalars['String']>;
+  revisionNumber?: Maybe<Scalars['Int']>;
+  lastDeploymentChangeTime?: Maybe<Scalars['String']>;
+};
+
+export type GcpAssetZypperPatch = {
+  patchName?: Maybe<Scalars['String']>;
+  category?: Maybe<Scalars['String']>;
+  severity?: Maybe<Scalars['String']>;
+  summary?: Maybe<Scalars['String']>;
+};
+
 export type GcpAttachedDisk = {
   id: Scalars['String'];
   autoDelete?: Maybe<Scalars['Boolean']>;
@@ -314,6 +543,13 @@ export type GcpDuration = {
   nanos?: Maybe<Scalars['Int']>;
 };
 
+export type GcpExpr = {
+  expression?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  location?: Maybe<Scalars['String']>;
+};
+
 export type GcpFileContentBuffer = {
   id: Scalars['String'];
   content?: Maybe<Scalars['String']>;
@@ -462,6 +698,10 @@ export type GcpLabelDescriptor = {
   key?: Maybe<Scalars['String']>;
   valueType?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
+};
+
+export type GcpListValue = {
+  values?: Maybe<Array<Maybe<GcpValue>>>;
 };
 
 export type GcpLogBucket = {
@@ -663,6 +903,7 @@ export type GcpProject = {
   network?: Maybe<Array<Maybe<GcpNetwork>>>;
   subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
   vmInstance?: Maybe<Array<Maybe<GcpVmInstance>>>;
+  assetInventory?: Maybe<Array<Maybe<GcpAsset>>>;
 };
 
 export type GcpRawLabel = {
@@ -807,6 +1048,10 @@ export type GcpStorageBucketIamConfigurationMetadata = {
   lockedTime?: Maybe<Scalars['String']>;
 };
 
+export type GcpStruct = {
+  fields?: Maybe<Array<Maybe<GcpValue>>>;
+};
+
 export type GcpSubnet = GcpBaseResource & {
   creationTimestamp?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
@@ -850,6 +1095,17 @@ export type GcpTag = {
   key: Scalars['String'];
   value: Scalars['String'];
   kms?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;
+};
+
+export type GcpValue = {
+  id: Scalars['String'];
+  key: Scalars['String'];
+  nullValue?: Maybe<Scalars['String']>;
+  numberValue?: Maybe<Scalars['Float']>;
+  stringValue?: Maybe<Scalars['String']>;
+  boolValue?: Maybe<Scalars['Boolean']>;
+  structValue?: Maybe<GcpStruct>;
+  listValue?: Maybe<GcpListValue>;
 };
 
 export type GcpVmInstance = GcpBaseResource & {

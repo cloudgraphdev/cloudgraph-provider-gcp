@@ -20,6 +20,7 @@ import GcpDnsPolicy from '../services/dnsPolicy'
 import GcpLogMetric from '../services/logMetric'
 import GcpAlertPolicy from '../services/alertPolicy'
 import GcpCloudFunction from '../services/cloudFunction'
+import GcpAsset from '../services/assetInventory'
 
 /**
  * serviceMap is an object that contains all currently supported services
@@ -46,5 +47,6 @@ export default {
   [services.logMetric]: GcpLogMetric,
   [services.alertPolicy]: GcpAlertPolicy,
   [services.cloudFunction]: GcpCloudFunction,
+  [services.assetInventory]: GcpAsset,
   tag: GcpTag,
 }
