@@ -94,7 +94,7 @@ export default class Provider extends CloudGraph.Client {
         const { addSubscription } = await this.interface.prompt([
           {
             type: 'confirm',
-            message: 'Configure another GCP subscription?',
+            message: 'Configure another GCP project?',
             name: 'addSubscription',
             default: true,
           },
