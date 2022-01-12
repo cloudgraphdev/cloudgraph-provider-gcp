@@ -1,3 +1,11 @@
+## [0.11.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.11.0...0.11.1) (2022-01-12)
+
+
+### Bug Fixes
+
+* name ([465855a](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/465855a3a1a44230f957cbe5dd1b42fa04915a76))
+* name ([db06753](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/db06753e1ae714dd40467579b8cf61d5f204b7d1))
+
 # [0.11.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.10.0...0.11.0) (2022-01-12)
 
 
