@@ -105,6 +105,75 @@ export type GcpDisplayDevice = {
   enableDisplay?: Maybe<Scalars['Boolean']>;
 };
 
+export type GcpDnsManagedZone = GcpBaseResource & {
+  kind?: Maybe<Scalars['String']>;
+  dnsName?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  nameServers?: Maybe<Array<Maybe<Scalars['String']>>>;
+  dnssecConfigKind?: Maybe<Scalars['String']>;
+  dnssecConfigState?: Maybe<Scalars['String']>;
+  dnssecConfigDefaultKeySpecs?: Maybe<Array<Maybe<GcpDnsZoneDnssecConfigDefaultKeySpec>>>;
+  dnssecConfigNonExistence?: Maybe<Scalars['String']>;
+  nameServerSet?: Maybe<Scalars['String']>;
+  visibility?: Maybe<Scalars['String']>;
+  privateVisibilityConfigKind?: Maybe<Scalars['String']>;
+  privateVisibilityConfigNetworks?: Maybe<Array<Maybe<GcpDnsZonePrivateVisibilityConfigNetwork>>>;
+  forwardingConfigKind?: Maybe<Scalars['String']>;
+  forwardingConfigTargetNameServers?: Maybe<Array<Maybe<GcpDnsZoneForwardingConfigTargetNameServer>>>;
+  labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
+  peeringConfigKind?: Maybe<Scalars['String']>;
+  peeringConfigTargetNetworkKind?: Maybe<Scalars['String']>;
+  peeringConfigTargetNetworkUrl?: Maybe<Scalars['String']>;
+  peeringConfigTargetNetworkDeactivateTime?: Maybe<Scalars['String']>;
+  reverseLookupConfigKind?: Maybe<Scalars['String']>;
+  serviceDirectoryConfigKind?: Maybe<Scalars['String']>;
+  serviceDirectoryConfigNamespaceKind?: Maybe<Scalars['String']>;
+  serviceDirectoryConfigNamespaceUrl?: Maybe<Scalars['String']>;
+  serviceDirectoryConfigNamespaceDeactivateTime?: Maybe<Scalars['String']>;
+  cloudLoggingConfigKind?: Maybe<Scalars['String']>;
+  cloudLoggingConfigEnableLogging?: Maybe<Scalars['Boolean']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
+export type GcpDnsPolicy = GcpBaseResource & {
+  kind?: Maybe<Scalars['String']>;
+  enableInboundForwarding?: Maybe<Scalars['Boolean']>;
+  description?: Maybe<Scalars['String']>;
+  alternativeNameServerConfigKind?: Maybe<Scalars['String']>;
+  alternativeNameServerConfigTargetNameServers?: Maybe<Array<Maybe<GcpDnsPolicyAlternativeNameServerConfigTargetNameServer>>>;
+  enableLogging?: Maybe<Scalars['Boolean']>;
+  network?: Maybe<Array<Maybe<GcpNetwork>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
+export type GcpDnsPolicyAlternativeNameServerConfigTargetNameServer = {
+  id: Scalars['String'];
+  kind?: Maybe<Scalars['String']>;
+  ipv4Address?: Maybe<Scalars['String']>;
+  forwardingPath?: Maybe<Scalars['String']>;
+};
+
+export type GcpDnsZoneDnssecConfigDefaultKeySpec = {
+  id: Scalars['String'];
+  kind?: Maybe<Scalars['String']>;
+  keyType?: Maybe<Scalars['String']>;
+  algorithm?: Maybe<Scalars['String']>;
+  keyLength?: Maybe<Scalars['Int']>;
+};
+
+export type GcpDnsZoneForwardingConfigTargetNameServer = {
+  id?: Maybe<Scalars['String']>;
+  kind?: Maybe<Scalars['String']>;
+  ipv4Address?: Maybe<Scalars['String']>;
+  forwardingPath?: Maybe<Scalars['String']>;
+};
+
+export type GcpDnsZonePrivateVisibilityConfigNetwork = {
+  id: Scalars['String'];
+  kind?: Maybe<Scalars['String']>;
+  networkUrl?: Maybe<Scalars['String']>;
+};
+
 export type GcpDuration = {
   seconds?: Maybe<Scalars['String']>;
   nanos?: Maybe<Scalars['Int']>;
@@ -327,6 +396,7 @@ export type GcpNetwork = GcpBaseResource & {
   peerings?: Maybe<Array<Maybe<GcpNetworkPeering>>>;
   routingConfig?: Maybe<GcpNetworkRoutingConfig>;
   selfLink?: Maybe<Scalars['String']>;
+  dnsPolicy?: Maybe<Array<Maybe<GcpDnsPolicy>>>;
   firewall?: Maybe<Array<Maybe<GcpFirewall>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
   subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
@@ -377,6 +447,8 @@ export type GcpProject = {
   deleteTime?: Maybe<Scalars['String']>;
   etag?: Maybe<Scalars['String']>;
   labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
+  dnsManagedZone?: Maybe<Array<Maybe<GcpDnsManagedZone>>>;
+  dnsPolicy?: Maybe<Array<Maybe<GcpDnsPolicy>>>;
   vpc?: Maybe<Array<Maybe<GcpVpcConnector>>>;
   kms?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;
   iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;

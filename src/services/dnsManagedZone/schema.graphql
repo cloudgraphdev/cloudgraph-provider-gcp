@@ -1,0 +1,67 @@
+type gcpDnsZoneDnssecConfigDefaultKeySpec
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  ) {
+    id: String! @id @search(by: [hash])
+    kind: String @search(by: [hash, regexp])
+    keyType: String @search(by: [hash, regexp])
+    algorithm: String @search(by: [hash, regexp])
+    keyLength: Int @search
+  }
+
+type gcpDnsZonePrivateVisibilityConfigNetwork
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  ) {
+    id: String! @id @search(by: [hash])
+    kind: String @search(by: [hash, regexp])
+    networkUrl: String @search(by: [hash, regexp])
+  }
+
+type gcpDnsZoneForwardingConfigTargetNameServer
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  ) {
+    id: String @search(by: [hash, regexp])
+    kind: String @search(by: [hash, regexp])
+    ipv4Address: String @search(by: [hash, regexp])
+    forwardingPath: String @search(by: [hash, regexp])
+  }
+
+type gcpDnsManagedZone implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  )
+  @key(fields: "id") {
+  kind: String @search(by: [hash, regexp])
+  dnsName: String @search(by: [hash, regexp])
+  description: String @search(by: [hash, regexp])
+  nameServers: [String] @search(by: [hash, regexp])
+  dnssecConfigKind: String @search(by: [hash, regexp])
+  dnssecConfigState: String @search(by: [hash, regexp])
+  dnssecConfigDefaultKeySpecs: [gcpDnsZoneDnssecConfigDefaultKeySpec]
+  dnssecConfigNonExistence: String @search(by: [hash, regexp])
+  nameServerSet: String @search(by: [hash, regexp])
+  visibility: String @search(by: [hash, regexp])
+  privateVisibilityConfigKind: String @search(by: [hash, regexp])
+  privateVisibilityConfigNetworks: [gcpDnsZonePrivateVisibilityConfigNetwork]
+  forwardingConfigKind: String @search(by: [hash, regexp])
+  forwardingConfigTargetNameServers: [gcpDnsZoneForwardingConfigTargetNameServer]
+  labels: [gcpRawLabel]
+  peeringConfigKind: String @search(by: [hash, regexp])
+  peeringConfigTargetNetworkKind: String @search(by: [hash, regexp])
+  peeringConfigTargetNetworkUrl: String @search(by: [hash, regexp])
+  peeringConfigTargetNetworkDeactivateTime: String @search(by: [hash, regexp])
+  reverseLookupConfigKind: String @search(by: [hash, regexp])
+  serviceDirectoryConfigKind: String @search(by: [hash, regexp])
+  serviceDirectoryConfigNamespaceKind: String @search(by: [hash, regexp])
+  serviceDirectoryConfigNamespaceUrl: String @search(by: [hash, regexp])
+  serviceDirectoryConfigNamespaceDeactivateTime: String @search(by: [hash, regexp])
+  cloudLoggingConfigKind: String @search(by: [hash, regexp])
+  cloudLoggingConfigEnableLogging: Boolean @search
+  project: [gcpProject] @hasInverse(field: dnsManagedZone)
+}

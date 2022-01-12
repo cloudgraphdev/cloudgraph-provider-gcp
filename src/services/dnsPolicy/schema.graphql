@@ -1,0 +1,26 @@
+type gcpDnsPolicyAlternativeNameServerConfigTargetNameServer
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  ) {
+    id: String! @id @search(by: [hash])
+    kind: String @search(by: [hash, regexp])
+    ipv4Address: String @search(by: [hash, regexp])
+    forwardingPath: String @search(by: [hash, regexp])
+  }
+
+type gcpDnsPolicy implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  )
+  @key(fields: "id") {
+  kind: String @search(by: [hash, regexp])
+  enableInboundForwarding: Boolean @search
+  description: String @search(by: [hash, regexp])
+  alternativeNameServerConfigKind: String @search(by: [hash, regexp])
+  alternativeNameServerConfigTargetNameServers: [gcpDnsPolicyAlternativeNameServerConfigTargetNameServer]
+  enableLogging: Boolean @search
+  network: [gcpNetwork] @hasInverse(field: dnsPolicy)
+  project: [gcpProject] @hasInverse(field: dnsPolicy)
+}
