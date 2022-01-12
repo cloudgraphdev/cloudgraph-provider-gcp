@@ -17,6 +17,7 @@ import GcpNetwork from '../services/network'
 import GcpSubnet from '../services/subnet'
 import GcpVmInstance from '../services/vmInstance'
 import GcpDnsPolicy from '../services/dnsPolicy'
+import GcpLogMetric from '../services/logMetric'
 
 /**
  * serviceMap is an object that contains all currently supported services
@@ -40,5 +41,6 @@ export default {
   [services.network]: GcpNetwork,
   [services.subnet]: GcpSubnet,
   [services.vmInstance]: GcpVmInstance,
+  [services.logMetric]: GcpLogMetric,
   tag: GcpTag,
 }

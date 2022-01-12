@@ -1,0 +1,96 @@
+type gcpLogMetric implements gcpBaseResource @key(fields: "id") {
+  description: String @search(by: [hash, regexp])
+  filter: String @search(by: [hash, regexp])
+  metricDescriptor: gcpLogMetricDescriptor
+  valueExtractor: String @search(by: [hash, regexp])
+  labelExtractors: [gcpRawLabel]
+  bucketOptions: gcpLogMetricBucketOptions
+  createTime: String @search(by: [hash, regexp])
+  updateTime: String @search(by: [hash, regexp])
+  version: String @search(by: [hash, regexp])
+  project: [gcpProject] @hasInverse(field: logMetric)
+}
+
+type gcpLogMetricDescriptor
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  name: String @search(by: [hash, regexp])
+  type: String @search(by: [hash, regexp])
+  labels: [gcpLabelDescriptor]
+  metricKind: String @search(by: [hash, regexp])
+  valueType: String @search(by: [hash, regexp])
+  unit: String @search(by: [hash, regexp])
+  description: String @search(by: [hash, regexp])
+  displayName: String @search(by: [hash, regexp])
+  metadata: gcpLogMetricDescriptorMetadata
+  launchStage: String @search(by: [hash, regexp])
+  monitoredResourceTypes: [String] @search(by: [hash])
+}
+
+type gcpLogMetricBucketOptions
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  linearBuckets: gcpLogMetricBucketOptionsLinear
+  exponentialBuckets: gcpLogMetricBucketOptionsExponential
+  explicitBuckets: gcpLogMetricBucketOptionsExplicit
+}
+
+type gcpLogMetricBucketOptionsLinear
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  numFiniteBuckets: Float @search
+  width: Float @search
+  offset: Float @search
+}
+
+type gcpLogMetricBucketOptionsExponential
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  numFiniteBuckets: Float @search
+  growthFactor: Float @search
+  scale: Float @search
+}
+
+type gcpLogMetricBucketOptionsExplicit
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  bounds: [Float] @search
+}
+
+type gcpLogMetricDescriptorMetadata
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  launchStage: String @search(by: [hash, regexp])
+  samplePeriod: gcpDuration
+  ingestDelay: gcpDuration
+}
+
+type gcpLabelDescriptor
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  key: String @search(by: [hash, regexp])
+  valueType: String @search(by: [hash, regexp])
+  description: String @search(by: [hash, regexp])
+}

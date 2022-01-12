@@ -322,6 +322,13 @@ export type GcpKmsKeyRing = GcpBaseResource & {
   project?: Maybe<Array<Maybe<GcpProject>>>;
 };
 
+export type GcpLabelDescriptor = {
+  id: Scalars['String'];
+  key?: Maybe<Scalars['String']>;
+  valueType?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+};
+
 export type GcpLogBucket = {
   id: Scalars['String'];
   projectId?: Maybe<Scalars['String']>;
@@ -345,6 +352,61 @@ export type GcpLogExclusion = {
   disabled?: Maybe<Scalars['Boolean']>;
   createTime?: Maybe<Scalars['String']>;
   updateTime?: Maybe<Scalars['String']>;
+};
+
+export type GcpLogMetric = GcpBaseResource & {
+  description?: Maybe<Scalars['String']>;
+  filter?: Maybe<Scalars['String']>;
+  metricDescriptor?: Maybe<GcpLogMetricDescriptor>;
+  valueExtractor?: Maybe<Scalars['String']>;
+  labelExtractors?: Maybe<Array<Maybe<GcpRawLabel>>>;
+  bucketOptions?: Maybe<GcpLogMetricBucketOptions>;
+  createTime?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+  version?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
+export type GcpLogMetricBucketOptions = {
+  linearBuckets?: Maybe<GcpLogMetricBucketOptionsLinear>;
+  exponentialBuckets?: Maybe<GcpLogMetricBucketOptionsExponential>;
+  explicitBuckets?: Maybe<GcpLogMetricBucketOptionsExplicit>;
+};
+
+export type GcpLogMetricBucketOptionsExplicit = {
+  bounds?: Maybe<Array<Maybe<Scalars['Float']>>>;
+};
+
+export type GcpLogMetricBucketOptionsExponential = {
+  numFiniteBuckets?: Maybe<Scalars['Float']>;
+  growthFactor?: Maybe<Scalars['Float']>;
+  scale?: Maybe<Scalars['Float']>;
+};
+
+export type GcpLogMetricBucketOptionsLinear = {
+  numFiniteBuckets?: Maybe<Scalars['Float']>;
+  width?: Maybe<Scalars['Float']>;
+  offset?: Maybe<Scalars['Float']>;
+};
+
+export type GcpLogMetricDescriptor = {
+  name?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
+  labels?: Maybe<Array<Maybe<GcpLabelDescriptor>>>;
+  metricKind?: Maybe<Scalars['String']>;
+  valueType?: Maybe<Scalars['String']>;
+  unit?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  displayName?: Maybe<Scalars['String']>;
+  metadata?: Maybe<GcpLogMetricDescriptorMetadata>;
+  launchStage?: Maybe<Scalars['String']>;
+  monitoredResourceTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type GcpLogMetricDescriptorMetadata = {
+  launchStage?: Maybe<Scalars['String']>;
+  samplePeriod?: Maybe<GcpDuration>;
+  ingestDelay?: Maybe<GcpDuration>;
 };
 
 export type GcpLogSink = {
@@ -453,6 +515,7 @@ export type GcpProject = {
   kms?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;
   iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
   logBucket?: Maybe<Array<Maybe<GcpLogBucket>>>;
+  logMetric?: Maybe<Array<Maybe<GcpLogMetric>>>;
   logView?: Maybe<Array<Maybe<GcpLogView>>>;
   logSink?: Maybe<Array<Maybe<GcpLogSink>>>;
   storageBucket?: Maybe<Array<Maybe<GcpStorageBucket>>>;

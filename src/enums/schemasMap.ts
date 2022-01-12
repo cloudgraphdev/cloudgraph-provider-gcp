@@ -20,5 +20,6 @@ export default {
   [services.network]: 'gcpNetwork',
   [services.subnet]: 'gcpSubnet',
   [services.vmInstance]: 'gcpVmInstance',
+  [services.logMetric]: 'gcpLogMetric',
   tag: 'gcpTag',
 }
