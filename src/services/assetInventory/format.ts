@@ -132,9 +132,6 @@ export default ({
       createTime: toISOString(servicePerimeter?.createTime?.seconds?.toString()),
       updateTime: toISOString(servicePerimeter?.updateTime?.seconds?.toString()),
       perimeterType: enumKeyToString(google.identity.accesscontextmanager.v1.ServicePerimeter.PerimeterType, servicePerimeter?.perimeterType),
-      spec: {
-
-      },
     },
     osInventory: {
       ...osInventory,
