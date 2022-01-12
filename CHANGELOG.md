@@ -1,3 +1,24 @@
+# [0.11.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.10.0...0.11.0) (2022-01-12)
+
+
+### Bug Fixes
+
+* **dns:** check error in response ([ecccff9](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/ecccff9bc7f467a829418e2c1a4dd5df6b0dddf1))
+* **dnsPolicy:** add network connection ([dd8a7fe](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/dd8a7fec7cb058f8e04f2eb0bf634a1b443f0f05))
+
+
+### Features
+
+* **dns:** add dns policies ([15b5ade](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/15b5adeef19491b6b104ce63bc9f6130fb10229c))
+* **dns:** add dns policies ([285f0f8](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/285f0f8c27428513db2bc07e2b0e52d9076d51c0))
+* **dns:** add dns to relations ([9d1bb1d](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/9d1bb1db85f99b9edc28928fbcea835e1c473ee3))
+* **dns:** rebase main and updates ([b1374e4](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/b1374e4e5b1da8f00e2d155c17082e32968c30cb))
+* **dns:** rebase main and updates ([387c10a](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/387c10af4d55862204720e18abefd9b4b8e9baaa))
+* **dns zone:** add gcp dns zone ([084fd84](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/084fd846836a712bc6fb1dc1dc813ec82a31e5d3))
+* **dns zone:** add gcp dns zone ([18e455d](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/18e455d45e94a403cded83ddec8bfa55b32e8e79))
+* **firewall:** add firewall service ([ade1a2a](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/ade1a2a556c6daaa9a290a29d595447a842f9846))
+* **secretManager:** add secret manager service ([ec06ed5](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/ec06ed58a83314198dead3bb641dfb5f0967c075))
+
 # [0.10.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.9.0...0.10.0) (2022-01-11)
 
 
