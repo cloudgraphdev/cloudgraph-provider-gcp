@@ -148,6 +148,48 @@ export type GcpBoolValue = {
   value?: Maybe<Scalars['Boolean']>;
 };
 
+export type GcpCloudFunction = GcpBaseResource & {
+  description?: Maybe<Scalars['String']>;
+  sourceArchiveUrl?: Maybe<Scalars['String']>;
+  sourceRepository?: Maybe<GcpCloudFunctionSourceRepository>;
+  sourceUploadUrl?: Maybe<Scalars['String']>;
+  httpsTrigger?: Maybe<GcpCloudFunctionHttpsTrigger>;
+  eventTrigger?: Maybe<GcpCloudFunctionEventTrigger>;
+  status?: Maybe<Scalars['String']>;
+  entryPoint?: Maybe<Scalars['String']>;
+  runtime?: Maybe<Scalars['String']>;
+  timeout?: Maybe<GcpDuration>;
+  availableMemoryMb?: Maybe<Scalars['Float']>;
+  serviceAccountEmail?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+  versionId?: Maybe<Scalars['String']>;
+  labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
+  environmentVariables?: Maybe<Array<Maybe<GcpItems>>>;
+  maxInstances?: Maybe<Scalars['Float']>;
+  vpcConnector?: Maybe<Scalars['String']>;
+  vpcConnectorEgressSettings?: Maybe<Scalars['String']>;
+  ingressSettings?: Maybe<Scalars['String']>;
+  buildId?: Maybe<Scalars['String']>;
+  network?: Maybe<Array<Maybe<GcpNetwork>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
+export type GcpCloudFunctionEventTrigger = {
+  eventType?: Maybe<Scalars['String']>;
+  resource?: Maybe<Scalars['String']>;
+  service?: Maybe<Scalars['String']>;
+};
+
+export type GcpCloudFunctionHttpsTrigger = {
+  url?: Maybe<Scalars['String']>;
+  securityLevel?: Maybe<Scalars['String']>;
+};
+
+export type GcpCloudFunctionSourceRepository = {
+  url?: Maybe<Scalars['String']>;
+  deployedUrl?: Maybe<Scalars['String']>;
+};
+
 export type GcpComputeAccessConfig = {
   id: Scalars['String'];
   kind?: Maybe<Scalars['String']>;
@@ -552,6 +594,7 @@ export type GcpNetwork = GcpBaseResource & {
   peerings?: Maybe<Array<Maybe<GcpNetworkPeering>>>;
   routingConfig?: Maybe<GcpNetworkRoutingConfig>;
   selfLink?: Maybe<Scalars['String']>;
+  cloudFunction?: Maybe<Array<Maybe<GcpCloudFunction>>>;
   dnsPolicy?: Maybe<Array<Maybe<GcpDnsPolicy>>>;
   firewall?: Maybe<Array<Maybe<GcpFirewall>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
@@ -604,6 +647,7 @@ export type GcpProject = {
   etag?: Maybe<Scalars['String']>;
   labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
   alertPolicy?: Maybe<Array<Maybe<GcpAlertPolicy>>>;
+  cloudFunction?: Maybe<Array<Maybe<GcpCloudFunction>>>;
   dnsManagedZone?: Maybe<Array<Maybe<GcpDnsManagedZone>>>;
   dnsPolicy?: Maybe<Array<Maybe<GcpDnsPolicy>>>;
   vpc?: Maybe<Array<Maybe<GcpVpcConnector>>>;

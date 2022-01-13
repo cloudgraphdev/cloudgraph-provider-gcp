@@ -20,7 +20,7 @@ export default {
   // bms: 'bms',
   // compute: 'compute',
   // container: 'container',
-  // functions: 'functions',
+  cloudFunction: 'cloudFunction',
   // run: 'run',
   // composer: 'composer',
   // dataCatalog: 'data-catalog',

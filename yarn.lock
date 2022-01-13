@@ -654,6 +654,13 @@
     lodash.groupby "^4.6.0"
     string-format-obj "^1.1.1"
 
+"@google-cloud/functions@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@google-cloud/functions/-/functions-1.2.0.tgz#cc4c91e8569e8cb56c544bd415b929efc49b338c"
+  integrity sha512-4S8zof8kK0mC7Co1KBYVwY0+fqjMbion9g2KgVCADv0hDK2N48U0S5xkHA6L3sECU3fte/C1Er/6dQYAuxF2Rw==
+  dependencies:
+    google-gax "^2.24.1"
+
 "@google-cloud/kms@^2.10.0":
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/@google-cloud/kms/-/kms-2.10.0.tgz#2aecda0b7f485db6a4cf5849aea0ba2a2c7b2587"

@@ -65,6 +65,7 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 | Service | Relations |
 | ------------------------ | ------------------------ |
 | alertPolicy              | project                  |
+| cloudFunction            | project, network         |
 | dnsManagedZone           | project                  |
 | dnsPolicy                | project, network         |
 | firewall                 | network, project         |
@@ -75,7 +76,7 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 | logMetric                | project                  |         
 | logSink                  | project                  |
 | logView                  | logBucket, project       |
-| network                  | dnsPolicy, firewall, project, subnet, vmInstance, vpc     |
+| network                  | cloudFunction, dnsPolicy, firewall, project, subnet, vmInstance, vpc     |
 | organization             | folder, project          |
 | project                  | ALL SERVICES             |
 | secretManager            | project                  |
