@@ -16,6 +16,7 @@ type gcpProject @key(fields: "id") {
   kms: [gcpKmsKeyRing] @hasInverse(field: project)
   iamPolicy: [gcpIamPolicy] @hasInverse(field: project)
   logBucket: [gcpLogBucket] @hasInverse(field: project)
+  logMetric: [gcpLogMetric] @hasInverse(field: project)
   logView: [gcpLogView] @hasInverse(field: project)
   logSink: [gcpLogSink] @hasInverse(field: project)
   storageBucket: [gcpStorageBucket] @hasInverse(field: project)

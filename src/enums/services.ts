@@ -57,6 +57,7 @@ export default {
   // deploymentManager: 'deployment-manager',
   // essentialContacts: 'essential-contacts',
   logBucket: 'logBucket',
+  logMetric: 'logMetric',
   logSink: 'logSink',
   logView: 'logView',
   organization: 'organization',
