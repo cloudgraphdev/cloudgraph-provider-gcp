@@ -1,4 +1,5 @@
 export default {
+  alertPolicy: 'alertPolicy',
   // ai: 'ai',
   // aiPlatform: 'ai-platform',
   // ml: 'ml',

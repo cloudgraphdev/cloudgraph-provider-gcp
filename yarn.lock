@@ -682,6 +682,13 @@
     stream-events "^1.0.5"
     uuid "^8.0.0"
 
+"@google-cloud/monitoring@^2.3.5":
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/@google-cloud/monitoring/-/monitoring-2.3.5.tgz#3f2d0b23402d51cca338e5700244cfda820e55fe"
+  integrity sha512-91+gobJMXEibKxnPOY3Q+ccFifQyRUdFpQ8uQ8acqWesxVj9ZH1VRm3ZpoleYWbbMe32cymhpGRamZ6t31veRQ==
+  dependencies:
+    google-gax "^2.24.1"
+
 "@google-cloud/paginator@^3.0.0":
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/@google-cloud/paginator/-/paginator-3.0.6.tgz#02a59dccd348d515069779a4f77a4a4fd15594da"

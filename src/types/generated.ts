@@ -33,10 +33,86 @@ export type GcpAdvancedMachineFeatures = {
   threadsPerCore?: Maybe<Scalars['Int']>;
 };
 
+export type GcpAlertPolicy = GcpBaseResource & {
+  displayName?: Maybe<Scalars['String']>;
+  documentation?: Maybe<GcpAlertPolicyDocumentation>;
+  userLabels?: Maybe<Array<Maybe<GcpRawLabel>>>;
+  conditions?: Maybe<Array<Maybe<GcpAlertPolicyCondition>>>;
+  combiner?: Maybe<Scalars['String']>;
+  enabled?: Maybe<GcpBoolValue>;
+  validity?: Maybe<GcpRpcStatus>;
+  notificationChannels?: Maybe<Array<Maybe<Scalars['String']>>>;
+  creationRecord?: Maybe<GcpAlertPolicyMutationRecord>;
+  mutationRecord?: Maybe<GcpAlertPolicyMutationRecord>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
+export type GcpAlertPolicyAggregation = {
+  id: Scalars['String'];
+  alignmentPeriod?: Maybe<GcpDuration>;
+  perSeriesAligner?: Maybe<Scalars['String']>;
+  crossSeriesReducer?: Maybe<Scalars['String']>;
+  groupByFields?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type GcpAlertPolicyCondition = {
+  id: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
+  displayName?: Maybe<Scalars['String']>;
+  conditionThreshold?: Maybe<GcpAlertPolicyMetricThreshold>;
+  conditionAbsent?: Maybe<GcpAlertPolicyMetricAbsence>;
+  conditionMonitoringQueryLanguage?: Maybe<GcpAlertPolicyMonitoringQueryLanguageCondition>;
+};
+
+export type GcpAlertPolicyDocumentation = {
+  content?: Maybe<Scalars['String']>;
+  mimeType?: Maybe<Scalars['String']>;
+};
+
+export type GcpAlertPolicyMetricAbsence = {
+  filter?: Maybe<Scalars['String']>;
+  aggregations?: Maybe<Array<Maybe<GcpAlertPolicyAggregation>>>;
+  duration?: Maybe<GcpDuration>;
+  trigger?: Maybe<GcpAlertPolicyTrigger>;
+};
+
+export type GcpAlertPolicyMetricThreshold = {
+  filter?: Maybe<Scalars['String']>;
+  aggregations?: Maybe<Array<Maybe<GcpAlertPolicyAggregation>>>;
+  denominatorFilter?: Maybe<Scalars['String']>;
+  denominatorAggregations?: Maybe<Array<Maybe<GcpAlertPolicyAggregation>>>;
+  comparison?: Maybe<Scalars['String']>;
+  thresholdValue?: Maybe<Scalars['Float']>;
+  duration?: Maybe<GcpDuration>;
+  trigger?: Maybe<GcpAlertPolicyTrigger>;
+};
+
+export type GcpAlertPolicyMonitoringQueryLanguageCondition = {
+  query?: Maybe<Scalars['String']>;
+  duration?: Maybe<GcpDuration>;
+  trigger?: Maybe<GcpAlertPolicyTrigger>;
+};
+
+export type GcpAlertPolicyMutationRecord = {
+  mutateTime?: Maybe<Scalars['String']>;
+  mutatedBy?: Maybe<Scalars['String']>;
+};
+
+export type GcpAlertPolicyTrigger = {
+  count?: Maybe<Scalars['Float']>;
+  percent?: Maybe<Scalars['Float']>;
+};
+
 export type GcpAliasIpRange = {
   id: Scalars['String'];
   ipCidrRange?: Maybe<Scalars['String']>;
   subnetworkRangeName?: Maybe<Scalars['String']>;
+};
+
+export type GcpAny = {
+  id: Scalars['String'];
+  type_url?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
 };
 
 export type GcpAttachedDisk = {
@@ -83,6 +159,10 @@ export type GcpBaseResource = {
 export type GcpBigQueryOptions = {
   usePartitionedTables?: Maybe<Scalars['Boolean']>;
   usesTimestampColumnPartitioning?: Maybe<Scalars['Boolean']>;
+};
+
+export type GcpBoolValue = {
+  value?: Maybe<Scalars['Boolean']>;
 };
 
 export type GcpComputeTags = {
@@ -509,6 +589,7 @@ export type GcpProject = {
   deleteTime?: Maybe<Scalars['String']>;
   etag?: Maybe<Scalars['String']>;
   labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
+  alertPolicy?: Maybe<Array<Maybe<GcpAlertPolicy>>>;
   dnsManagedZone?: Maybe<Array<Maybe<GcpDnsManagedZone>>>;
   dnsPolicy?: Maybe<Array<Maybe<GcpDnsPolicy>>>;
   vpc?: Maybe<Array<Maybe<GcpVpcConnector>>>;
@@ -544,6 +625,12 @@ export type GcpReservationAffinity = {
   consumeReservationType?: Maybe<Scalars['String']>;
   key?: Maybe<Scalars['String']>;
   values?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type GcpRpcStatus = {
+  code?: Maybe<Scalars['Float']>;
+  message?: Maybe<Scalars['String']>;
+  details?: Maybe<Array<Maybe<GcpAny>>>;
 };
 
 export type GcpScheduling = {

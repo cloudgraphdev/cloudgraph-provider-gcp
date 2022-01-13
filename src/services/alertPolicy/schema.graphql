@@ -1,0 +1,140 @@
+type gcpAlertPolicy implements gcpBaseResource @key(fields: "id") {
+  displayName: String @search(by: [hash, regexp])
+  documentation: gcpAlertPolicyDocumentation
+  userLabels: [gcpRawLabel]
+  conditions: [gcpAlertPolicyCondition]
+  combiner: String @search(by: [hash, regexp])
+  enabled: gcpBoolValue
+  validity: gcpRpcStatus
+  notificationChannels: [String] @search(by: [hash])
+  creationRecord: gcpAlertPolicyMutationRecord
+  mutationRecord: gcpAlertPolicyMutationRecord
+  project: [gcpProject] @hasInverse(field: alertPolicy)
+}
+
+type gcpAlertPolicyDocumentation
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  content: String @search(by: [hash, regexp])
+  mimeType: String @search(by: [hash, regexp])
+}
+
+type gcpAlertPolicyCondition
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  name: String @search(by: [hash, regexp])
+  displayName: String @search(by: [hash, regexp])
+  conditionThreshold: gcpAlertPolicyMetricThreshold
+  conditionAbsent: gcpAlertPolicyMetricAbsence
+  conditionMonitoringQueryLanguage: gcpAlertPolicyMonitoringQueryLanguageCondition
+}
+
+type gcpBoolValue
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  value: Boolean @search
+}
+
+type gcpRpcStatus
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  code: Float @search
+  message: String @search(by: [hash, regexp])
+  details: [gcpAny]
+}
+
+type gcpAlertPolicyMutationRecord
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  mutateTime: String @search(by: [hash, regexp])
+  mutatedBy: String @search(by: [hash, regexp])
+}
+
+type gcpAlertPolicyMetricThreshold
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  filter: String @search(by: [hash, regexp])
+  aggregations: [gcpAlertPolicyAggregation]
+  denominatorFilter: String @search(by: [hash, regexp])
+  denominatorAggregations: [gcpAlertPolicyAggregation]
+  comparison: String @search(by: [hash, regexp])
+  thresholdValue: Float @search
+  duration: gcpDuration
+  trigger: gcpAlertPolicyTrigger
+}
+
+type gcpAlertPolicyMetricAbsence
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  filter: String @search(by: [hash, regexp])
+  aggregations: [gcpAlertPolicyAggregation]
+  duration: gcpDuration
+  trigger: gcpAlertPolicyTrigger
+}
+
+type gcpAlertPolicyTrigger
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  count: Float @search
+  percent: Float @search
+}
+
+type gcpAlertPolicyAggregation
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  alignmentPeriod: gcpDuration
+  perSeriesAligner: String @search(by: [hash, regexp])
+  crossSeriesReducer: String @search(by: [hash, regexp])
+  groupByFields: [String] @search(by: [hash])
+}
+
+type gcpAlertPolicyMonitoringQueryLanguageCondition
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  query: String @search(by: [hash, regexp])
+  duration: gcpDuration
+  trigger: gcpAlertPolicyTrigger
+}
+
+type gcpAny
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  type_url: String @search(by: [hash, regexp])
+  value: String @search(by: [hash, regexp])
+}
