@@ -1,3 +1,10 @@
+# [0.12.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.11.1...0.12.0) (2022-01-13)
+
+
+### Features
+
+* **logMetric:** add logMetric service ([d9659db](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/d9659dbce2da19383fad9e5a3865ec28708788aa))
+
 ## [0.11.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.11.0...0.11.1) (2022-01-12)
 
 
