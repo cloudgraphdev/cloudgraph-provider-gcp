@@ -419,25 +419,83 @@ export type GcpBaseResource = {
 };
 
 export type GcpBigQueryConnection = GcpBaseResource & {
-  friendlyName?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
-  hasCredential?: Maybe<Scalars['Boolean']>;
-  creationTime?: Maybe<Scalars['String']>;
-  lastModifiedTime?: Maybe<Scalars['String']>;
-  cloudSqlInstanceId?: Maybe<Scalars['String']>;
-  cloudSqlDatabase?: Maybe<Scalars['String']>;
-  cloudSqlType?: Maybe<Scalars['String']>;
-  awsCrossAccountRoleIamRoleId?: Maybe<Scalars['String']>;
-  awsCrossAccountRoleIamUserId?: Maybe<Scalars['String']>;
-  awsCrossAccountRoleExternalId?: Maybe<Scalars['String']>;
   awsAccessRoleIamRoleId?: Maybe<Scalars['String']>;
   awsAccessRoleIdentity?: Maybe<Scalars['String']>;
+  awsCrossAccountRoleExternalId?: Maybe<Scalars['String']>;
+  awsCrossAccountRoleIamRoleId?: Maybe<Scalars['String']>;
+  awsCrossAccountRoleIamUserId?: Maybe<Scalars['String']>;
   cloudSpannerDatabase?: Maybe<Scalars['String']>;
   cloudSpannerUseParallelism?: Maybe<Scalars['Boolean']>;
+  cloudSqlDatabase?: Maybe<Scalars['String']>;
+  cloudSqlInstanceId?: Maybe<Scalars['String']>;
+  cloudSqlType?: Maybe<Scalars['String']>;
+  creationTime?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  friendlyName?: Maybe<Scalars['String']>;
+  hasCredential?: Maybe<Scalars['Boolean']>;
+  lastModifiedTime?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
+export type GcpBigQueryDataTransfer = GcpBaseResource & {
+  dataRefreshWindowDays?: Maybe<Scalars['Int']>;
+  dataSourceId?: Maybe<Scalars['String']>;
+  datasetRegion?: Maybe<Scalars['String']>;
+  destinationDatasetId?: Maybe<Scalars['String']>;
+  disabled?: Maybe<Scalars['Boolean']>;
+  displayName?: Maybe<Scalars['String']>;
+  enableFailureEmail?: Maybe<Scalars['Boolean']>;
+  nextRunTime?: Maybe<Scalars['String']>;
+  notificationPubsubTopic?: Maybe<Scalars['String']>;
+  paramFields?: Maybe<Array<Maybe<GcpBigQueryDataTransferParam>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  schedule?: Maybe<Scalars['String']>;
+  scheduleOptionsDisableAutoScheduling?: Maybe<Scalars['Boolean']>;
+  scheduleOptionsEndTime?: Maybe<Scalars['String']>;
+  scheduleOptionsStartTime?: Maybe<Scalars['String']>;
+  state?: Maybe<Scalars['String']>;
+  transferRun?: Maybe<Array<Maybe<GcpBigQueryDataTransferRun>>>;
+  updateTime?: Maybe<Scalars['String']>;
+  userId?: Maybe<Scalars['String']>;
+};
+
+export type GcpBigQueryDataTransferParam = {
+  id: Scalars['String'];
+  key?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type GcpBigQueryDataTransferRun = GcpBaseResource & {
+  dataSourceId?: Maybe<Scalars['String']>;
+  dataTransfer?: Maybe<Array<Maybe<GcpBigQueryDataTransfer>>>;
+  dataTransferId?: Maybe<Scalars['String']>;
+  destinationDatasetId?: Maybe<Scalars['String']>;
+  enableFailureEmail?: Maybe<Scalars['Boolean']>;
+  endTime?: Maybe<Scalars['String']>;
+  errorStatusCode?: Maybe<Scalars['Int']>;
+  errorStatusDetails?: Maybe<Array<Maybe<GcpBigQueryDataTransferRunErrorStatusDetail>>>;
+  errorStatusMessage?: Maybe<Scalars['String']>;
+  notificationPubsubTopic?: Maybe<Scalars['String']>;
+  paramFields?: Maybe<Array<Maybe<GcpBigQueryDataTransferParam>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  runTime?: Maybe<Scalars['String']>;
+  schedule?: Maybe<Scalars['String']>;
+  scheduleTime?: Maybe<Scalars['String']>;
+  startTime?: Maybe<Scalars['String']>;
+  state?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+  userId?: Maybe<Scalars['String']>;
+};
+
+export type GcpBigQueryDataTransferRunErrorStatusDetail = {
+  id: Scalars['String'];
+  typeUrl?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
 };
 
 export type GcpBigQueryDataset = GcpBaseResource & {
   friendlyName?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
   tables?: Maybe<Array<Maybe<GcpBigQueryTable>>>;
   totalTables?: Maybe<Scalars['Int']>;
 };
@@ -445,6 +503,33 @@ export type GcpBigQueryDataset = GcpBaseResource & {
 export type GcpBigQueryOptions = {
   usePartitionedTables?: Maybe<Scalars['Boolean']>;
   usesTimestampColumnPartitioning?: Maybe<Scalars['Boolean']>;
+};
+
+export type GcpBigQueryReservation = GcpBaseResource & {
+  creationTime?: Maybe<Scalars['String']>;
+  ignoreIdleSlots?: Maybe<Scalars['Boolean']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  slotCapacity?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+};
+
+export type GcpBigQueryReservationCapacityCommitment = GcpBaseResource & {
+  commitmentEndTime?: Maybe<Scalars['String']>;
+  commitmentStartTime?: Maybe<Scalars['String']>;
+  failureStatusCode?: Maybe<Scalars['Int']>;
+  failureStatusDetails?: Maybe<Array<Maybe<GcpBigQueryReservationCapacityCommitmentFailureStatusDetail>>>;
+  failureStatusMessage?: Maybe<Scalars['String']>;
+  plan?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  renewalPlan?: Maybe<Scalars['String']>;
+  slotCount?: Maybe<Scalars['String']>;
+  state?: Maybe<Scalars['String']>;
+};
+
+export type GcpBigQueryReservationCapacityCommitmentFailureStatusDetail = {
+  id: Scalars['String'];
+  typeUrl?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
 };
 
 export type GcpBigQueryTable = GcpBaseResource & {
@@ -1132,6 +1217,12 @@ export type GcpProject = {
   alertPolicy?: Maybe<Array<Maybe<GcpAlertPolicy>>>;
   apiKeys?: Maybe<Array<Maybe<GcpApiKey>>>;
   assets?: Maybe<Array<Maybe<GcpAsset>>>;
+  bigquery?: Maybe<Array<Maybe<GcpBigQueryDataset>>>;
+  bigqueryConnection?: Maybe<Array<Maybe<GcpBigQueryConnection>>>;
+  bigqueryDataTransfer?: Maybe<Array<Maybe<GcpBigQueryDataTransfer>>>;
+  bigqueryDataTransferRun?: Maybe<Array<Maybe<GcpBigQueryDataTransferRun>>>;
+  bigqueryReservation?: Maybe<Array<Maybe<GcpBigQueryReservation>>>;
+  bigqueryReservationCapacityCommitment?: Maybe<Array<Maybe<GcpBigQueryReservationCapacityCommitment>>>;
   cloudFunction?: Maybe<Array<Maybe<GcpCloudFunction>>>;
   computeProject?: Maybe<Array<Maybe<GcpComputeProject>>>;
   createTime?: Maybe<Scalars['String']>;

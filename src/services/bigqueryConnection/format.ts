@@ -15,6 +15,7 @@ export default ({
   region: string
 }): GcpBigQueryConnection => {
   const {
+    id,
     name,
     friendlyName,
     description,
@@ -27,7 +28,7 @@ export default ({
   } = service
 
   return {
-    id: name || cuid(),
+    id: id || cuid(),
     name,
     projectId: account,
     region,

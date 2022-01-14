@@ -88,7 +88,7 @@ type gcpBigQueryTable implements gcpBaseResource
     externalDataConfigurationSourceUris: [String] @search(by: [hash, regexp])
     externalDataConfigurationSchemaFields: [gcpBigQueryTableSchemaField]
     externalDataConfigurationSourceFormat: String @search(by: [hash, regexp])
-    externalDataConfigurationMaxBadRecords: Int @Search
+    externalDataConfigurationMaxBadRecords: Int @search
     externalDataConfigurationAutodetect: Boolean @search
     externalDataConfigurationIgnoreUnknownValues: Boolean @search
     externalDataConfigurationCompression: String @search(by: [hash, regexp])
@@ -131,4 +131,5 @@ type gcpBigQueryDataset implements gcpBaseResource
   friendlyName: String @search(by: [hash, regexp])
   totalTables: Int @search
   tables: [gcpBigQueryTable]
+  project: [gcpProject] @hasInverse(field: bigquery)
 }

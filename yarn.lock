@@ -710,6 +710,20 @@
   dependencies:
     google-gax "^2.24.1"
 
+"@google-cloud/bigquery-data-transfer@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@google-cloud/bigquery-data-transfer/-/bigquery-data-transfer-2.3.0.tgz#93f8fb920784b812b98fa91b45f8cf10b9bc8a89"
+  integrity sha512-T//vp5ujrorIc4M0+TvVVqDBV2fRvUMk4M9R7ZgAdCV+H/N9tUFWxy3fr1CN66Sacb7y0F7SsHVlWZ9TN5MpeA==
+  dependencies:
+    google-gax "^2.24.1"
+
+"@google-cloud/bigquery-reservation@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@google-cloud/bigquery-reservation/-/bigquery-reservation-1.4.0.tgz#7364be69d7a14cb4fda1df6fff35e5e522ff1cfa"
+  integrity sha512-gowMge29x1nTBEoCzorytCBqPbTym8iSwCzVyxcQ5gFBU51FQKkUEtzNyCpRiKpSJ1zdFScVFK7P4s2KRX4YvQ==
+  dependencies:
+    google-gax "^2.24.1"
+
 "@google-cloud/bigquery@^5.9.3":
   version "5.9.3"
   resolved "https://registry.yarnpkg.com/@google-cloud/bigquery/-/bigquery-5.9.3.tgz#498e35dd0dce944a0fe8aa5a6a629809aed9b633"

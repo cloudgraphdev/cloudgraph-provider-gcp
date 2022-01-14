@@ -12,6 +12,7 @@ const serviceName = 'BigQuery Connection'
 const apiEndpoint = initTestEndpoint(serviceName)
 
 export interface RawGcpBigqueryConnection extends google.cloud.bigquery.connection.v1.IConnection {
+  id: string
   projectId: string
   region: string
 }
@@ -33,6 +34,7 @@ export default async ({
       const connectionIter = connectionClient.listConnectionsAsync({parent})
       for await (const connection of connectionIter) {
         connectionResult.push({
+          id: connection.name,
           ...connection,
           projectId,
           region,

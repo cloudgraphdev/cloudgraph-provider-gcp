@@ -12,5 +12,6 @@ export default {
   [services.project]: [services.iamPolicy],
   [services.folder]: [services.iamPolicy],
   [services.kmsKeyRing]: [services.kmsCryptoKeys],
-  [services.kmsCryptoKeys]: [services.iamPolicy]
+  [services.kmsCryptoKeys]: [services.iamPolicy],
+  [services.bigQueryDataTransfer]: [services.bigQueryDataTransferRun],
 }

@@ -2,6 +2,10 @@ import services from './services'
 import GcpProject from '../services/project'
 import GcpBigQuery from '../services/bigquery'
 import GcpBigQueryConnection from '../services/bigqueryConnection'
+import GcpBigqueryReservation from '../services/bigqueryReservation'
+import GcpBigqueryReservationCapacityCommitment from '../services/bigqueryReservationCapacityCommitment'
+import GcpBigqueryDataTransfer from '../services/bigqueryDataTransfer'
+import GcpBigqueryDataTransferRun from '../services/bigqueryDataTransferRun'
 import GcpKmsKeyRing from '../services/kms'
 import GcpKmsCryptoKey from '../services/kmsCryptoKey'
 import GcpDnsManagedZone from '../services/dnsManagedZone'
@@ -41,6 +45,10 @@ export default {
   [services.project]: GcpProject,
   [services.bigquery]: GcpBigQuery,
   [services.bigqueryConnection]: GcpBigQueryConnection,
+  [services.bigqueryReservation]: GcpBigqueryReservation,
+  [services.bigqueryReservationCapacityCommitment]: GcpBigqueryReservationCapacityCommitment,
+  [services.bigqueryDataTransfer]: GcpBigqueryDataTransfer,
+  [services.bigqueryDataTransferRun]: GcpBigqueryDataTransferRun,
   [services.kmsKeyRing]: GcpKmsKeyRing,
   [services.kmsCryptoKeys]: GcpKmsCryptoKey,
   [services.dnsManagedZone]: GcpDnsManagedZone,
