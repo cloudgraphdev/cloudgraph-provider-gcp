@@ -78,16 +78,25 @@ export default ({
     updateTime: toISOString(updateTime?.seconds?.toString()),
     assetType,
     resource: {
-      ...resource,
+      version: resource?.version,
+      discoveryDocumentUri: resource?.discoveryDocumentUri,
+      discoveryName: resource?.discoveryName,
+      resourceUrl: resource?.resourceUrl,
+      parent: resource?.parent,
       data: {
         fields: Object.keys(resource?.data?.fields || {}).map(key => ({
           ...parseGcpValue(key, resource?.data?.fields[key]),
         })),
       },
+      location: resource?.location,
     },
     orgPolicy: orgPolicy?.map(policy => ({
       id: cuid(),
-      ...policy,
+      version: policy?.version,
+      constraint: policy?.constraint,
+      booleanPolicy: {
+        enforced: policy?.booleanPolicy?.enforced,
+      },
       etag: etagToString(policy?.etag),
       updateTime: toISOString(policy?.updateTime?.seconds?.toString()),
       listPolicy: {
@@ -96,12 +105,17 @@ export default ({
       },
     })),
     accessPolicy: {
-      ...accessPolicy,
+      name: accessPolicy?.name,
+      parent: accessPolicy?.parent,
+      title: accessPolicy?.title,
       createTime: toISOString(accessPolicy?.createTime?.seconds?.toString()),
       updateTime: toISOString(accessPolicy?.updateTime?.seconds?.toString()),
+      etag: accessPolicy?.etag,
     },
     accessLevel: {
-      ...accessLevel,
+      name: accessLevel?.name,
+      title: accessLevel?.title,
+      description: accessLevel?.description,
       basic: {
         ...accessLevel?.basic,
         conditions: accessLevel?.basic?.conditions?.map(condition => ({
@@ -124,21 +138,27 @@ export default ({
         })),
         combiningFunction: enumKeyToString(google.identity.accesscontextmanager.v1.BasicLevel.ConditionCombiningFunction, accessLevel?.basic?.combiningFunction),
       },
+      custom: accessLevel?.custom,
       createTime: toISOString(accessLevel?.createTime?.seconds?.toString()),
       updateTime: toISOString(accessLevel?.updateTime?.seconds?.toString()),
     },
     servicePerimeter: {
-      ...servicePerimeter,
+      name: servicePerimeter?.name,
+      title: servicePerimeter?.title,
+      description: servicePerimeter?.description,
       createTime: toISOString(servicePerimeter?.createTime?.seconds?.toString()),
       updateTime: toISOString(servicePerimeter?.updateTime?.seconds?.toString()),
       perimeterType: enumKeyToString(google.identity.accesscontextmanager.v1.ServicePerimeter.PerimeterType, servicePerimeter?.perimeterType),
+      status: servicePerimeter?.status,
+      spec: servicePerimeter?.spec,
+      useExplicitDryRunSpec: servicePerimeter?.useExplicitDryRunSpec,
     },
     osInventory: {
-      ...osInventory,
+      name: osInventory?.name,
+      osInfo: osInventory?.osInfo,
       items: Object.keys(osInventory?.items || {}).map(key => ({
         id: cuid(),
         key,
-        ...osInventory?.items[key],
         originType: enumKeyToString(google.cloud.osconfig.v1.Inventory.Item.OriginType, osInventory?.items[key]?.originType),
         createTime: toISOString(osInventory?.items[key]?.createTime?.seconds?.toString()),
         updateTime: toISOString(osInventory?.items[key]?.updateTime?.seconds?.toString()),
@@ -149,7 +169,7 @@ export default ({
       updateTime: toISOString(osInventory?.updateTime?.seconds?.toString()),
     },
     relatedAssets: {
-      ...relatedAssets,
+      relationshipAttributes: relatedAssets?.relationshipAttributes,
       assets: relatedAssets?.assets?.map(asset => ({
         id: cuid(),
         ...asset,
