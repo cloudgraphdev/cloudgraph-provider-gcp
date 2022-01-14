@@ -1,3 +1,10 @@
+# [0.13.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.12.0...0.13.0) (2022-01-14)
+
+
+### Features
+
+* **alertPolicy:** add alert policy service ([4bb86bc](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/4bb86bc8e7de36cbcb385b352803247eceaa959e))
+
 # [0.12.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.11.1...0.12.0) (2022-01-13)
 
 
