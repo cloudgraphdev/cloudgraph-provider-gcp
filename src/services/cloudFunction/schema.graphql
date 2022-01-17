@@ -16,12 +16,11 @@ type gcpCloudFunction implements gcpBaseResource @key(fields: "id") {
   labels: [gcpRawLabel]
   environmentVariables: [gcpItems]
   maxInstances: Float @search
-  vpcConnector: String @search(by: [hash, regexp])
   vpcConnectorEgressSettings: String @search(by: [hash, regexp])
   ingressSettings: String @search(by: [hash, regexp])
   buildId: String @search(by: [hash, regexp])
-  network: [gcpNetwork] @hasInverse(field: cloudFunction)
   project: [gcpProject] @hasInverse(field: cloudFunction)
+  vpc: [gcpVpcConnector] @hasInverse(field: cloudFunction)
 }
 
 type gcpCloudFunctionSourceRepository

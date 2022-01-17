@@ -12,10 +12,11 @@ const { logger } = CloudGraph
 const serviceName = 'Cloud Function'
 const apiEndpoint = initTestEndpoint(serviceName)
 
-export interface RawGcpCloudFunction extends google.cloud.functions.v1.ICloudFunction {
+export interface RawGcpCloudFunction extends Omit<google.cloud.functions.v1.ICloudFunction, 'vpcConnector'> {
   id: string
   projectId: string
   region: string
+  vpcConnector: string[]
 }
 
 export default async ({
@@ -45,6 +46,7 @@ export default async ({
               id: cuid(),
               projectId,
               region,
+              vpcConnector: [response?.vpcConnector],
             })
           }
         }

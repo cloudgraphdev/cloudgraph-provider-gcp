@@ -166,12 +166,11 @@ export type GcpCloudFunction = GcpBaseResource & {
   labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
   environmentVariables?: Maybe<Array<Maybe<GcpItems>>>;
   maxInstances?: Maybe<Scalars['Float']>;
-  vpcConnector?: Maybe<Scalars['String']>;
   vpcConnectorEgressSettings?: Maybe<Scalars['String']>;
   ingressSettings?: Maybe<Scalars['String']>;
   buildId?: Maybe<Scalars['String']>;
-  network?: Maybe<Array<Maybe<GcpNetwork>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
+  vpc?: Maybe<Array<Maybe<GcpVpcConnector>>>;
 };
 
 export type GcpCloudFunctionEventTrigger = {
@@ -594,7 +593,6 @@ export type GcpNetwork = GcpBaseResource & {
   peerings?: Maybe<Array<Maybe<GcpNetworkPeering>>>;
   routingConfig?: Maybe<GcpNetworkRoutingConfig>;
   selfLink?: Maybe<Scalars['String']>;
-  cloudFunction?: Maybe<Array<Maybe<GcpCloudFunction>>>;
   dnsPolicy?: Maybe<Array<Maybe<GcpDnsPolicy>>>;
   firewall?: Maybe<Array<Maybe<GcpFirewall>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
@@ -906,6 +904,7 @@ export type GcpVpcConnector = {
   minThroughput?: Maybe<Scalars['Int']>;
   maxThroughput?: Maybe<Scalars['Int']>;
   connectedProjects?: Maybe<Array<Maybe<Scalars['String']>>>;
+  cloudFunction?: Maybe<Array<Maybe<GcpCloudFunction>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
   network?: Maybe<Array<Maybe<GcpNetwork>>>;
   subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
