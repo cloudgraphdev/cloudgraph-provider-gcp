@@ -20,6 +20,7 @@ type gcpVmInstance implements gcpBaseResource @key(fields: "id") {
   machineType: String @search(by: [hash, regexp])
   metadata: gcpMetadata
   minCpuPlatform: String @search(by: [hash, regexp])
+  networkInterfaces: [gcpComputeNetworkInterface]
   privateIpv6GoogleAccess: String @search(by: [hash, regexp])
   reservationAffinity: gcpReservationAffinity
   resourcePolicies: [String] @search(by: [hash])
@@ -234,33 +235,6 @@ type gcpFileContentBuffer
   fileType: String @search(by: [hash, regexp])
 }
 
-type gcpAccessConfig
-  @generate(
-    query: { get: false, query: true, aggregate: false }
-    mutation: { add: false, delete: false }
-    subscription: false
-  ) {
-  id: String! @id
-  kind: String @search(by: [hash, regexp])
-  name: String @search(by: [hash, regexp])
-  natIP: String @search(by: [hash, regexp])
-  networkTier: String @search(by: [hash, regexp])
-  publicPtrDomainName: String @search(by: [hash, regexp])
-  setPublicPtr: Boolean @search
-  type: String @search(by: [hash, regexp])
-}
-
-type gcpAliasIpRange
-  @generate(
-    query: { get: false, query: true, aggregate: false }
-    mutation: { add: false, delete: false }
-    subscription: false
-  ) {
-  id: String! @id
-  ipCidrRange: String @search(by: [hash, regexp])
-  subnetworkRangeName: String @search(by: [hash, regexp])
-}
-
 type gcpSchedulingNodeAffinity
   @generate(
     query: { get: false, query: true, aggregate: false }
@@ -292,4 +266,50 @@ type gcpComputeTags
   ) {
   fingerprint: String @search(by: [hash, regexp])
   items: [String] @search(by: [hash])
+}
+
+type gcpComputeAccessConfig
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  kind: String @search(by: [hash, regexp])
+  name: String @search(by: [hash, regexp])
+  natIP: String @search(by: [hash, regexp])
+  networkTier: String @search(by: [hash, regexp])
+  publicPtrDomainName: String @search(by: [hash, regexp])
+  setPublicPtr: Boolean @search
+  type: String @search(by: [hash, regexp])
+}
+
+type gcpComputeAliasIpRange
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  ipCidrRange: String @search(by: [hash, regexp])
+  subnetworkRangeName: String @search(by: [hash, regexp])
+}
+
+type gcpComputeNetworkInterface
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  accessConfigs: [gcpComputeAccessConfig]
+  aliasIpRanges: [gcpComputeAliasIpRange]
+  fingerprint: String @search(by: [hash, regexp])
+  ipv6Address: String @search(by: [hash, regexp])
+  kind: String @search(by: [hash, regexp])
+  name: String @search(by: [hash, regexp])
+  network: String @search(by: [hash, regexp])
+  networkIP: String @search(by: [hash, regexp])
+  nicType: String @search(by: [hash, regexp])
+  subnetwork: String @search(by: [hash, regexp])
 }
