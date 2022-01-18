@@ -17,17 +17,6 @@ export type GcpAcceleratorConfig = {
   acceleratorType?: Maybe<Scalars['String']>;
 };
 
-export type GcpAccessConfig = {
-  id: Scalars['String'];
-  kind?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  natIP?: Maybe<Scalars['String']>;
-  networkTier?: Maybe<Scalars['String']>;
-  publicPtrDomainName?: Maybe<Scalars['String']>;
-  setPublicPtr?: Maybe<Scalars['Boolean']>;
-  type?: Maybe<Scalars['String']>;
-};
-
 export type GcpAdvancedMachineFeatures = {
   enableNestedVirtualization?: Maybe<Scalars['Boolean']>;
   threadsPerCore?: Maybe<Scalars['Int']>;
@@ -103,12 +92,6 @@ export type GcpAlertPolicyTrigger = {
   percent?: Maybe<Scalars['Float']>;
 };
 
-export type GcpAliasIpRange = {
-  id: Scalars['String'];
-  ipCidrRange?: Maybe<Scalars['String']>;
-  subnetworkRangeName?: Maybe<Scalars['String']>;
-};
-
 export type GcpAny = {
   id: Scalars['String'];
   type_url?: Maybe<Scalars['String']>;
@@ -163,6 +146,37 @@ export type GcpBigQueryOptions = {
 
 export type GcpBoolValue = {
   value?: Maybe<Scalars['Boolean']>;
+};
+
+export type GcpComputeAccessConfig = {
+  id: Scalars['String'];
+  kind?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  natIP?: Maybe<Scalars['String']>;
+  networkTier?: Maybe<Scalars['String']>;
+  publicPtrDomainName?: Maybe<Scalars['String']>;
+  setPublicPtr?: Maybe<Scalars['Boolean']>;
+  type?: Maybe<Scalars['String']>;
+};
+
+export type GcpComputeAliasIpRange = {
+  id: Scalars['String'];
+  ipCidrRange?: Maybe<Scalars['String']>;
+  subnetworkRangeName?: Maybe<Scalars['String']>;
+};
+
+export type GcpComputeNetworkInterface = {
+  id: Scalars['String'];
+  accessConfigs?: Maybe<Array<Maybe<GcpComputeAccessConfig>>>;
+  aliasIpRanges?: Maybe<Array<Maybe<GcpComputeAliasIpRange>>>;
+  fingerprint?: Maybe<Scalars['String']>;
+  ipv6Address?: Maybe<Scalars['String']>;
+  kind?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  network?: Maybe<Scalars['String']>;
+  networkIP?: Maybe<Scalars['String']>;
+  nicType?: Maybe<Scalars['String']>;
+  subnetwork?: Maybe<Scalars['String']>;
 };
 
 export type GcpComputeTags = {
@@ -818,6 +832,7 @@ export type GcpVmInstance = GcpBaseResource & {
   machineType?: Maybe<Scalars['String']>;
   metadata?: Maybe<GcpMetadata>;
   minCpuPlatform?: Maybe<Scalars['String']>;
+  networkInterfaces?: Maybe<Array<Maybe<GcpComputeNetworkInterface>>>;
   privateIpv6GoogleAccess?: Maybe<Scalars['String']>;
   reservationAffinity?: Maybe<GcpReservationAffinity>;
   resourcePolicies?: Maybe<Array<Maybe<Scalars['String']>>>;
