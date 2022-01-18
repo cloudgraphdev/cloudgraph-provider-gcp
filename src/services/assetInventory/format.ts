@@ -1,10 +1,9 @@
 import cuid from 'cuid'
 import { google } from '@google-cloud/asset/build/protos/protos'
-import { etagToString } from '../../utils/format'
 import { GcpAsset, GcpValue, GcpAssetSoftwarePackage } from '../../types/generated'
 import { RawGcpAsset } from './data'
 import { toISOString } from '../../utils/dateutils'
-import { enumKeyToString } from '../../utils/format'
+import { enumKeyToString, etagToString } from '../../utils/format'
 
 const parseGcpValue = (key: string, gcpValue: google.protobuf.IValue): GcpValue => ({
   id: cuid(),
