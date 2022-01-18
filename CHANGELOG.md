@@ -1,3 +1,16 @@
+# [0.14.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.13.1...0.14.0) (2022-01-18)
+
+
+### Bug Fixes
+
+* **cloudFunction:** add vpc connection, drop network connection ([5bda459](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/5bda459942431ff2f923c04d5e98bdc132d16e1b))
+* **cloudFunction:** update connections in readme ([d3a2a6d](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/d3a2a6d59ba7fbab57cb5d34f1409a0e645a5de3))
+
+
+### Features
+
+* **cloudFunction:** add cloud function service ([b5d12d7](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/b5d12d7d4548692969afed267d39e487eca46e22))
+
 ## [0.13.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.13.0...0.13.1) (2022-01-18)
 
 
