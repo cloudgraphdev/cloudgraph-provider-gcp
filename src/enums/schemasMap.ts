@@ -25,5 +25,6 @@ export default {
   [services.alertPolicy]: 'gcpAlertPolicy',
   [services.cloudFunction]: 'gcpCloudFunction',
   [services.assets]: 'gcpAsset',
+  [services.targetSslProxy]: 'gcpTargetSslProxy',
   tag: 'gcpTag',
 }
