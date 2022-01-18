@@ -1,3 +1,10 @@
+## [0.13.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.13.0...0.13.1) (2022-01-18)
+
+
+### Bug Fixes
+
+* **vmInstance:** add network interfaces ([b7d28d5](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/b7d28d518d694f7040708bff95e1e1a639391e39))
+
 # [0.13.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.12.0...0.13.0) (2022-01-14)
 
 
