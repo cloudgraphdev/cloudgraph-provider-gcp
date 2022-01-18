@@ -29,6 +29,7 @@ type gcpProject @key(fields: "id") {
   network: [gcpNetwork] @hasInverse(field: project)
   subnet: [gcpSubnet] @hasInverse(field: project)
   targetSslProxies: [gcpTargetSslProxy] @hasInverse(field: project)
+  targetHttpsProxy: [gcpTargetHttpsProxy] @hasInverse(field: project)
   vmInstance: [gcpVmInstance] @hasInverse(field: project)
   assets: [gcpAsset] @hasInverse(field: project)
 }
