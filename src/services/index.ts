@@ -28,10 +28,7 @@ export default class Provider extends CloudGraph.Client {
   constructor(config: any) {
     super(config)
     this.properties = enums
-    this.policies = config.provider.policies
   }
-
-  private policies: string[] | undefined
 
   private properties: {
     services: { [key: string]: string }
@@ -82,8 +79,8 @@ export default class Provider extends CloudGraph.Client {
   }
 
   async configure(): Promise<{ [key: string]: any }> {
-    const result: { [key: string]: any } = {}
-    const { flags } = this.config
+    const { flags = {}, cloudGraphConfig, ...providerSettings } = this.config
+    const result: { [key: string]: any } = { ...providerSettings }
 
     const accounts: GcpCredentials[] = []
 
@@ -179,8 +176,6 @@ export default class Provider extends CloudGraph.Client {
       result.regions,
       result.resources
     )
-
-    result.policies = this.policies || []
 
     return result
   }
