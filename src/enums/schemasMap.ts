@@ -22,5 +22,6 @@ export default {
   [services.vmInstance]: 'gcpVmInstance',
   [services.logMetric]: 'gcpLogMetric',
   [services.alertPolicy]: 'gcpAlertPolicy',
+  [services.cloudFunction]: 'gcpCloudFunction',
   tag: 'gcpTag',
 }

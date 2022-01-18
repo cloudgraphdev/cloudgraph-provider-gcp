@@ -30,4 +30,5 @@ export interface rawDataInterface {
   data: any
   network?: string[]
   subnet?: string[]
+  vpcConnector?: string[]
 }

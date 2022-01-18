@@ -1,0 +1,55 @@
+type gcpCloudFunction implements gcpBaseResource @key(fields: "id") {
+  description: String @search(by: [hash, regexp])
+  sourceArchiveUrl: String @search(by: [hash, regexp])
+  sourceRepository: gcpCloudFunctionSourceRepository
+  sourceUploadUrl: String @search(by: [hash, regexp])
+  httpsTrigger: gcpCloudFunctionHttpsTrigger
+  eventTrigger: gcpCloudFunctionEventTrigger
+  status: String @search(by: [hash, regexp])
+  entryPoint: String @search(by: [hash, regexp])
+  runtime: String @search(by: [hash, regexp])
+  timeout: gcpDuration
+  availableMemoryMb: Float @search
+  serviceAccountEmail: String @search(by: [hash, regexp])
+  updateTime: String @search(by: [hash, regexp])
+  versionId: String @search(by: [hash, regexp])
+  labels: [gcpRawLabel]
+  environmentVariables: [gcpItems]
+  maxInstances: Float @search
+  vpcConnectorEgressSettings: String @search(by: [hash, regexp])
+  ingressSettings: String @search(by: [hash, regexp])
+  buildId: String @search(by: [hash, regexp])
+  project: [gcpProject] @hasInverse(field: cloudFunction)
+  vpc: [gcpVpcConnector] @hasInverse(field: cloudFunction)
+}
+
+type gcpCloudFunctionSourceRepository
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  url: String @search(by: [hash, regexp])
+  deployedUrl: String @search(by: [hash, regexp])
+}
+
+type gcpCloudFunctionHttpsTrigger
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  url: String @search(by: [hash, regexp])
+  securityLevel: String @search(by: [hash, regexp])
+}
+
+type gcpCloudFunctionEventTrigger
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  eventType: String @search(by: [hash, regexp])
+  resource: String @search(by: [hash, regexp])
+  service: String @search(by: [hash, regexp])
+}
