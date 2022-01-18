@@ -28,7 +28,10 @@ export default class Provider extends CloudGraph.Client {
   constructor(config: any) {
     super(config)
     this.properties = enums
+    this.policies = config.provider.policies
   }
+
+  private policies: string[] | undefined
 
   private properties: {
     services: { [key: string]: string }
@@ -51,7 +54,7 @@ export default class Provider extends CloudGraph.Client {
         type: 'input',
         message: 'Please input the account email address: ',
         name: 'email',
-        when: (answers) => answers.keyFilename.match(/^.*\.(pem|p12)/g)
+        when: answers => answers.keyFilename.match(/^.*\.(pem|p12)/g),
       },
     ])
   }
@@ -74,9 +77,7 @@ export default class Provider extends CloudGraph.Client {
 
   private printGcpCredentials(account: GcpCredentials): void {
     this.logger.success(
-      `projectId: ${chalk.underline.green(
-        account.projectId
-      )}`
+      `projectId: ${chalk.underline.green(account.projectId)}`
     )
   }
 
@@ -103,11 +104,8 @@ export default class Provider extends CloudGraph.Client {
           break
         }
       }
-      const {
-        projectId,
-        keyFilename,
-        email,
-      }: GcpCredentials = await this.askForGcpCredentials()
+      const { projectId, keyFilename, email }: GcpCredentials =
+        await this.askForGcpCredentials()
       if (projectId && keyFilename) {
         accounts.push({
           projectId,
@@ -181,6 +179,9 @@ export default class Provider extends CloudGraph.Client {
       result.regions,
       result.resources
     )
+
+    result.policies = this.policies || []
+
     return result
   }
 
@@ -355,7 +356,7 @@ export default class Provider extends CloudGraph.Client {
     const crawledAccounts = []
     for (const account of configuredAccounts) {
       const { projectId } = account
-      
+
       if (!crawledAccounts.find(val => val === projectId)) {
         crawledAccounts.push(projectId)
         const newRawData = await this.getRawData(account, opts)
@@ -368,7 +369,7 @@ export default class Provider extends CloudGraph.Client {
         )
       }
     }
-    
+
     // Handle global tag entities
     try {
       for (const { data: entityData } of rawData) {
