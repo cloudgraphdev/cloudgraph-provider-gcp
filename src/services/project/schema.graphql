@@ -24,6 +24,7 @@ type gcpProject @key(fields: "id") {
   bigQueryDataTransferRun: [gcpBigQueryDataTransferRun] @hasInverse(field: project)
   vpcConnectors: [gcpVpcConnector] @hasInverse(field: project)
   kmsKeyRing: [gcpKmsKeyRing] @hasInverse(field: project)
+  cloudRouter: [gcpCloudRouter] @hasInverse(field: project)
   iamPolicy: [gcpIamPolicy] @hasInverse(field: project)
   logBucket: [gcpLogBucket] @hasInverse(field: project)
   logMetric: [gcpLogMetric] @hasInverse(field: project)

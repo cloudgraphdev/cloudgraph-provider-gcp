@@ -680,6 +680,84 @@ export type GcpCloudFunctionSourceRepository = {
   url?: Maybe<Scalars['String']>;
 };
 
+export type GcpCloudRouter = GcpBaseResource & {
+  bgpAdvertiseMode?: Maybe<Scalars['String']>;
+  bgpAdvertisedGroups?: Maybe<Array<Maybe<Scalars['String']>>>;
+  bgpAdvertisedIpRanges?: Maybe<Array<Maybe<GcpCloudRouterBgpAdvertisedIpRange>>>;
+  bgpAsn?: Maybe<Scalars['Int']>;
+  bgpPeers?: Maybe<Array<Maybe<GcpCloudRouterBgpPeer>>>;
+  creationTimestamp?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  encryptedInterconnectRouter?: Maybe<Scalars['Boolean']>;
+  interfaces?: Maybe<Array<Maybe<GcpCloudRouterInterface>>>;
+  kind?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  nats?: Maybe<Array<Maybe<GcpCloudRouterNat>>>;
+  network?: Maybe<Scalars['String']>;
+  selfLink?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
+export type GcpCloudRouterBgpAdvertisedIpRange = {
+  id: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  range?: Maybe<Scalars['String']>;
+};
+
+export type GcpCloudRouterBgpPeer = {
+  id: Scalars['String'];
+  advertiseMode?: Maybe<Scalars['String']>;
+  advertisedGroups?: Maybe<Array<Maybe<Scalars['String']>>>;
+  advertisedIpRanges?: Maybe<Array<Maybe<GcpCloudRouterBgpPeerAdvertisedIpRange>>>;
+  advertisedRoutePriority?: Maybe<Scalars['Int']>;
+  interfaceName?: Maybe<Scalars['String']>;
+  ipAddress?: Maybe<Scalars['String']>;
+  managementType?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  peerAsn?: Maybe<Scalars['Int']>;
+  peerIpAddress?: Maybe<Scalars['String']>;
+};
+
+export type GcpCloudRouterBgpPeerAdvertisedIpRange = {
+  id: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  range?: Maybe<Scalars['String']>;
+};
+
+export type GcpCloudRouterInterface = {
+  id: Scalars['String'];
+  ipRange?: Maybe<Scalars['String']>;
+  linkedInterconnectAttachment?: Maybe<Scalars['String']>;
+  linkedVpnTunnel?: Maybe<Scalars['String']>;
+  managementType?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type GcpCloudRouterNat = {
+  id: Scalars['String'];
+  drainNatIps?: Maybe<Array<Maybe<Scalars['String']>>>;
+  enableEndpointIndependentMapping?: Maybe<Scalars['Boolean']>;
+  icmpIdleTimeoutSec?: Maybe<Scalars['Int']>;
+  logConfigEnable?: Maybe<Scalars['Boolean']>;
+  logConfigFilter?: Maybe<Scalars['String']>;
+  minPortsPerVm?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+  natIpAllocateOption?: Maybe<Scalars['String']>;
+  natIps?: Maybe<Array<Maybe<Scalars['String']>>>;
+  sourceSubnetworkIpRangesToNat?: Maybe<Scalars['String']>;
+  subnetworks?: Maybe<Array<Maybe<GcpCloudRouterSubnetwork>>>;
+  tcpEstablishedIdleTimeoutSec?: Maybe<Scalars['Int']>;
+  tcpTransitoryIdleTimeoutSec?: Maybe<Scalars['Int']>;
+  udpIdleTimeoutSec?: Maybe<Scalars['Int']>;
+};
+
+export type GcpCloudRouterSubnetwork = {
+  id: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
+  secondaryIpRangeNames?: Maybe<Array<Maybe<Scalars['String']>>>;
+  sourceIpRangesToNat?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
 export type GcpComputeAccessConfig = {
   id: Scalars['String'];
   kind?: Maybe<Scalars['String']>;
@@ -1233,6 +1311,7 @@ export type GcpProject = {
   etag?: Maybe<Scalars['String']>;
   firewall?: Maybe<Array<Maybe<GcpFirewall>>>;
   folder?: Maybe<Array<Maybe<GcpFolder>>>;
+  cloudRouter?: Maybe<Array<Maybe<GcpCloudRouter>>>;
   iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
   id: Scalars['String'];
   kmsCryptoKeys?: Maybe<Array<Maybe<GcpKmsCryptoKey>>>;
