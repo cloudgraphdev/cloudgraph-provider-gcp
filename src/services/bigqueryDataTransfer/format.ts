@@ -3,7 +3,7 @@ import cuid from 'cuid'
 import { google } from '@google-cloud/bigquery-data-transfer/build/protos/protos'
 import { enumKeyToString } from '../../utils/format'
 
-import { RawGcpBigqueryDataTransfer } from './data'
+import { RawGcpBigQueryDataTransfer } from './data'
 import { toISOString } from '../../utils/dateutils'
 import { GcpBigQueryDataTransfer, GcpBigQueryDataTransferParam } from '../../types/generated'
 
@@ -65,7 +65,7 @@ export default ({
   service,
   region,
 }: {
-  service: RawGcpBigqueryDataTransfer
+  service: RawGcpBigQueryDataTransfer
   region: string
 }): GcpBigQueryDataTransfer => {
   const {

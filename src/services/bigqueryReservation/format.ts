@@ -1,6 +1,6 @@
 import cuid from 'cuid'
 
-import { RawGcpBigqueryReservation } from './data'
+import { RawGcpBigQueryReservation } from './data'
 import { toISOString } from '../../utils/dateutils'
 import { GcpBigQueryReservation } from '../../types/generated'
 
@@ -8,7 +8,7 @@ export default ({
   service,
   region,
 }: {
-  service: RawGcpBigqueryReservation
+  service: RawGcpBigQueryReservation
   region: string
 }): GcpBigQueryReservation => {
   const {

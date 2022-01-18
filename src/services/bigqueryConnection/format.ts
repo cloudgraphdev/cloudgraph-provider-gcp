@@ -2,7 +2,7 @@ import cuid from 'cuid'
 import { google } from '@google-cloud/bigquery-connection/build/protos/protos'
 import { GcpBigQueryConnection } from '../../types/generated'
 import { enumKeyToString } from '../../utils/format'
-import { RawGcpBigqueryConnection } from './data'
+import { RawGcpBigQueryConnection } from './data'
 import { toISOString } from '../../utils/dateutils'
 
 export default ({
@@ -10,7 +10,7 @@ export default ({
   account,
   region,
 }: {
-  service: RawGcpBigqueryConnection
+  service: RawGcpBigQueryConnection
   account: string
   region: string
 }): GcpBigQueryConnection => {

@@ -19,5 +19,5 @@ type gcpBigQueryConnection implements gcpBaseResource
   awsAccessRoleIdentity: String @search(by: [hash, regexp])
   cloudSpannerDatabase: String @search(by: [hash, regexp])
   cloudSpannerUseParallelism: Boolean @search
-  project: [gcpProject] @hasInverse(field: bigqueryConnection)
+  project: [gcpProject] @hasInverse(field: bigQueryConnection)
 }

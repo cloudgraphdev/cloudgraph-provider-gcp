@@ -7,7 +7,7 @@ import {
   GcpBigQueryTableViewUserDefinedFunctionResource,
 } from '../../types/generated'
 import { formatLabelsFromMap } from '../../utils/format'
-import { RawGcpBigqueryDataset, RawGcpBigqueryTable } from './types'
+import { RawGcpBigQueryDataset, RawGcpBigQueryTable } from './types'
 
 const formatTableField = (field): GcpBigQueryTableSchemaField => {
   const {
@@ -81,7 +81,7 @@ const formatColumnFamily = (columnFamily): GcpBigQueryTableExternalDataConfigura
   }
 }
 
-const formatTable = (table: RawGcpBigqueryTable): GcpBigQueryTable => {
+const formatTable = (table: RawGcpBigQueryTable): GcpBigQueryTable => {
   const {
     id,
     kind,
@@ -195,7 +195,7 @@ export default ({
   account,
   region,
 }: {
-  service: RawGcpBigqueryDataset
+  service: RawGcpBigQueryDataset
   account: string
   region: string
 }): GcpBigQueryDataset => {

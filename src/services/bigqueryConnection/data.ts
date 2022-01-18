@@ -11,7 +11,7 @@ const { logger } = CloudGraph
 const serviceName = 'BigQuery Connection'
 const apiEndpoint = initTestEndpoint(serviceName)
 
-export interface RawGcpBigqueryConnection extends google.cloud.bigquery.connection.v1.IConnection {
+export interface RawGcpBigQueryConnection extends google.cloud.bigquery.connection.v1.IConnection {
   id: string
   projectId: string
   region: string
@@ -21,11 +21,11 @@ export default async ({
   regions,
   config,
 }: GcpServiceInput): Promise<{
-  [region: string]: RawGcpBigqueryConnection[]
+  [region: string]: RawGcpBigQueryConnection[]
 }> => {
   const connectionClient = new ConnectionServiceClient({ ...config, apiEndpoint })
   const { projectId } = config
-  const connectionResult: RawGcpBigqueryConnection[] = []
+  const connectionResult: RawGcpBigQueryConnection[] = []
   const allRegions = regions.split(',')
   try {
     for (const region of allRegions) {
@@ -42,7 +42,7 @@ export default async ({
       }
     }
   } catch (error) {
-    generateGcpErrorLog(serviceName, 'bigqueryConnection:listConnectionsAsync', error)
+    generateGcpErrorLog(serviceName, 'bigQueryConnection:listConnectionsAsync', error)
   }
 
   logger.debug(lt.foundResources(serviceName, connectionResult.length))

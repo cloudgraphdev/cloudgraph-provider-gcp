@@ -1,5 +1,5 @@
 // refer to https://cloud.google.com/bigquery/docs/reference/rest/v2/tables
-export interface RawGcpBigqueryTable {
+export interface RawGcpBigQueryTable {
   kind?: string
   id?: string
   tableReference?: {
@@ -150,7 +150,7 @@ export interface RawGcpBigqueryTable {
 }
 
 // refer to https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets
-export interface RawGcpBigqueryDataset {
+export interface RawGcpBigQueryDataset {
   datasetReference?: {
     datasetId?: string
     projectId?: string
@@ -161,5 +161,5 @@ export interface RawGcpBigqueryDataset {
   labels?: { [key: string]: string }
   location?: string
   region?: string
-  tables: RawGcpBigqueryTable[]
+  tables: RawGcpBigQueryTable[]
 }

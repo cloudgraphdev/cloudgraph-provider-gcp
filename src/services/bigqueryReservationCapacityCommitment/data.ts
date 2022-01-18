@@ -11,7 +11,7 @@ const { logger } = CloudGraph
 const serviceName = 'BigQuery Reservation Capacity Commitment'
 const apiEndpoint = initTestEndpoint(serviceName)
 
-export interface RawGcpBigqueryReservationCapacityCommitment extends google.cloud.bigquery.reservation.v1.ICapacityCommitment {
+export interface RawGcpBigQueryReservationCapacityCommitment extends google.cloud.bigquery.reservation.v1.ICapacityCommitment {
   id: string
   projectId: string
   region: string
@@ -21,11 +21,11 @@ export default async ({
   regions,
   config,
 }: GcpServiceInput): Promise<{
-  [region: string]: RawGcpBigqueryReservationCapacityCommitment[]
+  [region: string]: RawGcpBigQueryReservationCapacityCommitment[]
 }> => {
   const reservationClient = new ReservationServiceClient({ ...config, apiEndpoint })
   const { projectId } = config
-  const capacityCommitmentResult: RawGcpBigqueryReservationCapacityCommitment[] = []
+  const capacityCommitmentResult: RawGcpBigQueryReservationCapacityCommitment[] = []
   const allRegions = regions.split(',')
   try {
     for (const region of allRegions) {
@@ -42,7 +42,7 @@ export default async ({
       }
     }
   } catch (error) {
-    generateGcpErrorLog(serviceName, 'bigqueryReservationCapacityCommitment:listCapacityCommitmentsAsync', error)
+    generateGcpErrorLog(serviceName, 'bigQueryReservationCapacityCommitment:listCapacityCommitmentsAsync', error)
   }
 
   logger.debug(lt.foundResources(serviceName, capacityCommitmentResult.length))

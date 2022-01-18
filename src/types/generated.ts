@@ -1217,12 +1217,12 @@ export type GcpProject = {
   alertPolicy?: Maybe<Array<Maybe<GcpAlertPolicy>>>;
   apiKeys?: Maybe<Array<Maybe<GcpApiKey>>>;
   assets?: Maybe<Array<Maybe<GcpAsset>>>;
-  bigquery?: Maybe<Array<Maybe<GcpBigQueryDataset>>>;
-  bigqueryConnection?: Maybe<Array<Maybe<GcpBigQueryConnection>>>;
-  bigqueryDataTransfer?: Maybe<Array<Maybe<GcpBigQueryDataTransfer>>>;
-  bigqueryDataTransferRun?: Maybe<Array<Maybe<GcpBigQueryDataTransferRun>>>;
-  bigqueryReservation?: Maybe<Array<Maybe<GcpBigQueryReservation>>>;
-  bigqueryReservationCapacityCommitment?: Maybe<Array<Maybe<GcpBigQueryReservationCapacityCommitment>>>;
+  bigQuery?: Maybe<Array<Maybe<GcpBigQueryDataset>>>;
+  bigQueryConnection?: Maybe<Array<Maybe<GcpBigQueryConnection>>>;
+  bigQueryDataTransfer?: Maybe<Array<Maybe<GcpBigQueryDataTransfer>>>;
+  bigQueryDataTransferRun?: Maybe<Array<Maybe<GcpBigQueryDataTransferRun>>>;
+  bigQueryReservation?: Maybe<Array<Maybe<GcpBigQueryReservation>>>;
+  bigQueryReservationCapacityCommitment?: Maybe<Array<Maybe<GcpBigQueryReservationCapacityCommitment>>>;
   cloudFunction?: Maybe<Array<Maybe<GcpCloudFunction>>>;
   computeProject?: Maybe<Array<Maybe<GcpComputeProject>>>;
   createTime?: Maybe<Scalars['String']>;

@@ -44,5 +44,5 @@ type gcpBigQueryDataTransfer implements gcpBaseResource
   notificationPubsubTopic: String @search(by: [hash, regexp])
   enableFailureEmail: Boolean @search
   transferRun: [gcpBigQueryDataTransferRun] @hasInverse(field: dataTransfer)
-  project: [gcpProject] @hasInverse(field: bigqueryDataTransfer)
+  project: [gcpProject] @hasInverse(field: bigQueryDataTransfer)
 }

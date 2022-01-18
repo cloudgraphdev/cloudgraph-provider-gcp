@@ -5,13 +5,13 @@ import { toISOString } from '../../utils/dateutils'
 
 import { enumKeyToString } from '../../utils/format'
 
-import { RawGcpBigqueryReservationCapacityCommitment } from './data'
+import { RawGcpBigQueryReservationCapacityCommitment } from './data'
 
 export default ({
   service,
   region,
 }: {
-  service: RawGcpBigqueryReservationCapacityCommitment
+  service: RawGcpBigQueryReservationCapacityCommitment
   region: string
 }): GcpBigQueryReservationCapacityCommitment => {
   const {

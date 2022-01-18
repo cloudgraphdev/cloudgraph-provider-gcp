@@ -5,15 +5,15 @@ import { google } from '@google-cloud/bigquery-data-transfer/build/protos/protos
 import gcpLoggerText from '../../properties/logger'
 import { GcpServiceInput } from '../../types'
 import { generateGcpErrorLog, initTestEndpoint } from '../../utils'
-import { RawGcpBigqueryDataTransfer } from '../bigqueryDataTransfer/data'
 import services from '../../enums/services'
+import { RawGcpBigQueryDataTransfer } from '../bigQueryDataTransfer/data'
 
 const lt = { ...gcpLoggerText }
 const { logger } = CloudGraph
 const serviceName = 'BigQuery Data Transfer Run'
 const apiEndpoint = initTestEndpoint(serviceName)
 
-export interface RawGcpBigqueryDataTransferRun extends google.cloud.bigquery.datatransfer.v1.ITransferRun {
+export interface RawGcpBigQueryDataTransferRun extends google.cloud.bigquery.datatransfer.v1.ITransferRun {
   id: string
   projectId: string
   dataTransferId: string
@@ -25,7 +25,7 @@ export default async ({
   config,
   rawData,
 }: GcpServiceInput): Promise<{
-  [region: string]: RawGcpBigqueryDataTransferRun[]
+  [region: string]: RawGcpBigQueryDataTransferRun[]
 }> => {
   
   const dataTransferClient = new bigqueryDataTransfer.v1.DataTransferServiceClient({ ...config, apiEndpoint })
@@ -37,8 +37,8 @@ export default async ({
     /**
      * Find BigQuery Data Transfer
      */
-    const dataTransferConfigs: RawGcpBigqueryDataTransfer[] = 
-      rawData.find(({ name }) => name === services.bigqueryDataTransfer)?.data[region] || []
+    const dataTransferConfigs: RawGcpBigQueryDataTransfer[] = 
+      rawData.find(({ name }) => name === services.bigQueryDataTransfer)?.data[region] || []
 
     for (const dataTransferConfig of dataTransferConfigs) {
       try {
@@ -55,7 +55,7 @@ export default async ({
           })
         }
       } catch (error) {
-        generateGcpErrorLog(serviceName, 'bigqueryDataTransferRun:listTransferRunsAsync', error)
+        generateGcpErrorLog(serviceName, 'bigQueryDataTransferRun:listTransferRunsAsync', error)
       }
     }
   }

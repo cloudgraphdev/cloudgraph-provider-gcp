@@ -11,7 +11,7 @@ const { logger } = CloudGraph
 const serviceName = 'BigQuery Data Transfer'
 const apiEndpoint = initTestEndpoint(serviceName)
 
-export interface RawGcpBigqueryDataTransfer extends google.cloud.bigquery.datatransfer.v1.ITransferConfig {
+export interface RawGcpBigQueryDataTransfer extends google.cloud.bigquery.datatransfer.v1.ITransferConfig {
   id: string
   projectId: string
   region: string
@@ -21,11 +21,11 @@ export default async ({
   regions,
   config,
 }: GcpServiceInput): Promise<{
-  [region: string]: RawGcpBigqueryDataTransfer[]
+  [region: string]: RawGcpBigQueryDataTransfer[]
 }> => {
   const dataTransferClient = new bigqueryDataTransfer.v1.DataTransferServiceClient({ ...config, apiEndpoint })
   const { projectId } = config
-  const dataTransferResult: RawGcpBigqueryDataTransfer[] = []
+  const dataTransferResult: RawGcpBigQueryDataTransfer[] = []
   const allRegions = regions.split(',')
   try {
     for (const region of allRegions) {
@@ -44,7 +44,7 @@ export default async ({
 
     }
   } catch (error) {
-    generateGcpErrorLog(serviceName, 'bigqueryDataTransfer:listTransferConfigsAsync', error)
+    generateGcpErrorLog(serviceName, 'bigQueryDataTransfer:listTransferConfigsAsync', error)
   }
 
   logger.debug(lt.foundResources(serviceName, dataTransferResult.length))

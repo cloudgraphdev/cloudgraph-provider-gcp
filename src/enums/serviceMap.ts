@@ -1,11 +1,11 @@
 import services from './services'
 import GcpProject from '../services/project'
-import GcpBigQuery from '../services/bigquery'
-import GcpBigQueryConnection from '../services/bigqueryConnection'
-import GcpBigqueryReservation from '../services/bigqueryReservation'
-import GcpBigqueryReservationCapacityCommitment from '../services/bigqueryReservationCapacityCommitment'
-import GcpBigqueryDataTransfer from '../services/bigqueryDataTransfer'
-import GcpBigqueryDataTransferRun from '../services/bigqueryDataTransferRun'
+import GcpBigQuery from '../services/bigQuery'
+import GcpBigQueryConnection from '../services/bigQueryConnection'
+import GcpBigQueryReservation from '../services/bigQueryReservation'
+import GcpBigQueryReservationCapacityCommitment from '../services/bigQueryReservationCapacityCommitment'
+import GcpBigQueryDataTransfer from '../services/bigQueryDataTransfer'
+import GcpBigQueryDataTransferRun from '../services/bigQueryDataTransferRun'
 import GcpKmsKeyRing from '../services/kms'
 import GcpKmsCryptoKey from '../services/kmsCryptoKey'
 import GcpDnsManagedZone from '../services/dnsManagedZone'
@@ -43,12 +43,12 @@ import GcpComputeProject from '../services/computeProject'
 export default {
   [services.firewall]: GcpFirewall,
   [services.project]: GcpProject,
-  [services.bigquery]: GcpBigQuery,
-  [services.bigqueryConnection]: GcpBigQueryConnection,
-  [services.bigqueryReservation]: GcpBigqueryReservation,
-  [services.bigqueryReservationCapacityCommitment]: GcpBigqueryReservationCapacityCommitment,
-  [services.bigqueryDataTransfer]: GcpBigqueryDataTransfer,
-  [services.bigqueryDataTransferRun]: GcpBigqueryDataTransferRun,
+  [services.bigQuery]: GcpBigQuery,
+  [services.bigQueryConnection]: GcpBigQueryConnection,
+  [services.bigQueryReservation]: GcpBigQueryReservation,
+  [services.bigQueryReservationCapacityCommitment]: GcpBigQueryReservationCapacityCommitment,
+  [services.bigQueryDataTransfer]: GcpBigQueryDataTransfer,
+  [services.bigQueryDataTransferRun]: GcpBigQueryDataTransferRun,
   [services.kmsKeyRing]: GcpKmsKeyRing,
   [services.kmsCryptoKeys]: GcpKmsCryptoKey,
   [services.dnsManagedZone]: GcpDnsManagedZone,

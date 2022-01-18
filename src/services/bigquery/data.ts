@@ -4,7 +4,7 @@ import groupBy from 'lodash/groupBy'
 import gcpLoggerText from '../../properties/logger'
 import { GcpServiceInput } from '../../types'
 import { generateGcpErrorLog, initTestEndpoint } from '../../utils'
-import { RawGcpBigqueryDataset } from './types'
+import { RawGcpBigQueryDataset } from './types'
 
 const lt = { ...gcpLoggerText }
 const { logger } = CloudGraph
@@ -15,14 +15,14 @@ export default async ({
   regions,
   config,
 }: GcpServiceInput): Promise<{
-  [region: string]: RawGcpBigqueryDataset[]
+  [region: string]: RawGcpBigQueryDataset[]
 }> => {
-  const bigqueryClient = new BigQuery({ ...config, apiEndpoint })
+  const bigQueryClient = new BigQuery({ ...config, apiEndpoint })
 
-  const datasetsResult: RawGcpBigqueryDataset[] = []
+  const datasetsResult: RawGcpBigQueryDataset[] = []
   const allRegions = regions.split(',')
   try {
-    const dataSetIter = bigqueryClient.getDatasetsStream()
+    const dataSetIter = bigQueryClient.getDatasetsStream()
     for await (const dataSetResponse of dataSetIter) {
       if (allRegions.includes(dataSetResponse.location)) {
         const dsMetaData = dataSetResponse.metadata
@@ -39,12 +39,12 @@ export default async ({
           }
           datasetsResult.push(result)
         } catch (error) {
-          generateGcpErrorLog(serviceName, 'bigquery:getTablesStream', error)
+          generateGcpErrorLog(serviceName, 'bigQuery:getTablesStream', error)
         }
       }
     }
   } catch (error) {
-    generateGcpErrorLog(serviceName, 'bigquery:getDatasetsStream', error)
+    generateGcpErrorLog(serviceName, 'bigQuery:getDatasetsStream', error)
   }
 
   logger.debug(lt.foundResources(serviceName, datasetsResult.length))

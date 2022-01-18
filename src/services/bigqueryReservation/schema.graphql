@@ -8,5 +8,5 @@ type gcpBigQueryReservation implements gcpBaseResource
   ignoreIdleSlots: Boolean @search
   creationTime: String @search(by: [hash, regexp])
   updateTime: String @search(by: [hash, regexp])
-  project: [gcpProject] @hasInverse(field: bigqueryReservation)
+  project: [gcpProject] @hasInverse(field: bigQueryReservation)
 }

@@ -11,7 +11,7 @@ const { logger } = CloudGraph
 const serviceName = 'BigQuery Reservation'
 const apiEndpoint = initTestEndpoint(serviceName)
 
-export interface RawGcpBigqueryReservation extends google.cloud.bigquery.reservation.v1.IReservation {
+export interface RawGcpBigQueryReservation extends google.cloud.bigquery.reservation.v1.IReservation {
   id: string
   assignments: google.cloud.bigquery.reservation.v1.IAssignment[]
   projectId: string
@@ -22,11 +22,11 @@ export default async ({
   regions,
   config,
 }: GcpServiceInput): Promise<{
-  [region: string]: RawGcpBigqueryReservation[]
+  [region: string]: RawGcpBigQueryReservation[]
 }> => {
   const reservationClient = new ReservationServiceClient({ ...config, apiEndpoint })
   const { projectId } = config
-  const reservationResult: RawGcpBigqueryReservation[] = []
+  const reservationResult: RawGcpBigQueryReservation[] = []
   const allRegions = regions.split(',')
   try {
     for (const region of allRegions) {
@@ -48,12 +48,12 @@ export default async ({
             region,
           })
         } catch (error) {
-          generateGcpErrorLog(serviceName, 'bigqueryReservation:listAssignmentsAsync', error)
+          generateGcpErrorLog(serviceName, 'bigQueryReservation:listAssignmentsAsync', error)
         }
       }
     }
   } catch (error) {
-    generateGcpErrorLog(serviceName, 'bigqueryReservation:listReservationsAsync', error)
+    generateGcpErrorLog(serviceName, 'bigQueryReservation:listReservationsAsync', error)
   }
 
   logger.debug(lt.foundResources(serviceName, reservationResult.length))
