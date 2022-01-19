@@ -8,6 +8,7 @@ type gcpServiceAccount @key(fields: "id") {
   oauth2ClientId: String @search(by: [hash, regexp])
   region: String @search(by: [hash, regexp])
   keys: [gcpServiceAccountKey]
+  project: [gcpProject] @hasInverse(field: serviceAccount)
 }
 
 type gcpServiceAccountKey

@@ -922,6 +922,7 @@ export type GcpProject = {
   vmInstance?: Maybe<Array<Maybe<GcpVmInstance>>>;
   assets?: Maybe<Array<Maybe<GcpAsset>>>;
   sqlInstances?: Maybe<Array<Maybe<GcpSqlInstance>>>;
+  serviceAccount?: Maybe<Array<Maybe<GcpServiceAccount>>>;
 };
 
 export type GcpRawLabel = {
@@ -1023,6 +1024,7 @@ export type GcpServiceAccount = {
   oauth2ClientId?: Maybe<Scalars['String']>;
   region?: Maybe<Scalars['String']>;
   keys?: Maybe<Array<Maybe<GcpServiceAccountKey>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
 };
 
 export type GcpServiceAccountKey = {

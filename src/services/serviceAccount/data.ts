@@ -23,9 +23,9 @@ export interface RawGcpServiceAccountKey {
 }
 
 export interface RawGcpServiceAccount {
+  id: string
   name: string
   projectId: string
-  uniqueId: string
   email: string
   displayName: string
   etag: string
@@ -49,7 +49,7 @@ export default async ({
       apiUri: `https://iam.googleapis.com/v1/projects/${config.projectId}/serviceAccounts`,
       dataFieldName: 'accounts',
     })
-    for (const account of accounts) {
+    for (const { uniqueId, ...account } of accounts) {
       // Fetch service accounts keys
       const keys = await listData({
         service,
@@ -57,6 +57,7 @@ export default async ({
         dataFieldName: 'keys',
       })
       serviceAccountList.push({
+        id: uniqueId,
         ...account,
         keys: keys ?? [],
         region: GLOBAL_REGION,
