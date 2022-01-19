@@ -1,0 +1,36 @@
+type gcpSslPolicy implements gcpBaseResource @key(fields: "id") {
+  creationTimestamp: String @search(by: [hash, regexp])
+  customFeatures: [String] @search(by: [hash])
+  description: String @search(by: [hash, regexp])
+  enabledFeatures: [String] @search(by: [hash])
+  fingerprint: String @search(by: [hash, regexp])
+  kind: String @search(by: [hash, regexp])
+  minTlsVersion: String @search(by: [hash, regexp])
+  profile: String @search(by: [hash, regexp])
+  selfLink: String @search(by: [hash, regexp])
+  warnings: [gcpComputeWarnings]
+  project: [gcpProject] @hasInverse(field: sslPolicies)
+}
+
+type gcpComputeWarnings
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  code: String @search(by: [hash, regexp])
+  data: [gcpComputeData]
+  message: String @search(by: [hash, regexp])
+}
+
+type gcpComputeData
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  key: String @search(by: [hash, regexp])
+  value: String @search(by: [hash, regexp])
+}
