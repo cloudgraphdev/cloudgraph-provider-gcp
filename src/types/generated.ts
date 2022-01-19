@@ -1015,8 +1015,24 @@ export type GcpSecretReplicationUserManagedStatusReplicaStatus = {
 
 export type GcpServiceAccount = {
   id: Scalars['String'];
+  projectId?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
   email?: Maybe<Scalars['String']>;
-  scopes?: Maybe<Array<Maybe<Scalars['String']>>>;
+  displayName?: Maybe<Scalars['String']>;
+  etag?: Maybe<Scalars['String']>;
+  oauth2ClientId?: Maybe<Scalars['String']>;
+  region?: Maybe<Scalars['String']>;
+  keys?: Maybe<Array<Maybe<GcpServiceAccountKey>>>;
+};
+
+export type GcpServiceAccountKey = {
+  id: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
+  validAfterTime?: Maybe<Scalars['String']>;
+  validBeforeTime?: Maybe<Scalars['String']>;
+  keyAlgorithm?: Maybe<Scalars['String']>;
+  keyOrigin?: Maybe<Scalars['String']>;
+  keyType?: Maybe<Scalars['String']>;
 };
 
 export type GcpShieldedInstanceConfig = {
@@ -1406,7 +1422,7 @@ export type GcpVmInstance = GcpBaseResource & {
   satisfiesPzs?: Maybe<Scalars['Boolean']>;
   scheduling?: Maybe<GcpScheduling>;
   selfLink?: Maybe<Scalars['String']>;
-  serviceAccounts?: Maybe<Array<Maybe<GcpServiceAccount>>>;
+  serviceAccounts?: Maybe<Array<Maybe<GcpVmInstanceServiceAccount>>>;
   shieldedInstanceConfig?: Maybe<GcpShieldedInstanceConfig>;
   shieldedInstanceIntegrityPolicy?: Maybe<GcpShieldedInstanceIntegrityPolicy>;
   startRestricted?: Maybe<Scalars['Boolean']>;
@@ -1417,6 +1433,12 @@ export type GcpVmInstance = GcpBaseResource & {
   project?: Maybe<Array<Maybe<GcpProject>>>;
   network?: Maybe<Array<Maybe<GcpNetwork>>>;
   subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
+};
+
+export type GcpVmInstanceServiceAccount = {
+  id: Scalars['String'];
+  email?: Maybe<Scalars['String']>;
+  scopes?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type GcpVpcConnector = {
