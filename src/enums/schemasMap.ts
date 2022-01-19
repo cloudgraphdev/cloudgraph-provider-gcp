@@ -18,6 +18,7 @@ export default {
   [services.organization]: 'gcpOrganization',
   [services.secretManager]: 'gcpSecret',
   [services.network]: 'gcpNetwork',
+  [services.storageBucket]: 'gcpStorageBucket',
   [services.subnet]: 'gcpSubnet',
   [services.vmInstance]: 'gcpVmInstance',
   [services.logMetric]: 'gcpLogMetric',
