@@ -1,3 +1,11 @@
+## [0.14.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.14.0...0.14.1) (2022-01-19)
+
+
+### Bug Fixes
+
+* Added missing storageBucket service to schemaMap ([4751db6](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/4751db616a11431a769cd21fb1d691e375a57157))
+* Preserved policy packs setting during init command ([23cf4dc](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/23cf4dc2c0c39e31d10aea9b7044654951b824f7))
+
 # [0.14.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.13.1...0.14.0) (2022-01-18)
 
 
