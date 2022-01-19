@@ -25,7 +25,7 @@ export default async ({
   [region: string]: RawGcpSslPolicy[]
 }> =>
   new Promise(async resolve => {
-    const proxyList: RawGcpSslPolicy[] = []
+    const policyList: RawGcpSslPolicy[] = []
     const { projectId } = config
 
     /**
@@ -39,7 +39,7 @@ export default async ({
       // https://github.com/googleapis/gax-nodejs/blob/main/client-libraries.md#auto-pagination
       for await (const response of iterable) {
         if (response) {
-          proxyList.push({
+          policyList.push({
             ...response,
             id: response.id?.toString() || cuid(),
             projectId,
@@ -51,6 +51,6 @@ export default async ({
       generateGcpErrorLog(serviceName, 'sslPolicies:listAsync', error)
     }
 
-    logger.debug(lt.foundResources(serviceName, proxyList.length))
-    resolve(groupBy(proxyList, 'region'))
+    logger.debug(lt.foundResources(serviceName, policyList.length))
+    resolve(groupBy(policyList, 'region'))
   })
