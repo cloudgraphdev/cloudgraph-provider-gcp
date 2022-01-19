@@ -23,6 +23,6 @@ export default {
   [services.logMetric]: 'gcpLogMetric',
   [services.alertPolicy]: 'gcpAlertPolicy',
   [services.cloudFunction]: 'gcpCloudFunction',
-  [services.assetInventory]: 'gcpAsset',
+  [services.assets]: 'gcpAsset',
   tag: 'gcpTag',
 }

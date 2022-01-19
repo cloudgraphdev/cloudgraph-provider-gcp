@@ -1,6 +1,6 @@
 export default {
   alertPolicy: 'alertPolicy',
-  assetInventory: 'assetInventory',
+  assets: 'assets',
   // ai: 'ai',
   // aiPlatform: 'ai-platform',
   // ml: 'ml',

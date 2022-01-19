@@ -9,7 +9,7 @@ type gcpAsset implements gcpBaseResource @key(fields: "id") {
   osInventory: gcpAssetInventory
   relatedAssets: gcpAssetRelatedAssets
   ancestors: [String] @search(by: [hash])
-  project: [gcpProject] @hasInverse(field: assetInventory)
+  project: [gcpProject] @hasInverse(field: assets)
 }
 
 type gcpAssetResource

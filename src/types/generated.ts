@@ -903,7 +903,7 @@ export type GcpProject = {
   network?: Maybe<Array<Maybe<GcpNetwork>>>;
   subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
   vmInstance?: Maybe<Array<Maybe<GcpVmInstance>>>;
-  assetInventory?: Maybe<Array<Maybe<GcpAsset>>>;
+  assets?: Maybe<Array<Maybe<GcpAsset>>>;
 };
 
 export type GcpRawLabel = {
