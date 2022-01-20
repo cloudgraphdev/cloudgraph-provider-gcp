@@ -67,7 +67,7 @@ export default {
   project: 'project',
   sqlInstances: 'sqlInstances',
   sslPolicies: 'sslPolicies',
-  serviceAccount: 'serviceAccount',
+  serviceAccount: 'serviceAccounts',
   storageBucket: 'storageBucket',
   subnet: 'subnet',
   targetSslProxies: 'targetSslProxies',

@@ -922,7 +922,7 @@ export type GcpProject = {
   vmInstance?: Maybe<Array<Maybe<GcpVmInstance>>>;
   assets?: Maybe<Array<Maybe<GcpAsset>>>;
   sqlInstances?: Maybe<Array<Maybe<GcpSqlInstance>>>;
-  serviceAccount?: Maybe<Array<Maybe<GcpServiceAccount>>>;
+  serviceAccounts?: Maybe<Array<Maybe<GcpServiceAccount>>>;
 };
 
 export type GcpRawLabel = {
@@ -1014,15 +1014,11 @@ export type GcpSecretReplicationUserManagedStatusReplicaStatus = {
   customerManagedEncryption?: Maybe<GcpSecretReplicationUserManagedStatusCustomerManagedEncryptionStatus>;
 };
 
-export type GcpServiceAccount = {
-  id: Scalars['String'];
-  projectId?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
+export type GcpServiceAccount = GcpBaseResource & {
   email?: Maybe<Scalars['String']>;
   displayName?: Maybe<Scalars['String']>;
   etag?: Maybe<Scalars['String']>;
   oauth2ClientId?: Maybe<Scalars['String']>;
-  region?: Maybe<Scalars['String']>;
   keys?: Maybe<Array<Maybe<GcpServiceAccountKey>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
 };
