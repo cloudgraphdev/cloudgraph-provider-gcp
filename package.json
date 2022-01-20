@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@cloudgraph/sdk": "0.4.0",
+    "@google-cloud/asset": "^3.22.0",
     "@google-cloud/compute": "^3.0.0",
     "@google-cloud/dns": "^2.2.3",
     "@google-cloud/kms": "^2.10.0",

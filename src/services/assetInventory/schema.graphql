@@ -1,0 +1,409 @@
+type gcpAsset implements gcpBaseResource @key(fields: "id") {
+  updateTime: String @search(by: [hash, regexp])
+  assetType: String @search(by: [hash, regexp])
+  resource: gcpAssetResource
+  orgPolicy: [gcpAssetOrgPolicy]
+  accessPolicy: gcpAssetAccessPolicy
+  accessLevel: gcpAssetAccessLevel
+  servicePerimeter: gcpAssetServicePerimeter
+  osInventory: gcpAssetInventory
+  relatedAssets: gcpAssetRelatedAssets
+  ancestors: [String] @search(by: [hash])
+  project: [gcpProject] @hasInverse(field: assets)
+}
+
+type gcpAssetResource
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  version: String @search(by: [hash, regexp])
+  discoveryDocumentUri: String @search(by: [hash, regexp])
+  discoveryName: String @search(by: [hash, regexp])
+  resourceUrl: String @search(by: [hash, regexp])
+  parent: String @search(by: [hash, regexp])
+  data: gcpStruct
+  location: String @search(by: [hash, regexp])
+}
+
+type gcpStruct
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  fields: [gcpValue]
+}
+
+type gcpValue
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  key: String! @search(by: [hash, regexp])
+  nullValue: String @search(by: [hash, regexp])
+  numberValue: Float @search
+  stringValue: String @search(by: [hash, regexp])
+  boolValue: Boolean @search
+  structValue: gcpStruct
+  listValue: gcpListValue
+}
+
+type gcpListValue
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  values: [gcpValue]
+}
+
+type gcpAssetOrgPolicy
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  version: Int @search
+  constraint: String @search(by: [hash, regexp])
+  etag: String @search(by: [hash, regexp])
+  updateTime: String @search(by: [hash, regexp])
+  listPolicy: gcpAssetListPolicy
+  booleanPolicy: gcpAssetBooleanPolicy
+}
+
+type gcpAssetAccessPolicy
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  name: String @search(by: [hash, regexp])
+  parent: String @search(by: [hash, regexp])
+  title: String @search(by: [hash, regexp])
+  createTime: String @search(by: [hash, regexp])
+  updateTime: String @search(by: [hash, regexp])
+  etag: String @search(by: [hash, regexp])
+}
+
+type gcpAssetAccessLevel
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  name: String @search(by: [hash, regexp])
+  title: String @search(by: [hash, regexp])
+  description: String @search(by: [hash, regexp])
+  basic: gcpAssetBasicLevel
+  custom: gcpAssetCustomLevel
+  createTime: String @search(by: [hash, regexp])
+  updateTime: String @search(by: [hash, regexp])
+}
+
+type gcpAssetServicePerimeter
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  name: String @search(by: [hash, regexp])
+  title: String @search(by: [hash, regexp])
+  description: String @search(by: [hash, regexp])
+  createTime: String @search(by: [hash, regexp])
+  updateTime: String @search(by: [hash, regexp])
+  perimeterType: String @search(by: [hash, regexp])
+  status: gcpAssetServicePerimeterConfig
+  spec: gcpAssetServicePerimeterConfig
+  useExplicitDryRunSpec: Boolean @search
+}
+
+type gcpAssetInventory
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  name: String @search(by: [hash, regexp])
+  osInfo: gcpAssetOsInfo
+  items: [gcpAssetItem]
+  updateTime: String @search(by: [hash, regexp])
+}
+
+type gcpAssetRelatedAssets
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  relationshipAttributes: gcpAssetRelationshipAttributes
+  assets: [gcpAssetRelatedAsset]
+}
+
+type gcpAssetOsInfo
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  hostname: String @search(by: [hash, regexp])
+  longName: String @search(by: [hash, regexp])
+  shortName: String @search(by: [hash, regexp])
+  version: String @search(by: [hash, regexp])
+  architecture: String @search(by: [hash, regexp])
+  kernelVersion: String @search(by: [hash, regexp])
+  kernelRelease: String @search(by: [hash, regexp])
+  osconfigAgentVersion: String @search(by: [hash, regexp])
+}
+
+type gcpAssetRelationshipAttributes
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  type: String @search(by: [hash, regexp])
+  sourceResourceType: String @search(by: [hash, regexp])
+  targetResourceType: String @search(by: [hash, regexp])
+  action: String @search(by: [hash, regexp])
+}
+
+type gcpAssetRelatedAsset
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  asset: String @search(by: [hash, regexp])
+  assetType: String @search(by: [hash, regexp])
+  ancestors: [String] @search(by: [hash])
+}
+
+type gcpAssetServicePerimeterConfig
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  resources: [String] @search(by: [hash])
+  accessLevels: [String] @search(by: [hash])
+  restrictedServices: [String] @search(by: [hash])
+  vpcAccessibleServices: gcpAssetVpcAccessibleServices
+}
+
+type gcpAssetVpcAccessibleServices
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  enableRestriction: Boolean @search
+  allowedServices: [String] @search(by: [hash])
+}
+
+type gcpAssetListPolicy
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  allowedValues: [String] @search(by: [hash])
+  deniedValues: [String] @search(by: [hash])
+  allValues: String @search(by: [hash, regexp])
+  suggestedValue: String @search(by: [hash, regexp])
+  inheritFromParent: Boolean @search
+}
+
+type gcpAssetBooleanPolicy
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  enforced: Boolean @search
+}
+
+type gcpAssetBasicLevel
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  conditions: [gcpAssetCondition]
+  combiningFunction: String @search(by: [hash, regexp])
+}
+
+type gcpAssetCustomLevel
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  expr: gcpExpr
+}
+
+type gcpExpr
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  expression: String @search(by: [hash, regexp])
+  title: String @search(by: [hash, regexp])
+  description: String @search(by: [hash, regexp])
+  location: String @search(by: [hash, regexp])
+}
+
+type gcpAssetCondition
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  ipSubnetworks: [String] @search(by: [hash])
+  devicePolicy: gcpAssetDevicePolicy
+  requiredAccessLevels: [String] @search(by: [hash])
+  negate: Boolean @search
+  members: [String] @search(by: [hash])
+  regions: [String] @search(by: [hash])
+}
+
+type gcpAssetDevicePolicy
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  requireScreenlock: Boolean @search
+  allowedEncryptionStatuses: [String] @search(by: [hash])
+  osConstraints: [gcpAssetOsConstraint]
+  allowedDeviceManagementLevels: [String] @search(by: [hash])
+  requireAdminApproval: Boolean @search
+  requireCorpOwned: Boolean @search
+}
+
+type gcpAssetItem
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  key: String! @search(by: [hash, regexp])
+  originType: String @search(by: [hash, regexp])
+  createTime: String @search(by: [hash, regexp])
+  updateTime: String @search(by: [hash, regexp])
+  type: String @search(by: [hash, regexp])
+  installedPackage: gcpAssetSoftwarePackage
+  availablePackage: gcpAssetSoftwarePackage
+}
+
+type gcpAssetSoftwarePackage
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  yumPackage: gcpAssetVersionedPackage
+  aptPackage: gcpAssetVersionedPackage
+  zypperPackage: gcpAssetVersionedPackage
+  googetPackage: gcpAssetVersionedPackage
+  zypperPatch: gcpAssetZypperPatch
+  wuaPackage: gcpAssetWindowsUpdatePackage
+  qfePackage: gcpAssetWindowsQuickFixEngineeringPackage
+  cosPackage: gcpAssetVersionedPackage
+  windowsApplication: gcpAssetWindowsApplication
+}
+
+type gcpAssetVersionedPackage
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  packageName: String @search(by: [hash, regexp])
+  architecture: String @search(by: [hash, regexp])
+  version: String @search(by: [hash, regexp])
+}
+
+type gcpAssetZypperPatch
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  patchName: String @search(by: [hash, regexp])
+  category: String @search(by: [hash, regexp])
+  severity: String @search(by: [hash, regexp])
+  summary: String @search(by: [hash, regexp])
+}
+
+type gcpAssetWindowsUpdatePackage
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  title: String @search(by: [hash, regexp])
+  description: String @search(by: [hash, regexp])
+  categories: [gcpAssetWindowsUpdateCategory]
+  kbArticleIds: [String] @search(by: [hash])
+  supportUrl: String @search(by: [hash, regexp])
+  moreInfoUrls: [String] @search(by: [hash])
+  updateId: String @search(by: [hash, regexp])
+  revisionNumber: Int @search
+  lastDeploymentChangeTime: String @search(by: [hash, regexp])
+}
+
+type gcpAssetWindowsQuickFixEngineeringPackage
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  caption: String @search(by: [hash, regexp])
+  description: String @search(by: [hash, regexp])
+  hotFixId: String @search(by: [hash, regexp])
+  installTime: String @search(by: [hash, regexp])
+}
+
+type gcpAssetWindowsApplication
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  displayName: String @search(by: [hash, regexp])
+  displayVersion: String @search(by: [hash, regexp])
+  publisher: String @search(by: [hash, regexp])
+  installDate: String @search(by: [hash, regexp])
+  helpLink: String @search(by: [hash, regexp])
+}
+
+type gcpAssetWindowsUpdateCategory
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  name: String @search(by: [hash, regexp])
+}
+
+type gcpAssetOsConstraint
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  osType: String @search(by: [hash, regexp])
+  minimumVersion: String @search(by: [hash, regexp])
+  requireVerifiedChromeOs: Boolean @search
+}

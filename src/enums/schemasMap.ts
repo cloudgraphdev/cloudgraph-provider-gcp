@@ -24,5 +24,6 @@ export default {
   [services.logMetric]: 'gcpLogMetric',
   [services.alertPolicy]: 'gcpAlertPolicy',
   [services.cloudFunction]: 'gcpCloudFunction',
+  [services.assets]: 'gcpAsset',
   tag: 'gcpTag',
 }
