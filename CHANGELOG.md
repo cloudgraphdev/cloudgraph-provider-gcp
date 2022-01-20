@@ -1,3 +1,16 @@
+# [0.16.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.15.0...0.16.0) (2022-01-20)
+
+
+### Bug Fixes
+
+* **targetSslProxies:** service name pluralize ([76387f6](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/76387f62c83ac31d1741f2c21890b31a66800c20))
+* **targetSslProxies:** update service name readme ([eb53741](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/eb53741312a7f0b39602cdbacbf9f46ba56f1e41))
+
+
+### Features
+
+* **targetSslProxy:** add targetSslProxy service ([b15faaf](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/b15faaf93133a5392c40b6498e5e6c0e422a0734))
+
 # [0.15.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.14.1...0.15.0) (2022-01-20)
 
 
