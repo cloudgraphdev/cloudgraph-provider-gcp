@@ -693,8 +693,8 @@ export type GcpCloudRouter = GcpBaseResource & {
   kind?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   nats?: Maybe<Array<Maybe<GcpCloudRouterNat>>>;
-  network?: Maybe<Scalars['String']>;
   selfLink?: Maybe<Scalars['String']>;
+  network?: Maybe<Array<Maybe<GcpNetwork>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
 };
 
@@ -1258,6 +1258,7 @@ export type GcpNetwork = GcpBaseResource & {
   subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
   vmInstance?: Maybe<Array<Maybe<GcpVmInstance>>>;
   vpcConnectors?: Maybe<Array<Maybe<GcpVpcConnector>>>;
+  cloudRouter?: Maybe<Array<Maybe<GcpCloudRouter>>>;
 };
 
 export type GcpNetworkPeering = {

@@ -12,10 +12,11 @@ const serviceName = 'Cloud Router'
 const apiEndpoint = initTestEndpoint(serviceName)
 
 export interface RawGcpCloudRouter extends 
-Omit<google.cloud.compute.v1.IRouter, 'id' | 'region'> {
+Omit<google.cloud.compute.v1.IRouter, 'id' | 'region' | 'network'> {
   id: string,
   region: string,
   projectId: string,
+  network: string[],
 }
 
 export default async ({
@@ -35,12 +36,13 @@ export default async ({
         project: projectId,
         region,
       })
-      for await (const {id, ...cloudRouter} of cloudRoutersIter) {
+      for await (const {id, network, ...cloudRouter} of cloudRoutersIter) {
         routerData.push({
           id: id.toString(),
           projectId,
           ...cloudRouter,
           region,
+          network: [network]
         })
       }
     } catch (error) {

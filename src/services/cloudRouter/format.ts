@@ -103,7 +103,6 @@ export default ({
     kind,
     name,
     nats,
-    network,
     selfLink,
   } = service
 
@@ -145,7 +144,6 @@ export default ({
     kind,
     name,
     nats: nats?.map(nat => formatNat(nat)) || [],
-    network,
     selfLink,
   }
 }
