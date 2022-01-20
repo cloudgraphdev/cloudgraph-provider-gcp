@@ -6,6 +6,6 @@ type gcpOrganization implements gcpBaseResource @key(fields: "id") {
   updateTime: String @search(by: [hash, regexp])
   deleteTime: String @search(by: [hash, regexp])
   etag: String @search(by: [hash, regexp])
-  folder: [gcpFolder] @hasInverse(field: organization)
-  project: [gcpProject] @hasInverse(field: organization)
+  folder: [gcpFolder] @hasInverse(field: organization) #pluralize to folders
+  project: [gcpProject] @hasInverse(field: organization) #pluralize to projects
 }

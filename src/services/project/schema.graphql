@@ -10,24 +10,24 @@ type gcpProject @key(fields: "id") {
   deleteTime: String @search(by: [hash, regexp])
   etag: String @search(by: [hash, regexp])
   labels: [gcpRawLabel]
-  alertPolicy: [gcpAlertPolicy] @hasInverse(field: project)
-  cloudFunction: [gcpCloudFunction] @hasInverse(field: project)
-  dnsManagedZone: [gcpDnsManagedZone] @hasInverse(field: project)
-  dnsPolicy: [gcpDnsPolicy] @hasInverse(field: project)
-  vpc: [gcpVpcConnector] @hasInverse(field: project)
+  alertPolicy: [gcpAlertPolicy] @hasInverse(field: project) #pluralize to alertPolicies
+  cloudFunction: [gcpCloudFunction] @hasInverse(field: project) #pluralize to cloudFunctions
+  dnsManagedZone: [gcpDnsManagedZone] @hasInverse(field: project) #pluralize to dnsManagedZones
+  dnsPolicy: [gcpDnsPolicy] @hasInverse(field: project) #pluralize to dnsPolicies
+  vpc: [gcpVpcConnector] @hasInverse(field: project) #pluralize to vpcs
   kms: [gcpKmsKeyRing] @hasInverse(field: project)
-  iamPolicy: [gcpIamPolicy] @hasInverse(field: project)
-  logBucket: [gcpLogBucket] @hasInverse(field: project)
-  logMetric: [gcpLogMetric] @hasInverse(field: project)
-  logView: [gcpLogView] @hasInverse(field: project)
-  logSink: [gcpLogSink] @hasInverse(field: project)
-  storageBucket: [gcpStorageBucket] @hasInverse(field: project)
-  firewall: [gcpFirewall] @hasInverse(field: project)
+  iamPolicy: [gcpIamPolicy] @hasInverse(field: project) #pluralize to iamPolicies
+  logBucket: [gcpLogBucket] @hasInverse(field: project) #pluralize to logBuckets
+  logMetric: [gcpLogMetric] @hasInverse(field: project) #pluralize to logMetrics
+  logView: [gcpLogView] @hasInverse(field: project) #pluralize to logViews
+  logSink: [gcpLogSink] @hasInverse(field: project) #pluralize to logSinks
+  storageBucket: [gcpStorageBucket] @hasInverse(field: project) #pluralize to storageBuckets
+  firewall: [gcpFirewall] @hasInverse(field: project) #pluralize to firewalls
   folder: [gcpFolder] @hasInverse(field: project)
   organization: [gcpOrganization] @hasInverse(field: project)
-  secretManager: [gcpSecret] @hasInverse(field: project)
-  network: [gcpNetwork] @hasInverse(field: project)
-  subnet: [gcpSubnet] @hasInverse(field: project)
-  vmInstance: [gcpVmInstance] @hasInverse(field: project)
+  secretManager: [gcpSecret] @hasInverse(field: project) #pluralize to secrets
+  network: [gcpNetwork] @hasInverse(field: project) #pluralize to networks
+  subnet: [gcpSubnet] @hasInverse(field: project) #pluralize to subnets
+  vmInstance: [gcpVmInstance] @hasInverse(field: project) #pluralize to vmInstances
   assets: [gcpAsset] @hasInverse(field: project)
 }

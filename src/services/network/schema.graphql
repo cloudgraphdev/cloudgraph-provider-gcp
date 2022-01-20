@@ -9,12 +9,12 @@ type gcpNetwork implements gcpBaseResource @key(fields: "id") {
   peerings: [gcpNetworkPeering]
   routingConfig: gcpNetworkRoutingConfig
   selfLink: String @search(by: [hash, regexp])
-  dnsPolicy: [gcpDnsPolicy] @hasInverse(field: network)
-  firewall: [gcpFirewall] @hasInverse(field: network)
+  dnsPolicy: [gcpDnsPolicy] @hasInverse(field: network) #pluralize to dnsPolicies
+  firewall: [gcpFirewall] @hasInverse(field: network) #pluralize to firewalls
   project: [gcpProject] @hasInverse(field: network)
-  subnet: [gcpSubnet] @hasInverse(field: network)
-  vpc: [gcpVpcConnector] @hasInverse(field: network)
-  vmInstance: [gcpVmInstance] @hasInverse(field: network)
+  subnet: [gcpSubnet] @hasInverse(field: network) #pluralize to subnets
+  vpc: [gcpVpcConnector] @hasInverse(field: network) #pluralize to vpcs
+  vmInstance: [gcpVmInstance] @hasInverse(field: network) #pluralize to vmInstances
 }
 
 type gcpNetworkPeering
