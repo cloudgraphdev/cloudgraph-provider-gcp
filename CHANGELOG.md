@@ -1,3 +1,18 @@
+# [0.15.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.14.1...0.15.0) (2022-01-20)
+
+
+### Bug Fixes
+
+* **assetInventory:** combine format util imports ([cf81e74](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/cf81e74b0d3b3dab7198137e0f7b9e29256a4cc9))
+* **assetInventory:** drop top level spreads in format ([3b4ad13](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/3b4ad13a7b2aa081d80f320eecd71f6359a5dfbf))
+* **assetInventory:** remove empty override ([ebc5b33](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/ebc5b33be02527a3cfa838903e148f9ac981ef29))
+* **assets:** update service name for pluralization ([99101e4](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/99101e4f7e5116c7533d190d6976ceea25f221dd))
+
+
+### Features
+
+* **assetInventory:** added asset inventory service ([f06d43f](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/f06d43f2d2dff57cb3803e1e6b37d80edcfe4393))
+
 ## [0.14.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.14.0...0.14.1) (2022-01-19)
 
 
