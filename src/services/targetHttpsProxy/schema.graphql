@@ -11,5 +11,5 @@ type gcpTargetHttpsProxy implements gcpBaseResource @key(fields: "id") {
   sslCertificates: [String] @search(by: [hash])
   sslPolicy: String @search(by: [hash, regexp])
   urlMap: String @search(by: [hash, regexp])
-  project: [gcpProject] @hasInverse(field: targetHttpsProxy)
+  project: [gcpProject] @hasInverse(field: targetHttpsProxies)
 }

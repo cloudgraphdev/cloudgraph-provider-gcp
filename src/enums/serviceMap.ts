@@ -22,7 +22,7 @@ import GcpAlertPolicy from '../services/alertPolicy'
 import GcpCloudFunction from '../services/cloudFunction'
 import GcpAssets from '../services/assetInventory'
 import GcpTargetSslProxies from '../services/targetSslProxy'
-import GcpTargetHttpsProxy from '../services/targetHttpsProxy'
+import GcpTargetHttpsProxies from '../services/targetHttpsProxy'
 
 /**
  * serviceMap is an object that contains all currently supported services
@@ -51,6 +51,6 @@ export default {
   [services.cloudFunction]: GcpCloudFunction,
   [services.assets]: GcpAssets,
   [services.targetSslProxies]: GcpTargetSslProxies,
-  [services.targetHttpsProxy]: GcpTargetHttpsProxy,
+  [services.targetHttpsProxies]: GcpTargetHttpsProxies,
   tag: GcpTag,
 }
