@@ -902,6 +902,7 @@ export type GcpProject = {
   secretManager?: Maybe<Array<Maybe<GcpSecret>>>;
   network?: Maybe<Array<Maybe<GcpNetwork>>>;
   subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
+  targetSslProxies?: Maybe<Array<Maybe<GcpTargetSslProxy>>>;
   vmInstance?: Maybe<Array<Maybe<GcpVmInstance>>>;
   assets?: Maybe<Array<Maybe<GcpAsset>>>;
 };
@@ -1095,6 +1096,18 @@ export type GcpTag = {
   key: Scalars['String'];
   value: Scalars['String'];
   kms?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;
+};
+
+export type GcpTargetSslProxy = GcpBaseResource & {
+  creationTimestamp?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  kind?: Maybe<Scalars['String']>;
+  proxyHeader?: Maybe<Scalars['String']>;
+  selfLink?: Maybe<Scalars['String']>;
+  service?: Maybe<Scalars['String']>;
+  sslCertificates?: Maybe<Array<Maybe<Scalars['String']>>>;
+  sslPolicy?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
 };
 
 export type GcpValue = {

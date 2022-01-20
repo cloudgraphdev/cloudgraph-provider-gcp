@@ -1,0 +1,11 @@
+type gcpTargetSslProxy implements gcpBaseResource @key(fields: "id") {
+  creationTimestamp: String @search(by: [hash, regexp])
+  description: String @search(by: [hash, regexp])
+  kind: String @search(by: [hash, regexp])
+  proxyHeader: String @search(by: [hash, regexp])
+  selfLink: String @search(by: [hash, regexp])
+  service: String @search(by: [hash, regexp])
+  sslCertificates: [String] @search(by: [hash])
+  sslPolicy: String @search(by: [hash, regexp])
+  project: [gcpProject] @hasInverse(field: targetSslProxies)
+}
