@@ -902,7 +902,7 @@ export type GcpProject = {
   secretManager?: Maybe<Array<Maybe<GcpSecret>>>;
   network?: Maybe<Array<Maybe<GcpNetwork>>>;
   subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
-  targetSslProxy?: Maybe<Array<Maybe<GcpTargetSslProxy>>>;
+  targetSslProxies?: Maybe<Array<Maybe<GcpTargetSslProxy>>>;
   vmInstance?: Maybe<Array<Maybe<GcpVmInstance>>>;
   assets?: Maybe<Array<Maybe<GcpAsset>>>;
 };

@@ -68,7 +68,7 @@ export default {
   project: 'project',
   storageBucket: 'storageBucket',
   subnet: 'subnet',
-  targetSslProxy: 'targetSslProxy',
+  targetSslProxies: 'targetSslProxies',
   // firebase: 'firebase',
   // monitoring: 'monitoring',
   dnsManagedZone: 'dnsManagedZone',
