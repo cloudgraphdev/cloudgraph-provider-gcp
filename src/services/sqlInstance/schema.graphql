@@ -1,0 +1,313 @@
+type gcpSqlInstance implements gcpBaseResource @key(fields: "id") {
+  kind: String @search(by: [hash, regexp])
+  state: String @search(by: [hash, regexp])
+  databaseVersion: String @search(by: [hash, regexp])
+  settings: gcpSqlSettings
+  etag: String @search(by: [hash, regexp])
+  failoverReplica: gcpSqlInstanceSqlFailoverReplica
+  masterInstanceName: String @search(by: [hash, regexp])
+  replicaNames: [String] @search(by: [hash])
+  maxDiskSize: String @search(by: [hash, regexp])
+  currentDiskSize: String @search(by: [hash, regexp])
+  ipAddresses: [gcpSqlIpMapping]
+  serverCaCert: gcpSqlSslCert
+  instanceType: String @search(by: [hash, regexp])
+  ipv6Address: String @search(by: [hash, regexp])
+  serviceAccountEmailAddress: String @search(by: [hash, regexp])
+  onPremisesConfiguration: gcpSqlOnPremisesConfiguration
+  replicaConfiguration: gcpSqlReplicaConfiguration
+  backendType: String @search(by: [hash, regexp])
+  selfLink: String @search(by: [hash, regexp])
+  suspensionReason: [String] @search(by: [hash])
+  connectionName: String @search(by: [hash, regexp])
+  gceZone: String @search(by: [hash, regexp])
+  secondaryGceZone: String @search(by: [hash, regexp])
+  diskEncryptionConfiguration: gcpSqlDiskEncryptionConfiguration
+  diskEncryptionStatus: gcpSqlDiskEncryptionStatus
+  rootPassword: String @search(by: [hash, regexp])
+  scheduledMaintenance: gcpSqlInstanceScheduledMaintenance
+  satisfiesPzs: Boolean @search
+  outOfDiskReport: gcpSqlInstanceOutOfDiskReport
+  network: [gcpNetwork] @hasInverse(field: sqlInstances)
+  project: [gcpProject] @hasInverse(field: sqlInstances)
+}
+
+type gcpSqlInstanceOutOfDiskReport
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  sqlOutOfDiskState: String @search(by: [hash, regexp])
+  sqlMinRecommendedIncreaseSizeGb: Float @search
+}
+
+type gcpSqlInstanceScheduledMaintenance
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  startTime: String @search(by: [hash, regexp])
+  canDefer: Boolean @search
+  canReschedule: Boolean @search
+}
+
+type gcpSqlDiskEncryptionStatus
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  kmsKeyVersionName: String @search(by: [hash, regexp])
+  kind: String @search(by: [hash, regexp])
+}
+
+type gcpSqlDiskEncryptionConfiguration
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  kmsKeyName: String @search(by: [hash, regexp])
+  kind: String @search(by: [hash, regexp])
+}
+
+type gcpSqlReplicaConfiguration
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  kind: String @search(by: [hash, regexp])
+  mysqlReplicaConfiguration: gcpSqlMySqlReplicaConfiguration
+  failoverTarget: Boolean @search
+}
+
+type gcpSqlMySqlReplicaConfiguration
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  dumpFilePath: String @search(by: [hash, regexp])
+  username: String @search(by: [hash, regexp])
+  password: String @search(by: [hash, regexp])
+  connectRetryInterval: String @search(by: [hash, regexp])
+  masterHeartbeatPeriod: String @search(by: [hash, regexp])
+  caCertificate: String @search(by: [hash, regexp])
+  clientCertificate: String @search(by: [hash, regexp])
+  clientKey: String @search(by: [hash, regexp])
+  sslCipher: String @search(by: [hash, regexp])
+  verifyServerCertificate: Boolean @search
+  kind: String @search(by: [hash, regexp])
+}
+
+type gcpSqlIpMapping
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  type: String @search(by: [hash, regexp])
+  ipAddress: String @search(by: [hash, regexp])
+  timeToRetire: String @search(by: [hash, regexp])
+}
+
+type gcpSqlOnPremisesConfiguration
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  hostPort: String @search(by: [hash, regexp])
+  kind: String @search(by: [hash, regexp])
+  username: String @search(by: [hash, regexp])
+  password: String @search(by: [hash, regexp])
+  caCertificate: String @search(by: [hash, regexp])
+  clientCertificate: String @search(by: [hash, regexp])
+  clientKey: String @search(by: [hash, regexp])
+  dumpFilePath: String @search(by: [hash, regexp])
+}
+
+type gcpSqlSettings
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  settingsVersion: String @search(by: [hash, regexp])
+  authorizedGaeApplications: [String] @search(by: [hash])
+  tier: String @search(by: [hash, regexp])
+  kind: String @search(by: [hash, regexp])
+  userLabels: [gcpRawLabel]
+  availabilityType: String @search(by: [hash, regexp])
+  pricingPlan: String @search(by: [hash, regexp])
+  replicationType: String @search(by: [hash, regexp])
+  storageAutoResizeLimit: String @search(by: [hash, regexp])
+  activationPolicy: String @search(by: [hash, regexp])
+  ipConfiguration: gcpSqlIpConfiguration
+  storageAutoResize: Boolean @search
+  locationPreference: gcpSqlLocationPreference
+  databaseFlags: [gcpSqlDatabaseFlags]
+  dataDiskType: String @search(by: [hash, regexp])
+  maintenanceWindow: gcpSqlMaintenanceWindow
+  backupConfiguration: gcpSqlBackupConfiguration
+  databaseReplicationEnabled: Boolean @search
+  crashSafeReplicationEnabled: Boolean @search
+  dataDiskSizeGb: String @search(by: [hash, regexp])
+  activeDirectoryConfig: gcpSqlActiveDirectoryConfig
+  collation: String @search(by: [hash, regexp])
+  denyMaintenancePeriods: [gcpSqlDenyMaintenancePeriod]
+  insightsConfig: gcpSqlInsightsConfig
+}
+
+type gcpSqlInsightsConfig
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  queryInsightsEnabled: Boolean @search
+  recordClientAddress: Boolean @search
+  recordApplicationTags: Boolean @search
+  queryStringLength: String @search(by: [hash, regexp])
+  queryPlansPerMinute: String @search(by: [hash, regexp])
+}
+
+type gcpSqlDenyMaintenancePeriod
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  startDate: String @search(by: [hash, regexp])
+  endDate: String @search(by: [hash, regexp])
+  time: String @search(by: [hash, regexp])
+}
+
+type gcpSqlActiveDirectoryConfig
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  kind: String @search(by: [hash, regexp])
+  domain: String @search(by: [hash, regexp])
+}
+
+type gcpSqlBackupConfiguration
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  startTime: String @search(by: [hash, regexp])
+  enabled: Boolean @search
+  kind: String @search(by: [hash, regexp])
+  binaryLogEnabled: Boolean @search
+  replicationLogArchivingEnabled: Boolean @search
+  location: String @search(by: [hash, regexp])
+  pointInTimeRecoveryEnabled: Boolean @search
+  transactionLogRetentionDays: String @search(by: [hash, regexp])
+  backupRetentionSettings: gcpSqlBackupRetentionSettings
+}
+
+type gcpSqlBackupRetentionSettings
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  retentionUnit: String @search(by: [hash, regexp])
+  retainedBackups: String @search(by: [hash, regexp])
+}
+
+type gcpSqlMaintenanceWindow
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  hour: String @search(by: [hash, regexp])
+  day: String @search(by: [hash, regexp])
+  updateTrack: String @search(by: [hash, regexp])
+  kind: String @search(by: [hash, regexp])
+}
+
+type gcpSqlDatabaseFlags
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  name: String @search(by: [hash, regexp])
+  value: String @search(by: [hash, regexp])
+}
+
+type gcpSqlSslCert
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  kind: String @search(by: [hash, regexp])
+  certSerialNumber: String @search(by: [hash, regexp])
+  cert: String @search(by: [hash, regexp])
+  createTime: String @search(by: [hash, regexp])
+  commonName: String @search(by: [hash, regexp])
+  expirationTime: String @search(by: [hash, regexp])
+  sha1Fingerprint: String @search(by: [hash, regexp])
+  instance: String @search(by: [hash, regexp])
+  selfLink: String @search(by: [hash, regexp])
+}
+
+type gcpSqlInstanceSqlFailoverReplica
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  name: String @search(by: [hash, regexp])
+  available: Boolean @search
+}
+
+type gcpSqlIpConfiguration
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  ipv4Enabled: Boolean @search
+  privateNetwork: String @search(by: [hash, regexp])
+  requireSsl: Boolean @search
+  authorizedNetworks: [gcpSqlAclEntry]
+}
+
+type gcpSqlAclEntry
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  value: String @search(by: [hash, regexp])
+  expirationTime: String @search(by: [hash, regexp])
+  name: String @search(by: [hash, regexp])
+  kind: String @search(by: [hash, regexp])
+}
+
+type gcpSqlLocationPreference
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  followGaeApplication: String @search(by: [hash, regexp])
+  zone: String @search(by: [hash, regexp])
+  secondaryZone: String @search(by: [hash, regexp])
+  kind: String @search(by: [hash, regexp])
+}

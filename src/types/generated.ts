@@ -836,6 +836,7 @@ export type GcpNetwork = GcpBaseResource & {
   dnsPolicy?: Maybe<Array<Maybe<GcpDnsPolicy>>>;
   firewall?: Maybe<Array<Maybe<GcpFirewall>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
+  sqlInstances?: Maybe<Array<Maybe<GcpSqlInstance>>>;
   subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
   vpc?: Maybe<Array<Maybe<GcpVpcConnector>>>;
   vmInstance?: Maybe<Array<Maybe<GcpVmInstance>>>;
@@ -906,6 +907,7 @@ export type GcpProject = {
   targetHttpsProxies?: Maybe<Array<Maybe<GcpTargetHttpsProxy>>>;
   vmInstance?: Maybe<Array<Maybe<GcpVmInstance>>>;
   assets?: Maybe<Array<Maybe<GcpAsset>>>;
+  sqlInstances?: Maybe<Array<Maybe<GcpSqlInstance>>>;
 };
 
 export type GcpRawLabel = {
@@ -1011,6 +1013,215 @@ export type GcpShieldedInstanceConfig = {
 
 export type GcpShieldedInstanceIntegrityPolicy = {
   updateAutoLearnPolicy?: Maybe<Scalars['Boolean']>;
+};
+
+export type GcpSqlAclEntry = {
+  id: Scalars['String'];
+  value?: Maybe<Scalars['String']>;
+  expirationTime?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  kind?: Maybe<Scalars['String']>;
+};
+
+export type GcpSqlActiveDirectoryConfig = {
+  kind?: Maybe<Scalars['String']>;
+  domain?: Maybe<Scalars['String']>;
+};
+
+export type GcpSqlBackupConfiguration = {
+  startTime?: Maybe<Scalars['String']>;
+  enabled?: Maybe<Scalars['Boolean']>;
+  kind?: Maybe<Scalars['String']>;
+  binaryLogEnabled?: Maybe<Scalars['Boolean']>;
+  replicationLogArchivingEnabled?: Maybe<Scalars['Boolean']>;
+  location?: Maybe<Scalars['String']>;
+  pointInTimeRecoveryEnabled?: Maybe<Scalars['Boolean']>;
+  transactionLogRetentionDays?: Maybe<Scalars['String']>;
+  backupRetentionSettings?: Maybe<GcpSqlBackupRetentionSettings>;
+};
+
+export type GcpSqlBackupRetentionSettings = {
+  retentionUnit?: Maybe<Scalars['String']>;
+  retainedBackups?: Maybe<Scalars['String']>;
+};
+
+export type GcpSqlDatabaseFlags = {
+  id: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type GcpSqlDenyMaintenancePeriod = {
+  id: Scalars['String'];
+  startDate?: Maybe<Scalars['String']>;
+  endDate?: Maybe<Scalars['String']>;
+  time?: Maybe<Scalars['String']>;
+};
+
+export type GcpSqlDiskEncryptionConfiguration = {
+  kmsKeyName?: Maybe<Scalars['String']>;
+  kind?: Maybe<Scalars['String']>;
+};
+
+export type GcpSqlDiskEncryptionStatus = {
+  kmsKeyVersionName?: Maybe<Scalars['String']>;
+  kind?: Maybe<Scalars['String']>;
+};
+
+export type GcpSqlInsightsConfig = {
+  queryInsightsEnabled?: Maybe<Scalars['Boolean']>;
+  recordClientAddress?: Maybe<Scalars['Boolean']>;
+  recordApplicationTags?: Maybe<Scalars['Boolean']>;
+  queryStringLength?: Maybe<Scalars['String']>;
+  queryPlansPerMinute?: Maybe<Scalars['String']>;
+};
+
+export type GcpSqlInstance = GcpBaseResource & {
+  kind?: Maybe<Scalars['String']>;
+  state?: Maybe<Scalars['String']>;
+  databaseVersion?: Maybe<Scalars['String']>;
+  settings?: Maybe<GcpSqlSettings>;
+  etag?: Maybe<Scalars['String']>;
+  failoverReplica?: Maybe<GcpSqlInstanceSqlFailoverReplica>;
+  masterInstanceName?: Maybe<Scalars['String']>;
+  replicaNames?: Maybe<Array<Maybe<Scalars['String']>>>;
+  maxDiskSize?: Maybe<Scalars['String']>;
+  currentDiskSize?: Maybe<Scalars['String']>;
+  ipAddresses?: Maybe<Array<Maybe<GcpSqlIpMapping>>>;
+  serverCaCert?: Maybe<GcpSqlSslCert>;
+  instanceType?: Maybe<Scalars['String']>;
+  ipv6Address?: Maybe<Scalars['String']>;
+  serviceAccountEmailAddress?: Maybe<Scalars['String']>;
+  onPremisesConfiguration?: Maybe<GcpSqlOnPremisesConfiguration>;
+  replicaConfiguration?: Maybe<GcpSqlReplicaConfiguration>;
+  backendType?: Maybe<Scalars['String']>;
+  selfLink?: Maybe<Scalars['String']>;
+  suspensionReason?: Maybe<Array<Maybe<Scalars['String']>>>;
+  connectionName?: Maybe<Scalars['String']>;
+  gceZone?: Maybe<Scalars['String']>;
+  secondaryGceZone?: Maybe<Scalars['String']>;
+  diskEncryptionConfiguration?: Maybe<GcpSqlDiskEncryptionConfiguration>;
+  diskEncryptionStatus?: Maybe<GcpSqlDiskEncryptionStatus>;
+  rootPassword?: Maybe<Scalars['String']>;
+  scheduledMaintenance?: Maybe<GcpSqlInstanceScheduledMaintenance>;
+  satisfiesPzs?: Maybe<Scalars['Boolean']>;
+  outOfDiskReport?: Maybe<GcpSqlInstanceOutOfDiskReport>;
+  network?: Maybe<Array<Maybe<GcpNetwork>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
+export type GcpSqlInstanceOutOfDiskReport = {
+  sqlOutOfDiskState?: Maybe<Scalars['String']>;
+  sqlMinRecommendedIncreaseSizeGb?: Maybe<Scalars['Float']>;
+};
+
+export type GcpSqlInstanceScheduledMaintenance = {
+  startTime?: Maybe<Scalars['String']>;
+  canDefer?: Maybe<Scalars['Boolean']>;
+  canReschedule?: Maybe<Scalars['Boolean']>;
+};
+
+export type GcpSqlInstanceSqlFailoverReplica = {
+  name?: Maybe<Scalars['String']>;
+  available?: Maybe<Scalars['Boolean']>;
+};
+
+export type GcpSqlIpConfiguration = {
+  ipv4Enabled?: Maybe<Scalars['Boolean']>;
+  privateNetwork?: Maybe<Scalars['String']>;
+  requireSsl?: Maybe<Scalars['Boolean']>;
+  authorizedNetworks?: Maybe<Array<Maybe<GcpSqlAclEntry>>>;
+};
+
+export type GcpSqlIpMapping = {
+  id: Scalars['String'];
+  type?: Maybe<Scalars['String']>;
+  ipAddress?: Maybe<Scalars['String']>;
+  timeToRetire?: Maybe<Scalars['String']>;
+};
+
+export type GcpSqlLocationPreference = {
+  followGaeApplication?: Maybe<Scalars['String']>;
+  zone?: Maybe<Scalars['String']>;
+  secondaryZone?: Maybe<Scalars['String']>;
+  kind?: Maybe<Scalars['String']>;
+};
+
+export type GcpSqlMaintenanceWindow = {
+  hour?: Maybe<Scalars['String']>;
+  day?: Maybe<Scalars['String']>;
+  updateTrack?: Maybe<Scalars['String']>;
+  kind?: Maybe<Scalars['String']>;
+};
+
+export type GcpSqlMySqlReplicaConfiguration = {
+  dumpFilePath?: Maybe<Scalars['String']>;
+  username?: Maybe<Scalars['String']>;
+  password?: Maybe<Scalars['String']>;
+  connectRetryInterval?: Maybe<Scalars['String']>;
+  masterHeartbeatPeriod?: Maybe<Scalars['String']>;
+  caCertificate?: Maybe<Scalars['String']>;
+  clientCertificate?: Maybe<Scalars['String']>;
+  clientKey?: Maybe<Scalars['String']>;
+  sslCipher?: Maybe<Scalars['String']>;
+  verifyServerCertificate?: Maybe<Scalars['Boolean']>;
+  kind?: Maybe<Scalars['String']>;
+};
+
+export type GcpSqlOnPremisesConfiguration = {
+  hostPort?: Maybe<Scalars['String']>;
+  kind?: Maybe<Scalars['String']>;
+  username?: Maybe<Scalars['String']>;
+  password?: Maybe<Scalars['String']>;
+  caCertificate?: Maybe<Scalars['String']>;
+  clientCertificate?: Maybe<Scalars['String']>;
+  clientKey?: Maybe<Scalars['String']>;
+  dumpFilePath?: Maybe<Scalars['String']>;
+};
+
+export type GcpSqlReplicaConfiguration = {
+  kind?: Maybe<Scalars['String']>;
+  mysqlReplicaConfiguration?: Maybe<GcpSqlMySqlReplicaConfiguration>;
+  failoverTarget?: Maybe<Scalars['Boolean']>;
+};
+
+export type GcpSqlSettings = {
+  settingsVersion?: Maybe<Scalars['String']>;
+  authorizedGaeApplications?: Maybe<Array<Maybe<Scalars['String']>>>;
+  tier?: Maybe<Scalars['String']>;
+  kind?: Maybe<Scalars['String']>;
+  userLabels?: Maybe<Array<Maybe<GcpRawLabel>>>;
+  availabilityType?: Maybe<Scalars['String']>;
+  pricingPlan?: Maybe<Scalars['String']>;
+  replicationType?: Maybe<Scalars['String']>;
+  storageAutoResizeLimit?: Maybe<Scalars['String']>;
+  activationPolicy?: Maybe<Scalars['String']>;
+  ipConfiguration?: Maybe<GcpSqlIpConfiguration>;
+  storageAutoResize?: Maybe<Scalars['Boolean']>;
+  locationPreference?: Maybe<GcpSqlLocationPreference>;
+  databaseFlags?: Maybe<Array<Maybe<GcpSqlDatabaseFlags>>>;
+  dataDiskType?: Maybe<Scalars['String']>;
+  maintenanceWindow?: Maybe<GcpSqlMaintenanceWindow>;
+  backupConfiguration?: Maybe<GcpSqlBackupConfiguration>;
+  databaseReplicationEnabled?: Maybe<Scalars['Boolean']>;
+  crashSafeReplicationEnabled?: Maybe<Scalars['Boolean']>;
+  dataDiskSizeGb?: Maybe<Scalars['String']>;
+  activeDirectoryConfig?: Maybe<GcpSqlActiveDirectoryConfig>;
+  collation?: Maybe<Scalars['String']>;
+  denyMaintenancePeriods?: Maybe<Array<Maybe<GcpSqlDenyMaintenancePeriod>>>;
+  insightsConfig?: Maybe<GcpSqlInsightsConfig>;
+};
+
+export type GcpSqlSslCert = {
+  kind?: Maybe<Scalars['String']>;
+  certSerialNumber?: Maybe<Scalars['String']>;
+  cert?: Maybe<Scalars['String']>;
+  createTime?: Maybe<Scalars['String']>;
+  commonName?: Maybe<Scalars['String']>;
+  expirationTime?: Maybe<Scalars['String']>;
+  sha1Fingerprint?: Maybe<Scalars['String']>;
+  instance?: Maybe<Scalars['String']>;
+  selfLink?: Maybe<Scalars['String']>;
 };
 
 export type GcpStorageBucket = {
