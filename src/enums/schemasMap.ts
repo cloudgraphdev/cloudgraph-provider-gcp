@@ -26,5 +26,6 @@ export default {
   [services.cloudFunction]: 'gcpCloudFunction',
   [services.assets]: 'gcpAsset',
   [services.targetSslProxies]: 'gcpTargetSslProxy',
+  [services.targetHttpsProxies]: 'gcpTargetHttpsProxy',
   tag: 'gcpTag',
 }

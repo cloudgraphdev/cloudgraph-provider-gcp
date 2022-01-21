@@ -1,0 +1,15 @@
+type gcpTargetHttpsProxy implements gcpBaseResource @key(fields: "id") {
+  authorizationPolicy: String @search(by: [hash, regexp])
+  creationTimestamp: String @search(by: [hash, regexp])
+  description: String @search(by: [hash, regexp])
+  fingerprint: String @search(by: [hash, regexp])
+  kind: String @search(by: [hash, regexp])
+  proxyBind: Boolean @search
+  quicOverride: String @search(by: [hash, regexp])
+  selfLink: String @search(by: [hash, regexp])
+  serverTlsPolicy: String @search(by: [hash, regexp])
+  sslCertificates: [String] @search(by: [hash])
+  sslPolicy: String @search(by: [hash, regexp])
+  urlMap: String @search(by: [hash, regexp])
+  project: [gcpProject] @hasInverse(field: targetHttpsProxies)
+}
