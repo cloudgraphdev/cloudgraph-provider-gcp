@@ -435,6 +435,12 @@ export type GcpComputeAliasIpRange = {
   subnetworkRangeName?: Maybe<Scalars['String']>;
 };
 
+export type GcpComputeData = {
+  id: Scalars['String'];
+  key?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
 export type GcpComputeNetworkInterface = {
   id: Scalars['String'];
   accessConfigs?: Maybe<Array<Maybe<GcpComputeAccessConfig>>>;
@@ -452,6 +458,13 @@ export type GcpComputeNetworkInterface = {
 export type GcpComputeTags = {
   fingerprint?: Maybe<Scalars['String']>;
   items?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type GcpComputeWarnings = {
+  id: Scalars['String'];
+  code?: Maybe<Scalars['String']>;
+  data?: Maybe<Array<Maybe<GcpComputeData>>>;
+  message?: Maybe<Scalars['String']>;
 };
 
 export type GcpConfidentialInstanceConfig = {
@@ -901,6 +914,7 @@ export type GcpProject = {
   folder?: Maybe<Array<Maybe<GcpFolder>>>;
   organization?: Maybe<Array<Maybe<GcpOrganization>>>;
   secretManager?: Maybe<Array<Maybe<GcpSecret>>>;
+  sslPolicies?: Maybe<Array<Maybe<GcpSslPolicy>>>;
   network?: Maybe<Array<Maybe<GcpNetwork>>>;
   subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
   targetSslProxies?: Maybe<Array<Maybe<GcpTargetSslProxy>>>;
@@ -1222,6 +1236,20 @@ export type GcpSqlSslCert = {
   sha1Fingerprint?: Maybe<Scalars['String']>;
   instance?: Maybe<Scalars['String']>;
   selfLink?: Maybe<Scalars['String']>;
+};
+
+export type GcpSslPolicy = GcpBaseResource & {
+  creationTimestamp?: Maybe<Scalars['String']>;
+  customFeatures?: Maybe<Array<Maybe<Scalars['String']>>>;
+  description?: Maybe<Scalars['String']>;
+  enabledFeatures?: Maybe<Array<Maybe<Scalars['String']>>>;
+  fingerprint?: Maybe<Scalars['String']>;
+  kind?: Maybe<Scalars['String']>;
+  minTlsVersion?: Maybe<Scalars['String']>;
+  profile?: Maybe<Scalars['String']>;
+  selfLink?: Maybe<Scalars['String']>;
+  warnings?: Maybe<Array<Maybe<GcpComputeWarnings>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
 };
 
 export type GcpStorageBucket = {

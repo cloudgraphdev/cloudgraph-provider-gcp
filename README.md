@@ -82,6 +82,7 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 | project                  | ALL SERVICES             |
 | secretManager            | project                  |
 | sqlInstances             | project, network         |
+| sslPolicies              | project                  |
 | storageBucket            | project                  |
 | subnet                   | project, network, vmInstance, vpc    |
 | targetSslProxies         | project                  |

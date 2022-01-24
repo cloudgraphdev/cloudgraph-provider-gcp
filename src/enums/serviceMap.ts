@@ -24,6 +24,7 @@ import GcpAssets from '../services/assetInventory'
 import GcpTargetSslProxies from '../services/targetSslProxy'
 import GcpTargetHttpsProxies from '../services/targetHttpsProxy'
 import GcpSqlInstances from '../services/sqlInstance'
+import GcpSslPolicies from '../services/sslPolicy'
 
 /**
  * serviceMap is an object that contains all currently supported services
@@ -54,5 +55,6 @@ export default {
   [services.targetSslProxies]: GcpTargetSslProxies,
   [services.targetHttpsProxies]: GcpTargetHttpsProxies,
   [services.sqlInstances]: GcpSqlInstances,
+  [services.sslPolicies]: GcpSslPolicies,
   tag: GcpTag,
 }

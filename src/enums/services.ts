@@ -66,6 +66,7 @@ export default {
   // organizations: 'organizations',
   project: 'project',
   sqlInstances: 'sqlInstances',
+  sslPolicies: 'sslPolicies',
   storageBucket: 'storageBucket',
   subnet: 'subnet',
   targetSslProxies: 'targetSslProxies',

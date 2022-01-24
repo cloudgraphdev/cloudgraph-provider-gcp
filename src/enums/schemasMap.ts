@@ -28,5 +28,6 @@ export default {
   [services.targetSslProxies]: 'gcpTargetSslProxy',
   [services.targetHttpsProxies]: 'gcpTargetHttpsProxy',
   [services.sqlInstances]: 'gcpSqlInstance',
+  [services.sslPolicies]: 'gcpSslPolicy',
   tag: 'gcpTag',
 }
