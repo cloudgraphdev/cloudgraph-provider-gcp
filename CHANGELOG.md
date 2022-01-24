@@ -1,3 +1,15 @@
+# [0.19.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.18.0...0.19.0) (2022-01-24)
+
+
+### Bug Fixes
+
+* **sslPolicies:** list name policy ([39e258d](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/39e258d399e6dce3dee96a0661fbf3d2abb1edef))
+
+
+### Features
+
+* **sslPolicies:** add ssl policies service ([8a3da19](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/8a3da19d8f9514636d435659abb21467521514e8))
+
 # [0.18.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.17.0...0.18.0) (2022-01-24)
 
 
