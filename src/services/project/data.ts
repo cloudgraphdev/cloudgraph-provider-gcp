@@ -12,23 +12,20 @@ const { logger } = CloudGraph
 const serviceName = 'Project'
 const apiEndpoint = initTestEndpoint(serviceName)
 
-export interface RawGcpProject extends google.cloud.resourcemanager.v3.IProject { 
+export interface RawGcpProject
+  extends google.cloud.resourcemanager.v3.IProject {
   region: string
 }
 
-export default async ({
-  config,
-}: GcpServiceInput): Promise<{
-  [region: string]: RawGcpProject[]
-}> =>
+export const listProjectsData = async (
+  projectsClient: ProjectsClient,
+  projectList: RawGcpProject[]
+): Promise<void> =>
   new Promise(async resolve => {
-    const projectList: RawGcpProject[] = []
-
     /**
      * Get all the Projects
      */
     try {
-      const projectsClient = new ProjectsClient({ ...config, apiEndpoint });
       const iterable = projectsClient.searchProjectsAsync()
       // https://github.com/googleapis/gax-nodejs/blob/main/client-libraries.md#auto-pagination
       for await (const response of iterable) {
@@ -40,9 +37,26 @@ export default async ({
         }
       }
     } catch (error) {
-      generateGcpErrorLog(serviceName, 'resourceManager:searchProjectsAsync', error)
+      generateGcpErrorLog(
+        serviceName,
+        'resourceManager:searchProjectsAsync',
+        error
+      )
     }
-    
+    resolve()
+  })
+
+export default async ({
+  config,
+}: GcpServiceInput): Promise<{
+  [region: string]: RawGcpProject[]
+}> =>
+  new Promise(async resolve => {
+    const projectList: RawGcpProject[] = []
+    const projectsClient = new ProjectsClient({ ...config, apiEndpoint })
+
+    await listProjectsData(projectsClient, projectList)
+
     logger.debug(lt.foundResources(serviceName, projectList.length))
     resolve(groupBy(projectList, 'region'))
   })

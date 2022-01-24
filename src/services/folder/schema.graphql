@@ -8,4 +8,5 @@ type gcpFolder implements gcpBaseResource @key(fields: "id") {
   etag: String @search(by: [hash, regexp])
   organization: [gcpOrganization] @hasInverse(field: folder)
   project: [gcpProject] @hasInverse(field: folder)
+  iamPolicy: [gcpIamPolicy] @hasInverse(field: folder)
 }

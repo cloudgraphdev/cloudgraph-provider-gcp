@@ -615,6 +615,7 @@ export type GcpFolder = GcpBaseResource & {
   etag?: Maybe<Scalars['String']>;
   organization?: Maybe<Array<Maybe<GcpOrganization>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
+  iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
 };
 
 export type GcpGuestOsFeature = {
@@ -638,11 +639,14 @@ export type GcpIamBindingExpr = {
 
 export type GcpIamPolicy = {
   id: Scalars['String'];
-  projectId: Scalars['String'];
+  projectId?: Maybe<Scalars['String']>;
+  folderId?: Maybe<Scalars['String']>;
+  region?: Maybe<Scalars['String']>;
   version?: Maybe<Scalars['Int']>;
   bindings?: Maybe<Array<Maybe<GcpIamBinding>>>;
   etag?: Maybe<Scalars['String']>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
+  folder?: Maybe<Array<Maybe<GcpFolder>>>;
 };
 
 export type GcpInitialStateConfig = {
