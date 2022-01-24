@@ -13,10 +13,11 @@ const { logger } = CloudGraph
 const serviceName = 'Firewall'
 const apiEndpoint = initTestEndpoint(serviceName)
 
-export interface RawGcpFirewall extends google.cloud.compute.v1.IFirewall {
+export interface RawGcpFirewall extends Omit<google.cloud.compute.v1.IFirewall, 'network'> {
   id: string
   projectId: string
   region: string
+  network: string[]
 }
 
 export default async ({
@@ -42,6 +43,7 @@ export default async ({
           firewallList.push({
             ...response,
             id: response.id?.toString() || cuid(),
+            network: [response?.network],
             projectId,
             region: GLOBAL_REGION,
           })
