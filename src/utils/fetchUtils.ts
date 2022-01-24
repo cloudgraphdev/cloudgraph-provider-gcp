@@ -25,7 +25,7 @@ export const listData = async ({
   let respJson = await resp.json()
   let pageToken = respJson.nextPageToken
 
-  if (isEmpty(respJson.error)) {
+  if (isEmpty(respJson.error) && respJson[dataFieldName]) {
     fullData.push(...respJson[dataFieldName])
 
     while (pageToken) {

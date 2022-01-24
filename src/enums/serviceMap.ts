@@ -23,6 +23,7 @@ import GcpCloudFunction from '../services/cloudFunction'
 import GcpAssets from '../services/assetInventory'
 import GcpTargetSslProxies from '../services/targetSslProxy'
 import GcpTargetHttpsProxies from '../services/targetHttpsProxy'
+import GcpSqlInstances from '../services/sqlInstance'
 
 /**
  * serviceMap is an object that contains all currently supported services
@@ -52,5 +53,6 @@ export default {
   [services.assets]: GcpAssets,
   [services.targetSslProxies]: GcpTargetSslProxies,
   [services.targetHttpsProxies]: GcpTargetHttpsProxies,
+  [services.sqlInstances]: GcpSqlInstances,
   tag: GcpTag,
 }

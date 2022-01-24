@@ -27,5 +27,6 @@ export default {
   [services.assets]: 'gcpAsset',
   [services.targetSslProxies]: 'gcpTargetSslProxy',
   [services.targetHttpsProxies]: 'gcpTargetHttpsProxy',
+  [services.sqlInstances]: 'gcpSqlInstance',
   tag: 'gcpTag',
 }

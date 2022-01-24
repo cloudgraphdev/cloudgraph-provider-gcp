@@ -12,6 +12,7 @@ type gcpNetwork implements gcpBaseResource @key(fields: "id") {
   dnsPolicy: [gcpDnsPolicy] @hasInverse(field: network)
   firewall: [gcpFirewall] @hasInverse(field: network)
   project: [gcpProject] @hasInverse(field: network)
+  sqlInstances: [gcpSqlInstance] @hasInverse(field: network)
   subnet: [gcpSubnet] @hasInverse(field: network)
   vpc: [gcpVpcConnector] @hasInverse(field: network)
   vmInstance: [gcpVmInstance] @hasInverse(field: network)
