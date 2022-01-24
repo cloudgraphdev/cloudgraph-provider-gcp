@@ -1,3 +1,15 @@
+# [0.18.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.17.0...0.18.0) (2022-01-24)
+
+
+### Bug Fixes
+
+* **firewall:** add network list raw data ([d238d6a](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/d238d6a25d035633b1060badc56eb46563ce53b3))
+
+
+### Features
+
+* **sqlInstances:** add sql instances service ([10eb990](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/10eb9907d2f4ca6a499718cc16e15bf80fdbe35b))
+
 # [0.17.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.16.0...0.17.0) (2022-01-21)
 
 
