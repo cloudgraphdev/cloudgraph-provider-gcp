@@ -1,3 +1,11 @@
+# [0.20.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.19.0...0.20.0) (2022-01-24)
+
+
+### Features
+
+* Added connection to project ([ced96f9](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/ced96f9f0a881cfaa3773e96539e654d44ed5a60))
+* Created service account ([4aece95](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/4aece953922828459ddd34167a1824fafacf8071))
+
 # [0.19.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.18.0...0.19.0) (2022-01-24)
 
 
