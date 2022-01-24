@@ -37,7 +37,7 @@ export default {
   [services.kms]: GcpKms,
   [services.dnsManagedZone]: GcpDnsManagedZone,
   [services.dnsPolicy]: GcpDnsPolicy,
-  [services.vpc]: GcpVpc,
+  [services.vpcConnector]: GcpVpc,
   [services.iamPolicy]: GcpIam,
   [services.logBucket]: GcpLogBucket,
   [services.logSink]: GcpLogSink,

@@ -8,8 +8,8 @@ type gcpVpcConnector @key(fields: "id") {
   minThroughput: Int @search
   maxThroughput: Int @search
   connectedProjects: [String] @search(by: [hash])
-  cloudFunction: [gcpCloudFunction] @hasInverse(field: vpc)
-  project: [gcpProject] @hasInverse(field: vpc)
-  network: [gcpNetwork] @hasInverse(field: vpc)
-  subnet: [gcpSubnet] @hasInverse(field: vpc)
+  cloudFunction: [gcpCloudFunction] @hasInverse(field: vpcConnectors)
+  project: [gcpProject] @hasInverse(field: vpcConnectors)
+  network: [gcpNetwork] @hasInverse(field: vpcConnectors)
+  subnet: [gcpSubnet] @hasInverse(field: vpcConnectors)
 }

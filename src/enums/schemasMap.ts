@@ -9,7 +9,7 @@ export default {
   [services.kms]: 'gcpKmsKeyRing',
   [services.dnsManagedZone]: 'gcpDnsManagedZone',
   [services.dnsPolicy]: 'gcpDnsPolicy',
-  [services.vpc]: 'gcpVpcConnector',
+  [services.vpcConnector]: 'gcpVpcConnector',
   [services.iamPolicy]: 'gcpIamPolicy',
   [services.logBucket]: 'gcpLogBucket',
   [services.logSink]: 'gcpLogSink',

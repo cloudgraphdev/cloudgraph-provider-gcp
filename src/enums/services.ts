@@ -82,5 +82,5 @@ export default {
   // serviceDirectory: 'service-directory',
   // workspaceAddOns: 'workspace-add-ons',
   vmInstance: 'vmInstance',
-  vpc: 'vpc',
+  vpcConnector: 'vpcConnectors',
 }

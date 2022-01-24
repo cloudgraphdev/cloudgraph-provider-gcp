@@ -89,4 +89,4 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 | targetSslProxies   | project                                                             |
 | targetHttpsProxies | project                                                             |
 | vmInstance         | project, network, subnet                                            |
-| vpc                | cloudFunction, project, network, subnet                             |
+| vpcConnectors      | cloudFunction, project, network, subnet                             |
