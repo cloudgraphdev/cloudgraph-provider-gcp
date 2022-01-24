@@ -27,7 +27,7 @@ type gcpVmInstance implements gcpBaseResource @key(fields: "id") {
   satisfiesPzs: Boolean @search
   scheduling: gcpScheduling
   selfLink: String @search(by: [hash, regexp])
-  serviceAccounts: [gcpServiceAccount]
+  serviceAccounts: [gcpVmInstanceServiceAccount]
   shieldedInstanceConfig: gcpShieldedInstanceConfig
   shieldedInstanceIntegrityPolicy: gcpShieldedInstanceIntegrityPolicy
   startRestricted: Boolean @search
@@ -193,7 +193,7 @@ type gcpScheduling
   preemptible: Boolean @search
 }
 
-type gcpServiceAccount
+type gcpVmInstanceServiceAccount
   @generate(
     query: { get: false, query: true, aggregate: false }
     mutation: { add: false, delete: false }

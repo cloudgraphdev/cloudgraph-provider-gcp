@@ -1,9 +1,9 @@
-CloudGraph GCP Provider
-=======================
+# CloudGraph GCP Provider
 
 Use the CloudGraph GCP Provider to scan and normalize cloud infrastructure using the [GCP Client Libraries](https://github.com/googleapis/google-cloud-node)
 
 <!-- toc -->
+
 - [CloudGraph GCP Provider](#cloudgraph-gcp-provider)
 - [Install](#install)
 - [Authentication](#authentication)
@@ -62,31 +62,31 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 
 # Supported Services
 
-| Service | Relations |
-| ------------------------ | ------------------------ |
-| alertPolicy              | project                  |
-| assets                   | project                  |
-| cloudFunction            | project, vpc             |
-| dnsManagedZone           | project                  |
-| dnsPolicy                | project, network         |
-| firewall                 | network, project         |
-| folder                   | organization, project    |                        
-| kms                      | project                  |
-| iamPolicy                | project                  |
-| logBucket                | logView, project         |
-| logMetric                | project                  |         
-| logSink                  | project                  |
-| logView                  | logBucket, project       |
-| network                  | dnsPolicy, firewall, project, sqlInstances, subnet, vmInstance, vpc     |
-| organization             | folder, project          |
-| project                  | ALL SERVICES             |
-| secretManager            | project                  |
-| sqlInstances             | project, network         |
-| sslPolicies              | project                  |
-| storageBucket            | project                  |
-| subnet                   | project, network, vmInstance, vpc    |
-| targetSslProxies         | project                  |
-| targetHttpsProxies       | project                  |
-| vmInstance               | project, network, subnet |             
-| vpc                      | cloudFunction, project, network, subnet |
-
+| Service            | Relations                                                           |
+| ------------------ | ------------------------------------------------------------------- |
+| alertPolicy        | project                                                             |
+| assets             | project                                                             |
+| cloudFunction      | project, vpc                                                        |
+| dnsManagedZone     | project                                                             |
+| dnsPolicy          | project, network                                                    |
+| firewall           | network, project                                                    |
+| folder             | organization, project                                               |
+| kms                | project                                                             |
+| iamPolicy          | project                                                             |
+| logBucket          | logView, project                                                    |
+| logMetric          | project                                                             |
+| logSink            | project                                                             |
+| logView            | logBucket, project                                                  |
+| network            | dnsPolicy, firewall, project, sqlInstances, subnet, vmInstance, vpc |
+| organization       | folder, project                                                     |
+| project            | ALL SERVICES                                                        |
+| secretManager      | project                                                             |
+| serviceAccount     | project                                                             |
+| sqlInstances       | project, network                                                    |
+| sslPolicies        | project                                                             |
+| storageBucket      | project                                                             |
+| subnet             | project, network, vmInstance, vpc                                   |
+| targetSslProxies   | project                                                             |
+| targetHttpsProxies | project                                                             |
+| vmInstance         | project, network, subnet                                            |
+| vpc                | cloudFunction, project, network, subnet                             |

@@ -34,4 +34,5 @@ type gcpProject @key(fields: "id") {
   vmInstance: [gcpVmInstance] @hasInverse(field: project)
   assets: [gcpAsset] @hasInverse(field: project)
   sqlInstances: [gcpSqlInstance] @hasInverse(field: project)
+  serviceAccounts: [gcpServiceAccount] @hasInverse(field: project)
 }

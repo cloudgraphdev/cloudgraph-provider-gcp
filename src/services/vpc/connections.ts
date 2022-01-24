@@ -19,7 +19,9 @@ export default ({
 } => {
   const { id } = service
   const connections: ServiceConnection[] = []
-  const connectTo = Object.values(services).filter(service => service !== services.vpc)
+  const connectTo = Object.values(services).filter(
+    service => service !== services.vpc
+  )
 
   for (const serviceName of connectTo) {
     const instances: {
@@ -31,13 +33,12 @@ export default ({
     for (const region of regions) {
       if (instances?.data?.[region]) {
         const filtered = instances.data[region].filter(
-          ({ vpcConnector, projectId }: rawDataInterface) => projectId === service.projectId && vpcConnector
+          ({ vpcConnector, projectId }: rawDataInterface) =>
+            projectId === service.projectId && vpcConnector
         )
 
         for (const { id, vpcConnector } of filtered) {
           for (const name of vpcConnector) {
-            console.log(name)
-            console.log(service.name)
             if (name === service.name) {
               connections.push({
                 id,
