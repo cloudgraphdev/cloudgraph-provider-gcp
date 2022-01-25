@@ -36,7 +36,6 @@ export default ({
 
   connectedBackendServices.push(
     defaultService,
-    'https://www.googleapis.com/compute/v1/projects/infra-volt-261615/global/backendServices/backend-service',
     ...(defaultRouteAction?.weightedBackendServices?.flatMap(weightedBackendService => weightedBackendService.backendService) || []),
     ...(pathMatchers?.flatMap(pathMatcher => pathMatcher?.defaultService) || []),
     ...(pathMatchers?.flatMap(pathMatcher => pathMatcher?.defaultRouteAction?.requestMirrorPolicy?.backendService) || []), // undefined
