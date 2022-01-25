@@ -1,3 +1,10 @@
+# [0.21.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.20.1...0.21.0) (2022-01-25)
+
+
+### Features
+
+* **service:** Add IAM Policy connection to folder services ([5960c2e](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/5960c2ec3ab329fd134d93618027ca5ff1939888))
+
 ## [0.20.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.20.0...0.20.1) (2022-01-25)
 
 
