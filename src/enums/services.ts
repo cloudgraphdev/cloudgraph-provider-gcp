@@ -24,6 +24,7 @@ export default {
   // container: 'container',
   cdnBackendBucket: 'cdnBackendBucket',
   cdnBackendService: 'cdnBackendService',
+  cdnUrlMap: 'cdnUrlMap',
   cloudFunction: 'cloudFunction',
   computeProject: 'computeProject',
   // run: 'run',

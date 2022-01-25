@@ -17,6 +17,7 @@ export default {
   [services.cdnBackendBucket]: 'gcpCdnBackendBucket',
   [services.cloudRouter]: 'gcpCloudRouter',
   [services.cdnBackendService]: 'gcpCdnBackendService',
+  [services.cdnUrlMap]: 'gcpCdnUrlMap',
   [services.dnsManagedZone]: 'gcpDnsManagedZone',
   [services.dnsPolicy]: 'gcpDnsPolicy',
   [services.vpcConnector]: 'gcpVpcConnector',

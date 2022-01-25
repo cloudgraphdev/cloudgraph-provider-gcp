@@ -44,6 +44,6 @@ type gcpCdnBackendBucket implements gcpBaseResource
     enableCdn: Boolean @search
     kind: String @search(by: [hash, regexp])
     selfLink: String @search(by: [hash, regexp])
-    # cdnUrlMap: [gcpCdnUrlMap] @hasInverse(field: cdnBackendBucket)
+    cdnUrlMap: [gcpCdnUrlMap] @hasInverse(field: cdnBackendBucket)
     project: [gcpProject] @hasInverse(field: cdnBackendBucket)
   }

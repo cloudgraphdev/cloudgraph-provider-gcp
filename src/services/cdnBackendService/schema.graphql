@@ -136,7 +136,7 @@ type gcpCdnBackendService implements gcpBaseResource
     selfLink: String @search(by: [hash, regexp])
     sessionAffinity: String @search(by: [hash, regexp])
     timeoutSec: Int @search
-    # cdnUrlMap: [gcpCdnUrlMap] @hasInverse(field: cdnBackendService)
+    cdnUrlMap: [gcpCdnUrlMap] @hasInverse(field: cdnBackendService)
     network: [gcpNetwork] @hasInverse(field: cdnBackendService)
     project: [gcpProject] @hasInverse(field: cdnBackendService)
   }
