@@ -1,3 +1,10 @@
+## [0.20.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.20.0...0.20.1) (2022-01-25)
+
+
+### Bug Fixes
+
+* **vpcConnectors:** update vpc service name ([0ebb7ac](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/0ebb7ac992cc51d3e71b0295ac022b18e02576fb))
+
 # [0.20.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.19.0...0.20.0) (2022-01-24)
 
 
