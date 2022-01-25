@@ -10,6 +10,7 @@ import GcpKmsKeyRing from '../services/kms'
 import GcpKmsCryptoKey from '../services/kmsCryptoKey'
 import GcpCloudRouter from '../services/cloudRouter'
 import GcpCdnBackendBucket from '../services/cdnBackendBucket'
+import GcpCdnBackendService from '../services/cdnBackendService'
 import GcpDnsManagedZone from '../services/dnsManagedZone'
 import GcpVpc from '../services/vpc'
 import GcpIam from '../services/iam'
@@ -55,6 +56,7 @@ export default {
   [services.kmsCryptoKeys]: GcpKmsCryptoKey,
   [services.cloudRouter]: GcpCloudRouter,
   [services.cdnBackendBucket]: GcpCdnBackendBucket,
+  [services.cdnBackendService]: GcpCdnBackendService,
   [services.dnsManagedZone]: GcpDnsManagedZone,
   [services.dnsPolicy]: GcpDnsPolicy,
   [services.vpcConnector]: GcpVpc,

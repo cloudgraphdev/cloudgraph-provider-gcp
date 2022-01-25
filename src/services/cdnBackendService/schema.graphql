@@ -1,0 +1,142 @@
+type gcpCdnBackendServiceCdnPolicyNegativeCachingPolicy
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    id: String! @id
+    code: Int @search
+    ttl: Int @search
+  }
+
+type gcpCdnBackendServiceBackend
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    id: String! @id
+    balancingMode: String @search(by: [hash, regexp])
+    capacityScaler: Float @search
+    description: String @search(by: [hash, regexp])
+    failover: Boolean @search
+    group: String @search(by: [hash, regexp])
+    maxConnections: Int @search
+    maxConnectionsPerEndpoint: Int @search
+    maxConnectionsPerInstance: Int @search
+    maxRate: Int @search
+    maxRatePerEndpoint: Float @search
+    maxRatePerInstance: Float @search
+    maxUtilization: Float @search
+  }
+
+type gcpCdnBackendServiceCdnPolicy
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+    bypassCacheOnRequestHeaderNames: [String] @search(by: [hash])
+    cacheKeyPolicyIncludeHost: Boolean @search
+    cacheKeyPolicyIncludeProtocol: Boolean @search
+    cacheKeyPolicyIncludeQueryString: Boolean @search
+    cacheKeyPolicyQueryStringBlacklist: [String] @search(by: [hash])
+    cacheKeyPolicyQueryStringWhitelist: [String] @search(by: [hash])
+    cacheMode: String @search(by: [hash, regexp])
+    clientTtl: Int @search
+    defaultTtl: Int @search
+    maxTtl: Int @search
+    negativeCaching: Boolean @search
+    negativeCachingPolicy: [gcpCdnBackendServiceCdnPolicyNegativeCachingPolicy]
+    requestCoalescing: Boolean @search
+    serveWhileStale: Int @search
+    signedUrlCacheMaxAgeSec: String @search(by: [hash, regexp])
+    signedUrlKeyNames: [String] @search(by: [hash])
+  }
+
+type gcpCdnBackendServiceCdnPolicyNegativeCachingPolicy
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    id: String! @id
+    code: Int @search
+    ttl: Int @search
+  }
+
+type gcpCdnBackendServiceOutlierDetection
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+    baseEjectionTime: String @search(by: [hash, regexp])
+    consecutiveErrors: Int @search
+    consecutiveGatewayFailure: Int @search
+    enforcingConsecutiveErrors: Int @search
+    enforcingConsecutiveGatewayFailure: Int @search
+    enforcingSuccessRate: Int @search
+    interval: String @search(by: [hash, regexp])
+    maxEjectionPercent: Int @search
+    successRateMinimumHosts: Int @search
+    successRateRequestVolume: Int @search
+    successRateStdevFactor: Int @search
+  }
+
+type gcpCdnBackendService implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    affinityCookieTtlSec: Int @search
+    backends: [gcpCdnBackendServiceBackend]
+    cdnPolicy: gcpCdnBackendServiceCdnPolicy
+    circuitBreakersMaxConnections: Int @search
+    circuitBreakersMaxPendingRequests: Int @search
+    circuitBreakersMaxRequests: Int @search
+    circuitBreakersMaxRequestsPerConnection: Int @search
+    circuitBreakersMaxRetries: Int @search
+    connectionDrainingTimeoutSec: Int @search
+    consistentHashLoadBalancerSettingHttpCookieName: String @search(by: [hash, regexp])
+    consistentHashLoadBalancerSettingHttpCookiePath: String @search(by: [hash, regexp])
+    consistentHashLoadBalancerSettingHttpCookie: String @search(by: [hash, regexp])
+    consistentHashLoadBalancerSettingHttpHeaderName: String @search(by: [hash, regexp])
+    consistentHashLoadBalancerSettingMinimumRingSize: String @search(by: [hash, regexp])
+    creationTimestamp: String @search(by: [hash, regexp])
+    customRequestHeaders: [String] @search(by: [hash])
+    customResponseHeaders: [String] @search(by: [hash])
+    description: String @search(by: [hash, regexp])
+    enableCDN: Boolean @search
+    failoverPolicyDisableConnectionDrainOnFailover: Boolean @search
+    failoverPolicyDropTrafficIfUnhealthy: Boolean @search
+    failoverPolicyFailoverRatio: Float @search
+    fingerprint: String @search(by: [hash, regexp])
+    healthChecks: [String] @search(by: [hash])
+    iapEnabled: Boolean @search
+    iapOauth2ClientId: String @search(by: [hash, regexp])
+    kind: String @search(by: [hash, regexp])
+    loadBalancingScheme: String @search(by: [hash, regexp])
+    localityLbPolicy: String @search(by: [hash, regexp])
+    logConfigEnable: Boolean @search
+    logConfigSampleRate: Float @search
+    maxStreamDuration: String @search(by: [hash, regexp])
+    outlierDetection: gcpCdnBackendServiceOutlierDetection
+    port: Int @search
+    portName: String @search(by: [hash, regexp])
+    protocol: String @search(by: [hash, regexp])
+    securityPolicy: String @search(by: [hash, regexp])
+    securitySettingClientTlsPolicy: String @search(by: [hash, regexp])
+    securitySettingSubjectAltNames: [String] @search(by: [hash])
+    selfLink: String @search(by: [hash, regexp])
+    sessionAffinity: String @search(by: [hash, regexp])
+    timeoutSec: Int @search
+    # cdnUrlMap: [gcpCdnUrlMap] @hasInverse(field: cdnBackendService)
+    network: [gcpNetwork] @hasInverse(field: cdnBackendService)
+    project: [gcpProject] @hasInverse(field: cdnBackendService)
+  }

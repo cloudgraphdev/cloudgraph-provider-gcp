@@ -23,6 +23,7 @@ export default {
   // compute: 'compute',
   // container: 'container',
   cdnBackendBucket: 'cdnBackendBucket',
+  cdnBackendService: 'cdnBackendService',
   cloudFunction: 'cloudFunction',
   computeProject: 'computeProject',
   // run: 'run',

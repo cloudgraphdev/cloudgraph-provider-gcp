@@ -671,6 +671,108 @@ export type GcpCdnBackendBucketCdnPolicyNegativeCachingPolicy = {
   ttl?: Maybe<Scalars['Int']>;
 };
 
+export type GcpCdnBackendService = GcpBaseResource & {
+  affinityCookieTtlSec?: Maybe<Scalars['Int']>;
+  backends?: Maybe<Array<Maybe<GcpCdnBackendServiceBackend>>>;
+  cdnPolicy?: Maybe<GcpCdnBackendServiceCdnPolicy>;
+  circuitBreakersMaxConnections?: Maybe<Scalars['Int']>;
+  circuitBreakersMaxPendingRequests?: Maybe<Scalars['Int']>;
+  circuitBreakersMaxRequests?: Maybe<Scalars['Int']>;
+  circuitBreakersMaxRequestsPerConnection?: Maybe<Scalars['Int']>;
+  circuitBreakersMaxRetries?: Maybe<Scalars['Int']>;
+  connectionDrainingTimeoutSec?: Maybe<Scalars['Int']>;
+  consistentHashLoadBalancerSettingHttpCookie?: Maybe<Scalars['String']>;
+  consistentHashLoadBalancerSettingHttpCookieName?: Maybe<Scalars['String']>;
+  consistentHashLoadBalancerSettingHttpCookiePath?: Maybe<Scalars['String']>;
+  consistentHashLoadBalancerSettingHttpHeaderName?: Maybe<Scalars['String']>;
+  consistentHashLoadBalancerSettingMinimumRingSize?: Maybe<Scalars['String']>;
+  creationTimestamp?: Maybe<Scalars['String']>;
+  customRequestHeaders?: Maybe<Array<Maybe<Scalars['String']>>>;
+  customResponseHeaders?: Maybe<Array<Maybe<Scalars['String']>>>;
+  description?: Maybe<Scalars['String']>;
+  enableCDN?: Maybe<Scalars['Boolean']>;
+  failoverPolicyDisableConnectionDrainOnFailover?: Maybe<Scalars['Boolean']>;
+  failoverPolicyDropTrafficIfUnhealthy?: Maybe<Scalars['Boolean']>;
+  failoverPolicyFailoverRatio?: Maybe<Scalars['Float']>;
+  fingerprint?: Maybe<Scalars['String']>;
+  healthChecks?: Maybe<Array<Maybe<Scalars['String']>>>;
+  iapEnabled?: Maybe<Scalars['Boolean']>;
+  iapOauth2ClientId?: Maybe<Scalars['String']>;
+  kind?: Maybe<Scalars['String']>;
+  loadBalancingScheme?: Maybe<Scalars['String']>;
+  localityLbPolicy?: Maybe<Scalars['String']>;
+  logConfigEnable?: Maybe<Scalars['Boolean']>;
+  logConfigSampleRate?: Maybe<Scalars['Float']>;
+  maxStreamDuration?: Maybe<Scalars['String']>;
+  network?: Maybe<Array<Maybe<GcpNetwork>>>;
+  outlierDetection?: Maybe<GcpCdnBackendServiceOutlierDetection>;
+  port?: Maybe<Scalars['Int']>;
+  portName?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  protocol?: Maybe<Scalars['String']>;
+  securityPolicy?: Maybe<Scalars['String']>;
+  securitySettingClientTlsPolicy?: Maybe<Scalars['String']>;
+  securitySettingSubjectAltNames?: Maybe<Array<Maybe<Scalars['String']>>>;
+  selfLink?: Maybe<Scalars['String']>;
+  sessionAffinity?: Maybe<Scalars['String']>;
+  timeoutSec?: Maybe<Scalars['Int']>;
+};
+
+export type GcpCdnBackendServiceBackend = {
+  balancingMode?: Maybe<Scalars['String']>;
+  capacityScaler?: Maybe<Scalars['Float']>;
+  description?: Maybe<Scalars['String']>;
+  failover?: Maybe<Scalars['Boolean']>;
+  group?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  maxConnections?: Maybe<Scalars['Int']>;
+  maxConnectionsPerEndpoint?: Maybe<Scalars['Int']>;
+  maxConnectionsPerInstance?: Maybe<Scalars['Int']>;
+  maxRate?: Maybe<Scalars['Int']>;
+  maxRatePerEndpoint?: Maybe<Scalars['Float']>;
+  maxRatePerInstance?: Maybe<Scalars['Float']>;
+  maxUtilization?: Maybe<Scalars['Float']>;
+};
+
+export type GcpCdnBackendServiceCdnPolicy = {
+  bypassCacheOnRequestHeaderNames?: Maybe<Array<Maybe<Scalars['String']>>>;
+  cacheKeyPolicyIncludeHost?: Maybe<Scalars['Boolean']>;
+  cacheKeyPolicyIncludeProtocol?: Maybe<Scalars['Boolean']>;
+  cacheKeyPolicyIncludeQueryString?: Maybe<Scalars['Boolean']>;
+  cacheKeyPolicyQueryStringBlacklist?: Maybe<Array<Maybe<Scalars['String']>>>;
+  cacheKeyPolicyQueryStringWhitelist?: Maybe<Array<Maybe<Scalars['String']>>>;
+  cacheMode?: Maybe<Scalars['String']>;
+  clientTtl?: Maybe<Scalars['Int']>;
+  defaultTtl?: Maybe<Scalars['Int']>;
+  maxTtl?: Maybe<Scalars['Int']>;
+  negativeCaching?: Maybe<Scalars['Boolean']>;
+  negativeCachingPolicy?: Maybe<Array<Maybe<GcpCdnBackendServiceCdnPolicyNegativeCachingPolicy>>>;
+  requestCoalescing?: Maybe<Scalars['Boolean']>;
+  serveWhileStale?: Maybe<Scalars['Int']>;
+  signedUrlCacheMaxAgeSec?: Maybe<Scalars['String']>;
+  signedUrlKeyNames?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type GcpCdnBackendServiceCdnPolicyNegativeCachingPolicy = {
+  code?: Maybe<Scalars['Int']>;
+  id: Scalars['String'];
+  ttl?: Maybe<Scalars['Int']>;
+};
+
+export type GcpCdnBackendServiceOutlierDetection = {
+  baseEjectionTime?: Maybe<Scalars['String']>;
+  consecutiveErrors?: Maybe<Scalars['Int']>;
+  consecutiveGatewayFailure?: Maybe<Scalars['Int']>;
+  enforcingConsecutiveErrors?: Maybe<Scalars['Int']>;
+  enforcingConsecutiveGatewayFailure?: Maybe<Scalars['Int']>;
+  enforcingSuccessRate?: Maybe<Scalars['Int']>;
+  interval?: Maybe<Scalars['String']>;
+  maxEjectionPercent?: Maybe<Scalars['Int']>;
+  successRateMinimumHosts?: Maybe<Scalars['Int']>;
+  successRateRequestVolume?: Maybe<Scalars['Int']>;
+  successRateStdevFactor?: Maybe<Scalars['Int']>;
+};
+
 export type GcpCloudFunction = GcpBaseResource & {
   availableMemoryMb?: Maybe<Scalars['Float']>;
   buildId?: Maybe<Scalars['String']>;
@@ -1274,6 +1376,7 @@ export type GcpMetadata = {
 
 export type GcpNetwork = GcpBaseResource & {
   autoCreateSubnetworks?: Maybe<Scalars['Boolean']>;
+  cdnBackendService?: Maybe<Array<Maybe<GcpCdnBackendService>>>;
   cloudRouters?: Maybe<Array<Maybe<GcpCloudRouter>>>;
   creationTimestamp?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
@@ -1335,6 +1438,7 @@ export type GcpProject = {
   bigQueryReservation?: Maybe<Array<Maybe<GcpBigQueryReservation>>>;
   bigQueryReservationCapacityCommitment?: Maybe<Array<Maybe<GcpBigQueryReservationCapacityCommitment>>>;
   cdnBackendBucket?: Maybe<Array<Maybe<GcpCdnBackendBucket>>>;
+  cdnBackendService?: Maybe<Array<Maybe<GcpCdnBackendService>>>;
   cloudFunction?: Maybe<Array<Maybe<GcpCloudFunction>>>;
   cloudRouters?: Maybe<Array<Maybe<GcpCloudRouter>>>;
   computeProject?: Maybe<Array<Maybe<GcpComputeProject>>>;

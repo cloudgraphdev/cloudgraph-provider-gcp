@@ -16,6 +16,7 @@ export default {
   [services.kmsCryptoKeys]: 'gcpKmsCryptoKey',
   [services.cdnBackendBucket]: 'gcpCdnBackendBucket',
   [services.cloudRouter]: 'gcpCloudRouter',
+  [services.cdnBackendService]: 'gcpCdnBackendService',
   [services.dnsManagedZone]: 'gcpDnsManagedZone',
   [services.dnsPolicy]: 'gcpDnsPolicy',
   [services.vpcConnector]: 'gcpVpcConnector',
