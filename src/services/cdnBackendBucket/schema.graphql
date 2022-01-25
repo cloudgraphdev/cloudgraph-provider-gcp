@@ -1,0 +1,49 @@
+type gcpCdnBackendBucketCdnPolicyNegativeCachingPolicy
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    id: String! @id
+    code: Int @search
+    ttl: Int @search
+  }
+
+type gcpCdnBackendBucketCdnPolicy
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+    bypassCacheOnRequestHeaderNames: [String] @search(by: [hash])
+    cacheMode: String @search(by: [hash, regexp])
+    clientTtl: Int @search
+    defaultTtl: Int @search
+    maxTtl: Int @search
+    negativeCaching: Boolean @search
+    negativeCachingPolicy: [gcpCdnBackendBucketCdnPolicyNegativeCachingPolicy]
+    requestCoalescing: Boolean @search
+    serveWhileStale: Int @search
+    signedUrlCacheMaxAgeSec: String @search(by: [hash, regexp])
+    signedUrlKeyNames: [String] @search(by: [hash])
+  }
+
+type gcpCdnBackendBucket implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    bucketName: String @search(by: [hash, regexp])
+    cdnPolicy: gcpCdnBackendBucketCdnPolicy
+    creationTimestamp: String @search(by: [hash, regexp])
+    customResponseHeaders: [String] @search(by: [hash])
+    description: String @search(by: [hash, regexp])
+    enableCdn: Boolean @search
+    kind: String @search(by: [hash, regexp])
+    selfLink: String @search(by: [hash, regexp])
+    # cdnUrlMap: [gcpCdnUrlMap] @hasInverse(field: cdnBackendBucket)
+    project: [gcpProject] @hasInverse(field: cdnBackendBucket)
+  }

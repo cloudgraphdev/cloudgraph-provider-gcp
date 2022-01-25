@@ -9,6 +9,7 @@ import GcpBigQueryDataTransferRun from '../services/bigQueryDataTransferRun'
 import GcpKmsKeyRing from '../services/kms'
 import GcpKmsCryptoKey from '../services/kmsCryptoKey'
 import GcpCloudRouter from '../services/cloudRouter'
+import GcpCdnBackendBucket from '../services/cdnBackendBucket'
 import GcpDnsManagedZone from '../services/dnsManagedZone'
 import GcpVpc from '../services/vpc'
 import GcpIam from '../services/iam'
@@ -53,6 +54,7 @@ export default {
   [services.kmsKeyRing]: GcpKmsKeyRing,
   [services.kmsCryptoKeys]: GcpKmsCryptoKey,
   [services.cloudRouter]: GcpCloudRouter,
+  [services.cdnBackendBucket]: GcpCdnBackendBucket,
   [services.dnsManagedZone]: GcpDnsManagedZone,
   [services.dnsPolicy]: GcpDnsPolicy,
   [services.vpcConnector]: GcpVpc,

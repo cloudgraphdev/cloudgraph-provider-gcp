@@ -14,6 +14,7 @@ export default {
   [services.bigQueryDataTransferRun]: 'gcpBigQueryDataTransferRun',
   [services.kmsKeyRing]: 'gcpKmsKeyRing',
   [services.kmsCryptoKeys]: 'gcpKmsCryptoKey',
+  [services.cdnBackendBucket]: 'gcpCdnBackendBucket',
   [services.cloudRouter]: 'gcpCloudRouter',
   [services.dnsManagedZone]: 'gcpDnsManagedZone',
   [services.dnsPolicy]: 'gcpDnsPolicy',
