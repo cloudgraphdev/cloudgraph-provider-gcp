@@ -1,9 +1,11 @@
 import cuid from 'cuid'
-import { ProjectsClient } from '@google-cloud/resource-manager'
+import { ProjectsClient, FoldersClient } from '@google-cloud/resource-manager'
 import { google } from '@google-cloud/resource-manager/build/protos/protos'
 import CloudGraph from '@cloudgraph/sdk'
 import groupBy from 'lodash/groupBy'
-import { RawGcpProject } from './../project/data'
+import { isEmpty } from 'lodash'
+import { RawGcpFolder, listFoldersData } from '../folder/data'
+import { RawGcpProject, listProjectsData } from '../project/data'
 import gcpLoggerText from '../../properties/logger'
 import { GcpServiceInput } from '../../types'
 import { initTestEndpoint, generateGcpErrorLog } from '../../utils'
@@ -15,10 +17,11 @@ const { logger } = CloudGraph
 const serviceName = 'IAM Policy'
 const apiEndpoint = initTestEndpoint(serviceName)
 
-export interface RawGcpIamPolicy extends google.iam.v1.IPolicy { 
+export interface RawGcpIamPolicy extends google.iam.v1.IPolicy {
   id: string
-  projectId: string
+  projectId?: string
   region: string
+  folderId?: string
 }
 
 export default async ({
@@ -34,14 +37,22 @@ export default async ({
     /**
      * Find Projects
      */
-    const projects: RawGcpProject[] = 
-      rawData.find(({ name }) => name === services.project)?.data[GLOBAL_REGION] || []
+    const projectsClient = new ProjectsClient({ ...config, apiEndpoint })
+    const projects: RawGcpProject[] =
+      rawData.find(({ name }) => name === services.project)?.data[
+        GLOBAL_REGION
+      ] || []
+
+      
+    if (isEmpty(projects)) {
+      // Refresh data
+      await listProjectsData(projectsClient, projects)
+    }
 
     /**
      * Get all the IAM policies for projects
      */
     try {
-      const projectsClient = new ProjectsClient({ ...config, apiEndpoint });
       for (const { name } of projects) {
         const response = await projectsClient.getIamPolicy({ resource: name })
         if (response && response[0]) {
@@ -49,6 +60,39 @@ export default async ({
             id: cuid(),
             ...response[0],
             projectId,
+            region: GLOBAL_REGION,
+          })
+        }
+      }
+    } catch (error) {
+      generateGcpErrorLog(serviceName, 'resourceManager:getIamPolicy', error)
+    }
+
+    /**
+     * Find Folders
+     */
+    const foldersClient = new FoldersClient({ ...config, apiEndpoint })
+    const folders: RawGcpFolder[] =
+      rawData.find(({ name }) => name === services.folder)?.data[
+        GLOBAL_REGION
+      ] || []
+
+    if (isEmpty(folders)) {
+      // Refresh data
+      await listFoldersData(config, rawData, folders)
+    }
+
+    /**
+     * Get all the IAM policies for folders
+     */
+    try {
+      for (const { name } of folders) {
+        const response = await foldersClient.getIamPolicy({ resource: name })
+        if (response && response[0]) {
+          policyList.push({
+            id: cuid(),
+            ...response[0],
+            folderId: name,
             region: GLOBAL_REGION,
           })
         }

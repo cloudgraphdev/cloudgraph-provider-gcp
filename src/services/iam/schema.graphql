@@ -1,10 +1,13 @@
 type gcpIamPolicy @key(fields: "id") {
   id: String! @id @search(by: [hash])
-  projectId: String! @search(by: [hash, regexp])
+  projectId: String @search(by: [hash, regexp])
+  folderId: String @search(by: [hash, regexp])
+  region: String @search(by: [hash, regexp])
   version: Int @search
   bindings: [gcpIamBinding]
   etag: String @search(by: [hash, regexp])
   project: [gcpProject] @hasInverse(field: iamPolicy)
+  folder: [gcpFolder] @hasInverse(field: iamPolicy)
 }
 
 type gcpIamBinding

@@ -70,9 +70,9 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 | dnsManagedZone     | project                                                             |
 | dnsPolicy          | project, network                                                    |
 | firewall           | network, project                                                    |
-| folder             | organization, project                                               |
+| folder             | iamPolicy, organization, project                                    |
 | kms                | project                                                             |
-| iamPolicy          | project                                                             |
+| iamPolicy          | folder, project                                                     |
 | logBucket          | logView, project                                                    |
 | logMetric          | project                                                             |
 | logSink            | project                                                             |

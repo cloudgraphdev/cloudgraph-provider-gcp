@@ -12,26 +12,23 @@ const { logger } = CloudGraph
 const serviceName = 'Organization'
 const apiEndpoint = initTestEndpoint(serviceName)
 
-export interface RawGcpOrganization extends google.cloud.resourcemanager.v3.IOrganization {
+export interface RawGcpOrganization
+  extends google.cloud.resourcemanager.v3.IOrganization {
   id: string
   projectId: string
   region: string
 }
 
-export default async ({
-  config,
-}: GcpServiceInput): Promise<{
-  [region: string]: RawGcpOrganization[]
-}> =>
-  new Promise(async resolve => {
-    const orgList: RawGcpOrganization[] = []
-    const { projectId } = config
-
+export const listOrganizationsData = async (
+  organizationsClient: OrganizationsClient,
+  projectId: string,
+  orgList: RawGcpOrganization[]
+): Promise<void> =>
+  new Promise<void>(async resolve => {
     /**
      * Get all the Organizations
      */
     try {
-      const organizationsClient = new OrganizationsClient({ ...config, apiEndpoint });
       const iterable = organizationsClient.searchOrganizationsAsync()
       // https://github.com/googleapis/gax-nodejs/blob/main/client-libraries.md#auto-pagination
       for await (const response of iterable) {
@@ -45,9 +42,32 @@ export default async ({
         }
       }
     } catch (error) {
-      generateGcpErrorLog(serviceName, 'resourceManager:searchOrganizationsAsync', error)
+      generateGcpErrorLog(
+        serviceName,
+        'resourceManager:searchOrganizationsAsync',
+        error
+      )
     }
-    
+
+    resolve()
+  })
+
+export default async ({
+  config,
+}: GcpServiceInput): Promise<{
+  [region: string]: RawGcpOrganization[]
+}> =>
+  new Promise(async resolve => {
+    const orgList: RawGcpOrganization[] = []
+    const { projectId } = config
+
+    const organizationsClient = new OrganizationsClient({
+      ...config,
+      apiEndpoint,
+    })
+
+    await listOrganizationsData(organizationsClient, projectId, orgList)
+
     logger.debug(lt.foundResources(serviceName, orgList.length))
     resolve(groupBy(orgList, 'region'))
   })

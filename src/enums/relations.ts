@@ -7,4 +7,5 @@ export default {
   logBucket: ['logView'],
   organization: ['folder'],
   project: ['iamPolicy', 'dnsManagedZone', 'dnsPolicy', 'kms', 'vpc', 'logBucket', 'logSink'],
+  folder: ['iamPolicy']
 }

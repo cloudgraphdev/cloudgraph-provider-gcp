@@ -5,11 +5,9 @@ import { RawGcpIamPolicy } from './data'
 
 export default ({
   service,
-  account,
   region,
 }: {
   service: RawGcpIamPolicy
-  account: string
   region: string
 }): GcpIamPolicy => {
   const {
@@ -18,11 +16,14 @@ export default ({
     version,
     bindings,
     etag,
+    folderId,
   } = service
 
   return {
     id,
     projectId,
+    folderId,
+    region,
     version,
     bindings: bindings.map(binding => ({
       id: cuid(),
