@@ -14,7 +14,7 @@ type gcpProject @key(fields: "id") {
   cloudFunction: [gcpCloudFunction] @hasInverse(field: project)
   dnsManagedZone: [gcpDnsManagedZone] @hasInverse(field: project)
   dnsPolicy: [gcpDnsPolicy] @hasInverse(field: project)
-  vpc: [gcpVpcConnector] @hasInverse(field: project)
+  vpcConnectors: [gcpVpcConnector] @hasInverse(field: project)
   kms: [gcpKmsKeyRing] @hasInverse(field: project)
   iamPolicy: [gcpIamPolicy] @hasInverse(field: project)
   logBucket: [gcpLogBucket] @hasInverse(field: project)

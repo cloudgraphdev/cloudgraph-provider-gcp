@@ -399,7 +399,7 @@ export type GcpCloudFunction = GcpBaseResource & {
   ingressSettings?: Maybe<Scalars['String']>;
   buildId?: Maybe<Scalars['String']>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
-  vpc?: Maybe<Array<Maybe<GcpVpcConnector>>>;
+  vpcConnectors?: Maybe<Array<Maybe<GcpVpcConnector>>>;
 };
 
 export type GcpCloudFunctionEventTrigger = {
@@ -851,7 +851,7 @@ export type GcpNetwork = GcpBaseResource & {
   project?: Maybe<Array<Maybe<GcpProject>>>;
   sqlInstances?: Maybe<Array<Maybe<GcpSqlInstance>>>;
   subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
-  vpc?: Maybe<Array<Maybe<GcpVpcConnector>>>;
+  vpcConnectors?: Maybe<Array<Maybe<GcpVpcConnector>>>;
   vmInstance?: Maybe<Array<Maybe<GcpVmInstance>>>;
 };
 
@@ -902,7 +902,7 @@ export type GcpProject = {
   cloudFunction?: Maybe<Array<Maybe<GcpCloudFunction>>>;
   dnsManagedZone?: Maybe<Array<Maybe<GcpDnsManagedZone>>>;
   dnsPolicy?: Maybe<Array<Maybe<GcpDnsPolicy>>>;
-  vpc?: Maybe<Array<Maybe<GcpVpcConnector>>>;
+  vpcConnectors?: Maybe<Array<Maybe<GcpVpcConnector>>>;
   kms?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;
   iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
   logBucket?: Maybe<Array<Maybe<GcpLogBucket>>>;
@@ -1326,7 +1326,7 @@ export type GcpSubnet = GcpBaseResource & {
   state?: Maybe<Scalars['String']>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
   network?: Maybe<Array<Maybe<GcpNetwork>>>;
-  vpc?: Maybe<Array<Maybe<GcpVpcConnector>>>;
+  vpcConnectors?: Maybe<Array<Maybe<GcpVpcConnector>>>;
   vmInstance?: Maybe<Array<Maybe<GcpVmInstance>>>;
 };
 

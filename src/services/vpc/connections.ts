@@ -20,7 +20,7 @@ export default ({
   const { id } = service
   const connections: ServiceConnection[] = []
   const connectTo = Object.values(services).filter(
-    service => service !== services.vpc
+    service => service !== services.vpcConnector
   )
 
   for (const serviceName of connectTo) {

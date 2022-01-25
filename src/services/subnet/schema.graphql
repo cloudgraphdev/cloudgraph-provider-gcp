@@ -17,7 +17,7 @@ type gcpSubnet implements gcpBaseResource @key(fields: "id") {
   state: String @search(by: [hash, regexp])
   project: [gcpProject] @hasInverse(field: subnet)
   network: [gcpNetwork] @hasInverse(field: subnet)
-  vpc: [gcpVpcConnector] @hasInverse(field: subnet)
+  vpcConnectors: [gcpVpcConnector] @hasInverse(field: subnet)
   vmInstance: [gcpVmInstance] @hasInverse(field: subnet)
 }
 
