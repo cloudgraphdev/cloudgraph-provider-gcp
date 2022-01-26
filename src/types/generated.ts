@@ -488,6 +488,18 @@ export type GcpComputeData = {
   value?: Maybe<Scalars['String']>;
 };
 
+export type GcpComputeItem = {
+  id: Scalars['String'];
+  key?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type GcpComputeMetadata = {
+  fingerprint?: Maybe<Scalars['String']>;
+  items?: Maybe<Array<Maybe<GcpComputeItem>>>;
+  kind?: Maybe<Scalars['String']>;
+};
+
 export type GcpComputeNetworkInterface = {
   id: Scalars['String'];
   accessConfigs?: Maybe<Array<Maybe<GcpComputeAccessConfig>>>;
@@ -502,9 +514,37 @@ export type GcpComputeNetworkInterface = {
   subnetwork?: Maybe<Scalars['String']>;
 };
 
+export type GcpComputeProject = GcpBaseResource & {
+  commonInstanceMetadata?: Maybe<GcpComputeMetadata>;
+  creationTimestamp?: Maybe<Scalars['String']>;
+  defaultNetworkTier?: Maybe<Scalars['String']>;
+  defaultServiceAccount?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  enabledFeatures?: Maybe<Array<Maybe<Scalars['String']>>>;
+  kind?: Maybe<Scalars['String']>;
+  quotas?: Maybe<Array<Maybe<GcpComputeQuota>>>;
+  selfLink?: Maybe<Scalars['String']>;
+  usageExportLocation?: Maybe<GcpComputeUsageExportLocation>;
+  xpnProjectStatus?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
+export type GcpComputeQuota = {
+  id: Scalars['String'];
+  limit?: Maybe<Scalars['Float']>;
+  metric?: Maybe<Scalars['String']>;
+  owner?: Maybe<Scalars['String']>;
+  usage?: Maybe<Scalars['Float']>;
+};
+
 export type GcpComputeTags = {
   fingerprint?: Maybe<Scalars['String']>;
   items?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type GcpComputeUsageExportLocation = {
+  bucketName?: Maybe<Scalars['String']>;
+  reportNamePrefix?: Maybe<Scalars['String']>;
 };
 
 export type GcpComputeWarnings = {
@@ -952,6 +992,7 @@ export type GcpProject = {
   alertPolicy?: Maybe<Array<Maybe<GcpAlertPolicy>>>;
   apiKeys?: Maybe<Array<Maybe<GcpApiKey>>>;
   cloudFunction?: Maybe<Array<Maybe<GcpCloudFunction>>>;
+  computeProject?: Maybe<Array<Maybe<GcpComputeProject>>>;
   dnsManagedZone?: Maybe<Array<Maybe<GcpDnsManagedZone>>>;
   dnsPolicy?: Maybe<Array<Maybe<GcpDnsPolicy>>>;
   vpcConnectors?: Maybe<Array<Maybe<GcpVpcConnector>>>;

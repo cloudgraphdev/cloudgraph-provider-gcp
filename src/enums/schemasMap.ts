@@ -31,5 +31,6 @@ export default {
   [services.sslPolicies]: 'gcpSslPolicy',
   [services.serviceAccount]: 'gcpServiceAccount',
   [services.apiKey]: 'gcpApiKey',
+  [services.computeProject]: 'gcpComputeProject',
   tag: 'gcpTag',
 }

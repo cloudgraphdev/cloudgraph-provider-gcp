@@ -27,6 +27,7 @@ import GcpSqlInstances from '../services/sqlInstance'
 import GcpSslPolicies from '../services/sslPolicy'
 import GcpServiceAccount from '../services/serviceAccount'
 import GcpApiKey from '../services/apiKey'
+import GcpComputeProject from '../services/computeProject'
 
 /**
  * serviceMap is an object that contains all currently supported services
@@ -60,5 +61,6 @@ export default {
   [services.sslPolicies]: GcpSslPolicies,
   [services.serviceAccount]: GcpServiceAccount,
   [services.apiKey]: GcpApiKey,
+  [services.computeProject]: GcpComputeProject,
   tag: GcpTag,
 }

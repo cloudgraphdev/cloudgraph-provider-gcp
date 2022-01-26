@@ -23,6 +23,7 @@ export default {
   // compute: 'compute',
   // container: 'container',
   cloudFunction: 'cloudFunction',
+  computeProject: 'computeProject',
   // run: 'run',
   // composer: 'composer',
   // dataCatalog: 'data-catalog',
