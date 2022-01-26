@@ -1,5 +1,6 @@
 export default {
   alertPolicy: 'alertPolicy',
+  apiKey: 'apiKeys',
   assets: 'assets',
   // ai: 'ai',
   // aiPlatform: 'ai-platform',

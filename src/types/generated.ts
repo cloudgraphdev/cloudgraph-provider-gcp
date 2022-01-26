@@ -98,6 +98,53 @@ export type GcpAny = {
   value?: Maybe<Scalars['String']>;
 };
 
+export type GcpApiKey = GcpBaseResource & {
+  displayName?: Maybe<Scalars['String']>;
+  keyString?: Maybe<Scalars['String']>;
+  createTime?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+  deleteTime?: Maybe<Scalars['String']>;
+  restrictions?: Maybe<GcpApiKeyRestrictions>;
+  etag?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
+export type GcpApiKeyAndroidApplication = {
+  id: Scalars['String'];
+  sha1Fingerprint?: Maybe<Scalars['String']>;
+  packageName?: Maybe<Scalars['String']>;
+};
+
+export type GcpApiKeyAndroidKeyRestrictions = {
+  allowedApplications?: Maybe<Array<Maybe<GcpApiKeyAndroidApplication>>>;
+};
+
+export type GcpApiKeyApiTarget = {
+  id: Scalars['String'];
+  service?: Maybe<Scalars['String']>;
+  methods?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type GcpApiKeyBrowserKeyRestrictions = {
+  allowedReferrers?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type GcpApiKeyIosKeyRestrictions = {
+  allowedBundleIds?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type GcpApiKeyRestrictions = {
+  apiTargets?: Maybe<Array<Maybe<GcpApiKeyApiTarget>>>;
+  browserKeyRestrictions?: Maybe<GcpApiKeyBrowserKeyRestrictions>;
+  serverKeyRestrictions?: Maybe<GcpApiKeyServerKeyRestrictions>;
+  androidKeyRestrictions?: Maybe<GcpApiKeyAndroidKeyRestrictions>;
+  iosKeyRestrictions?: Maybe<GcpApiKeyIosKeyRestrictions>;
+};
+
+export type GcpApiKeyServerKeyRestrictions = {
+  allowedIps?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
 export type GcpAsset = GcpBaseResource & {
   updateTime?: Maybe<Scalars['String']>;
   assetType?: Maybe<Scalars['String']>;
@@ -903,6 +950,7 @@ export type GcpProject = {
   etag?: Maybe<Scalars['String']>;
   labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
   alertPolicy?: Maybe<Array<Maybe<GcpAlertPolicy>>>;
+  apiKeys?: Maybe<Array<Maybe<GcpApiKey>>>;
   cloudFunction?: Maybe<Array<Maybe<GcpCloudFunction>>>;
   dnsManagedZone?: Maybe<Array<Maybe<GcpDnsManagedZone>>>;
   dnsPolicy?: Maybe<Array<Maybe<GcpDnsPolicy>>>;

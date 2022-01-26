@@ -30,5 +30,6 @@ export default {
   [services.sqlInstances]: 'gcpSqlInstance',
   [services.sslPolicies]: 'gcpSslPolicy',
   [services.serviceAccount]: 'gcpServiceAccount',
+  [services.apiKey]: 'gcpApiKey',
   tag: 'gcpTag',
 }
