@@ -1,0 +1,82 @@
+type gcpApiKey implements gcpBaseResource @key(fields: "id") {
+  displayName: String @search(by: [hash, regexp])
+  keyString: String @search(by: [hash, regexp])
+  createTime: String @search(by: [hash, regexp])
+  updateTime: String @search(by: [hash, regexp])
+  deleteTime: String @search(by: [hash, regexp])
+  restrictions: gcpApiKeyRestrictions
+  etag: String @search(by: [hash, regexp])
+  project: [gcpProject] @hasInverse(field: apiKeys)
+}
+
+type gcpApiKeyRestrictions
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  apiTargets: [gcpApiKeyApiTarget]
+  browserKeyRestrictions: gcpApiKeyBrowserKeyRestrictions
+  serverKeyRestrictions: gcpApiKeyServerKeyRestrictions
+  androidKeyRestrictions: gcpApiKeyAndroidKeyRestrictions
+  iosKeyRestrictions: gcpApiKeyIosKeyRestrictions
+}
+
+type gcpApiKeyApiTarget
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  service: String @search(by: [hash, regexp])
+  methods: [String] @search(by: [hash])
+}
+
+type gcpApiKeyBrowserKeyRestrictions
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  allowedReferrers: [String] @search(by: [hash])
+}
+
+type gcpApiKeyServerKeyRestrictions
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  allowedIps: [String] @search(by: [hash])
+}
+
+type gcpApiKeyAndroidKeyRestrictions
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  allowedApplications: [gcpApiKeyAndroidApplication]
+}
+
+type gcpApiKeyIosKeyRestrictions
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  allowedBundleIds: [String] @search(by: [hash])
+}
+
+type gcpApiKeyAndroidApplication
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  sha1Fingerprint: String @search(by: [hash, regexp])
+  packageName: String @search(by: [hash, regexp])
+}
+
