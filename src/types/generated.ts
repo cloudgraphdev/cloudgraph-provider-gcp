@@ -726,17 +726,19 @@ export type GcpIamBindingExpr = {
 };
 
 export type GcpIamPolicy = {
+  id: Scalars['String'];
+  projectId?: Maybe<Scalars['String']>;
+  folderId?: Maybe<Scalars['String']>;
+  storageBucketId?: Maybe<Scalars['String']>;
+  cryptoKeyId?: Maybe<Scalars['String']>;
+  region?: Maybe<Scalars['String']>;
+  version?: Maybe<Scalars['Int']>;
   bindings?: Maybe<Array<Maybe<GcpIamBinding>>>;
   etag?: Maybe<Scalars['String']>;
   folder?: Maybe<Array<Maybe<GcpFolder>>>;
-  folderId?: Maybe<Scalars['String']>;
-  id: Scalars['String'];
   project?: Maybe<Array<Maybe<GcpProject>>>;
-  projectId?: Maybe<Scalars['String']>;
-  region?: Maybe<Scalars['String']>;
   storageBucket?: Maybe<Array<Maybe<GcpStorageBucket>>>;
-  storageBucketId?: Maybe<Scalars['String']>;
-  version?: Maybe<Scalars['Int']>;
+  kmsCryptoKeys?: Maybe<Array<Maybe<GcpKmsCryptoKey>>>;
 };
 
 export type GcpInitialStateConfig = {
@@ -752,32 +754,37 @@ export type GcpItems = {
   value?: Maybe<Scalars['String']>;
 };
 
-export type GcpKmsCryptoKey = {
-  createTime?: Maybe<Scalars['String']>;
-  destroyScheduledDuration?: Maybe<Scalars['String']>;
-  importOnly?: Maybe<Scalars['Boolean']>;
-  labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
-  name?: Maybe<Scalars['String']>;
-  nextRotationTime?: Maybe<Scalars['String']>;
+export type GcpKmsCryptoKey = GcpBaseResource & {
+  primaryName?: Maybe<Scalars['String']>;
+  primaryState?: Maybe<Scalars['String']>;
+  primaryProtectionLevel?: Maybe<Scalars['String']>;
   primaryAlgorithm?: Maybe<Scalars['String']>;
-  primaryAttestationContent?: Maybe<Scalars['String']>;
   primaryAttestationFormat?: Maybe<Scalars['String']>;
+  primaryAttestationContent?: Maybe<Scalars['String']>;
   primaryCreateTime?: Maybe<Scalars['String']>;
-  primaryDestroyEventTime?: Maybe<Scalars['String']>;
-  primaryDestroyTime?: Maybe<Scalars['String']>;
-  primaryExternalProtectionLevelOptionsExternalKeyUri?: Maybe<Scalars['String']>;
   primaryGenerateTime?: Maybe<Scalars['String']>;
-  primaryImportFailureReason?: Maybe<Scalars['String']>;
+  primaryDestroyTime?: Maybe<Scalars['String']>;
+  primaryDestroyEventTime?: Maybe<Scalars['String']>;
   primaryImportJob?: Maybe<Scalars['String']>;
   primaryImportTime?: Maybe<Scalars['String']>;
-  primaryName?: Maybe<Scalars['String']>;
-  primaryProtectionLevel?: Maybe<Scalars['String']>;
+  primaryImportFailureReason?: Maybe<Scalars['String']>;
+  primaryExternalProtectionLevelOptionsExternalKeyUri?: Maybe<Scalars['String']>;
   primaryReimportEligible?: Maybe<Scalars['Boolean']>;
-  primaryState?: Maybe<Scalars['String']>;
   purpose?: Maybe<Scalars['String']>;
+  createTime?: Maybe<Scalars['String']>;
+  nextRotationTime?: Maybe<Scalars['String']>;
   rotationPeriod?: Maybe<Scalars['String']>;
   versionTemplateAlgorithm?: Maybe<Scalars['String']>;
   versionTemplateProtectionLevel?: Maybe<Scalars['String']>;
+  labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
+  importOnly?: Maybe<Scalars['Boolean']>;
+  destroyScheduledDuration?: Maybe<Scalars['String']>;
+  kmsId?: Maybe<Scalars['String']>;
+  kmsKeyRingId?: Maybe<Scalars['String']>;
+  iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
+  kms?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;
+  kmsKeyRing?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
 };
 
 export type GcpKmsImportJob = {
@@ -795,8 +802,8 @@ export type GcpKmsImportJob = {
 
 export type GcpKmsKeyRing = GcpBaseResource & {
   createTime?: Maybe<Scalars['String']>;
-  cryptoKeys?: Maybe<Array<Maybe<GcpKmsCryptoKey>>>;
   importJobs?: Maybe<Array<Maybe<GcpKmsImportJob>>>;
+  kmsCryptoKeys?: Maybe<Array<Maybe<GcpKmsCryptoKey>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
 };
 
@@ -1019,6 +1026,7 @@ export type GcpProject = {
   updateTime?: Maybe<Scalars['String']>;
   vmInstance?: Maybe<Array<Maybe<GcpVmInstance>>>;
   vpcConnectors?: Maybe<Array<Maybe<GcpVpcConnector>>>;
+  kmsCryptoKeys?: Maybe<Array<Maybe<GcpKmsCryptoKey>>>;
 };
 
 export type GcpRawLabel = {

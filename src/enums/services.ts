@@ -46,6 +46,7 @@ export default {
   iamPolicy: 'iamPolicy',
   // iap: 'iap',
   kms: 'kms',
+  kmsCryptoKeys: 'kmsCryptoKeys',
   // orgPolicies: 'org-policies',
   // policyIntelligence: 'policy-intelligence',
   // policyTroubleshoot: 'policy-troubleshoot',

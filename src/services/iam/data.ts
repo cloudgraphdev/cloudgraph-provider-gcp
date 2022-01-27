@@ -1,5 +1,6 @@
 import cuid from 'cuid'
 import { ProjectsClient, FoldersClient } from '@google-cloud/resource-manager'
+import { KeyManagementServiceClient } from '@google-cloud/kms'
 import { google } from '@google-cloud/resource-manager/build/protos/protos'
 import CloudGraph from '@cloudgraph/sdk'
 import groupBy from 'lodash/groupBy'
@@ -15,6 +16,7 @@ import { GcpServiceInput } from '../../types'
 import { initTestEndpoint, generateGcpErrorLog } from '../../utils'
 import { GLOBAL_REGION } from '../../config/constants'
 import services from '../../enums/services'
+import { RawGcpKmsCryptoKey, listCryptoKeysData } from '../kmsCryptoKey/data'
 
 const lt = { ...gcpLoggerText }
 const { logger } = CloudGraph
@@ -27,6 +29,7 @@ export interface RawGcpIamPolicy extends google.iam.v1.IPolicy {
   projectId?: string
   folderId?: string
   storageBucketId?: string
+  cryptoKeyId?: string
 }
 
 export default async ({
@@ -135,6 +138,49 @@ export default async ({
       }
     } catch (error) {
       generateGcpErrorLog(serviceName, 'storage:getPolicy', error)
+    }
+
+    /**
+     * Find Kms Crypto Keys
+     */
+    const kmsClient = new KeyManagementServiceClient({ ...config, apiEndpoint })
+    const cryptoKeys: RawGcpKmsCryptoKey[] =
+      rawData.find(({ name }) => name === services.kmsCryptoKeys)?.data[
+        GLOBAL_REGION
+      ] || []
+
+    if (isEmpty(cryptoKeys)) {
+      // Refresh data
+      await listCryptoKeysData(
+        kmsClient,
+        GLOBAL_REGION,
+        projectId,
+        rawData,
+        cryptoKeys
+      )
+    }
+
+    /**
+     * Get all the IAM policies for kms crypto keys
+     */
+    try {
+      for (const { name } of cryptoKeys) {
+        const request = new google.iam.v1.GetIamPolicyRequest({
+          resource: name,
+        })
+        const response = await kmsClient.getIamPolicy(request)
+
+        if (response && response[0]) {
+          policyList.push({
+            id: cuid(),
+            ...response[0],
+            cryptoKeyId: name,
+            region: GLOBAL_REGION,
+          })
+        }
+      }
+    } catch (error) {
+      generateGcpErrorLog(serviceName, 'kms:getIamPolicy', error)
     }
 
     logger.debug(lt.foundPolicies(policyList.length))

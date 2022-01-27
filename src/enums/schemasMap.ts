@@ -7,6 +7,7 @@ export default {
   [services.firewall]: 'gcpFirewall',
   [services.project]: 'gcpProject',
   [services.kms]: 'gcpKmsKeyRing',
+  [services.kmsCryptoKeys]: 'gcpKmsCryptoKey',
   [services.dnsManagedZone]: 'gcpDnsManagedZone',
   [services.dnsPolicy]: 'gcpDnsPolicy',
   [services.vpcConnector]: 'gcpVpcConnector',

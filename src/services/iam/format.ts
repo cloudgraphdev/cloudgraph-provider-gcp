@@ -18,6 +18,7 @@ export default ({
     etag,
     folderId,
     storageBucketId,
+    cryptoKeyId
   } = service
 
   return {
@@ -25,6 +26,7 @@ export default ({
     projectId,
     folderId,
     storageBucketId,
+    cryptoKeyId,
     region,
     version,
     bindings: bindings.map(binding => ({

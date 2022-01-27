@@ -1,6 +1,7 @@
 import services from './services'
 import GcpProject from '../services/project'
 import GcpKms from '../services/kms'
+import GcpKmsCryptoKey from '../services/kmsCryptoKey'
 import GcpDnsManagedZone from '../services/dnsManagedZone'
 import GcpVpc from '../services/vpc'
 import GcpIam from '../services/iam'
@@ -37,6 +38,7 @@ export default {
   [services.firewall]: GcpFirewall,
   [services.project]: GcpProject,
   [services.kms]: GcpKms,
+  [services.kmsCryptoKeys]: GcpKmsCryptoKey,
   [services.dnsManagedZone]: GcpDnsManagedZone,
   [services.dnsPolicy]: GcpDnsPolicy,
   [services.vpcConnector]: GcpVpc,
