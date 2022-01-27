@@ -40,7 +40,6 @@ export const listFoldersData = async (
       rawData.find(({ name }) => name === services.organization)?.data[
         GLOBAL_REGION
       ] || []
-
     if (isEmpty(organizations)) {
       // Refresh data
       const organizationsClient = new OrganizationsClient({
@@ -49,7 +48,9 @@ export const listFoldersData = async (
       })
       await listOrganizationsData(organizationsClient, projectId, organizations)
     }
-
+    if (isEmpty(organizations)) {
+      resolve()
+    }
     for (const { name } of organizations) {
       /**
        * Get all the Folders
