@@ -688,12 +688,14 @@ export type GcpIamPolicy = {
   id: Scalars['String'];
   projectId?: Maybe<Scalars['String']>;
   folderId?: Maybe<Scalars['String']>;
+  storageBucketId?: Maybe<Scalars['String']>;
   region?: Maybe<Scalars['String']>;
   version?: Maybe<Scalars['Int']>;
   bindings?: Maybe<Array<Maybe<GcpIamBinding>>>;
   etag?: Maybe<Scalars['String']>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
   folder?: Maybe<Array<Maybe<GcpFolder>>>;
+  storageBucket?: Maybe<Array<Maybe<GcpStorageBucket>>>;
 };
 
 export type GcpInitialStateConfig = {
@@ -1341,6 +1343,7 @@ export type GcpStorageBucket = {
   baseUrl?: Maybe<Scalars['String']>;
   pollIntervalMs?: Maybe<Scalars['Int']>;
   userProject?: Maybe<Scalars['String']>;
+  iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
 };
 

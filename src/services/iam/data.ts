@@ -3,9 +3,10 @@ import { ProjectsClient, FoldersClient } from '@google-cloud/resource-manager'
 import { google } from '@google-cloud/resource-manager/build/protos/protos'
 import CloudGraph from '@cloudgraph/sdk'
 import groupBy from 'lodash/groupBy'
-import { isEmpty } from 'lodash'
-import { RawGcpFolder, listFoldersData } from '../folder/data'
-import { RawGcpProject, listProjectsData } from '../project/data'
+import isEmpty from 'lodash/isEmpty'
+import { RawGcpFolder } from '../folder/data'
+import { RawGcpProject } from '../project/data'
+import { RawGcpStorageBucket } from '../storageBucket/data'
 import gcpLoggerText from '../../properties/logger'
 import { GcpServiceInput } from '../../types'
 import { initTestEndpoint, generateGcpErrorLog } from '../../utils'
@@ -19,9 +20,10 @@ const apiEndpoint = initTestEndpoint(serviceName)
 
 export interface RawGcpIamPolicy extends google.iam.v1.IPolicy {
   id: string
-  projectId?: string
   region: string
+  projectId?: string
   folderId?: string
+  storageBucketId?: string
 }
 
 export default async ({
@@ -42,12 +44,6 @@ export default async ({
       rawData.find(({ name }) => name === services.project)?.data[
         GLOBAL_REGION
       ] || []
-
-      
-    if (isEmpty(projects)) {
-      // Refresh data
-      await listProjectsData(projectsClient, projects)
-    }
 
     /**
      * Get all the IAM policies for projects
@@ -77,11 +73,6 @@ export default async ({
         GLOBAL_REGION
       ] || []
 
-    if (isEmpty(folders)) {
-      // Refresh data
-      await listFoldersData(config, rawData, folders)
-    }
-
     /**
      * Get all the IAM policies for folders
      */
@@ -99,6 +90,33 @@ export default async ({
       }
     } catch (error) {
       generateGcpErrorLog(serviceName, 'resourceManager:getIamPolicy', error)
+    }
+
+    /**
+     * Find Storage Buckets
+     */
+    const storageBuckets: RawGcpStorageBucket[] =
+      rawData.find(({ name }) => name === services.storageBucket)?.data[
+        GLOBAL_REGION
+      ] || []
+
+    /**
+    * Get all the IAM policies for Storage Buckets
+    */
+    try {
+      for (const { iam } of storageBuckets) {
+        const response = await iam.getPolicy()
+        if (!isEmpty(response) && response[0]) {
+          policyList.push({
+            id: cuid(),
+            ...response[0],
+            storageBucketId: (response[0]?.resourceId || '').split('/').pop(),
+            region: GLOBAL_REGION,
+          })
+        }
+      }
+    } catch (error) {
+      generateGcpErrorLog(serviceName, 'storage:getPolicy', error)
     }
 
     logger.debug(lt.foundPolicies(policyList.length))

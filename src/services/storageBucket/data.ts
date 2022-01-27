@@ -19,6 +19,7 @@ export interface RawGcpStorageBucket {
   metadata: any
   baseUrl?: string
   name: string
+  iam: any
   pollIntervalMs?: number
   userProject?: string
 }

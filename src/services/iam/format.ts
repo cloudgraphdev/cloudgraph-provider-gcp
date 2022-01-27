@@ -17,12 +17,14 @@ export default ({
     bindings,
     etag,
     folderId,
+    storageBucketId,
   } = service
 
   return {
     id,
     projectId,
     folderId,
+    storageBucketId,
     region,
     version,
     bindings: bindings.map(binding => ({
