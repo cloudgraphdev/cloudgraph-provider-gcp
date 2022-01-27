@@ -12,7 +12,7 @@ const { logger } = CloudGraph
 const serviceName = 'Log Sink'
 const apiEndpoint = initTestEndpoint(serviceName)
 
-export interface RawGcpLogSink extends google.logging.v2.ILogSink { 
+export interface RawGcpLogSink extends google.logging.v2.ILogSink {
   id: string
   projectId: string
   region: string
@@ -26,12 +26,11 @@ export default async ({
   new Promise(async resolve => {
     const sinkList: RawGcpLogSink[] = []
     const { projectId } = config
-    
     /**
      * Get all of the Log Sinks
      */
     try {
-      const loggingClient = new Logging({ ...config, apiEndpoint });
+      const loggingClient = new Logging({ ...config, apiEndpoint })
       const iterable = loggingClient.configService.listSinksAsync({
         parent: `projects/${projectId}`,
       })
@@ -49,7 +48,7 @@ export default async ({
     } catch (error) {
       generateGcpErrorLog(serviceName, 'logging:listSinksAsync', error)
     }
-    
+
     logger.debug(lt.foundLogSinks(sinkList.length))
     resolve(groupBy(sinkList, 'region'))
   })
