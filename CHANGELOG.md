@@ -1,3 +1,10 @@
+## [0.22.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.22.0...0.22.1) (2022-01-27)
+
+
+### Bug Fixes
+
+* **services:** fix folder service where no orgs are present ([5c9dcc2](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/5c9dcc22f29f48d72b7a14b48b7ec96f70ec5a88))
+
 # [0.22.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.21.0...0.22.0) (2022-01-27)
 
 
