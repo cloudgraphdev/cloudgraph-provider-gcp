@@ -1,3 +1,10 @@
+# [0.22.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.21.0...0.22.0) (2022-01-27)
+
+
+### Features
+
+* **apiKeys:** add api keys service ([87d6206](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/87d620638d5f57e9762dcb78e31e003e6a8ce56d))
+
 # [0.21.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.20.1...0.21.0) (2022-01-25)
 
 
