@@ -693,23 +693,23 @@ export type GcpCloudRouter = GcpBaseResource & {
   kind?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   nats?: Maybe<Array<Maybe<GcpCloudRouterNat>>>;
-  selfLink?: Maybe<Scalars['String']>;
   network?: Maybe<Array<Maybe<GcpNetwork>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
+  selfLink?: Maybe<Scalars['String']>;
 };
 
 export type GcpCloudRouterBgpAdvertisedIpRange = {
-  id: Scalars['String'];
   description?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
   range?: Maybe<Scalars['String']>;
 };
 
 export type GcpCloudRouterBgpPeer = {
-  id: Scalars['String'];
   advertiseMode?: Maybe<Scalars['String']>;
   advertisedGroups?: Maybe<Array<Maybe<Scalars['String']>>>;
   advertisedIpRanges?: Maybe<Array<Maybe<GcpCloudRouterBgpPeerAdvertisedIpRange>>>;
   advertisedRoutePriority?: Maybe<Scalars['Int']>;
+  id: Scalars['String'];
   interfaceName?: Maybe<Scalars['String']>;
   ipAddress?: Maybe<Scalars['String']>;
   managementType?: Maybe<Scalars['String']>;
@@ -719,8 +719,8 @@ export type GcpCloudRouterBgpPeer = {
 };
 
 export type GcpCloudRouterBgpPeerAdvertisedIpRange = {
-  id: Scalars['String'];
   description?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
   range?: Maybe<Scalars['String']>;
 };
 
@@ -734,10 +734,10 @@ export type GcpCloudRouterInterface = {
 };
 
 export type GcpCloudRouterNat = {
-  id: Scalars['String'];
   drainNatIps?: Maybe<Array<Maybe<Scalars['String']>>>;
   enableEndpointIndependentMapping?: Maybe<Scalars['Boolean']>;
   icmpIdleTimeoutSec?: Maybe<Scalars['Int']>;
+  id: Scalars['String'];
   logConfigEnable?: Maybe<Scalars['Boolean']>;
   logConfigFilter?: Maybe<Scalars['String']>;
   minPortsPerVm?: Maybe<Scalars['Int']>;
@@ -856,6 +856,139 @@ export type GcpCustomerEncryptionKey = {
   kmsKeyServiceAccount?: Maybe<Scalars['String']>;
   rawKey?: Maybe<Scalars['String']>;
   sha256?: Maybe<Scalars['String']>;
+};
+
+export type GcpDataprocCluster = GcpBaseResource & {
+  clusterUuid?: Maybe<Scalars['String']>;
+  config?: Maybe<GcpDataprocClusterConfig>;
+  hdfsMetrics?: Maybe<Array<Maybe<GcpDataprocClusterMetric>>>;
+  labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  status?: Maybe<GcpDataprocClusterStatus>;
+  statusHistory?: Maybe<Array<Maybe<GcpDataprocClusterStatus>>>;
+  yarnMetrics?: Maybe<Array<Maybe<GcpDataprocClusterMetric>>>;
+};
+
+export type GcpDataprocClusterConfig = {
+  autoscalingConfigPolicyUri?: Maybe<Scalars['String']>;
+  configBucket?: Maybe<Scalars['String']>;
+  encryptionConfigGcePdKmsKeyName?: Maybe<Scalars['String']>;
+  endpointConfig?: Maybe<GcpDataprocClusterConfigEndpoint>;
+  gceClusterConfig?: Maybe<GcpDataprocClusterConfigGceCluster>;
+  gkeClusterConfig?: Maybe<GcpDataprocClusterConfigGke>;
+  initializationActions?: Maybe<Array<Maybe<GcpDataprocClusterConfigNodeInitializationAction>>>;
+  lifecycleConfig?: Maybe<GcpDataprocClusterConfigLifecycleConfig>;
+  masterConfig?: Maybe<GcpDataprocClusterConfigInstanceGroup>;
+  metastoreMetastoreServiceConfig?: Maybe<Scalars['String']>;
+  secondaryWorkerConfig?: Maybe<GcpDataprocClusterConfigInstanceGroup>;
+  securityConfig?: Maybe<GcpDataprocClusterConfigSecurity>;
+  softwareConfig?: Maybe<GcpDataprocClusterConfigSoftware>;
+  tempBucket?: Maybe<Scalars['String']>;
+  workerConfig?: Maybe<GcpDataprocClusterConfigInstanceGroup>;
+};
+
+export type GcpDataprocClusterConfigEndpoint = {
+  enableHttpPortAccess?: Maybe<Scalars['Boolean']>;
+  httpPorts?: Maybe<Array<Maybe<GcpKeyValue>>>;
+};
+
+export type GcpDataprocClusterConfigGceCluster = {
+  confidentialInstanceConfigEnableConfidentialCompute?: Maybe<Scalars['Boolean']>;
+  consumeReservationType?: Maybe<Scalars['String']>;
+  internalIpOnly?: Maybe<Scalars['Boolean']>;
+  metadata?: Maybe<Array<Maybe<GcpKeyValue>>>;
+  networkUri?: Maybe<Scalars['String']>;
+  nodeGroupAffinityNodeGroupUri?: Maybe<Scalars['String']>;
+  privateIpv6GoogleAccess?: Maybe<Scalars['String']>;
+  reservationAffinityKey?: Maybe<Scalars['String']>;
+  reservationAffinityValues?: Maybe<Array<Maybe<Scalars['String']>>>;
+  serviceAccount?: Maybe<Scalars['String']>;
+  serviceAccountScopes?: Maybe<Array<Maybe<Scalars['String']>>>;
+  shieldedInstanceConfigEnableIntegrityMonitoring?: Maybe<Scalars['Boolean']>;
+  shieldedInstanceConfigEnableSecureBoot?: Maybe<Scalars['Boolean']>;
+  shieldedInstanceConfigEnableVtpm?: Maybe<Scalars['Boolean']>;
+  subnetworkUri?: Maybe<Scalars['String']>;
+  tags?: Maybe<Array<Maybe<Scalars['String']>>>;
+  zoneUri?: Maybe<Scalars['String']>;
+};
+
+export type GcpDataprocClusterConfigGke = {
+  namespacedGkeDeploymentTargetClusterNamespace?: Maybe<Scalars['String']>;
+  namespacedGkeDeploymentTargetTargetGkeCluster?: Maybe<Scalars['String']>;
+};
+
+export type GcpDataprocClusterConfigInstanceGroup = {
+  accelerators?: Maybe<Array<Maybe<GcpDataprocInstanceClusterConfigAccelerator>>>;
+  diskConfigBootDiskSizeGb?: Maybe<Scalars['Int']>;
+  diskConfigBootDiskType?: Maybe<Scalars['String']>;
+  diskConfigNumLocalSsds?: Maybe<Scalars['Int']>;
+  imageUri?: Maybe<Scalars['String']>;
+  instanceNames?: Maybe<Array<Maybe<Scalars['String']>>>;
+  isPreemptible?: Maybe<Scalars['Boolean']>;
+  machineTypeUri?: Maybe<Scalars['String']>;
+  managedGroupConfigInstanceGroupManagerName?: Maybe<Scalars['String']>;
+  managedGroupConfigInstanceTemplateName?: Maybe<Scalars['String']>;
+  minCpuPlatform?: Maybe<Scalars['String']>;
+  numInstances?: Maybe<Scalars['Int']>;
+  preemptibility?: Maybe<Scalars['String']>;
+};
+
+export type GcpDataprocClusterConfigLifecycleConfig = {
+  autoDeleteTime?: Maybe<Scalars['String']>;
+  autoDeleteTtl?: Maybe<Scalars['String']>;
+  idleDeleteTtl?: Maybe<Scalars['String']>;
+  idleStartTime?: Maybe<Scalars['String']>;
+};
+
+export type GcpDataprocClusterConfigNodeInitializationAction = {
+  executableFile?: Maybe<Scalars['String']>;
+  executionTimeout?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+};
+
+export type GcpDataprocClusterConfigSecurity = {
+  identityConfigUserServiceAccountMapping?: Maybe<Array<Maybe<GcpKeyValue>>>;
+  kerberosConfigCrossRealmTrustAdminServer?: Maybe<Scalars['String']>;
+  kerberosConfigCrossRealmTrustKdc?: Maybe<Scalars['String']>;
+  kerberosConfigCrossRealmTrustRealm?: Maybe<Scalars['String']>;
+  kerberosConfigCrossRealmTrustSharedPasswordUri?: Maybe<Scalars['String']>;
+  kerberosConfigEnableKerberos?: Maybe<Scalars['Boolean']>;
+  kerberosConfigKdcDbKeyUri?: Maybe<Scalars['String']>;
+  kerberosConfigKeyPasswordUri?: Maybe<Scalars['String']>;
+  kerberosConfigKeystorePasswordUri?: Maybe<Scalars['String']>;
+  kerberosConfigKeystoreUri?: Maybe<Scalars['String']>;
+  kerberosConfigKmsKeyUri?: Maybe<Scalars['String']>;
+  kerberosConfigRealm?: Maybe<Scalars['String']>;
+  kerberosConfigRootPrincipalPasswordUri?: Maybe<Scalars['String']>;
+  kerberosConfigTgtLifetimeHours?: Maybe<Scalars['Int']>;
+  kerberosConfigTruststorePasswordUri?: Maybe<Scalars['String']>;
+  kerberosConfigTruststoreUri?: Maybe<Scalars['String']>;
+};
+
+export type GcpDataprocClusterConfigSoftware = {
+  imageVersion?: Maybe<Scalars['String']>;
+  optionalComponents?: Maybe<Array<Maybe<Scalars['String']>>>;
+  properties?: Maybe<Array<Maybe<GcpKeyValue>>>;
+};
+
+export type GcpDataprocClusterMetric = {
+  id: Scalars['String'];
+  key?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type GcpDataprocClusterStatus = {
+  detail?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  state?: Maybe<Scalars['String']>;
+  stateStartTime?: Maybe<Scalars['String']>;
+  substate?: Maybe<Scalars['String']>;
+};
+
+export type GcpDataprocInstanceClusterConfigAccelerator = {
+  acceleratorCount?: Maybe<Scalars['Int']>;
+  acceleratorTypeUri?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
 };
 
 export type GcpDisplayDevice = {
@@ -1060,6 +1193,12 @@ export type GcpItems = {
   value?: Maybe<Scalars['String']>;
 };
 
+export type GcpKeyValue = {
+  id: Scalars['String'];
+  key: Scalars['String'];
+  value?: Maybe<Scalars['String']>;
+};
+
 export type GcpKmsCryptoKey = GcpBaseResource & {
   createTime?: Maybe<Scalars['String']>;
   destroyScheduledDuration?: Maybe<Scalars['String']>;
@@ -1242,6 +1381,7 @@ export type GcpMetadata = {
 
 export type GcpNetwork = GcpBaseResource & {
   autoCreateSubnetworks?: Maybe<Scalars['Boolean']>;
+  cloudRouters?: Maybe<Array<Maybe<GcpCloudRouter>>>;
   creationTimestamp?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   dnsPolicy?: Maybe<Array<Maybe<GcpDnsPolicy>>>;
@@ -1258,7 +1398,6 @@ export type GcpNetwork = GcpBaseResource & {
   subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
   vmInstance?: Maybe<Array<Maybe<GcpVmInstance>>>;
   vpcConnectors?: Maybe<Array<Maybe<GcpVpcConnector>>>;
-  cloudRouters?: Maybe<Array<Maybe<GcpCloudRouter>>>;
 };
 
 export type GcpNetworkPeering = {
@@ -1303,8 +1442,10 @@ export type GcpProject = {
   bigQueryReservation?: Maybe<Array<Maybe<GcpBigQueryReservation>>>;
   bigQueryReservationCapacityCommitment?: Maybe<Array<Maybe<GcpBigQueryReservationCapacityCommitment>>>;
   cloudFunction?: Maybe<Array<Maybe<GcpCloudFunction>>>;
+  cloudRouters?: Maybe<Array<Maybe<GcpCloudRouter>>>;
   computeProject?: Maybe<Array<Maybe<GcpComputeProject>>>;
   createTime?: Maybe<Scalars['String']>;
+  dataprocCluster?: Maybe<Array<Maybe<GcpDataprocCluster>>>;
   deleteTime?: Maybe<Scalars['String']>;
   displayName?: Maybe<Scalars['String']>;
   dnsManagedZone?: Maybe<Array<Maybe<GcpDnsManagedZone>>>;
@@ -1312,7 +1453,6 @@ export type GcpProject = {
   etag?: Maybe<Scalars['String']>;
   firewall?: Maybe<Array<Maybe<GcpFirewall>>>;
   folder?: Maybe<Array<Maybe<GcpFolder>>>;
-  cloudRouters?: Maybe<Array<Maybe<GcpCloudRouter>>>;
   iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
   id: Scalars['String'];
   kmsCryptoKeys?: Maybe<Array<Maybe<GcpKmsCryptoKey>>>;

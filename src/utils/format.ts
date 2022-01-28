@@ -1,25 +1,21 @@
 import cuid from 'cuid'
 import { google } from '@google-cloud/bigquery-data-transfer/build/protos/protos'
-import { GcpRawLabel, GcpRawTag, GcpBigQueryDataTransferParam } from '../types/generated'
-import { TagMap, LabelMap } from '../types'
+import { GcpKeyValue, GcpRawLabel, GcpRawTag, GcpBigQueryDataTransferParam } from '../types/generated'
+import { TagMap, LabelMap, KeyValueMapMap } from '../types'
 
-export const formatLabelsFromMap = (labels: LabelMap): GcpRawLabel[] => {
-  return Object.keys(labels || {}).map(key => ({
-    // We need an id here to enfore uniqueness for Dgraph, otherwise we get duplicate tags
+export const formatKeyValueMap = (keyValueMap: KeyValueMapMap): GcpKeyValue[] => {
+  return Object.keys(keyValueMap || {}).map(key => ({
     id: cuid(),
     key,
-    value: labels[key],
+    value: keyValueMap[key].toString(),
   }))
 }
 
-export const formatTagsFromMap = (tags: TagMap): GcpRawTag[] => {
-  return Object.keys(tags || {}).map(key => ({
-    // We need an id here to enfore uniqueness for Dgraph, otherwise we get duplicate tags
-    id: cuid(),
-    key,
-    value: tags[key],
-  }))
-}
+// We need an id here to enfore uniqueness for Dgraph, otherwise we get duplicate tags
+export const formatLabelsFromMap = (labels: LabelMap): GcpRawLabel[] => formatKeyValueMap(labels)
+
+// We need an id here to enfore uniqueness for Dgraph, otherwise we get duplicate tags
+export const formatTagsFromMap = (tags: TagMap): GcpRawTag[] => formatKeyValueMap(tags)
 
 export const obfuscateSensitiveString = (s: string): string => {
   const stars = '*'.repeat(Math.min(30, s.length - 6))

@@ -1,0 +1,201 @@
+type gcpDataprocClusterConfigGceCluster
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    zoneUri: String @search(by: [hash, regexp])
+    networkUri: String @search(by: [hash, regexp])
+    subnetworkUri: String @search(by: [hash, regexp])
+    internalIpOnly: Boolean @search
+    privateIpv6GoogleAccess: String @search(by: [hash, regexp])
+    serviceAccount: String @search(by: [hash, regexp])
+    serviceAccountScopes: [String] @search(by: [hash])
+    tags: [String] @search(by: [hash])
+    metadata: [gcpKeyValue]
+    consumeReservationType: String @search(by: [hash, regexp])
+    reservationAffinityKey: String @search(by: [hash, regexp])
+    reservationAffinityValues: [String] @search(by: [hash])
+    nodeGroupAffinityNodeGroupUri: String @search(by: [hash, regexp])
+    shieldedInstanceConfigEnableSecureBoot: Boolean @search
+    shieldedInstanceConfigEnableVtpm: Boolean @search
+    shieldedInstanceConfigEnableIntegrityMonitoring: Boolean @search
+    confidentialInstanceConfigEnableConfidentialCompute: Boolean @search
+  }
+
+type gcpDataprocClusterConfigInstanceGroup
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    numInstances: Int @search
+    instanceNames: [String] @search(by: [hash])
+    imageUri: String @search(by: [hash, regexp])
+    machineTypeUri: String @search(by: [hash, regexp])
+    diskConfigBootDiskType: String @search(by: [hash, regexp])
+    diskConfigBootDiskSizeGb: Int @search
+    diskConfigNumLocalSsds: Int @search
+    isPreemptible: Boolean @search
+    preemptibility: String @search(by: [hash, regexp])
+    managedGroupConfigInstanceTemplateName: String @search(by: [hash, regexp])
+    managedGroupConfigInstanceGroupManagerName: String @search(by: [hash, regexp])
+    accelerators: [gcpDataprocInstanceClusterConfigAccelerator]
+    minCpuPlatform: String @search(by: [hash, regexp])
+  }
+
+type gcpDataprocClusterConfigSoftware
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    imageVersion: String @search(by: [hash, regexp])
+    properties: [gcpKeyValue]
+    optionalComponents: [String] @search(by: [hash])
+  }
+
+type gcpDataprocClusterConfigNodeInitializationAction
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    id: String! @id
+    executableFile: String @search(by: [hash, regexp])
+    executionTimeout: String @search(by: [hash, regexp])
+  }
+
+type gcpDataprocInstanceClusterConfigAccelerator
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    id: String! @id
+    acceleratorTypeUri: String @search(by: [hash, regexp])
+    acceleratorCount: Int @search
+  }
+
+type gcpDataprocClusterConfigSecurity
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    kerberosConfigEnableKerberos: Boolean @search
+    kerberosConfigRootPrincipalPasswordUri: String @search(by: [hash, regexp])
+    kerberosConfigKmsKeyUri: String @search(by: [hash, regexp])
+    kerberosConfigKeystoreUri: String @search(by: [hash, regexp])
+    kerberosConfigTruststoreUri: String @search(by: [hash, regexp])
+    kerberosConfigKeystorePasswordUri: String @search(by: [hash, regexp])
+    kerberosConfigKeyPasswordUri: String @search(by: [hash, regexp])
+    kerberosConfigTruststorePasswordUri: String @search(by: [hash, regexp])
+    kerberosConfigCrossRealmTrustRealm: String @search(by: [hash, regexp])
+    kerberosConfigCrossRealmTrustKdc: String @search(by: [hash, regexp])
+    kerberosConfigCrossRealmTrustAdminServer: String @search(by: [hash, regexp])
+    kerberosConfigCrossRealmTrustSharedPasswordUri: String @search(by: [hash, regexp])
+    kerberosConfigKdcDbKeyUri: String @search(by: [hash, regexp])
+    kerberosConfigTgtLifetimeHours: Int @search
+    kerberosConfigRealm: String @search(by: [hash, regexp])
+    identityConfigUserServiceAccountMapping: [gcpKeyValue]
+  }
+
+type gcpDataprocClusterConfigLifecycleConfig
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    idleDeleteTtl: String @search(by: [hash, regexp])
+    autoDeleteTime: String @search(by: [hash, regexp])
+    autoDeleteTtl: String @search(by: [hash, regexp])
+    idleStartTime: String @search(by: [hash, regexp])
+  }
+
+type gcpDataprocClusterConfigEndpoint
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    httpPorts: [gcpKeyValue]
+    enableHttpPortAccess: Boolean @search
+  }
+
+type gcpDataprocClusterConfigGke
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    namespacedGkeDeploymentTargetTargetGkeCluster: String @search(by: [hash, regexp])
+    namespacedGkeDeploymentTargetClusterNamespace: String @search(by: [hash, regexp])
+  }
+
+type gcpDataprocClusterConfig
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    configBucket: String @search(by: [hash, regexp])
+    tempBucket: String @search(by: [hash, regexp])
+    gceClusterConfig: gcpDataprocClusterConfigGceCluster
+    masterConfig: gcpDataprocClusterConfigInstanceGroup
+    workerConfig: gcpDataprocClusterConfigInstanceGroup
+    secondaryWorkerConfig: gcpDataprocClusterConfigInstanceGroup
+    softwareConfig: gcpDataprocClusterConfigSoftware
+    initializationActions: [gcpDataprocClusterConfigNodeInitializationAction]
+    encryptionConfigGcePdKmsKeyName: String @search(by: [hash, regexp])
+    autoscalingConfigPolicyUri: String @search(by: [hash, regexp])
+    securityConfig: gcpDataprocClusterConfigSecurity
+    lifecycleConfig: gcpDataprocClusterConfigLifecycleConfig
+    endpointConfig: gcpDataprocClusterConfigEndpoint
+    metastoreMetastoreServiceConfig: String @search(by: [hash, regexp])
+    gkeClusterConfig: gcpDataprocClusterConfigGke
+  }
+
+type gcpDataprocClusterStatus
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    id: String! @id
+    state: String @search(by: [hash, regexp])
+    detail: String @search(by: [hash, regexp])
+    stateStartTime: String @search(by: [hash, regexp])
+    substate: String @search(by: [hash, regexp])
+  }
+
+type gcpDataprocClusterMetric
+  @generate(
+    query: { get: false, query: false, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  key: String
+  value: String
+}
+
+type gcpDataprocCluster implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    config: gcpDataprocClusterConfig
+    labels: [gcpRawLabel]
+    status: gcpDataprocClusterStatus
+    statusHistory: [gcpDataprocClusterStatus]
+    clusterUuid: String @search(by: [hash, regexp])
+    hdfsMetrics: [gcpDataprocClusterMetric]
+    yarnMetrics: [gcpDataprocClusterMetric]
+    project: [gcpProject] @hasInverse(field: dataprocCluster)
+  }

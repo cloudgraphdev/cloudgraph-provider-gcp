@@ -11,6 +11,10 @@ export interface LabelMap {
   [property: string]: string
 }
 
+export interface KeyValueMapMap {
+  [k: string]: string | number | boolean | Long
+}
+
 export interface GcpServiceInput {
   regions: string
   config: GcpCredentials
