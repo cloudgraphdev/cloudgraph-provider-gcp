@@ -1,4 +1,9 @@
-import CloudGraph, { Service, Opts, ProviderData } from '@cloudgraph/sdk'
+import CloudGraph, {
+  Service,
+  Opts,
+  ProviderData,
+  sortResourcesDependencies,
+} from '@cloudgraph/sdk'
 import { loadFilesSync } from '@graphql-tools/load-files'
 import { mergeTypeDefs } from '@graphql-tools/merge'
 import chalk from 'chalk'
@@ -16,7 +21,7 @@ import {
   DEFAULT_RESOURCES,
   GLOBAL_REGION,
 } from '../config/constants'
-import { sortResourcesDependencies } from '../utils'
+import relations from '../enums/relations'
 
 export const enums = {
   services,
@@ -272,7 +277,7 @@ export default class Provider extends CloudGraph.Client {
     if (!configuredResources) {
       configuredResources = Object.values(this.properties.services).join(',')
     }
-    const resourceNames: string[] = sortResourcesDependencies([
+    const resourceNames: string[] = sortResourcesDependencies(relations, [
       ...new Set<string>(configuredResources.split(',')),
     ])
     const { projectId } = account
