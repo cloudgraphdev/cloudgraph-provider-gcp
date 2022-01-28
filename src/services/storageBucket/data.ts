@@ -2,7 +2,7 @@ import { Storage, GetBucketsRequest } from '@google-cloud/storage'
 import CloudGraph from '@cloudgraph/sdk'
 import groupBy from 'lodash/groupBy'
 import gcpLoggerText from '../../properties/logger'
-import { GcpServiceInput } from '../../types'
+import { GcpCredentials, GcpServiceInput } from '../../types'
 import { initTestEndpoint, generateGcpErrorLog } from '../../utils'
 import regions from '../../enums/regions'
 import { GLOBAL_REGION } from '../../config/constants'
@@ -24,15 +24,12 @@ export interface RawGcpStorageBucket {
   userProject?: string
 }
 
-export default async ({
-  config,
-}: GcpServiceInput): Promise<{
-  [region: string]: RawGcpStorageBucket[]
-}> =>
+export const listStorageBucketsData = async (
+  config: GcpCredentials,
+  bucketList: RawGcpStorageBucket[]
+): Promise<void> =>
   new Promise(async resolve => {
-    const bucketList: RawGcpStorageBucket[] = []
     const { projectId } = config
-
     /**
      * Get all Storage Buckets
      */
@@ -52,6 +49,18 @@ export default async ({
     } catch (error) {
       generateGcpErrorLog(serviceName, 'storage:getBuckets', error)
     }
+    resolve()
+  })
+
+export default async ({
+  config,
+}: GcpServiceInput): Promise<{
+  [region: string]: RawGcpStorageBucket[]
+}> =>
+  new Promise(async resolve => {
+    const bucketList: RawGcpStorageBucket[] = []
+
+    await listStorageBucketsData(config, bucketList)
 
     logger.debug(lt.foundResources(serviceName, bucketList.length))
     resolve(groupBy(bucketList, 'region'))
