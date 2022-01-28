@@ -1258,7 +1258,7 @@ export type GcpNetwork = GcpBaseResource & {
   subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
   vmInstance?: Maybe<Array<Maybe<GcpVmInstance>>>;
   vpcConnectors?: Maybe<Array<Maybe<GcpVpcConnector>>>;
-  cloudRouter?: Maybe<Array<Maybe<GcpCloudRouter>>>;
+  cloudRouters?: Maybe<Array<Maybe<GcpCloudRouter>>>;
 };
 
 export type GcpNetworkPeering = {
@@ -1312,7 +1312,7 @@ export type GcpProject = {
   etag?: Maybe<Scalars['String']>;
   firewall?: Maybe<Array<Maybe<GcpFirewall>>>;
   folder?: Maybe<Array<Maybe<GcpFolder>>>;
-  cloudRouter?: Maybe<Array<Maybe<GcpCloudRouter>>>;
+  cloudRouters?: Maybe<Array<Maybe<GcpCloudRouter>>>;
   iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
   id: Scalars['String'];
   kmsCryptoKeys?: Maybe<Array<Maybe<GcpKmsCryptoKey>>>;

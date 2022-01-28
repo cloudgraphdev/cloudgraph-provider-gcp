@@ -113,6 +113,6 @@ type gcpCloudRouter implements gcpBaseResource
     name: String @search(by: [hash, regexp])
     nats: [gcpCloudRouterNat],
     selfLink: String @search(by: [hash, regexp])
-    network: [gcpNetwork] @hasInverse(field: cloudRouter)
-    project: [gcpProject] @hasInverse(field: cloudRouter)
+    network: [gcpNetwork] @hasInverse(field: cloudRouters)
+    project: [gcpProject] @hasInverse(field: cloudRouters)
   }
