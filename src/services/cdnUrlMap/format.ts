@@ -16,7 +16,6 @@ import {
   GcpCdnUrlMapRouteActionWeightedBackendService,
   GcpCdnUrlMapTest,
 } from '../../types/generated'
-import { toISOString } from '../../utils/dateutils'
 
 const formatWeightedBackendService = ({
   backendService,
@@ -77,14 +76,14 @@ const formatRouteAction = ({
     corsPolicyMaxAge: corsPolicy?.maxAge || 0,
     faultInjectionPolicyAbortHttpStatus: faultInjectionPolicy?.abort?.httpStatus || 0,
     faultInjectionPolicyAbortPercentage: faultInjectionPolicy?.abort?.percentage || 0,
-    faultInjectionPolicyDelayFixedDelay: toISOString(faultInjectionPolicy?.delay?.fixedDelay?.seconds?.toString()) || '',
+    faultInjectionPolicyDelayFixedDelay: faultInjectionPolicy?.delay?.fixedDelay?.seconds?.toString() || '',
     faultInjectionPolicyDelayPercentage: faultInjectionPolicy?.delay?.percentage || 0,
-    maxStreamDuration: toISOString(maxStreamDuration?.seconds?.toString()) || '',
+    maxStreamDuration: maxStreamDuration?.seconds?.toString() || '',
     requestMirrorPolicyBackendService: requestMirrorPolicy?.backendService || '',
     retryPolicyNumRetries: retryPolicy?.numRetries || 0,
-    retryPolicyPerTryTimeout: toISOString(retryPolicy?.perTryTimeout?.seconds?.toString()) || '',
+    retryPolicyPerTryTimeout: retryPolicy?.perTryTimeout?.seconds?.toString() || '',
     retryPolicyRetryConditions: retryPolicy?.retryConditions || [],
-    timeout: toISOString(timeout?.seconds?.toString()) || '',
+    timeout: timeout?.seconds?.toString() || '',
     urlRewriteHostRewrite: urlRewrite?.hostRewrite || '',
     urlRewritePathPrefixRewrite: urlRewrite?.pathPrefixRewrite || '',
     weightedBackendServices: weightedBackendServices?.map(backendService => formatWeightedBackendService(backendService))

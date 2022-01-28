@@ -10,7 +10,6 @@ import {
   GcpCdnBackendServiceCdnPolicyNegativeCachingPolicy,
   GcpCdnBackendServiceOutlierDetection,
 } from '../../types/generated'
-import { toISOString } from '../../utils/dateutils'
 
 const formatBackend = ({
   balancingMode,
@@ -104,13 +103,13 @@ const formatOutlierDetection = ({
   successRateStdevFactor,
 }: google.cloud.compute.v1.IOutlierDetection): GcpCdnBackendServiceOutlierDetection => {
   return {
-    baseEjectionTime: toISOString(baseEjectionTime?.seconds?.toString()) || '',
+    baseEjectionTime: baseEjectionTime?.seconds?.toString() || '',
     consecutiveErrors,
     consecutiveGatewayFailure,
     enforcingConsecutiveErrors,
     enforcingConsecutiveGatewayFailure,
     enforcingSuccessRate,
-    interval: toISOString(interval?.seconds?.toString()) || '',
+    interval: interval?.seconds?.toString() || '',
     maxEjectionPercent,
     successRateMinimumHosts,
     successRateRequestVolume,
@@ -177,7 +176,7 @@ export default ({
     connectionDrainingTimeoutSec: connectionDraining?.drainingTimeoutSec || 0,
     consistentHashLoadBalancerSettingHttpCookieName: consistentHash?.httpCookie?.name || '',
     consistentHashLoadBalancerSettingHttpCookiePath: consistentHash?.httpCookie?.path || '',
-    consistentHashLoadBalancerSettingHttpCookie: toISOString(consistentHash?.httpCookie?.ttl.seconds?.toString()) || '',
+    consistentHashLoadBalancerSettingHttpCookie: consistentHash?.httpCookie?.ttl.seconds?.toString() || '',
     consistentHashLoadBalancerSettingHttpHeaderName: consistentHash?.httpHeaderName || '',
     consistentHashLoadBalancerSettingMinimumRingSize: consistentHash?.minimumRingSize?.toString() || '',
     creationTimestamp,
@@ -200,7 +199,7 @@ export default ({
     localityLbPolicy: enumKeyToString(google.cloud.compute.v1.BackendService.LocalityLbPolicy, localityLbPolicy),
     logConfigEnable: logConfig?.enable || false,
     logConfigSampleRate: logConfig?.sampleRate || 0,
-    maxStreamDuration: toISOString(maxStreamDuration?.seconds?.toString()),
+    maxStreamDuration: maxStreamDuration?.seconds?.toString() || '',
     outlierDetection: formatOutlierDetection(outlierDetection),
     port,
     portName,
