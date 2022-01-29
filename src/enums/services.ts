@@ -28,7 +28,7 @@ export default {
   // composer: 'composer',
   // dataCatalog: 'data-catalog',
   // dataflow: 'dataflow',
-  dataprocCluster: 'dataprocCluster',
+  dataprocCluster: 'dataprocClusters',
   // metastore: 'metastore',
   // pubsub: 'pubsub',
   // bigtable: 'bigtable',

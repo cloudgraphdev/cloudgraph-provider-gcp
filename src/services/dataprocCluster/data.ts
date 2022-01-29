@@ -5,12 +5,11 @@ import groupBy from 'lodash/groupBy'
 import { google } from '@google-cloud/dataproc/build/protos/protos'
 import gcpLoggerText from '../../properties/logger'
 import { GcpServiceInput } from '../../types'
-import { initTestEndpoint, generateGcpErrorLog } from '../../utils'
+import { generateGcpErrorLog } from '../../utils'
 
 const lt = { ...gcpLoggerText }
 const { logger } = CloudGraph
 const serviceName = 'Dataproc Cluster'
-const apiEndpoint = initTestEndpoint(serviceName)
 
 export interface RawGcpDataprocCluster extends Omit<google.cloud.dataproc.v1.ICluster, 'projectId' | 'labels'> {
   id: string
@@ -34,7 +33,11 @@ export default async ({
        */
         
       try {
-        const dataprocClient = new ClusterControllerClient({ ...config, apiEndpoint })
+        const dataprocClient = new ClusterControllerClient({ 
+          ...config,
+          apiEndpoint: `${region}-dataproc.googleapis.com`,
+          projectId,
+        })
       
         const iterable =  dataprocClient.listClustersAsync({ projectId, region })
         for await (const { labels, ...response } of iterable) {

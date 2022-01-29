@@ -146,9 +146,9 @@ const formatClusterConfigLifecycle = ({
   idleStartTime,
 }: google.cloud.dataproc.v1.ILifecycleConfig): GcpDataprocClusterConfigLifecycleConfig => {
   return {
-    idleDeleteTtl: idleDeleteTtl.seconds?.toString() || '',
+    idleDeleteTtl: idleDeleteTtl?.seconds?.toString() || '',
     autoDeleteTime: toISOString(autoDeleteTime?.seconds?.toString()),
-    autoDeleteTtl: autoDeleteTtl.seconds?.toString() || '',
+    autoDeleteTtl: autoDeleteTtl?.seconds?.toString() || '',
     idleStartTime: toISOString(idleStartTime?.seconds?.toString()),
   }
 }
@@ -192,19 +192,19 @@ const formatClusterConfig = ({
   return {
     configBucket,
     tempBucket,
-    gceClusterConfig: formatClusterConfigGceCluster(gceClusterConfig),
-    masterConfig: formatClusterConfigInstanceGroup(masterConfig),
-    workerConfig: formatClusterConfigInstanceGroup(workerConfig),
-    secondaryWorkerConfig: formatClusterConfigInstanceGroup(secondaryWorkerConfig),
-    softwareConfig: formatClusterConfigSoftware(softwareConfig),
+    gceClusterConfig: formatClusterConfigGceCluster(gceClusterConfig || {}),
+    masterConfig: formatClusterConfigInstanceGroup(masterConfig || {}),
+    workerConfig: formatClusterConfigInstanceGroup(workerConfig || {}),
+    secondaryWorkerConfig: formatClusterConfigInstanceGroup(secondaryWorkerConfig || {}),
+    softwareConfig: formatClusterConfigSoftware(softwareConfig || {}),
     initializationActions: initializationActions?.map(formatClusterConfigNodeInitializationAction),
     encryptionConfigGcePdKmsKeyName: encryptionConfig?.gcePdKmsKeyName || '',
     autoscalingConfigPolicyUri: autoscalingConfig?.policyUri || '',
-    securityConfig: formatClusterConfigSecurity(securityConfig),
-    lifecycleConfig: formatClusterConfigLifecycle(lifecycleConfig),
-    endpointConfig: formatClusterConfigEndpoint(endpointConfig),
+    securityConfig: formatClusterConfigSecurity(securityConfig || {}),
+    lifecycleConfig: formatClusterConfigLifecycle(lifecycleConfig || {}),
+    endpointConfig: formatClusterConfigEndpoint(endpointConfig || {}),
     metastoreMetastoreServiceConfig: metastoreConfig?.dataprocMetastoreService || '',
-    gkeClusterConfig: formatClusterConfigGke(gkeClusterConfig),
+    gkeClusterConfig: formatClusterConfigGke(gkeClusterConfig || {}),
   }
 }
 

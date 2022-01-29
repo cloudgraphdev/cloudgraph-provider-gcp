@@ -1446,6 +1446,7 @@ export type GcpProject = {
   computeProject?: Maybe<Array<Maybe<GcpComputeProject>>>;
   createTime?: Maybe<Scalars['String']>;
   dataprocCluster?: Maybe<Array<Maybe<GcpDataprocCluster>>>;
+  dataprocClusters?: Maybe<Array<Maybe<GcpDataprocCluster>>>;
   deleteTime?: Maybe<Scalars['String']>;
   displayName?: Maybe<Scalars['String']>;
   dnsManagedZone?: Maybe<Array<Maybe<GcpDnsManagedZone>>>;

@@ -46,4 +46,5 @@ type gcpProject @key(fields: "id") {
   serviceAccounts: [gcpServiceAccount] @hasInverse(field: project)
   kmsCryptoKeys: [gcpKmsCryptoKey] @hasInverse(field: project)
   dataprocCluster: [gcpDataprocCluster] @hasInverse(field: project)
+  dataprocClusters: [gcpDataprocCluster] @hasInverse(field: project)
 }

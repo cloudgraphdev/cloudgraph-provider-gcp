@@ -197,5 +197,5 @@ type gcpDataprocCluster implements gcpBaseResource
     clusterUuid: String @search(by: [hash, regexp])
     hdfsMetrics: [gcpDataprocClusterMetric]
     yarnMetrics: [gcpDataprocClusterMetric]
-    project: [gcpProject] @hasInverse(field: dataprocCluster)
+    project: [gcpProject] @hasInverse(field: dataprocClusters)
   }
