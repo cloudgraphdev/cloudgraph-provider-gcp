@@ -30,6 +30,7 @@ export default {
   // dataflow: 'dataflow',
   dataprocCluster: 'dataprocClusters',
   dataprocAutoscalingPolicy: 'dataprocAutoscalingPolicies',
+  dataprocJob: 'dataprocJobs',
   // metastore: 'metastore',
   // pubsub: 'pubsub',
   // bigtable: 'bigtable',

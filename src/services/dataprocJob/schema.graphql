@@ -1,0 +1,177 @@
+type gcpDataprocJobStatus
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    id: String! @id
+    state: String @search(by: [hash, regexp])
+    details: String @search(by: [hash, regexp])
+    stateStartTime: String @search(by: [hash, regexp])
+    substate: String @search(by: [hash, regexp])
+  }
+
+type gcpDataprocJobYarnApplication
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    id: String! @id
+    name: String @search(by: [hash, regexp])
+    state: String @search(by: [hash, regexp])
+    progress: Int @search
+    trackingUrl: String @search(by: [hash, regexp])
+  }
+
+type gcpDataprocHadoopJob
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    mainJarFileUri: String @search(by: [hash, regexp]) 
+    mainClass: String @search(by: [hash, regexp])
+    args: [String] @search(by: [hash])
+    jarFileUris: [String] @search(by: [hash])
+    fileUris: [String] @search(by: [hash])
+    archiveUris: [String] @search(by: [hash])
+    properties: [gcpKeyValue]
+    loggingConfig: [gcpKeyValue]
+  }
+
+type gcpDataprocSparkJob
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    mainJarFileUri: String @search(by: [hash, regexp])
+    mainClass: String @search(by: [hash, regexp])
+    args: [String] @search(by: [hash])
+    jarFileUris: [String] @search(by: [hash])
+    fileUris: [String] @search(by: [hash])
+    archiveUris: [String] @search(by: [hash])
+    properties: [gcpKeyValue]
+    loggingConfig: [gcpKeyValue]
+  }
+
+type gcpDataprocPysparkJob
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    mainPythonFileUri: String @search(by: [hash, regexp])
+    args: [String] @search(by: [hash])
+    pythonFileUris: [String] @search(by: [hash])
+    jarFileUris: [String] @search(by: [hash])
+    fileUris: [String] @search(by: [hash])
+    archiveUris: [String] @search(by: [hash])
+    properties: [gcpKeyValue]
+    loggingConfig: [gcpKeyValue]
+  }
+
+type gcpDataprocHiveJob
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    queryFileUri: String @search(by: [hash, regexp])
+    queryList: [String] @search(by: [hash])
+    continueOnFailure: Boolean @search
+    scriptVariables: [gcpKeyValue]
+    properties: [gcpKeyValue]
+    jarFileUris: [String] @search(by: [hash])
+  }
+
+type gcpDataprocPigJob
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    queryFileUri: String @search(by: [hash, regexp])
+    queryList: [String] @search(by: [hash])
+    continueOnFailure: Boolean @search
+    scriptVariables: [gcpKeyValue]
+    properties: [gcpKeyValue]
+    jarFileUris: [String] @search(by: [hash])
+    loggingConfig: [gcpKeyValue]
+  }
+
+type gcpDataprocspArkRJob
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    mainRFileUri: String @search(by: [hash, regexp])
+    args: [String] @search(by: [hash])
+    fileUris: [String] @search(by: [hash])
+    archiveUris: [String] @search(by: [hash])
+    properties: [gcpKeyValue]
+    loggingConfig: [gcpKeyValue]
+  }
+
+type gcpDataprocSparkSqlJob
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    queryFileUri: String @search(by: [hash, regexp])
+    queryList: [String] @search(by: [hash])
+    scriptVariables: [gcpKeyValue]
+    properties: [gcpKeyValue]
+    jarFileUris: [String] @search(by: [hash])
+    loggingConfig: [gcpKeyValue]
+  }
+
+type gcpDataprocPrestoJob
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    queryFileUri: String @search(by: [hash, regexp])
+    queryList: [String] @search(by: [hash])
+    continueOnFailure: Boolean @search
+    outputFormat: String @search(by: [hash, regexp])
+    clientTags: [String] @search(by: [hash])
+    properties: [gcpKeyValue]
+    loggingConfig: [gcpKeyValue]
+  }
+
+type gcpDataprocJob implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    placementClusterName: String @search(by: [hash, regexp])
+    placementClusterUuid: String @search(by: [hash, regexp])
+    placementClusterLabels: [gcpKeyValue]
+    hadoopJob: gcpDataprocHadoopJob
+    sparkJob: gcpDataprocSparkJob
+    pysparkJob: gcpDataprocPysparkJob
+    hiveJob: gcpDataprocHiveJob
+    pigJob: gcpDataprocPigJob
+    sparkRJob: gcpDataprocspArkRJob
+    sparkSqlJob: gcpDataprocSparkSqlJob
+    prestoJob: gcpDataprocPrestoJob
+    status: gcpDataprocJobStatus
+    statusHistory: [gcpDataprocJobStatus]
+    yarnApplications: [gcpDataprocJobYarnApplication]
+    driverOutputResourceUri: String @search(by: [hash, regexp])
+    driverControlFilesUri: String @search(by: [hash, regexp])
+    schedulingMaxFailuresPerHour: Int @search
+    schedulingMaxFailuresTotal: Int @search
+    done: Boolean @search
+    labels: [gcpRawLabel]
+    project: [gcpProject] @hasInverse(field: dataprocJobs)
+  }

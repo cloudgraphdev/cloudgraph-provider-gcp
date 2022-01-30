@@ -42,5 +42,6 @@ export default {
   [services.computeProject]: 'gcpComputeProject',
   [services.dataprocCluster]: 'gcpDataprocCluster',
   [services.dataprocAutoscalingPolicy]: 'gcpDataprocAutoscalingPolicy',
+  [services.dataprocJob]: 'gcpDataprocJob',
   tag: 'gcpTag',
 }

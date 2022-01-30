@@ -1002,10 +1002,130 @@ export type GcpDataprocClusterStatus = {
   substate?: Maybe<Scalars['String']>;
 };
 
+export type GcpDataprocHadoopJob = {
+  archiveUris?: Maybe<Array<Maybe<Scalars['String']>>>;
+  args?: Maybe<Array<Maybe<Scalars['String']>>>;
+  fileUris?: Maybe<Array<Maybe<Scalars['String']>>>;
+  jarFileUris?: Maybe<Array<Maybe<Scalars['String']>>>;
+  loggingConfig?: Maybe<Array<Maybe<GcpKeyValue>>>;
+  mainClass?: Maybe<Scalars['String']>;
+  mainJarFileUri?: Maybe<Scalars['String']>;
+  properties?: Maybe<Array<Maybe<GcpKeyValue>>>;
+};
+
+export type GcpDataprocHiveJob = {
+  continueOnFailure?: Maybe<Scalars['Boolean']>;
+  jarFileUris?: Maybe<Array<Maybe<Scalars['String']>>>;
+  properties?: Maybe<Array<Maybe<GcpKeyValue>>>;
+  queryFileUri?: Maybe<Scalars['String']>;
+  queryList?: Maybe<Array<Maybe<Scalars['String']>>>;
+  scriptVariables?: Maybe<Array<Maybe<GcpKeyValue>>>;
+};
+
 export type GcpDataprocInstanceClusterConfigAccelerator = {
   acceleratorCount?: Maybe<Scalars['Int']>;
   acceleratorTypeUri?: Maybe<Scalars['String']>;
   id: Scalars['String'];
+};
+
+export type GcpDataprocJob = GcpBaseResource & {
+  done?: Maybe<Scalars['Boolean']>;
+  driverControlFilesUri?: Maybe<Scalars['String']>;
+  driverOutputResourceUri?: Maybe<Scalars['String']>;
+  hadoopJob?: Maybe<GcpDataprocHadoopJob>;
+  hiveJob?: Maybe<GcpDataprocHiveJob>;
+  labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
+  pigJob?: Maybe<GcpDataprocPigJob>;
+  placementClusterLabels?: Maybe<Array<Maybe<GcpKeyValue>>>;
+  placementClusterName?: Maybe<Scalars['String']>;
+  placementClusterUuid?: Maybe<Scalars['String']>;
+  prestoJob?: Maybe<GcpDataprocPrestoJob>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  pysparkJob?: Maybe<GcpDataprocPysparkJob>;
+  schedulingMaxFailuresPerHour?: Maybe<Scalars['Int']>;
+  schedulingMaxFailuresTotal?: Maybe<Scalars['Int']>;
+  sparkJob?: Maybe<GcpDataprocSparkJob>;
+  sparkRJob?: Maybe<GcpDataprocspArkRJob>;
+  sparkSqlJob?: Maybe<GcpDataprocSparkSqlJob>;
+  status?: Maybe<GcpDataprocJobStatus>;
+  statusHistory?: Maybe<Array<Maybe<GcpDataprocJobStatus>>>;
+  yarnApplications?: Maybe<Array<Maybe<GcpDataprocJobYarnApplication>>>;
+};
+
+export type GcpDataprocJobStatus = {
+  details?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  state?: Maybe<Scalars['String']>;
+  stateStartTime?: Maybe<Scalars['String']>;
+  substate?: Maybe<Scalars['String']>;
+};
+
+export type GcpDataprocJobYarnApplication = {
+  id: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
+  progress?: Maybe<Scalars['Int']>;
+  state?: Maybe<Scalars['String']>;
+  trackingUrl?: Maybe<Scalars['String']>;
+};
+
+export type GcpDataprocPigJob = {
+  continueOnFailure?: Maybe<Scalars['Boolean']>;
+  jarFileUris?: Maybe<Array<Maybe<Scalars['String']>>>;
+  loggingConfig?: Maybe<Array<Maybe<GcpKeyValue>>>;
+  properties?: Maybe<Array<Maybe<GcpKeyValue>>>;
+  queryFileUri?: Maybe<Scalars['String']>;
+  queryList?: Maybe<Array<Maybe<Scalars['String']>>>;
+  scriptVariables?: Maybe<Array<Maybe<GcpKeyValue>>>;
+};
+
+export type GcpDataprocPrestoJob = {
+  clientTags?: Maybe<Array<Maybe<Scalars['String']>>>;
+  continueOnFailure?: Maybe<Scalars['Boolean']>;
+  loggingConfig?: Maybe<Array<Maybe<GcpKeyValue>>>;
+  outputFormat?: Maybe<Scalars['String']>;
+  properties?: Maybe<Array<Maybe<GcpKeyValue>>>;
+  queryFileUri?: Maybe<Scalars['String']>;
+  queryList?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type GcpDataprocPysparkJob = {
+  archiveUris?: Maybe<Array<Maybe<Scalars['String']>>>;
+  args?: Maybe<Array<Maybe<Scalars['String']>>>;
+  fileUris?: Maybe<Array<Maybe<Scalars['String']>>>;
+  jarFileUris?: Maybe<Array<Maybe<Scalars['String']>>>;
+  loggingConfig?: Maybe<Array<Maybe<GcpKeyValue>>>;
+  mainPythonFileUri?: Maybe<Scalars['String']>;
+  properties?: Maybe<Array<Maybe<GcpKeyValue>>>;
+  pythonFileUris?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type GcpDataprocSparkJob = {
+  archiveUris?: Maybe<Array<Maybe<Scalars['String']>>>;
+  args?: Maybe<Array<Maybe<Scalars['String']>>>;
+  fileUris?: Maybe<Array<Maybe<Scalars['String']>>>;
+  jarFileUris?: Maybe<Array<Maybe<Scalars['String']>>>;
+  loggingConfig?: Maybe<Array<Maybe<GcpKeyValue>>>;
+  mainClass?: Maybe<Scalars['String']>;
+  mainJarFileUri?: Maybe<Scalars['String']>;
+  properties?: Maybe<Array<Maybe<GcpKeyValue>>>;
+};
+
+export type GcpDataprocSparkSqlJob = {
+  jarFileUris?: Maybe<Array<Maybe<Scalars['String']>>>;
+  loggingConfig?: Maybe<Array<Maybe<GcpKeyValue>>>;
+  properties?: Maybe<Array<Maybe<GcpKeyValue>>>;
+  queryFileUri?: Maybe<Scalars['String']>;
+  queryList?: Maybe<Array<Maybe<Scalars['String']>>>;
+  scriptVariables?: Maybe<Array<Maybe<GcpKeyValue>>>;
+};
+
+export type GcpDataprocspArkRJob = {
+  archiveUris?: Maybe<Array<Maybe<Scalars['String']>>>;
+  args?: Maybe<Array<Maybe<Scalars['String']>>>;
+  fileUris?: Maybe<Array<Maybe<Scalars['String']>>>;
+  loggingConfig?: Maybe<Array<Maybe<GcpKeyValue>>>;
+  mainRFileUri?: Maybe<Scalars['String']>;
+  properties?: Maybe<Array<Maybe<GcpKeyValue>>>;
 };
 
 export type GcpDisplayDevice = {
@@ -1465,6 +1585,7 @@ export type GcpProject = {
   dataprocAutoscalingPolicies?: Maybe<Array<Maybe<GcpDataprocAutoscalingPolicy>>>;
   dataprocCluster?: Maybe<Array<Maybe<GcpDataprocCluster>>>;
   dataprocClusters?: Maybe<Array<Maybe<GcpDataprocCluster>>>;
+  dataprocJobs?: Maybe<Array<Maybe<GcpDataprocJob>>>;
   deleteTime?: Maybe<Scalars['String']>;
   displayName?: Maybe<Scalars['String']>;
   dnsManagedZone?: Maybe<Array<Maybe<GcpDnsManagedZone>>>;

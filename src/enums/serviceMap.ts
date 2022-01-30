@@ -38,6 +38,7 @@ import GcpApiKey from '../services/apiKey'
 import GcpComputeProject from '../services/computeProject'
 import GcpDataprocCluster from '../services/dataprocCluster'
 import GcpDataprocAutoscalingPolicy from '../services/dataprocAutoscalingPolicy'
+import GcpDataprocJob from '../services/dataprocJob'
 
 /**
  * serviceMap is an object that contains all currently supported services
@@ -82,5 +83,6 @@ export default {
   [services.computeProject]: GcpComputeProject,
   [services.dataprocCluster]: GcpDataprocCluster,
   [services.dataprocAutoscalingPolicy]: GcpDataprocAutoscalingPolicy,
+  [services.dataprocJob]: GcpDataprocJob,
   tag: GcpTag,
 }
