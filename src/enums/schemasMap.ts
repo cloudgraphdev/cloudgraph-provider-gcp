@@ -41,5 +41,6 @@ export default {
   [services.apiKey]: 'gcpApiKey',
   [services.computeProject]: 'gcpComputeProject',
   [services.dataprocCluster]: 'gcpDataprocCluster',
+  [services.dataprocAutoscalingPolicy]: 'gcpDataprocAutoscalingPolicy',
   tag: 'gcpTag',
 }

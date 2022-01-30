@@ -858,6 +858,23 @@ export type GcpCustomerEncryptionKey = {
   sha256?: Maybe<Scalars['String']>;
 };
 
+export type GcpDataprocAutoscalingPolicy = GcpBaseResource & {
+  basicAlgorithmCooldownPeriod?: Maybe<Scalars['String']>;
+  basicAlgorithmYarnConfigGracefulDecommissionTimeout?: Maybe<Scalars['String']>;
+  basicAlgorithmYarnConfigScaleDownFactor?: Maybe<Scalars['Float']>;
+  basicAlgorithmYarnConfigScaleDownMinWorkerFraction?: Maybe<Scalars['Float']>;
+  basicAlgorithmYarnConfigScaleUpFactor?: Maybe<Scalars['Float']>;
+  basicAlgorithmYarnConfigScaleUpMinWorkerFraction?: Maybe<Scalars['Float']>;
+  labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  secondaryWorkerConfigMaxInstances?: Maybe<Scalars['Int']>;
+  secondaryWorkerConfigMinInstances?: Maybe<Scalars['Int']>;
+  secondaryWorkerConfigWeight?: Maybe<Scalars['Int']>;
+  workerConfigMaxInstances?: Maybe<Scalars['Int']>;
+  workerConfigMinInstances?: Maybe<Scalars['Int']>;
+  workerConfigWeight?: Maybe<Scalars['Int']>;
+};
+
 export type GcpDataprocCluster = GcpBaseResource & {
   clusterUuid?: Maybe<Scalars['String']>;
   config?: Maybe<GcpDataprocClusterConfig>;
@@ -1445,6 +1462,7 @@ export type GcpProject = {
   cloudRouters?: Maybe<Array<Maybe<GcpCloudRouter>>>;
   computeProject?: Maybe<Array<Maybe<GcpComputeProject>>>;
   createTime?: Maybe<Scalars['String']>;
+  dataprocAutoscalingPolicies?: Maybe<Array<Maybe<GcpDataprocAutoscalingPolicy>>>;
   dataprocCluster?: Maybe<Array<Maybe<GcpDataprocCluster>>>;
   dataprocClusters?: Maybe<Array<Maybe<GcpDataprocCluster>>>;
   deleteTime?: Maybe<Scalars['String']>;

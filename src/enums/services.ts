@@ -29,6 +29,7 @@ export default {
   // dataCatalog: 'data-catalog',
   // dataflow: 'dataflow',
   dataprocCluster: 'dataprocClusters',
+  dataprocAutoscalingPolicy: 'dataprocAutoscalingPolicies',
   // metastore: 'metastore',
   // pubsub: 'pubsub',
   // bigtable: 'bigtable',
