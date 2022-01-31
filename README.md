@@ -68,6 +68,7 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 | apiKeys            | project                                                             |
 | assets             | project                                                             |
 | cloudFunction      | project, vpc                                                        |
+| computeProject     | project                                                             |
 | dnsManagedZone     | project                                                             |
 | dnsPolicy          | project, network                                                    |
 | firewall           | network, project                                                    |

@@ -1,0 +1,59 @@
+type gcpComputeProject implements gcpBaseResource @key(fields: "id") {
+  commonInstanceMetadata: gcpComputeMetadata
+  creationTimestamp: String @search(by: [hash, regexp])
+  defaultNetworkTier: String @search(by: [hash, regexp])
+  defaultServiceAccount: String @search(by: [hash, regexp])
+  description: String @search(by: [hash, regexp])
+  enabledFeatures: [String] @search(by: [hash])
+  kind: String @search(by: [hash, regexp])
+  quotas: [gcpComputeQuota]
+  selfLink: String @search(by: [hash, regexp])
+  usageExportLocation: gcpComputeUsageExportLocation
+  xpnProjectStatus: String @search(by: [hash, regexp])
+  project: [gcpProject] @hasInverse(field: computeProject)
+}
+
+type gcpComputeMetadata
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  fingerprint: String @search(by: [hash, regexp])
+  items: [gcpComputeItem]
+  kind: String @search(by: [hash, regexp])
+}
+
+type gcpComputeUsageExportLocation
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  bucketName: String @search(by: [hash, regexp])
+  reportNamePrefix: String @search(by: [hash, regexp])
+}
+
+type gcpComputeQuota
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  limit: Float @search
+  metric: String @search(by: [hash, regexp])
+  owner: String @search(by: [hash, regexp])
+  usage: Float @search
+}
+
+type gcpComputeItem
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  key: String @search(by: [hash, regexp])
+  value: String @search(by: [hash, regexp])
+}
