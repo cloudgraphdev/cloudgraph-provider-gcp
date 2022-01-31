@@ -27,16 +27,15 @@ export default async ({
   const reservationClient = new ReservationServiceClient({ ...config, apiEndpoint })
   const { projectId } = config
   const reservationResult: RawGcpBigQueryReservation[] = []
-  const allRegions = regions.split(',')
+  const allRegions = regions.split(',').concat(['EU', 'US'])
   try {
     for (const region of allRegions) {
       const parent = reservationClient.locationPath(projectId, region)
       const reservationsIter = reservationClient.listReservationsAsync({parent})
       for await (const reservation of reservationsIter) {
         const assignments = []
-        const reservationParent = `${parent}/reservations/${reservation.name}`
         try {
-          const assignmentsIter = reservationClient.listAssignmentsAsync({parent: reservationParent})
+          const assignmentsIter = reservationClient.listAssignmentsAsync({parent: reservation.name})
           for await (const assignment of assignmentsIter) {
             assignments.push(assignment)
           }

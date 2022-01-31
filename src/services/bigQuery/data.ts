@@ -20,7 +20,7 @@ export default async ({
   const bigQueryClient = new BigQuery({ ...config, apiEndpoint })
 
   const datasetsResult: RawGcpBigQueryDataset[] = []
-  const allRegions = regions.split(',')
+  const allRegions = regions.split(',').concat(['EU', 'US'])
   try {
     const dataSetIter = bigQueryClient.getDatasetsStream()
     for await (const dataSetResponse of dataSetIter) {

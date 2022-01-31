@@ -23,8 +23,7 @@ export const regionMap = {
   asiaSoutheast1: 'asia-southeast1',         
   asiaSoutheast2: 'asia-southeast2', 
   // Europe
-  europeCentral2: 'europe-central2',       
-  europeWest: 'europe-west',              
+  europeCentral2: 'europe-central2',                
   europeWest2: 'europe-west2',            
   europeWest3: 'europe-west3',            
   europeWest6: 'europe-west6',    
@@ -55,8 +54,7 @@ const {
   asiaSoutheast1,         
   asiaSoutheast2, 
   // Europe
-  europeCentral2,       
-  europeWest,              
+  europeCentral2,               
   europeWest2,            
   europeWest3,            
   europeWest6,    
@@ -87,8 +85,7 @@ export default [
   asiaSoutheast1,         
   asiaSoutheast2, 
   // Europe
-  europeCentral2,       
-  europeWest,              
+  europeCentral2,          
   europeWest2,            
   europeWest3,            
   europeWest6,    
