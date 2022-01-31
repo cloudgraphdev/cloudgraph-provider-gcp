@@ -173,5 +173,6 @@ type gcpDataprocJob implements gcpBaseResource
     schedulingMaxFailuresTotal: Int @search
     done: Boolean @search
     labels: [gcpRawLabel]
+    dataprocClusters: [gcpDataprocCluster] @hasInverse(field: dataprocJobs)
     project: [gcpProject] @hasInverse(field: dataprocJobs)
   }

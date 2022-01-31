@@ -194,8 +194,8 @@ type gcpDataprocCluster implements gcpBaseResource
     labels: [gcpRawLabel]
     status: gcpDataprocClusterStatus
     statusHistory: [gcpDataprocClusterStatus]
-    clusterUuid: String @search(by: [hash, regexp])
     hdfsMetrics: [gcpDataprocClusterMetric]
     yarnMetrics: [gcpDataprocClusterMetric]
+    dataprocJobs: [gcpDataprocJob] @hasInverse(field: dataprocClusters)
     project: [gcpProject] @hasInverse(field: dataprocClusters)
   }

@@ -876,8 +876,8 @@ export type GcpDataprocAutoscalingPolicy = GcpBaseResource & {
 };
 
 export type GcpDataprocCluster = GcpBaseResource & {
-  clusterUuid?: Maybe<Scalars['String']>;
   config?: Maybe<GcpDataprocClusterConfig>;
+  dataprocJobs?: Maybe<Array<Maybe<GcpDataprocJob>>>;
   hdfsMetrics?: Maybe<Array<Maybe<GcpDataprocClusterMetric>>>;
   labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
@@ -1029,6 +1029,7 @@ export type GcpDataprocInstanceClusterConfigAccelerator = {
 };
 
 export type GcpDataprocJob = GcpBaseResource & {
+  dataprocClusters?: Maybe<Array<Maybe<GcpDataprocCluster>>>;
   done?: Maybe<Scalars['Boolean']>;
   driverControlFilesUri?: Maybe<Scalars['String']>;
   driverOutputResourceUri?: Maybe<Scalars['String']>;

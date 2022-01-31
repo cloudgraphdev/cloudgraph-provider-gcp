@@ -238,7 +238,6 @@ export default ({
     Labels,
     status = {},
     statusHistory = [],
-    clusterUuid,
     metrics = {},
   } = service
 
@@ -251,7 +250,6 @@ export default ({
     labels: formatLabelsFromMap(Labels),
     status: formatClusterStatus(status),
     statusHistory: statusHistory?.map(history => formatClusterStatus(history)),
-    clusterUuid,
     hdfsMetrics: formatKeyValueMap(metrics?.hdfsMetrics || {}),
     yarnMetrics: formatKeyValueMap(metrics?.yarnMetrics || {}),
   }

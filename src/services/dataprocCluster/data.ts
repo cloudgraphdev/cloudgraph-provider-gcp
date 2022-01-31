@@ -1,4 +1,3 @@
-import cuid from 'cuid'
 import { ClusterControllerClient } from '@google-cloud/dataproc'
 import CloudGraph from '@cloudgraph/sdk'
 import groupBy from 'lodash/groupBy'
@@ -11,7 +10,7 @@ const lt = { ...gcpLoggerText }
 const { logger } = CloudGraph
 const serviceName = 'Dataproc Cluster'
 
-export interface RawGcpDataprocCluster extends Omit<google.cloud.dataproc.v1.ICluster, 'projectId' | 'labels'> {
+export interface RawGcpDataprocCluster extends Omit<google.cloud.dataproc.v1.ICluster, 'projectId' | 'clusterUuid' | 'labels'> {
   id: string
   region: string
   projectId: string
@@ -40,11 +39,11 @@ export default async ({
         })
       
         const iterable =  dataprocClient.listClustersAsync({ projectId, region })
-        for await (const { labels, ...response } of iterable) {
+        for await (const { clusterUuid, labels, ...response } of iterable) {
           if (response) {
             clusterList.push({
               ...response,
-              id: cuid(),
+              id: clusterUuid,
               projectId,
               region,
               Labels: labels,
