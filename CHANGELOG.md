@@ -1,3 +1,10 @@
+# [0.23.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.22.1...0.23.0) (2022-01-31)
+
+
+### Features
+
+* **computeProject:** add compute project service ([1b13ef2](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/1b13ef28bf81983ab4fbbc1872c0a61b04eb7b26))
+
 ## [0.22.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.22.0...0.22.1) (2022-01-27)
 
 
