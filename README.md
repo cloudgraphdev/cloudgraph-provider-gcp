@@ -69,12 +69,12 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 | assets             | project                                                             |
 | cloudFunction      | project, vpc                                                        |
 | computeProject     | project                                                             |
-| kmsCryptoKeys      | iamPolicy, project                                                  |
+| kmsCryptoKeys      | iamPolicy, kmsKeyRing, project                                                  |
 | dnsManagedZone     | project                                                             |
 | dnsPolicy          | project, network                                                    |
 | firewall           | network, project                                                    |
 | folder             | iamPolicy, organization, project                                    |
-| kms                | kmsCryptoKeys, project                                              |
+| kmsKeyRing         | kmsCryptoKeys, project                                              |
 | iamPolicy          | folder, kmsCryptoKeys, project                                      |
 | logBucket          | logView, project                                                    |
 | logMetric          | project                                                             |

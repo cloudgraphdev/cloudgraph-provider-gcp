@@ -18,7 +18,7 @@ export default ({
   const {
     id,
     name,
-    kmsId,
+    kmsKeyRingId,
     primary,
     purpose,
     createTime,
@@ -35,7 +35,7 @@ export default ({
     projectId: account,
     region,
     name,
-    kmsId,
+    kmsKeyRingId,
     primaryName: primary?.name || '',
     primaryState: enumKeyToString(
       google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState,

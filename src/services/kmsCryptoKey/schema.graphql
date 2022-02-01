@@ -29,8 +29,8 @@ type gcpKmsCryptoKey implements gcpBaseResource
     labels: [gcpRawLabel]
     importOnly: Boolean @search
     destroyScheduledDuration: String @search(by: [hash, regexp])
-    kmsId: String @search(by: [hash, regexp])
+    kmsKeyRingId: String @search(by: [hash, regexp])
     iamPolicy: [gcpIamPolicy] @hasInverse(field: kmsCryptoKeys)
-    kms: [gcpKmsKeyRing] @hasInverse(field: kmsCryptoKeys)
+    kmsKeyRing: [gcpKmsKeyRing] @hasInverse(field: kmsCryptoKeys)
     project: [gcpProject] @hasInverse(field: kmsCryptoKeys)
   }

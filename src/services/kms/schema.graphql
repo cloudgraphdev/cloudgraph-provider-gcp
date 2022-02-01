@@ -25,6 +25,6 @@ type gcpKmsKeyRing implements gcpBaseResource
   @key(fields: "id") {
     createTime: String @search(by: [hash, regexp])
     importJobs: [gcpKmsImportJob]
-    kmsCryptoKeys: [gcpKmsCryptoKey] @hasInverse(field: kms)
-    project: [gcpProject] @hasInverse(field: kms)
+    kmsCryptoKeys: [gcpKmsCryptoKey] @hasInverse(field: kmsKeyRing)
+    project: [gcpProject] @hasInverse(field: kmsKeyRing)
   }

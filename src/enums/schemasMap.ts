@@ -6,7 +6,7 @@ import services from './services'
 export default {
   [services.firewall]: 'gcpFirewall',
   [services.project]: 'gcpProject',
-  [services.kms]: 'gcpKmsKeyRing',
+  [services.kmsKeyRing]: 'gcpKmsKeyRing',
   [services.kmsCryptoKeys]: 'gcpKmsCryptoKey',
   [services.dnsManagedZone]: 'gcpDnsManagedZone',
   [services.dnsPolicy]: 'gcpDnsPolicy',

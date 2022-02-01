@@ -5,7 +5,7 @@ import getData from './data'
 import getConnections from './connections'
 import mutation from './mutation'
 
-export default class GcpKms extends BaseService implements Service {
+export default class GcpKmsKeyRing extends BaseService implements Service {
   format = format.bind(this)
 
   getData = getData.bind(this)

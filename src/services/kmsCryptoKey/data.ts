@@ -22,7 +22,7 @@ export interface RawGcpKmsCryptoKey
   projectId: string
   region: string
   Labels: LabelMap
-  kmsId: string
+  kmsKeyRingId: string
 }
 
 export const listCryptoKeysData = async (
@@ -38,7 +38,7 @@ export const listCryptoKeysData = async (
      * Find Kms
      */
      const iterableKeyRings: RawGcpKms[] =
-     rawData.find(({ name }) => name === services.kms)?.data[
+     rawData.find(({ name }) => name === services.kmsKeyRing)?.data[
        GLOBAL_REGION
      ] || []
 
@@ -65,7 +65,7 @@ export const listCryptoKeysData = async (
           cryptoKeys.push({
             id: name,
             name,
-            kmsId: keyRing.name,
+            kmsKeyRingId: keyRing.name,
             projectId,
             region: keyRing.region,
             Labels: labels,

@@ -31,7 +31,7 @@ export default ({
   for (const reg of regions) {
     if (cryptoKeys?.data?.[reg]) {
       const cryptoKey = cryptoKeys.data[reg].find(
-        ({ kmsId }: RawGcpKmsCryptoKey) => kmsId === id
+        ({ kmsKeyRingId }: RawGcpKmsCryptoKey) => kmsKeyRingId === id
       )
 
       if (cryptoKey) {

@@ -45,7 +45,7 @@ export default {
   folder: 'folder',
   iamPolicy: 'iamPolicy',
   // iap: 'iap',
-  kms: 'kms',
+  kmsKeyRing: 'kmsKeyRing',
   kmsCryptoKeys: 'kmsCryptoKeys',
   // orgPolicies: 'org-policies',
   // policyIntelligence: 'policy-intelligence',

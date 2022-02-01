@@ -779,10 +779,8 @@ export type GcpKmsCryptoKey = GcpBaseResource & {
   labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
   importOnly?: Maybe<Scalars['Boolean']>;
   destroyScheduledDuration?: Maybe<Scalars['String']>;
-  kmsId?: Maybe<Scalars['String']>;
   kmsKeyRingId?: Maybe<Scalars['String']>;
   iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
-  kms?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;
   kmsKeyRing?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
 };
@@ -1001,6 +999,7 @@ export type GcpProject = {
   etag?: Maybe<Scalars['String']>;
   firewall?: Maybe<Array<Maybe<GcpFirewall>>>;
   folder?: Maybe<Array<Maybe<GcpFolder>>>;
+  kmsKeyRing?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;
   iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
   id: Scalars['String'];
   kms?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;

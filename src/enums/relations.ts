@@ -11,6 +11,6 @@ export default {
   [services.logBucket]: [services.logView],
   [services.project]: [services.iamPolicy],
   [services.folder]: [services.iamPolicy],
-  [services.kms]: [services.kmsCryptoKeys],
+  [services.kmsKeyRing]: [services.kmsCryptoKeys],
   [services.kmsCryptoKeys]: [services.iamPolicy]
 }
