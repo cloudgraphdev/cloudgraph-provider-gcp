@@ -6,7 +6,10 @@ import groupBy from 'lodash/groupBy'
 import isEmpty from 'lodash/isEmpty'
 import { RawGcpFolder, listFoldersData } from '../folder/data'
 import { RawGcpProject, listProjectsData } from '../project/data'
-import { RawGcpStorageBucket, listStorageBucketsData } from '../storageBucket/data'
+import {
+  RawGcpStorageBucket,
+  listStorageBucketsData,
+} from '../storageBucket/data'
 import gcpLoggerText from '../../properties/logger'
 import { GcpServiceInput } from '../../types'
 import { initTestEndpoint, generateGcpErrorLog } from '../../utils'
@@ -44,12 +47,12 @@ export default async ({
       rawData.find(({ name }) => name === services.project)?.data[
         GLOBAL_REGION
       ] || []
-      
+
     if (isEmpty(projects)) {
       // Refresh data
       await listProjectsData(projectsClient, projects)
     }
-  
+
     /**
      * Get all the IAM policies for projects
      */
@@ -81,7 +84,7 @@ export default async ({
     if (isEmpty(folders)) {
       // Refresh data
       await listFoldersData(config, rawData, folders)
-    }  
+    }
 
     /**
      * Get all the IAM policies for folders
@@ -113,11 +116,11 @@ export default async ({
     if (isEmpty(storageBuckets)) {
       // Refresh data
       await listStorageBucketsData(config, storageBuckets)
-    }  
+    }
 
     /**
-    * Get all the IAM policies for Storage Buckets
-    */
+     * Get all the IAM policies for Storage Buckets
+     */
     try {
       for (const { iam } of storageBuckets) {
         const response = await iam.getPolicy()

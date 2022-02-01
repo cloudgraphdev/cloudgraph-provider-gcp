@@ -4,22 +4,14 @@ import { toISOString } from '../../utils/dateutils'
 
 export default ({
   service,
-  account,
   region,
 }: {
   service: RawGcpLogView
   account: string
   region: string
 }): GcpLogView => {
-  const {
-    id,
-    name,
-    projectId,
-    description,
-    createTime,
-    updateTime,
-    filter,
-  } = service
+  const { id, name, projectId, description, createTime, updateTime, filter } =
+    service
 
   return {
     id,
