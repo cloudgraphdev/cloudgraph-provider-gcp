@@ -21,6 +21,7 @@ type gcpStorageBucket @key(fields: "id") {
   baseUrl: String @search(by: [hash, regexp])
   pollIntervalMs: Int @search
   userProject: String @search(by: [hash, regexp])
+  iamPolicy: [gcpIamPolicy] @hasInverse(field: storageBucket)
   project: [gcpProject] @hasInverse(field: storageBucket)
 }
 
