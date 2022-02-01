@@ -26,7 +26,7 @@ export default async ({
   const dataTransferClient = new bigqueryDataTransfer.v1.DataTransferServiceClient({ ...config, apiEndpoint })
   const { projectId } = config
   const dataTransferResult: RawGcpBigQueryDataTransfer[] = []
-  const allRegions = regions.split(',')
+  const allRegions = regions.split(',').concat(['EU', 'US'])
   try {
     for (const region of allRegions) {
       const parent = dataTransferClient.projectPath(projectId)

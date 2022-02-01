@@ -26,7 +26,7 @@ export default async ({
   const reservationClient = new ReservationServiceClient({ ...config, apiEndpoint })
   const { projectId } = config
   const capacityCommitmentResult: RawGcpBigQueryReservationCapacityCommitment[] = []
-  const allRegions = regions.split(',')
+  const allRegions = regions.split(',').concat(['EU', 'US'])
   try {
     for (const region of allRegions) {
       const parent = reservationClient.locationPath(projectId, region)

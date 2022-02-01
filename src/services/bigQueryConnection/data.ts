@@ -26,7 +26,7 @@ export default async ({
   const connectionClient = new ConnectionServiceClient({ ...config, apiEndpoint })
   const { projectId } = config
   const connectionResult: RawGcpBigQueryConnection[] = []
-  const allRegions = regions.split(',')
+  const allRegions = regions.split(',').concat(['EU', 'US'])
   try {
     for (const region of allRegions) {
       const parent = connectionClient.locationPath(config.projectId, region)
