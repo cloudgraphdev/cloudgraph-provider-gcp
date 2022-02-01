@@ -1,3 +1,13 @@
+## [0.24.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.24.0...0.24.1) (2022-02-01)
+
+
+### Bug Fixes
+
+* Cleaned up relations file ([2463c12](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/2463c12ae5d25106842a01269437c1f4947f098b))
+* Fixed issue reusing logBucket data from logView ([df0acc2](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/df0acc24f61fd7218738c1a8f7387e0ed734c93c))
+* Fixed issues with folder list data method ([f959657](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/f959657cedadd997ad27f51862f58cf7623b23ad))
+* Updated references for common utils ([2f5a7d0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/2f5a7d0c8167f2f9227052929670a1a5ca6d37f7))
+
 # [0.24.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.23.0...0.24.0) (2022-02-01)
 
 
