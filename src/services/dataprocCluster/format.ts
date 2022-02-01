@@ -172,7 +172,7 @@ const formatClusterConfigGke = ({
   }
 }
 
-const formatClusterConfig = ({
+export const formatClusterConfig = ({
   configBucket,
   tempBucket,
   gceClusterConfig = {},

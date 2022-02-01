@@ -1,32 +1,4 @@
-type gcpDataprocJobStatus
-  @generate(
-    query: { get: true, query: true, aggregate: true }
-    mutation: { add: true, delete: false }
-    subscription: false
-  )
-  @key(fields: "id") {
-    id: String! @id
-    state: String @search(by: [hash, regexp])
-    details: String @search(by: [hash, regexp])
-    stateStartTime: String @search(by: [hash, regexp])
-    substate: String @search(by: [hash, regexp])
-  }
-
-type gcpDataprocJobYarnApplication
-  @generate(
-    query: { get: true, query: true, aggregate: true }
-    mutation: { add: true, delete: false }
-    subscription: false
-  )
-  @key(fields: "id") {
-    id: String! @id
-    name: String @search(by: [hash, regexp])
-    state: String @search(by: [hash, regexp])
-    progress: Int @search
-    trackingUrl: String @search(by: [hash, regexp])
-  }
-
-type gcpDataprocHadoopJob
+type gcpDataprocWorkflowTemplateHadoopJob
   @generate(
     query: { get: true, query: true, aggregate: true }
     mutation: { add: true, delete: false }
@@ -42,7 +14,7 @@ type gcpDataprocHadoopJob
     loggingConfig: [gcpKeyValue]
   }
 
-type gcpDataprocSparkJob
+type gcpDataprocWorkflowTemplateSparkJob
   @generate(
     query: { get: true, query: true, aggregate: true }
     mutation: { add: true, delete: false }
@@ -58,7 +30,7 @@ type gcpDataprocSparkJob
     loggingConfig: [gcpKeyValue]
   }
 
-type gcpDataprocPySparkJob
+type gcpDataprocWorkflowTemplatePySparkJob
   @generate(
     query: { get: true, query: true, aggregate: true }
     mutation: { add: true, delete: false }
@@ -74,7 +46,7 @@ type gcpDataprocPySparkJob
     loggingConfig: [gcpKeyValue]
   }
 
-type gcpDataprocHiveJob
+type gcpDataprocWorkflowTemplateHiveJob
   @generate(
     query: { get: true, query: true, aggregate: true }
     mutation: { add: true, delete: false }
@@ -88,7 +60,7 @@ type gcpDataprocHiveJob
     jarFileUris: [String] @search(by: [hash])
   }
 
-type gcpDataprocPigJob
+type gcpDataprocWorkflowTemplatePigJob
   @generate(
     query: { get: true, query: true, aggregate: true }
     mutation: { add: true, delete: false }
@@ -103,7 +75,7 @@ type gcpDataprocPigJob
     loggingConfig: [gcpKeyValue]
   }
 
-type gcpDataprocSparkRJob
+type gcpDataprocWorkflowTemplateSparkRJob
   @generate(
     query: { get: true, query: true, aggregate: true }
     mutation: { add: true, delete: false }
@@ -117,7 +89,7 @@ type gcpDataprocSparkRJob
     loggingConfig: [gcpKeyValue]
   }
 
-type gcpDataprocSparkSqlJob
+type gcpDataprocWorkflowTemplateSparkSqlJob
   @generate(
     query: { get: true, query: true, aggregate: true }
     mutation: { add: true, delete: false }
@@ -131,7 +103,7 @@ type gcpDataprocSparkSqlJob
     loggingConfig: [gcpKeyValue]
   }
 
-type gcpDataprocPrestoJob
+type gcpDataprocWorkflowTemplatePrestoJob
   @generate(
     query: { get: true, query: true, aggregate: true }
     mutation: { add: true, delete: false }
@@ -146,33 +118,64 @@ type gcpDataprocPrestoJob
     loggingConfig: [gcpKeyValue]
   }
 
-type gcpDataprocJob implements gcpBaseResource
+type gcpDataprocWorkflowTemplateOrderedJob
   @generate(
     query: { get: true, query: true, aggregate: true }
     mutation: { add: true, delete: false }
     subscription: false
   )
   @key(fields: "id") {
-    placementClusterName: String @search(by: [hash, regexp])
-    placementClusterUuid: String @search(by: [hash, regexp])
-    placementClusterLabels: [gcpKeyValue]
-    hadoopJob: gcpDataprocHadoopJob
-    sparkJob: gcpDataprocSparkJob
-    pySparkJob: gcpDataprocPySparkJob
-    hiveJob: gcpDataprocHiveJob
-    pigJob: gcpDataprocPigJob
-    sparkRJob: gcpDataprocSparkRJob
-    sparkSqlJob: gcpDataprocSparkSqlJob
-    prestoJob: gcpDataprocPrestoJob
-    status: gcpDataprocJobStatus
-    statusHistory: [gcpDataprocJobStatus]
-    yarnApplications: [gcpDataprocJobYarnApplication]
-    driverOutputResourceUri: String @search(by: [hash, regexp])
-    driverControlFilesUri: String @search(by: [hash, regexp])
+    id: String! @id
+    stepId: String @search(by: [hash, regexp])
+    hadoopJob: gcpDataprocWorkflowTemplateHadoopJob
+    sparkJob: gcpDataprocWorkflowTemplateSparkJob
+    pySparkJob: gcpDataprocWorkflowTemplatePySparkJob
+    hiveJob: gcpDataprocWorkflowTemplateHiveJob
+    pigJob: gcpDataprocWorkflowTemplatePigJob
+    sparkRJob: gcpDataprocWorkflowTemplateSparkRJob
+    sparkSqlJob: gcpDataprocWorkflowTemplateSparkSqlJob
+    prestoJob: gcpDataprocWorkflowTemplatePrestoJob
+    labels: [gcpRawLabel]
     schedulingMaxFailuresPerHour: Int @search
     schedulingMaxFailuresTotal: Int @search
-    done: Boolean @search
+    prerequisiteStepIds: [String] @search(by: [hash])
+  }
+
+type gcpDataprocWorkflowTemplateParameter
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    id: String! @id
+    name: String @search(by: [hash, regexp])
+    fields: [String] @search(by: [hash])
+    description: String @search(by: [hash, regexp])
+    validationRegexes: [String] @search(by: [hash])
+    validationReges: [String] @search(by: [hash])
+    validationValues: [String] @search(by: [hash])
+  }
+
+type gcpDataprocWorkflowTemplate implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    version: Int @search
+    createTime: String @search(by: [hash, regexp])
+    updateTime: String @search(by: [hash, regexp])
+    placementManagedClusterName: String @search(by: [hash, regexp])
+    placementManagedClusterConfig: gcpDataprocClusterConfig,
+    placementManagedClusterLabels: [gcpRawLabel]
+    placementClusterSelectorZone: String @search(by: [hash, regexp])
+    placementClusterSelectorClusterLabels: [gcpKeyValue]
+    jobs: [gcpDataprocWorkflowTemplateOrderedJob],
+    parameters: [gcpDataprocWorkflowTemplateParameter]
+    dagTimeout: String @search(by: [hash, regexp])
     labels: [gcpRawLabel]
-    dataprocClusters: [gcpDataprocCluster] @hasInverse(field: dataprocJobs)
-    project: [gcpProject] @hasInverse(field: dataprocJobs)
+    dataprocClusters: [gcpDataprocCluster] @hasInverse(field: dataprocWorkflowTemplates)
+    project: [gcpProject] @hasInverse(field: dataprocWorkflowTemplates)
   }

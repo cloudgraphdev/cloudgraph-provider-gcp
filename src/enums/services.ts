@@ -31,6 +31,7 @@ export default {
   dataprocCluster: 'dataprocClusters',
   dataprocAutoscalingPolicy: 'dataprocAutoscalingPolicies',
   dataprocJob: 'dataprocJobs',
+  dataprocWorkflowTemplate: 'dataprocWorkflowTemplates',
   // metastore: 'metastore',
   // pubsub: 'pubsub',
   // bigtable: 'bigtable',

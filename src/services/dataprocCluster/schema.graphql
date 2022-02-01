@@ -197,5 +197,6 @@ type gcpDataprocCluster implements gcpBaseResource
     hdfsMetrics: [gcpDataprocClusterMetric]
     yarnMetrics: [gcpDataprocClusterMetric]
     dataprocJobs: [gcpDataprocJob] @hasInverse(field: dataprocClusters)
+    dataprocWorkflowTemplates: [gcpDataprocWorkflowTemplate] @hasInverse(field: dataprocClusters)
     project: [gcpProject] @hasInverse(field: dataprocClusters)
   }

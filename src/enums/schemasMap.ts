@@ -43,5 +43,6 @@ export default {
   [services.dataprocCluster]: 'gcpDataprocCluster',
   [services.dataprocAutoscalingPolicy]: 'gcpDataprocAutoscalingPolicy',
   [services.dataprocJob]: 'gcpDataprocJob',
+  [services.dataprocWorkflowTemplate]: 'gcpDataprocWorkflowTemplate',
   tag: 'gcpTag',
 }

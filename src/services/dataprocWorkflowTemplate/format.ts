@@ -1,22 +1,23 @@
 import cuid from 'cuid'
 import { google } from '@google-cloud/dataproc/build/protos/protos'
 import {
-  GcpDataprocHadoopJob,
-  GcpDataprocHiveJob,
-  GcpDataprocJob,
-  GcpDataprocJobStatus,
-  GcpDataprocJobYarnApplication,
-  GcpDataprocPigJob,
-  GcpDataprocPrestoJob,
-  GcpDataprocPySparkJob,
-  GcpDataprocSparkJob,
-  GcpDataprocSparkRJob,
-  GcpDataprocSparkSqlJob,
+  GcpDataprocWorkflowTemplateHadoopJob,
+  GcpDataprocWorkflowTemplateHiveJob,
+  GcpDataprocWorkflowTemplatePigJob,
+  GcpDataprocWorkflowTemplatePrestoJob,
+  GcpDataprocWorkflowTemplatePySparkJob,
+  GcpDataprocWorkflowTemplateSparkJob,
+  GcpDataprocWorkflowTemplateSparkRJob,
+  GcpDataprocWorkflowTemplateSparkSqlJob,
   GcpKeyValue,
+  GcpDataprocWorkflowTemplate,
+  GcpDataprocWorkflowTemplateParameter,
+  GcpDataprocWorkflowTemplateOrderedJob,
 } from '../../types/generated'
-import { RawGcpDataprocJob } from './data'
+import { RawGcpDataprocWorkflowTemplate } from './data'
 import { toISOString } from '../../utils/dateutils'
 import { enumKeyToString, formatKeyValueMap, formatLabelsFromMap } from '../../utils/format'
+import { formatClusterConfig } from '../dataprocCluster/format'
 
 const formatLoggingConfig = (loggingConfig: { [k: string]: google.cloud.dataproc.v1.LoggingConfig.Level }): GcpKeyValue[] => {
   return Object.keys(loggingConfig || {}).map(key => ({
@@ -24,36 +25,6 @@ const formatLoggingConfig = (loggingConfig: { [k: string]: google.cloud.dataproc
     key,
     value: enumKeyToString(google.cloud.dataproc.v1.LoggingConfig.Level, loggingConfig[key]),
   }))
-}
-
-const formatStatus = ({
-  state,
-  details,
-  stateStartTime,
-  substate,
-}: google.cloud.dataproc.v1.IJobStatus): GcpDataprocJobStatus => {
-  return {
-    id: cuid(),
-    state: enumKeyToString(google.cloud.dataproc.v1.JobStatus.State, state),
-    details,
-    stateStartTime: toISOString(stateStartTime?.seconds?.toString()) || '',
-    substate: enumKeyToString(google.cloud.dataproc.v1.JobStatus.Substate, substate),
-  }
-}
-
-const formatYarnApplication = ({
-  name,
-  state,
-  progress,
-  trackingUrl,
-}: google.cloud.dataproc.v1.IYarnApplication): GcpDataprocJobYarnApplication => {
-  return {
-    id: cuid(),
-    name,
-    state: enumKeyToString(google.cloud.dataproc.v1.YarnApplication.State, state),
-    progress,
-    trackingUrl,
-  }
 }
 
 const formatHadoopJob = ({
@@ -65,7 +36,7 @@ const formatHadoopJob = ({
   archiveUris,
   properties = {},
   loggingConfig = {},
-}: google.cloud.dataproc.v1.IHadoopJob): GcpDataprocHadoopJob => {
+}: google.cloud.dataproc.v1.IHadoopJob): GcpDataprocWorkflowTemplateHadoopJob => {
   return {
     mainJarFileUri,
     mainClass,
@@ -87,7 +58,7 @@ const formatSparkJob = ({
   archiveUris,
   properties = {},
   loggingConfig = {},
-}: google.cloud.dataproc.v1.ISparkJob): GcpDataprocSparkJob => {
+}: google.cloud.dataproc.v1.ISparkJob): GcpDataprocWorkflowTemplateSparkJob => {
   return {
     mainJarFileUri,
     mainClass,
@@ -100,7 +71,7 @@ const formatSparkJob = ({
   }
 }
 
-const formatPysparkJob = ({
+const formatPySparkJob = ({
   mainPythonFileUri,
   args = [],
   pythonFileUris = [],
@@ -109,7 +80,7 @@ const formatPysparkJob = ({
   archiveUris = [],
   properties = {},
   loggingConfig = {},
-}: google.cloud.dataproc.v1.IPySparkJob): GcpDataprocPySparkJob => {
+}: google.cloud.dataproc.v1.IPySparkJob): GcpDataprocWorkflowTemplatePySparkJob => {
   return {
     mainPythonFileUri,
     args,
@@ -129,7 +100,7 @@ const formatHiveJob = ({
   scriptVariables = {},
   properties = {},
   jarFileUris = [],
-}: google.cloud.dataproc.v1.IHiveJob): GcpDataprocHiveJob => {
+}: google.cloud.dataproc.v1.IHiveJob): GcpDataprocWorkflowTemplateHiveJob => {
   return {
     queryFileUri,
     queryList: queryList?.queries || [],
@@ -148,7 +119,7 @@ const formatPigJob = ({
   properties = {},
   jarFileUris = [],
   loggingConfig = {},
-}: google.cloud.dataproc.v1.IPigJob): GcpDataprocPigJob => {
+}: google.cloud.dataproc.v1.IPigJob): GcpDataprocWorkflowTemplatePigJob => {
   return {
     queryFileUri,
     queryList: queryList?.queries || [],
@@ -167,7 +138,7 @@ const formatSparkRJob = ({
   archiveUris = [],
   properties = {},
   loggingConfig = {},
-}: google.cloud.dataproc.v1.ISparkRJob): GcpDataprocSparkRJob => {
+}: google.cloud.dataproc.v1.ISparkRJob): GcpDataprocWorkflowTemplateSparkRJob => {
   return {
     mainRFileUri,
     args,
@@ -185,7 +156,7 @@ const formatSparkSqlJob = ({
   properties = {},
   jarFileUris = [],
   loggingConfig = {},
-}: google.cloud.dataproc.v1.ISparkSqlJob): GcpDataprocSparkSqlJob => {
+}: google.cloud.dataproc.v1.ISparkSqlJob): GcpDataprocWorkflowTemplateSparkSqlJob => {
   return {
     queryFileUri,
     queryList: queryList?.queries || [],
@@ -204,7 +175,7 @@ const formatPrestoJob = ({
   clientTags = [],
   properties = {},
   loggingConfig = {},
-}: google.cloud.dataproc.v1.IPrestoJob): GcpDataprocPrestoJob => {
+}: google.cloud.dataproc.v1.IPrestoJob): GcpDataprocWorkflowTemplatePrestoJob => {
   return {
     queryFileUri,
     queryList: queryList?.queries || [],
@@ -216,60 +187,92 @@ const formatPrestoJob = ({
   }
 }
 
+const formatJob = ({
+  stepId,
+  hadoopJob = {},
+  sparkJob = {},
+  pysparkJob = {},
+  hiveJob = {},
+  pigJob = {},
+  sparkRJob = {},
+  sparkSqlJob = {},
+  prestoJob = {},
+  labels,
+  scheduling = {},
+  prerequisiteStepIds = [],
+}: google.cloud.dataproc.v1.IOrderedJob): GcpDataprocWorkflowTemplateOrderedJob => {
+  return {
+    id: cuid(),
+    stepId,
+    hadoopJob: formatHadoopJob(hadoopJob),
+    sparkJob: formatSparkJob(sparkJob),
+    pySparkJob: formatPySparkJob(pysparkJob),
+    hiveJob: formatHiveJob( hiveJob),
+    pigJob: formatPigJob(pigJob),
+    sparkRJob: formatSparkRJob(sparkRJob),
+    sparkSqlJob: formatSparkSqlJob(sparkSqlJob),
+    prestoJob: formatPrestoJob(prestoJob),
+    labels: formatLabelsFromMap(labels),
+    schedulingMaxFailuresPerHour: scheduling?.maxFailuresPerHour || 0,
+    schedulingMaxFailuresTotal: scheduling?.maxFailuresTotal || 0,
+    prerequisiteStepIds,
+  }
+}
+
+const formatParameter = ({
+  name,
+  fields = [],
+  description,
+  validation,
+}: google.cloud.dataproc.v1.ITemplateParameter): GcpDataprocWorkflowTemplateParameter => {
+  return {
+    id: cuid(),
+    name,
+    fields,
+    description,
+    validationRegexes: validation?.regex?.regexes || [],
+    validationReges: validation?.regex?.regexes || [],
+    validationValues: validation?.values?.values || [],
+  }
+}
+
 export default ({
   service,
   region,
 }: {
-  service: RawGcpDataprocJob
+  service: RawGcpDataprocWorkflowTemplate
   region: string
-}): GcpDataprocJob => {
+}): GcpDataprocWorkflowTemplate => {
   const {
     id,
+    name,
     projectId,
-    reference,
-    placement,
-    hadoopJob = {},
-    sparkJob = {},
-    pysparkJob = {},
-    hiveJob = {},
-    pigJob = {},
-    sparkRJob = {},
-    sparkSqlJob = {},
-    prestoJob = {},
-    status = {},
-    statusHistory = [],
-    yarnApplications = [],
-    driverOutputResourceUri,
-    driverControlFilesUri,
-    scheduling = {},
-    done,
-    Labels = {},
+    version,
+    createTime = {},
+    updateTime = {},
+    placement = {},
+    jobs = [],
+    parameters = [],
+    dagTimeout = {},
+    Labels,
   } = service
 
   return {
     id,
     projectId,
     region,
-    name: reference?.jobId || '',
-    placementClusterName: placement?.clusterName || '',
-    placementClusterUuid: placement?.clusterUuid || '',
-    placementClusterLabels: formatKeyValueMap(placement?.clusterLabels || {}),
-    hadoopJob: formatHadoopJob(hadoopJob),
-    sparkJob: formatSparkJob(sparkJob),
-    pySparkJob: formatPysparkJob(pysparkJob),
-    hiveJob: formatHiveJob( hiveJob),
-    pigJob: formatPigJob(pigJob),
-    sparkRJob: formatSparkRJob(sparkRJob),
-    sparkSqlJob: formatSparkSqlJob(sparkSqlJob),
-    prestoJob: formatPrestoJob(prestoJob),
-    status: formatStatus(status),
-    statusHistory: statusHistory?.map(formatStatus),
-    yarnApplications: yarnApplications?.map(formatYarnApplication),
-    driverOutputResourceUri,
-    driverControlFilesUri,
-    schedulingMaxFailuresPerHour: scheduling?.maxFailuresPerHour || 0,
-    schedulingMaxFailuresTotal: scheduling?.maxFailuresTotal || 0,
-    done,
+    name,
+    version,
+    createTime: toISOString(createTime?.seconds?.toString()) || '',
+    updateTime: toISOString(updateTime?.seconds?.toString()) || '',
+    placementManagedClusterName: placement?.managedCluster?.clusterName || '',
+    placementManagedClusterConfig: formatClusterConfig(placement?.managedCluster?.config || {}),
+    placementManagedClusterLabels: formatLabelsFromMap(placement?.managedCluster?.labels || {}),
+    placementClusterSelectorZone: placement?.clusterSelector?.zone || '',
+    placementClusterSelectorClusterLabels: formatKeyValueMap(placement?.clusterSelector?.clusterLabels || {}),
+    jobs: jobs?.map(formatJob) || [],
+    parameters: parameters?.map(formatParameter) || [],
+    dagTimeout: dagTimeout?.seconds?.toString()  || '',
     labels: formatLabelsFromMap(Labels),
   }
 }
