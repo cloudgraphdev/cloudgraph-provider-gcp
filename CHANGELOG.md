@@ -1,3 +1,15 @@
+# [0.24.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.23.0...0.24.0) (2022-02-01)
+
+
+### Bug Fixes
+
+* **iamPolicy:** fetch resources if not present ([c133733](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/c1337337e72efaaf1d0dfb30d34d63a6d6009e7e))
+
+
+### Features
+
+* **iamPolicy:** add storage bucket policies ([f5bc680](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/f5bc6809423964ef9c1fe25c5cb620cb620623f1))
+
 # [0.23.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.22.1...0.23.0) (2022-01-31)
 
 
