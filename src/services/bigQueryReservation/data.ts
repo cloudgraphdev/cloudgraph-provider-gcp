@@ -5,6 +5,7 @@ import { google } from '@google-cloud/bigquery-reservation/build/protos/protos'
 import gcpLoggerText from '../../properties/logger'
 import { GcpServiceInput } from '../../types'
 import { generateGcpErrorLog, initTestEndpoint } from '../../utils'
+import { MULTI_REGIONS } from '../../config/constants'
 
 const lt = { ...gcpLoggerText }
 const { logger } = CloudGraph
@@ -27,7 +28,7 @@ export default async ({
   const reservationClient = new ReservationServiceClient({ ...config, apiEndpoint })
   const { projectId } = config
   const reservationResult: RawGcpBigQueryReservation[] = []
-  const allRegions = regions.split(',').concat(['EU', 'US'])
+  const allRegions = regions.split(',').concat(MULTI_REGIONS)
   try {
     for (const region of allRegions) {
       const parent = reservationClient.locationPath(projectId, region)

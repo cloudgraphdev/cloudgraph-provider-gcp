@@ -7,6 +7,7 @@ import { GcpServiceInput } from '../../types'
 import { generateGcpErrorLog, initTestEndpoint } from '../../utils'
 import services from '../../enums/services'
 import { RawGcpBigQueryDataTransfer } from '../bigQueryDataTransfer/data'
+import { GLOBAL_REGION, MULTI_REGIONS } from '../../config/constants'
 
 const lt = { ...gcpLoggerText }
 const { logger } = CloudGraph
@@ -31,7 +32,7 @@ export default async ({
   const dataTransferClient = new bigqueryDataTransfer.v1.DataTransferServiceClient({ ...config, apiEndpoint })
   const { projectId } = config
   const dataTransferRunResult = []
-  const allRegions = regions.split(',').concat(['EU', 'US'])
+  const allRegions = regions.split(',').concat(MULTI_REGIONS)
 
   for (const region of allRegions) {
     /**

@@ -5,6 +5,7 @@ import gcpLoggerText from '../../properties/logger'
 import { GcpServiceInput } from '../../types'
 import { generateGcpErrorLog, initTestEndpoint } from '../../utils'
 import { RawGcpBigQueryDataset } from './types'
+import { MULTI_REGIONS } from '../../config/constants'
 
 const lt = { ...gcpLoggerText }
 const { logger } = CloudGraph
@@ -18,9 +19,9 @@ export default async ({
   [region: string]: RawGcpBigQueryDataset[]
 }> => {
   const bigQueryClient = new BigQuery({ ...config, apiEndpoint })
-
   const datasetsResult: RawGcpBigQueryDataset[] = []
-  const allRegions = regions.split(',').concat(['EU', 'US'])
+  const { projectId } = config
+  const allRegions = regions.split(',').concat(MULTI_REGIONS)
   try {
     const dataSetIter = bigQueryClient.getDatasetsStream()
     for await (const dataSetResponse of dataSetIter) {
@@ -31,6 +32,7 @@ export default async ({
           region: dataSetResponse.location,
           Labels: dataSetResponse.labels,
           tables: [],
+          projectId,
         }
         try {
           const tableIter = dataSetResponse.getTablesStream()
