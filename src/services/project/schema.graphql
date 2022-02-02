@@ -17,7 +17,7 @@ type gcpProject @key(fields: "id") {
   dnsManagedZone: [gcpDnsManagedZone] @hasInverse(field: project)
   dnsPolicy: [gcpDnsPolicy] @hasInverse(field: project)
   vpcConnectors: [gcpVpcConnector] @hasInverse(field: project)
-  kms: [gcpKmsKeyRing] @hasInverse(field: project)
+  kmsKeyRing: [gcpKmsKeyRing] @hasInverse(field: project)
   iamPolicy: [gcpIamPolicy] @hasInverse(field: project)
   logBucket: [gcpLogBucket] @hasInverse(field: project)
   logMetric: [gcpLogMetric] @hasInverse(field: project)
@@ -37,4 +37,5 @@ type gcpProject @key(fields: "id") {
   assets: [gcpAsset] @hasInverse(field: project)
   sqlInstances: [gcpSqlInstance] @hasInverse(field: project)
   serviceAccounts: [gcpServiceAccount] @hasInverse(field: project)
+  kmsCryptoKeys: [gcpKmsCryptoKey] @hasInverse(field: project)
 }
