@@ -1,11 +1,11 @@
 import cuid from 'cuid'
 
 import { google } from '@google-cloud/bigquery-data-transfer/build/protos/protos'
-import { enumKeyToString } from '../../utils/format'
+import { enumKeyToString, formatParamFields } from '../../utils/format'
 
 import { RawGcpBigQueryDataTransfer } from './data'
 import { toISOString } from '../../utils/dateutils'
-import { GcpBigQueryDataTransfer, GcpBigQueryDataTransferParam } from '../../types/generated'
+import { GcpBigQueryDataTransfer } from '../../types/generated'
 
 // The function is to flatten the nested object. e.g.:
 // "fields": {
@@ -32,34 +32,6 @@ import { GcpBigQueryDataTransfer, GcpBigQueryDataTransferParam } from '../../typ
 //   },
 //  ...
 // ]
-
-export const formatParamFields = (data: { [k: string]: google.protobuf.IValue }|null): GcpBigQueryDataTransferParam[] => {
-  const result = {};
-  const recurse = (cur, prop: string) => {
-    if (Object(cur) !== cur) {
-      result[prop] = cur
-    } else if (Array.isArray(cur)) {
-      for (let i = 0, l = cur.length; i < l; i += 1)
-        recurse(cur[i], `${prop}[${i}]`)
-      if (cur.length === 0)
-          result[prop] = [];
-    } else {
-      let isEmpty = true
-      for (const p of Object.keys(cur)) {
-        isEmpty = false
-        recurse(cur[p], prop ? `${prop}.${p}` : p)
-      }
-      if (isEmpty && prop)
-          result[prop] = {}
-    }
-  }
-  recurse(data, '');
-  return Object.keys(result).map(key => ({
-    id: cuid(),
-    key,
-    value: result[key].toString()
-  }))
-}
 
 export default ({
   service,
