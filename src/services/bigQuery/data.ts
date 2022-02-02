@@ -9,7 +9,7 @@ import { MULTI_REGIONS } from '../../config/constants'
 
 const lt = { ...gcpLoggerText }
 const { logger } = CloudGraph
-const serviceName = 'BigQuery'
+const serviceName = 'BigQuery Dataset'
 const apiEndpoint = initTestEndpoint(serviceName)
 
 export default async ({

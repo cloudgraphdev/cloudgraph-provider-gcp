@@ -16,7 +16,7 @@ type gcpProject @key(fields: "id") {
   computeProject: [gcpComputeProject] @hasInverse(field: project)
   dnsManagedZone: [gcpDnsManagedZone] @hasInverse(field: project)
   dnsPolicy: [gcpDnsPolicy] @hasInverse(field: project)
-  bigQuery: [gcpBigQueryDataset] @hasInverse(field: project)
+  bigQueryDataset: [gcpBigQueryDataset] @hasInverse(field: project)
   bigQueryConnection: [gcpBigQueryConnection] @hasInverse(field: project)
   bigQueryReservation: [gcpBigQueryReservation] @hasInverse(field: project)
   bigQueryReservationCapacityCommitment: [gcpBigQueryReservationCapacityCommitment] @hasInverse(field: project)

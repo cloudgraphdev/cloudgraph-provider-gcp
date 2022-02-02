@@ -6,7 +6,7 @@ import services from './services'
 export default {
   [services.firewall]: 'gcpFirewall',
   [services.project]: 'gcpProject',
-  [services.bigQuery]: 'gcpBigQueryDataset',
+  [services.bigQueryDataset]: 'gcpBigQueryDataset',
   [services.bigQueryConnection]: 'gcpBigQueryConnection',
   [services.bigQueryReservation]: 'gcpBigQueryReservation',
   [services.bigQueryReservationCapacityCommitment]: 'gcpBigQueryReservationCapacityCommitment',

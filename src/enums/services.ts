@@ -32,7 +32,7 @@ export default {
   // metastore: 'metastore',
   // pubsub: 'pubsub',
   // bigtable: 'bigtable',
-  bigQuery: 'bigQuery',
+  bigQueryDataset: 'bigQueryDataset',
   bigQueryConnection: 'bigQueryConnection',
   bigQueryReservation: 'bigQueryReservation',
   bigQueryReservationCapacityCommitment: 'bigQueryReservationCapacityCommitment',

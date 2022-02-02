@@ -43,7 +43,7 @@ import GcpComputeProject from '../services/computeProject'
 export default {
   [services.firewall]: GcpFirewall,
   [services.project]: GcpProject,
-  [services.bigQuery]: GcpBigQuery,
+  [services.bigQueryDataset]: GcpBigQuery,
   [services.bigQueryConnection]: GcpBigQueryConnection,
   [services.bigQueryReservation]: GcpBigQueryReservation,
   [services.bigQueryReservationCapacityCommitment]: GcpBigQueryReservationCapacityCommitment,

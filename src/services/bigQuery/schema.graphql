@@ -131,5 +131,5 @@ type gcpBigQueryDataset implements gcpBaseResource
   friendlyName: String @search(by: [hash, regexp])
   totalTables: Int @search
   tables: [gcpBigQueryTable]
-  project: [gcpProject] @hasInverse(field: bigQuery)
+  project: [gcpProject] @hasInverse(field: bigQueryDataset)
 }

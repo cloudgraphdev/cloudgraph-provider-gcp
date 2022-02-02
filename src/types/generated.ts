@@ -1217,10 +1217,10 @@ export type GcpProject = {
   alertPolicy?: Maybe<Array<Maybe<GcpAlertPolicy>>>;
   apiKeys?: Maybe<Array<Maybe<GcpApiKey>>>;
   assets?: Maybe<Array<Maybe<GcpAsset>>>;
-  bigQuery?: Maybe<Array<Maybe<GcpBigQueryDataset>>>;
   bigQueryConnection?: Maybe<Array<Maybe<GcpBigQueryConnection>>>;
   bigQueryDataTransfer?: Maybe<Array<Maybe<GcpBigQueryDataTransfer>>>;
   bigQueryDataTransferRun?: Maybe<Array<Maybe<GcpBigQueryDataTransferRun>>>;
+  bigQueryDataset?: Maybe<Array<Maybe<GcpBigQueryDataset>>>;
   bigQueryReservation?: Maybe<Array<Maybe<GcpBigQueryReservation>>>;
   bigQueryReservationCapacityCommitment?: Maybe<Array<Maybe<GcpBigQueryReservationCapacityCommitment>>>;
   cloudFunction?: Maybe<Array<Maybe<GcpCloudFunction>>>;
