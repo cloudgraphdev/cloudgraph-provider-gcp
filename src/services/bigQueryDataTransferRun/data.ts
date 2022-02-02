@@ -31,7 +31,7 @@ export default async ({
   const dataTransferClient = new bigqueryDataTransfer.v1.DataTransferServiceClient({ ...config, apiEndpoint })
   const { projectId } = config
   const dataTransferRunResult = []
-  const allRegions = regions.split(',')
+  const allRegions = regions.split(',').concat(['EU', 'US'])
 
   for (const region of allRegions) {
     /**
