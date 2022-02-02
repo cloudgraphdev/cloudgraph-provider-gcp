@@ -32,6 +32,6 @@ type gcpBigQueryDataTransferRun implements gcpBaseResource
     schedule: String @search(by: [hash, regexp])
     notificationPubsubTopic: String @search(by: [hash, regexp])
     enableFailureEmail: Boolean @search
-    dataTransfer: [gcpBigQueryDataTransfer] @hasInverse(field: transferRun)
+    dataTransfer: [gcpBigQueryDataTransfer] @hasInverse(field: transferRuns)
     project: [gcpProject] @hasInverse(field: bigQueryDataTransferRun)
   }

@@ -30,16 +30,16 @@ export default ({
 
   for (const region of regions) {
     if (transferRuns?.data?.[region]) {
-      const transferRun = transferRuns.data[region].find(
+      const filtered = transferRuns.data[region].filter(
         ({ dataTransferId }: RawGcpBigQueryDataTransferRun) => dataTransferId === id
       )
-  
-      if (transferRun) {
+
+      for (const { name } of filtered) {
         connections.push({
-          id: transferRun.name,
+          id: name,
           resourceType: services.bigQueryDataTransferRun,
           relation: 'child',
-          field: 'transferRun',
+          field: 'transferRuns',
         })
       }
     }

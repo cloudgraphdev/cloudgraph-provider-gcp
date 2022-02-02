@@ -454,7 +454,7 @@ export type GcpBigQueryDataTransfer = GcpBaseResource & {
   scheduleOptionsEndTime?: Maybe<Scalars['String']>;
   scheduleOptionsStartTime?: Maybe<Scalars['String']>;
   state?: Maybe<Scalars['String']>;
-  transferRun?: Maybe<Array<Maybe<GcpBigQueryDataTransferRun>>>;
+  transferRuns?: Maybe<Array<Maybe<GcpBigQueryDataTransferRun>>>;
   updateTime?: Maybe<Scalars['String']>;
   userId?: Maybe<Scalars['String']>;
 };
