@@ -1,3 +1,10 @@
+## [0.25.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.25.0...0.25.1) (2022-02-02)
+
+
+### Bug Fixes
+
+* **iam:** fetch project IAM policy via API ([7763012](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/7763012c48d38a8c01faa9a3e47fa2169cd389f3))
+
 # [0.25.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.24.1...0.25.0) (2022-02-02)
 
 
