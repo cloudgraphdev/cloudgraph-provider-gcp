@@ -15,6 +15,7 @@ export default ({
     projectId,
     version,
     bindings,
+    auditConfigs,
     etag,
     folderId,
     storageBucketId,
@@ -32,6 +33,14 @@ export default ({
     bindings: bindings.map(binding => ({
       id: cuid(),
       ...binding,
+    })),
+    auditConfigs: auditConfigs?.map(config => ({
+      id: cuid(),
+      ...config,
+      auditLogConfigs: config?.auditLogConfigs?.map(logConfig => ({
+        id: cuid(),
+        ...logConfig,
+      })),
     })),
     etag: etagToString(etag),
   }

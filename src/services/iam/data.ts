@@ -2,6 +2,7 @@ import cuid from 'cuid'
 import { ProjectsClient, FoldersClient } from '@google-cloud/resource-manager'
 import { KeyManagementServiceClient } from '@google-cloud/kms'
 import { google } from '@google-cloud/resource-manager/build/protos/protos'
+import { DNS } from '@google-cloud/dns'
 import CloudGraph from '@cloudgraph/sdk'
 import groupBy from 'lodash/groupBy'
 import isEmpty from 'lodash/isEmpty'
@@ -14,6 +15,7 @@ import {
 import gcpLoggerText from '../../properties/logger'
 import { GcpServiceInput } from '../../types'
 import { initTestEndpoint, generateGcpErrorLog } from '../../utils'
+import { listData }  from '../../utils/fetchUtils'
 import { GLOBAL_REGION } from '../../config/constants'
 import services from '../../enums/services'
 import { RawGcpKmsCryptoKey, listCryptoKeysData } from '../kmsCryptoKey/data'
@@ -23,6 +25,17 @@ const { logger } = CloudGraph
 const serviceName = 'IAM Policy'
 const apiEndpoint = initTestEndpoint(serviceName)
 
+export interface RawGcpIamPolicyAuditLogConfig {
+  logType?: string
+  exemptedMembers?: string[]
+}
+
+export interface RawGcpIamPolicyAuditConfig {
+  service?: string
+  exemptedMembers?: string[]
+  auditLogConfigs?: RawGcpIamPolicyAuditLogConfig[]
+}
+
 export interface RawGcpIamPolicy extends google.iam.v1.IPolicy {
   id: string
   region: string
@@ -30,6 +43,7 @@ export interface RawGcpIamPolicy extends google.iam.v1.IPolicy {
   folderId?: string
   storageBucketId?: string
   cryptoKeyId?: string
+  auditConfigs?: RawGcpIamPolicyAuditConfig[]
 }
 
 export default async ({
@@ -55,21 +69,24 @@ export default async ({
       // Refresh data
       await listProjectsData(projectsClient, projects)
     }
-
+    
     /**
      * Get all the IAM policies for projects
      */
     try {
-      for (const { name } of projects) {
-        const response = await projectsClient.getIamPolicy({ resource: name })
-        if (response && response[0]) {
-          policyList.push({
-            id: cuid(),
-            ...response[0],
-            projectId,
-            region: GLOBAL_REGION,
-          })
-        }
+      const service = new DNS({ ...config, apiEndpoint })
+      const data = await listData({
+        service,
+        apiUri: `https://cloudresourcemanager.googleapis.com/v1/projects/${projectId}:getIamPolicy`,
+        method: 'POST',
+      })
+      for (const instance of data) {
+        policyList.push({
+          id: cuid(),
+          projectId: config.projectId,
+          ...instance,
+          region: GLOBAL_REGION,
+        })
       }
     } catch (error) {
       generateGcpErrorLog(serviceName, 'resourceManager:getIamPolicy', error)
