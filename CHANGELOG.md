@@ -1,3 +1,11 @@
+# [0.25.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.24.1...0.25.0) (2022-02-02)
+
+
+### Features
+
+* rename kms service to kmsKeyRing ([64b2b5d](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/64b2b5d93f6252fd02aaccea02475895a906a352))
+* **service:** Add kmsCryptoKey service ([ac555f3](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/ac555f38f05370d396041c8360c844478145189b))
+
 ## [0.24.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.24.0...0.24.1) (2022-02-01)
 
 
