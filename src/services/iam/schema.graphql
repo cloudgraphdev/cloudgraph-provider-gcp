@@ -7,6 +7,7 @@ type gcpIamPolicy @key(fields: "id") {
   region: String @search(by: [hash, regexp])
   version: Int @search
   bindings: [gcpIamBinding]
+  auditConfigs: [gcpIamPolicyAuditConfig]
   etag: String @search(by: [hash, regexp])
   project: [gcpProject] @hasInverse(field: iamPolicy)
   folder: [gcpFolder] @hasInverse(field: iamPolicy)
@@ -36,4 +37,27 @@ type gcpIamBindingExpr
   title: String @search(by: [hash, regexp])
   description: String @search(by: [hash, regexp])
   location: String @search(by: [hash, regexp])
+}
+
+type gcpIamPolicyAuditConfig
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  service: String @search(by: [hash, regexp])
+  exemptedMembers: [String] @search(by: [hash])
+  auditLogConfigs: [gcpIamPolicyAuditLogConfig]
+}
+
+type gcpIamPolicyAuditLogConfig
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+  id: String! @id
+  logType: String @search(by: [hash, regexp])
+  exemptedMembers: [String] @search(by: [hash])
 }

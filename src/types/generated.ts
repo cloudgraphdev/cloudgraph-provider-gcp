@@ -734,11 +734,25 @@ export type GcpIamPolicy = {
   region?: Maybe<Scalars['String']>;
   version?: Maybe<Scalars['Int']>;
   bindings?: Maybe<Array<Maybe<GcpIamBinding>>>;
+  auditConfigs?: Maybe<Array<Maybe<GcpIamPolicyAuditConfig>>>;
   etag?: Maybe<Scalars['String']>;
   folder?: Maybe<Array<Maybe<GcpFolder>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
   storageBucket?: Maybe<Array<Maybe<GcpStorageBucket>>>;
   kmsCryptoKeys?: Maybe<Array<Maybe<GcpKmsCryptoKey>>>;
+};
+
+export type GcpIamPolicyAuditConfig = {
+  id: Scalars['String'];
+  service?: Maybe<Scalars['String']>;
+  exemptedMembers?: Maybe<Array<Maybe<Scalars['String']>>>;
+  auditLogConfigs?: Maybe<Array<Maybe<GcpIamPolicyAuditLogConfig>>>;
+};
+
+export type GcpIamPolicyAuditLogConfig = {
+  id: Scalars['String'];
+  logType?: Maybe<Scalars['String']>;
+  exemptedMembers?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type GcpInitialStateConfig = {

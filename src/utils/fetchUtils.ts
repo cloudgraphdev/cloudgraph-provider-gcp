@@ -6,27 +6,29 @@ export const listData = async ({
     service,
     apiUri,
     dataFieldName,
+    method = 'GET',
   }: {
   service: Service,
   apiUri: string,
-  dataFieldName: string,
+  dataFieldName?: string,
+  method?: string,
 }): Promise<any[]> => {
   const accessToken = await service.authClient.getAccessToken()
 
   const fullData = []
   let resp = await fetch(apiUri, {
-    method: 'GET',
+    method,
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${accessToken}`,
     },
   })
-
   let respJson = await resp.json()
   let pageToken = respJson.nextPageToken
+  const payload = dataFieldName ? respJson[dataFieldName] : [respJson]
 
-  if (isEmpty(respJson.error) && respJson[dataFieldName]) {
-    fullData.push(...respJson[dataFieldName])
+  if (isEmpty(respJson.error) && payload) {
+    fullData.push(...payload)
 
     while (pageToken) {
       resp = await fetch(`${apiUri}?pageToken=${pageToken}`, {
@@ -38,7 +40,7 @@ export const listData = async ({
       })
       respJson = await resp.json()
       pageToken = respJson.nextPageToken
-      fullData.push(...respJson[dataFieldName])
+      fullData.push(...payload)
     }
   }
 
