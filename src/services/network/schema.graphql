@@ -16,6 +16,7 @@ type gcpNetwork implements gcpBaseResource @key(fields: "id") {
   subnet: [gcpSubnet] @hasInverse(field: network)
   vpcConnectors: [gcpVpcConnector] @hasInverse(field: network)
   vmInstance: [gcpVmInstance] @hasInverse(field: network)
+  cloudRouters: [gcpCloudRouter] @hasInverse(field: network)
 }
 
 type gcpNetworkPeering

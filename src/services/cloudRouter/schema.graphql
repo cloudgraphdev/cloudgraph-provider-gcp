@@ -1,0 +1,118 @@
+type gcpCloudRouterBgpAdvertisedIpRange
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    id: String! @id @search(by: [hash])
+    description: String @search(by: [hash, regexp])
+    range: String @search(by: [hash, regexp])
+  }
+
+type gcpCloudRouterBgpPeerAdvertisedIpRange
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    id: String! @id @search(by: [hash])
+    description: String @search(by: [hash, regexp])
+    range: String @search(by: [hash, regexp])
+  }
+
+type gcpCloudRouterBgpPeer
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    id: String! @id @search(by: [hash])
+    advertiseMode: String @search(by: [hash, regexp])
+    advertisedGroups: [String] @search(by: [hash])
+    advertisedIpRanges: [gcpCloudRouterBgpPeerAdvertisedIpRange]
+    advertisedRoutePriority: Int @search
+    interfaceName: String @search(by: [hash, regexp])
+    ipAddress: String @search(by: [hash, regexp])
+    managementType: String @search(by: [hash, regexp])
+    name: String @search(by: [hash, regexp])
+    peerAsn: Int @search
+    peerIpAddress: String @search(by: [hash, regexp])
+  }
+
+type gcpCloudRouterInterface
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    id: String! @id @search(by: [hash])
+    ipRange: String @search(by: [hash, regexp])
+    linkedInterconnectAttachment: String @search(by: [hash, regexp])
+    linkedVpnTunnel: String @search(by: [hash, regexp])
+    managementType: String @search(by: [hash, regexp])
+    name: String @search(by: [hash, regexp])
+  }
+type gcpCloudRouterSubnetwork
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    id: String! @id @search(by: [hash])
+    name: String @search(by: [hash, regexp])
+    secondaryIpRangeNames: [String] @search(by: [hash])
+    sourceIpRangesToNat: [String] @search(by: [hash])
+  }
+
+type gcpCloudRouterNat
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    id: String! @id @search(by: [hash])
+    drainNatIps: [String] @search(by: [hash])
+    enableEndpointIndependentMapping: Boolean @search
+    icmpIdleTimeoutSec: Int @search
+    logConfigEnable: Boolean @search
+    logConfigFilter: String @search(by: [hash, regexp])
+    minPortsPerVm: Int @search
+    name: String @search(by: [hash, regexp])
+    natIpAllocateOption: String @search(by: [hash, regexp])
+    natIps: [String] @search(by: [hash])
+    sourceSubnetworkIpRangesToNat: String @search(by: [hash, regexp])
+    subnetworks: [gcpCloudRouterSubnetwork]
+    tcpEstablishedIdleTimeoutSec: Int @search
+    tcpTransitoryIdleTimeoutSec: Int @search
+    udpIdleTimeoutSec: Int @search
+  }
+
+type gcpCloudRouter implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    bgpAdvertiseMode: String @search(by: [hash, regexp])
+    bgpAdvertisedGroups: [String] @search(by: [hash])
+    bgpAdvertisedIpRanges: [gcpCloudRouterBgpAdvertisedIpRange]
+    bgpAsn: Int @search
+    bgpPeers: [gcpCloudRouterBgpPeer]
+    creationTimestamp: String @search(by: [hash, regexp])
+    description: String @search(by: [hash, regexp])
+    encryptedInterconnectRouter: Boolean @search
+    interfaces: [gcpCloudRouterInterface]
+    kind: String @search(by: [hash, regexp])
+    name: String @search(by: [hash, regexp])
+    nats: [gcpCloudRouterNat],
+    selfLink: String @search(by: [hash, regexp])
+    network: [gcpNetwork] @hasInverse(field: cloudRouters)
+    project: [gcpProject] @hasInverse(field: cloudRouters)
+  }
