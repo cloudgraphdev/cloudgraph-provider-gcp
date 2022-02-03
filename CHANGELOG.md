@@ -1,3 +1,27 @@
+# [0.26.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.25.1...0.26.0) (2022-02-03)
+
+
+### Bug Fixes
+
+* **bigQuery:** add multi region constant project connections ([6b2abd0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/6b2abd023a708f2c84c08ed3f19beb02a2fe3e1d))
+* **bigQuery:** add multi regional locations ([de38274](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/de38274cdb74a05481e56d0ffff7bda43a1f46ff))
+* **bigQuery:** add multi regional locations ([2ec779f](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/2ec779f25d97f0803a92dbce6a680fef13bc2dd1))
+* **bigQuery:** add multi regional locations, remove europe-west ([ba250ef](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/ba250ef2aa76ea22fdceb6f705ca568c64c48abd))
+* **bigQuery:** add multi regional regions in data transfer connection ([587e2f7](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/587e2f74a50d9d88a0f2399173cd19da4246e2d9))
+* **bigQuery:** bigQuery -> bigQueryDataset ([ee20fcc](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/ee20fccc0292af66561074ac23473505cee0a453))
+* **bigQuery:** move formatParamFields to format utils ([8dd039b](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/8dd039bad27f1cb3e4f2bc56d1b063699fac9ff0))
+* **bigQuery:** pluralize transferRun connection ([a755ebb](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/a755ebb5066e38f6579af0753ae739c448dbe64e))
+
+
+### Features
+
+* **bigquery:** add bigquery connection ([cd48a2b](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/cd48a2b180afa4d5bb35905a5a8340af30cfa285))
+* **bigquery:** add bigquery resources ([c27a82a](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/c27a82a75abb59ed478ed84b7fe0f1de1518e96c))
+* **bigquery:** add more bigquery services ([dd026e6](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/dd026e6b42f387ce86a0c57474844642c31d5558))
+* **bigQuery:** rename folder ([3158f8f](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/3158f8f0bbd8ff33b5e46f7d57dbba8626d9e6ec))
+* **bigQuery:** update bigQuery name ([d1a35c8](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/d1a35c8f28ba0add02967d0c3d895dd0a7a71891))
+* **bigQuery:** update folder names ([ee67b5d](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/ee67b5d60f0c5a671a9a5b78535eb1384b60b714))
+
 ## [0.25.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.25.0...0.25.1) (2022-02-02)
 
 

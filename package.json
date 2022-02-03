@@ -1,6 +1,6 @@
 {
   "name": "@cloudgraph/cg-provider-gcp",
-  "version": "0.25.1",
+  "version": "0.26.0",
   "description": "CloudGraph provider plugin for GCP used to fetch GCP cloud data.",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
@@ -44,8 +44,6 @@
     "@google-cloud/bigquery-connection": "^1.5.1",
     "@google-cloud/bigquery-data-transfer": "^2.3.0",
     "@google-cloud/bigquery-reservation": "^1.4.0",
-    "@google-cloud/kms": "^2.10.0",
-    "@google-cloud/logging": "^9.6.4",
     "@google-cloud/resource-manager": "^3.0.0",
     "@google-cloud/secret-manager": "^3.10.1",
     "@google-cloud/storage": "^5.16.1",
