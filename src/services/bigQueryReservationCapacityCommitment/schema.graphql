@@ -1,0 +1,28 @@
+type gcpBigQueryReservationCapacityCommitmentFailureStatusDetail
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  )
+  @key(fields: "id") {
+  id: String! @id @search(by: [hash])
+  typeUrl: String @search(by: [hash, regexp])
+  value: String @search(by: [hash, regexp])
+  }
+
+type gcpBigQueryReservationCapacityCommitment implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  )
+  @key(fields: "id") {
+  slotCount: String @search(by: [hash, regexp])
+  plan: String @search(by: [hash, regexp])
+  state: String @search(by: [hash, regexp])
+  commitmentStartTime: String @search(by: [hash, regexp])
+  commitmentEndTime: String @search(by: [hash, regexp])
+  failureStatusCode: Int @search
+  failureStatusMessage: String @search(by: [hash, regexp])
+  failureStatusDetails: [gcpBigQueryReservationCapacityCommitmentFailureStatusDetail],
+  renewalPlan: String @search(by: [hash, regexp])
+  project: [gcpProject] @hasInverse(field: bigQueryReservationCapacityCommitment)
+}

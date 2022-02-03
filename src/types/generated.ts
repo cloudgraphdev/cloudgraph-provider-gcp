@@ -411,14 +411,228 @@ export type GcpAttachedDiskInitializeParams = {
 
 export type GcpBaseResource = {
   id: Scalars['String'];
+  kind?: Maybe<Scalars['String']>;
+  labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
   name?: Maybe<Scalars['String']>;
   projectId: Scalars['String'];
   region?: Maybe<Scalars['String']>;
 };
 
+export type GcpBigQueryConnection = GcpBaseResource & {
+  awsAccessRoleIamRoleId?: Maybe<Scalars['String']>;
+  awsAccessRoleIdentity?: Maybe<Scalars['String']>;
+  awsCrossAccountRoleExternalId?: Maybe<Scalars['String']>;
+  awsCrossAccountRoleIamRoleId?: Maybe<Scalars['String']>;
+  awsCrossAccountRoleIamUserId?: Maybe<Scalars['String']>;
+  cloudSpannerDatabase?: Maybe<Scalars['String']>;
+  cloudSpannerUseParallelism?: Maybe<Scalars['Boolean']>;
+  cloudSqlDatabase?: Maybe<Scalars['String']>;
+  cloudSqlInstanceId?: Maybe<Scalars['String']>;
+  cloudSqlType?: Maybe<Scalars['String']>;
+  creationTime?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  friendlyName?: Maybe<Scalars['String']>;
+  hasCredential?: Maybe<Scalars['Boolean']>;
+  lastModifiedTime?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+};
+
+export type GcpBigQueryDataTransfer = GcpBaseResource & {
+  dataRefreshWindowDays?: Maybe<Scalars['Int']>;
+  dataSourceId?: Maybe<Scalars['String']>;
+  datasetRegion?: Maybe<Scalars['String']>;
+  destinationDatasetId?: Maybe<Scalars['String']>;
+  disabled?: Maybe<Scalars['Boolean']>;
+  displayName?: Maybe<Scalars['String']>;
+  enableFailureEmail?: Maybe<Scalars['Boolean']>;
+  nextRunTime?: Maybe<Scalars['String']>;
+  notificationPubsubTopic?: Maybe<Scalars['String']>;
+  paramFields?: Maybe<Array<Maybe<GcpBigQueryDataTransferParam>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  schedule?: Maybe<Scalars['String']>;
+  scheduleOptionsDisableAutoScheduling?: Maybe<Scalars['Boolean']>;
+  scheduleOptionsEndTime?: Maybe<Scalars['String']>;
+  scheduleOptionsStartTime?: Maybe<Scalars['String']>;
+  state?: Maybe<Scalars['String']>;
+  transferRuns?: Maybe<Array<Maybe<GcpBigQueryDataTransferRun>>>;
+  updateTime?: Maybe<Scalars['String']>;
+  userId?: Maybe<Scalars['String']>;
+};
+
+export type GcpBigQueryDataTransferParam = {
+  id: Scalars['String'];
+  key?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type GcpBigQueryDataTransferRun = GcpBaseResource & {
+  dataSourceId?: Maybe<Scalars['String']>;
+  dataTransfer?: Maybe<Array<Maybe<GcpBigQueryDataTransfer>>>;
+  dataTransferId?: Maybe<Scalars['String']>;
+  destinationDatasetId?: Maybe<Scalars['String']>;
+  enableFailureEmail?: Maybe<Scalars['Boolean']>;
+  endTime?: Maybe<Scalars['String']>;
+  errorStatusCode?: Maybe<Scalars['Int']>;
+  errorStatusDetails?: Maybe<Array<Maybe<GcpBigQueryDataTransferRunErrorStatusDetail>>>;
+  errorStatusMessage?: Maybe<Scalars['String']>;
+  notificationPubsubTopic?: Maybe<Scalars['String']>;
+  paramFields?: Maybe<Array<Maybe<GcpBigQueryDataTransferParam>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  runTime?: Maybe<Scalars['String']>;
+  schedule?: Maybe<Scalars['String']>;
+  scheduleTime?: Maybe<Scalars['String']>;
+  startTime?: Maybe<Scalars['String']>;
+  state?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+  userId?: Maybe<Scalars['String']>;
+};
+
+export type GcpBigQueryDataTransferRunErrorStatusDetail = {
+  id: Scalars['String'];
+  typeUrl?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type GcpBigQueryDataset = GcpBaseResource & {
+  friendlyName?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  tables?: Maybe<Array<Maybe<GcpBigQueryTable>>>;
+  totalTables?: Maybe<Scalars['Int']>;
+};
+
 export type GcpBigQueryOptions = {
   usePartitionedTables?: Maybe<Scalars['Boolean']>;
   usesTimestampColumnPartitioning?: Maybe<Scalars['Boolean']>;
+};
+
+export type GcpBigQueryReservation = GcpBaseResource & {
+  creationTime?: Maybe<Scalars['String']>;
+  ignoreIdleSlots?: Maybe<Scalars['Boolean']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  slotCapacity?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+};
+
+export type GcpBigQueryReservationCapacityCommitment = GcpBaseResource & {
+  commitmentEndTime?: Maybe<Scalars['String']>;
+  commitmentStartTime?: Maybe<Scalars['String']>;
+  failureStatusCode?: Maybe<Scalars['Int']>;
+  failureStatusDetails?: Maybe<Array<Maybe<GcpBigQueryReservationCapacityCommitmentFailureStatusDetail>>>;
+  failureStatusMessage?: Maybe<Scalars['String']>;
+  plan?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  renewalPlan?: Maybe<Scalars['String']>;
+  slotCount?: Maybe<Scalars['String']>;
+  state?: Maybe<Scalars['String']>;
+};
+
+export type GcpBigQueryReservationCapacityCommitmentFailureStatusDetail = {
+  id: Scalars['String'];
+  typeUrl?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type GcpBigQueryTable = GcpBaseResource & {
+  clusteringFields?: Maybe<Array<Maybe<Scalars['String']>>>;
+  creationTime?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  encryptionConfigurationKmsKeyName?: Maybe<Scalars['String']>;
+  expirationTime?: Maybe<Scalars['String']>;
+  externalDataConfigurationAutodetect?: Maybe<Scalars['Boolean']>;
+  externalDataConfigurationAvroOptionsUseAvroLogicalTypes?: Maybe<Scalars['Boolean']>;
+  externalDataConfigurationBigtableOptionsColumnFamilies?: Maybe<Array<Maybe<GcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamily>>>;
+  externalDataConfigurationBigtableOptionsIgnoreUnspecifiedColumnFamilies?: Maybe<Scalars['Boolean']>;
+  externalDataConfigurationBigtableOptionsReadRowkeyAsString?: Maybe<Scalars['Boolean']>;
+  externalDataConfigurationCompression?: Maybe<Scalars['String']>;
+  externalDataConfigurationConnectionId?: Maybe<Scalars['String']>;
+  externalDataConfigurationCsvOptionsAllowJaggedRows?: Maybe<Scalars['Boolean']>;
+  externalDataConfigurationCsvOptionsAllowQuotedNewlines?: Maybe<Scalars['Boolean']>;
+  externalDataConfigurationCsvOptionsEncoding?: Maybe<Scalars['String']>;
+  externalDataConfigurationCsvOptionsFieldDelimiter?: Maybe<Scalars['String']>;
+  externalDataConfigurationCsvOptionsQuote?: Maybe<Scalars['String']>;
+  externalDataConfigurationCsvOptionsSkipLeadingRows?: Maybe<Scalars['String']>;
+  externalDataConfigurationDecimalTargetTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
+  externalDataConfigurationGoogleSheetsOptionsRange?: Maybe<Scalars['String']>;
+  externalDataConfigurationGoogleSheetsOptionsSkipLeadingRows?: Maybe<Scalars['String']>;
+  externalDataConfigurationHivePartitioningOptionsFields?: Maybe<Array<Maybe<Scalars['String']>>>;
+  externalDataConfigurationHivePartitioningOptionsMode?: Maybe<Scalars['String']>;
+  externalDataConfigurationHivePartitioningOptionsRequirePartitionFilter?: Maybe<Scalars['Boolean']>;
+  externalDataConfigurationHivePartitioningOptionsSourceUriPrefix?: Maybe<Scalars['String']>;
+  externalDataConfigurationIgnoreUnknownValues?: Maybe<Scalars['Boolean']>;
+  externalDataConfigurationMaxBadRecords?: Maybe<Scalars['Int']>;
+  externalDataConfigurationParquetOptionsEnableListInference?: Maybe<Scalars['Boolean']>;
+  externalDataConfigurationParquetOptionsEnumAsString?: Maybe<Scalars['Boolean']>;
+  externalDataConfigurationSchemaFields?: Maybe<Array<Maybe<GcpBigQueryTableSchemaField>>>;
+  externalDataConfigurationSourceFormat?: Maybe<Scalars['String']>;
+  externalDataConfigurationSourceUris?: Maybe<Array<Maybe<Scalars['String']>>>;
+  friendlyName?: Maybe<Scalars['String']>;
+  lastModifiedTime?: Maybe<Scalars['String']>;
+  location?: Maybe<Scalars['String']>;
+  materializedViewEnableRefresh?: Maybe<Scalars['Boolean']>;
+  materializedViewLastRefreshTime?: Maybe<Scalars['String']>;
+  materializedViewQuery?: Maybe<Scalars['String']>;
+  materializedViewRefreshIntervalMs?: Maybe<Scalars['String']>;
+  numBytes?: Maybe<Scalars['String']>;
+  numLongTermBytes?: Maybe<Scalars['String']>;
+  numRows?: Maybe<Scalars['String']>;
+  rangePartitioningField?: Maybe<Scalars['String']>;
+  rangePartitioningRangeEnd?: Maybe<Scalars['String']>;
+  rangePartitioningRangeInterval?: Maybe<Scalars['String']>;
+  rangePartitioningRangeStart?: Maybe<Scalars['String']>;
+  requirePartitionFilter?: Maybe<Scalars['Boolean']>;
+  schemaFields?: Maybe<Array<Maybe<GcpBigQueryTableSchemaField>>>;
+  snapshotDefinitionBaseTableReferenceDatasetId?: Maybe<Scalars['String']>;
+  snapshotDefinitionBaseTableReferenceProjectId?: Maybe<Scalars['String']>;
+  snapshotDefinitionBaseTableReferenceTableId?: Maybe<Scalars['String']>;
+  snapshotDefinitionSnapshotTime?: Maybe<Scalars['String']>;
+  streamingBufferEstimatedBytes?: Maybe<Scalars['String']>;
+  streamingBufferEstimatedRows?: Maybe<Scalars['String']>;
+  streamingBufferOldestEntryTime?: Maybe<Scalars['String']>;
+  timePartitioningExpirationMs?: Maybe<Scalars['String']>;
+  timePartitioningField?: Maybe<Scalars['String']>;
+  timePartitioningRequirePartitionFilter?: Maybe<Scalars['Boolean']>;
+  timePartitioningType?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
+  viewQuery?: Maybe<Scalars['String']>;
+  viewUseLegacySql?: Maybe<Scalars['Boolean']>;
+  viewUserDefinedFunctionResources?: Maybe<Array<Maybe<GcpBigQueryTableViewUserDefinedFunctionResource>>>;
+};
+
+export type GcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamily = {
+  columns?: Maybe<Array<Maybe<GcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamilyColumn>>>;
+  encoding?: Maybe<Scalars['String']>;
+  familyId?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  onlyReadLatest?: Maybe<Scalars['Boolean']>;
+  type?: Maybe<Scalars['String']>;
+};
+
+export type GcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamilyColumn = {
+  encoding?: Maybe<Scalars['String']>;
+  fieldName?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  onlyReadLatest?: Maybe<Scalars['Boolean']>;
+  qualifierEncoded?: Maybe<Scalars['String']>;
+  qualifierString?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
+};
+
+export type GcpBigQueryTableSchemaField = {
+  description?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  maxLength?: Maybe<Scalars['String']>;
+  mode?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  policyTagsNames?: Maybe<Array<Maybe<Scalars['String']>>>;
+  precision?: Maybe<Scalars['String']>;
+  scale?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
+};
+
+export type GcpBigQueryTableViewUserDefinedFunctionResource = {
+  id: Scalars['String'];
+  inlineCode?: Maybe<Scalars['String']>;
+  resourceUri?: Maybe<Scalars['String']>;
 };
 
 export type GcpBoolValue = {
@@ -726,33 +940,33 @@ export type GcpIamBindingExpr = {
 };
 
 export type GcpIamPolicy = {
-  id: Scalars['String'];
-  projectId?: Maybe<Scalars['String']>;
-  folderId?: Maybe<Scalars['String']>;
-  storageBucketId?: Maybe<Scalars['String']>;
-  cryptoKeyId?: Maybe<Scalars['String']>;
-  region?: Maybe<Scalars['String']>;
-  version?: Maybe<Scalars['Int']>;
-  bindings?: Maybe<Array<Maybe<GcpIamBinding>>>;
   auditConfigs?: Maybe<Array<Maybe<GcpIamPolicyAuditConfig>>>;
+  bindings?: Maybe<Array<Maybe<GcpIamBinding>>>;
+  cryptoKeyId?: Maybe<Scalars['String']>;
   etag?: Maybe<Scalars['String']>;
   folder?: Maybe<Array<Maybe<GcpFolder>>>;
-  project?: Maybe<Array<Maybe<GcpProject>>>;
-  storageBucket?: Maybe<Array<Maybe<GcpStorageBucket>>>;
+  folderId?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
   kmsCryptoKeys?: Maybe<Array<Maybe<GcpKmsCryptoKey>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  projectId?: Maybe<Scalars['String']>;
+  region?: Maybe<Scalars['String']>;
+  storageBucket?: Maybe<Array<Maybe<GcpStorageBucket>>>;
+  storageBucketId?: Maybe<Scalars['String']>;
+  version?: Maybe<Scalars['Int']>;
 };
 
 export type GcpIamPolicyAuditConfig = {
+  auditLogConfigs?: Maybe<Array<Maybe<GcpIamPolicyAuditLogConfig>>>;
+  exemptedMembers?: Maybe<Array<Maybe<Scalars['String']>>>;
   id: Scalars['String'];
   service?: Maybe<Scalars['String']>;
-  exemptedMembers?: Maybe<Array<Maybe<Scalars['String']>>>;
-  auditLogConfigs?: Maybe<Array<Maybe<GcpIamPolicyAuditLogConfig>>>;
 };
 
 export type GcpIamPolicyAuditLogConfig = {
+  exemptedMembers?: Maybe<Array<Maybe<Scalars['String']>>>;
   id: Scalars['String'];
   logType?: Maybe<Scalars['String']>;
-  exemptedMembers?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type GcpInitialStateConfig = {
@@ -769,34 +983,34 @@ export type GcpItems = {
 };
 
 export type GcpKmsCryptoKey = GcpBaseResource & {
-  primaryName?: Maybe<Scalars['String']>;
-  primaryState?: Maybe<Scalars['String']>;
-  primaryProtectionLevel?: Maybe<Scalars['String']>;
+  createTime?: Maybe<Scalars['String']>;
+  destroyScheduledDuration?: Maybe<Scalars['String']>;
+  iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
+  importOnly?: Maybe<Scalars['Boolean']>;
+  kmsKeyRing?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;
+  kmsKeyRingId?: Maybe<Scalars['String']>;
+  labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
+  nextRotationTime?: Maybe<Scalars['String']>;
   primaryAlgorithm?: Maybe<Scalars['String']>;
-  primaryAttestationFormat?: Maybe<Scalars['String']>;
   primaryAttestationContent?: Maybe<Scalars['String']>;
+  primaryAttestationFormat?: Maybe<Scalars['String']>;
   primaryCreateTime?: Maybe<Scalars['String']>;
-  primaryGenerateTime?: Maybe<Scalars['String']>;
-  primaryDestroyTime?: Maybe<Scalars['String']>;
   primaryDestroyEventTime?: Maybe<Scalars['String']>;
+  primaryDestroyTime?: Maybe<Scalars['String']>;
+  primaryExternalProtectionLevelOptionsExternalKeyUri?: Maybe<Scalars['String']>;
+  primaryGenerateTime?: Maybe<Scalars['String']>;
+  primaryImportFailureReason?: Maybe<Scalars['String']>;
   primaryImportJob?: Maybe<Scalars['String']>;
   primaryImportTime?: Maybe<Scalars['String']>;
-  primaryImportFailureReason?: Maybe<Scalars['String']>;
-  primaryExternalProtectionLevelOptionsExternalKeyUri?: Maybe<Scalars['String']>;
+  primaryName?: Maybe<Scalars['String']>;
+  primaryProtectionLevel?: Maybe<Scalars['String']>;
   primaryReimportEligible?: Maybe<Scalars['Boolean']>;
+  primaryState?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
   purpose?: Maybe<Scalars['String']>;
-  createTime?: Maybe<Scalars['String']>;
-  nextRotationTime?: Maybe<Scalars['String']>;
   rotationPeriod?: Maybe<Scalars['String']>;
   versionTemplateAlgorithm?: Maybe<Scalars['String']>;
   versionTemplateProtectionLevel?: Maybe<Scalars['String']>;
-  labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
-  importOnly?: Maybe<Scalars['Boolean']>;
-  destroyScheduledDuration?: Maybe<Scalars['String']>;
-  kmsKeyRingId?: Maybe<Scalars['String']>;
-  iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
-  kmsKeyRing?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;
-  project?: Maybe<Array<Maybe<GcpProject>>>;
 };
 
 export type GcpKmsImportJob = {
@@ -1003,6 +1217,12 @@ export type GcpProject = {
   alertPolicy?: Maybe<Array<Maybe<GcpAlertPolicy>>>;
   apiKeys?: Maybe<Array<Maybe<GcpApiKey>>>;
   assets?: Maybe<Array<Maybe<GcpAsset>>>;
+  bigQueryConnection?: Maybe<Array<Maybe<GcpBigQueryConnection>>>;
+  bigQueryDataTransfer?: Maybe<Array<Maybe<GcpBigQueryDataTransfer>>>;
+  bigQueryDataTransferRun?: Maybe<Array<Maybe<GcpBigQueryDataTransferRun>>>;
+  bigQueryDataset?: Maybe<Array<Maybe<GcpBigQueryDataset>>>;
+  bigQueryReservation?: Maybe<Array<Maybe<GcpBigQueryReservation>>>;
+  bigQueryReservationCapacityCommitment?: Maybe<Array<Maybe<GcpBigQueryReservationCapacityCommitment>>>;
   cloudFunction?: Maybe<Array<Maybe<GcpCloudFunction>>>;
   computeProject?: Maybe<Array<Maybe<GcpComputeProject>>>;
   createTime?: Maybe<Scalars['String']>;
@@ -1013,10 +1233,10 @@ export type GcpProject = {
   etag?: Maybe<Scalars['String']>;
   firewall?: Maybe<Array<Maybe<GcpFirewall>>>;
   folder?: Maybe<Array<Maybe<GcpFolder>>>;
-  kmsKeyRing?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;
   iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
   id: Scalars['String'];
-  kms?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;
+  kmsCryptoKeys?: Maybe<Array<Maybe<GcpKmsCryptoKey>>>;
+  kmsKeyRing?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;
   labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
   logBucket?: Maybe<Array<Maybe<GcpLogBucket>>>;
   logMetric?: Maybe<Array<Maybe<GcpLogMetric>>>;
@@ -1039,7 +1259,6 @@ export type GcpProject = {
   updateTime?: Maybe<Scalars['String']>;
   vmInstance?: Maybe<Array<Maybe<GcpVmInstance>>>;
   vpcConnectors?: Maybe<Array<Maybe<GcpVpcConnector>>>;
-  kmsCryptoKeys?: Maybe<Array<Maybe<GcpKmsCryptoKey>>>;
 };
 
 export type GcpRawLabel = {

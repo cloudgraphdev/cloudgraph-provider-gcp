@@ -67,9 +67,15 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 | alertPolicy        | project                                                             |
 | apiKeys            | project                                                             |
 | assets             | project                                                             |
+| bigQueryDataset                 | project                                                |
+| bigQueryConnection       | project                                                       |
+| bigQueryDataTransfer     | bigQueryDataTransferRun, project                              |
+| bigQueryDataTransferRun  | project                                                       |
+| bigQueryReservation      | project                                                       |
+| bigQueryReservationCapacityCommitment | project                                          |
 | cloudFunction      | project, vpc                                                        |
 | computeProject     | project                                                             |
-| kmsCryptoKeys      | iamPolicy, kmsKeyRing, project                                                  |
+| kmsCryptoKeys      | iamPolicy, kmsKeyRing, project                                      |
 | dnsManagedZone     | project                                                             |
 | dnsPolicy          | project, network                                                    |
 | firewall           | network, project                                                    |

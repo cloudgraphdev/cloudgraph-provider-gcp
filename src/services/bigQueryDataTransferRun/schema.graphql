@@ -1,0 +1,37 @@
+type gcpBigQueryDataTransferRunErrorStatusDetail
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  )
+  @key(fields: "id") {
+    id: String! @id @search(by: [hash])
+    typeUrl: String @search(by: [hash, regexp])
+    value: String @search(by: [hash, regexp])
+  }
+
+type gcpBigQueryDataTransferRun implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  )
+  @key(fields: "id") {
+    dataTransferId: String @search(by: [hash, regexp])
+    scheduleTime: String @search(by: [hash, regexp])
+    runTime: String @search(by: [hash, regexp])
+    errorStatusCode: Int @search
+    errorStatusMessage: String @search(by: [hash, regexp])
+    errorStatusDetails: [gcpBigQueryDataTransferRunErrorStatusDetail]
+    startTime: String @search(by: [hash, regexp])
+    endTime: String @search(by: [hash, regexp])
+    updateTime: String @search(by: [hash, regexp])
+    paramFields: [gcpBigQueryDataTransferParam]
+    destinationDatasetId: String @search(by: [hash, regexp])
+    dataSourceId: String @search(by: [hash, regexp])
+    state: String @search(by: [hash, regexp])
+    userId: String @search(by: [hash, regexp])
+    schedule: String @search(by: [hash, regexp])
+    notificationPubsubTopic: String @search(by: [hash, regexp])
+    enableFailureEmail: Boolean @search
+    dataTransfer: [gcpBigQueryDataTransfer] @hasInverse(field: transferRuns)
+    project: [gcpProject] @hasInverse(field: bigQueryDataTransferRun)
+  }

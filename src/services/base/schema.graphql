@@ -8,4 +8,6 @@ interface gcpBaseResource
     projectId: String! @search(by: [hash, regexp])
     region: String @search(by: [hash, regexp])
     name: String @search(by: [hash, regexp])
+    kind: String @search(by: [hash, regexp])
+    labels: [gcpRawLabel]
   }

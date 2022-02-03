@@ -1,0 +1,12 @@
+type gcpBigQueryReservation implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  )
+  @key(fields: "id") {
+  slotCapacity: String @search(by: [hash, regexp])
+  ignoreIdleSlots: Boolean @search
+  creationTime: String @search(by: [hash, regexp])
+  updateTime: String @search(by: [hash, regexp])
+  project: [gcpProject] @hasInverse(field: bigQueryReservation)
+}
