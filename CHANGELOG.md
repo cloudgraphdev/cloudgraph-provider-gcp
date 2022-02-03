@@ -1,3 +1,14 @@
+# [0.27.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.26.0...0.27.0) (2022-02-03)
+
+
+### Features
+
+* **cloudRouter:** add cloudRouter ([50c4cb3](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/50c4cb380487189ea068d6b57dd5538cdce7a069))
+* **cloudRouter:** update README ([d5b64d2](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/d5b64d2e80143cf01d812764ce1ef960a374d85b))
+* **cloudRouter:** update service name ([27edfdc](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/27edfdc41b9fe9735fc12425ae3ac7ab3d265d64))
+* **clourRouter:** add network connection ([3e3ec09](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/3e3ec09910264416a9c122f482b64904ec7ea2db))
+* **clourRouter:** add network connection ([adc9819](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/adc98194540d110879d6acf6a6df07ce4b2298be))
+
 # [0.26.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.25.1...0.26.0) (2022-02-03)
 
 
