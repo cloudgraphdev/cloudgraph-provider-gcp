@@ -126,10 +126,83 @@ type gcpBigQueryDataset implements gcpBaseResource
   @generate(
     query: { get: true, query: true, aggregate: true }
     mutation: { add: true, delete: false }
-  )
-  @key(fields: "id") {
+  ) @key(fields: "id") {
+  etag: String @search(by: [hash, regexp])
+  selfLink: String @search(by: [hash, regexp])
+  datasetReference: gcpBigQueryDatasetReference
   friendlyName: String @search(by: [hash, regexp])
-  totalTables: Int @search
+  description: String @search(by: [hash, regexp])
+  defaultTableExpirationMs: String @search(by: [hash, regexp])
+  defaultPartitionExpirationMs: String @search(by: [hash, regexp])
+  access: [gcpBigQueryDatasetAccess]
+  creationTime: String @search(by: [hash, regexp])
+  lastModifiedTime: String @search(by: [hash, regexp])
+  location: String @search(by: [hash, regexp])
+  defaultEncryptionConfiguration: gcpBigQueryEncryptionConfiguration
+  satisfiesPzs: Boolean @search
   tables: [gcpBigQueryTable]
   project: [gcpProject] @hasInverse(field: bigQueryDataset)
+}
+
+type gcpBigQueryDatasetAccess
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  ) {
+  id: String! @id
+  role: String @search(by: [hash, regexp])
+  userByEmail: String @search(by: [hash, regexp])
+  groupByEmail: String @search(by: [hash, regexp])
+  domain: String @search(by: [hash, regexp])
+  specialGroup: String @search(by: [hash, regexp])
+  iamMember: String @search(by: [hash, regexp])
+  view: gcpBigQueryTableReference
+  routine: gcpBigQueryRoutineReference
+  dataset: gcpBigQueryFeedbackDatasetAccessEntry
+}
+
+type gcpBigQueryTableReference
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  ) {
+  projectId: String @search(by: [hash, regexp])
+  datasetId: String @search(by: [hash, regexp])
+  tableId: String @search(by: [hash, regexp])
+}
+
+type gcpBigQueryRoutineReference
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  ) {
+  projectId: String @search(by: [hash, regexp])
+  datasetId: String @search(by: [hash, regexp])
+  routineId: String @search(by: [hash, regexp])
+}
+
+type gcpBigQueryFeedbackDatasetAccessEntry
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  ) {
+  dataset: gcpBigQueryDatasetReference
+  targetTypes: [String] @search(by: [hash])
+}
+
+type gcpBigQueryDatasetReference
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  ) {
+  datasetId: String @search(by: [hash, regexp])
+  projectId: String @search(by: [hash, regexp])
+}
+
+type gcpBigQueryEncryptionConfiguration
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  ) {
+  kmsKeyName: String @search(by: [hash, regexp])
 }

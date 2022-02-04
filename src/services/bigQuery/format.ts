@@ -7,7 +7,8 @@ import {
   GcpBigQueryTableViewUserDefinedFunctionResource,
 } from '../../types/generated'
 import { formatLabelsFromMap } from '../../utils/format'
-import { RawGcpBigQueryDataset, RawGcpBigQueryTable } from './types'
+import { toISOString, millisToSeconds } from '../../utils/dateutils'
+import { RawGcpBigQueryDataset, RawGcpBigQueryTable } from './data'
 
 const formatTableField = (field): GcpBigQueryTableSchemaField => {
   const {
@@ -134,9 +135,9 @@ const formatTable = (table: RawGcpBigQueryTable): GcpBigQueryTable => {
     numBytes,
     numLongTermBytes,
     numRows,
-    creationTime,
-    expirationTime,
-    lastModifiedTime,
+    creationTime: toISOString(millisToSeconds(creationTime)),
+    expirationTime: toISOString(millisToSeconds(expirationTime)),
+    lastModifiedTime: toISOString(millisToSeconds(lastModifiedTime)),
     viewQuery: view?.query || '',
     viewUserDefinedFunctionResources: view?.userDefinedFunctionResources?.map(
       resource => formatTableViewUserDefinedFunctionResource(resource)
@@ -173,7 +174,6 @@ const formatTable = (table: RawGcpBigQueryTable): GcpBigQueryTable => {
       externalDataConfiguration?.hivePartitioningOptions?.sourceUriPrefix || '',
     externalDataConfigurationHivePartitioningOptionsRequirePartitionFilter:
       externalDataConfiguration?.hivePartitioningOptions?.requirePartitionFilter || false,
-    externalDataConfigurationHivePartitioningOptionsFields: externalDataConfiguration?.hivePartitioningOptions?.fields || [],
     externalDataConfigurationConnectionId: externalDataConfiguration?.connectionId || '',
     externalDataConfigurationDecimalTargetTypes: externalDataConfiguration?.decimalTargetTypes || [],
     externalDataConfigurationAvroOptionsUseAvroLogicalTypes:externalDataConfiguration?.avroOptions?.useAvroLogicalTypes || false,
@@ -201,18 +201,47 @@ export default ({
 }): GcpBigQueryDataset => {
   const {
     id,
+    projectId,
     kind,
+    labels = {},
+    etag,
+    selfLink,
+    datasetReference,
+    friendlyName,
+    description,
+    defaultTableExpirationMs,
+    defaultPartitionExpirationMs,
+    access,
+    creationTime,
+    lastModifiedTime,
+    location,
+    defaultEncryptionConfiguration,
+    satisfiesPZS,
     tables = [],
-    labels = {}
   } = service
 
   return {
     id: id || cuid(),
-    projectId: account,
+    projectId,
     region,
     kind,
     labels: formatLabelsFromMap(labels),
-    totalTables: tables.length || 0,
+    etag,
+    selfLink,
+    datasetReference,
+    friendlyName,
+    description,
+    defaultTableExpirationMs,
+    defaultPartitionExpirationMs,
+    access: access?.map(acc => ({
+      id: cuid(),
+      ...acc,
+    })),
+    creationTime: toISOString(millisToSeconds(creationTime)),
+    lastModifiedTime: toISOString(millisToSeconds(lastModifiedTime)),
+    location,
+    defaultEncryptionConfiguration,
+    satisfiesPzs: satisfiesPZS,
     tables: tables.map(table => formatTable(table)) || []
   }
 }

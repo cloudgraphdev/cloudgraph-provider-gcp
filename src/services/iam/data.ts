@@ -83,7 +83,7 @@ export default async ({
       for (const instance of data) {
         policyList.push({
           id: cuid(),
-          projectId: config.projectId,
+          projectId,
           ...instance,
           region: GLOBAL_REGION,
         })

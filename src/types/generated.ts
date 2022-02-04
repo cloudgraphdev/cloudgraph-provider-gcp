@@ -494,10 +494,48 @@ export type GcpBigQueryDataTransferRunErrorStatusDetail = {
 };
 
 export type GcpBigQueryDataset = GcpBaseResource & {
+  access?: Maybe<Array<Maybe<GcpBigQueryDatasetAccess>>>;
+  creationTime?: Maybe<Scalars['String']>;
+  datasetReference?: Maybe<GcpBigQueryDatasetReference>;
+  defaultEncryptionConfiguration?: Maybe<GcpBigQueryEncryptionConfiguration>;
+  defaultPartitionExpirationMs?: Maybe<Scalars['String']>;
+  defaultTableExpirationMs?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  etag?: Maybe<Scalars['String']>;
   friendlyName?: Maybe<Scalars['String']>;
+  lastModifiedTime?: Maybe<Scalars['String']>;
+  location?: Maybe<Scalars['String']>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
+  satisfiesPzs?: Maybe<Scalars['Boolean']>;
+  selfLink?: Maybe<Scalars['String']>;
   tables?: Maybe<Array<Maybe<GcpBigQueryTable>>>;
-  totalTables?: Maybe<Scalars['Int']>;
+};
+
+export type GcpBigQueryDatasetAccess = {
+  dataset?: Maybe<GcpBigQueryFeedbackDatasetAccessEntry>;
+  domain?: Maybe<Scalars['String']>;
+  groupByEmail?: Maybe<Scalars['String']>;
+  iamMember?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  role?: Maybe<Scalars['String']>;
+  routine?: Maybe<GcpBigQueryRoutineReference>;
+  specialGroup?: Maybe<Scalars['String']>;
+  userByEmail?: Maybe<Scalars['String']>;
+  view?: Maybe<GcpBigQueryTableReference>;
+};
+
+export type GcpBigQueryDatasetReference = {
+  datasetId?: Maybe<Scalars['String']>;
+  projectId?: Maybe<Scalars['String']>;
+};
+
+export type GcpBigQueryEncryptionConfiguration = {
+  kmsKeyName?: Maybe<Scalars['String']>;
+};
+
+export type GcpBigQueryFeedbackDatasetAccessEntry = {
+  dataset?: Maybe<GcpBigQueryDatasetReference>;
+  targetTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type GcpBigQueryOptions = {
@@ -530,6 +568,12 @@ export type GcpBigQueryReservationCapacityCommitmentFailureStatusDetail = {
   id: Scalars['String'];
   typeUrl?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
+};
+
+export type GcpBigQueryRoutineReference = {
+  datasetId?: Maybe<Scalars['String']>;
+  projectId?: Maybe<Scalars['String']>;
+  routineId?: Maybe<Scalars['String']>;
 };
 
 export type GcpBigQueryTable = GcpBaseResource & {
@@ -617,6 +661,12 @@ export type GcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamilyC
   type?: Maybe<Scalars['String']>;
 };
 
+export type GcpBigQueryTableReference = {
+  datasetId?: Maybe<Scalars['String']>;
+  projectId?: Maybe<Scalars['String']>;
+  tableId?: Maybe<Scalars['String']>;
+};
+
 export type GcpBigQueryTableSchemaField = {
   description?: Maybe<Scalars['String']>;
   id: Scalars['String'];
@@ -693,23 +743,23 @@ export type GcpCloudRouter = GcpBaseResource & {
   kind?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   nats?: Maybe<Array<Maybe<GcpCloudRouterNat>>>;
-  selfLink?: Maybe<Scalars['String']>;
   network?: Maybe<Array<Maybe<GcpNetwork>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
+  selfLink?: Maybe<Scalars['String']>;
 };
 
 export type GcpCloudRouterBgpAdvertisedIpRange = {
-  id: Scalars['String'];
   description?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
   range?: Maybe<Scalars['String']>;
 };
 
 export type GcpCloudRouterBgpPeer = {
-  id: Scalars['String'];
   advertiseMode?: Maybe<Scalars['String']>;
   advertisedGroups?: Maybe<Array<Maybe<Scalars['String']>>>;
   advertisedIpRanges?: Maybe<Array<Maybe<GcpCloudRouterBgpPeerAdvertisedIpRange>>>;
   advertisedRoutePriority?: Maybe<Scalars['Int']>;
+  id: Scalars['String'];
   interfaceName?: Maybe<Scalars['String']>;
   ipAddress?: Maybe<Scalars['String']>;
   managementType?: Maybe<Scalars['String']>;
@@ -719,8 +769,8 @@ export type GcpCloudRouterBgpPeer = {
 };
 
 export type GcpCloudRouterBgpPeerAdvertisedIpRange = {
-  id: Scalars['String'];
   description?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
   range?: Maybe<Scalars['String']>;
 };
 
@@ -734,10 +784,10 @@ export type GcpCloudRouterInterface = {
 };
 
 export type GcpCloudRouterNat = {
-  id: Scalars['String'];
   drainNatIps?: Maybe<Array<Maybe<Scalars['String']>>>;
   enableEndpointIndependentMapping?: Maybe<Scalars['Boolean']>;
   icmpIdleTimeoutSec?: Maybe<Scalars['Int']>;
+  id: Scalars['String'];
   logConfigEnable?: Maybe<Scalars['Boolean']>;
   logConfigFilter?: Maybe<Scalars['String']>;
   minPortsPerVm?: Maybe<Scalars['Int']>;
@@ -1242,6 +1292,7 @@ export type GcpMetadata = {
 
 export type GcpNetwork = GcpBaseResource & {
   autoCreateSubnetworks?: Maybe<Scalars['Boolean']>;
+  cloudRouters?: Maybe<Array<Maybe<GcpCloudRouter>>>;
   creationTimestamp?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   dnsPolicy?: Maybe<Array<Maybe<GcpDnsPolicy>>>;
@@ -1258,7 +1309,6 @@ export type GcpNetwork = GcpBaseResource & {
   subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
   vmInstance?: Maybe<Array<Maybe<GcpVmInstance>>>;
   vpcConnectors?: Maybe<Array<Maybe<GcpVpcConnector>>>;
-  cloudRouters?: Maybe<Array<Maybe<GcpCloudRouter>>>;
 };
 
 export type GcpNetworkPeering = {
@@ -1303,6 +1353,7 @@ export type GcpProject = {
   bigQueryReservation?: Maybe<Array<Maybe<GcpBigQueryReservation>>>;
   bigQueryReservationCapacityCommitment?: Maybe<Array<Maybe<GcpBigQueryReservationCapacityCommitment>>>;
   cloudFunction?: Maybe<Array<Maybe<GcpCloudFunction>>>;
+  cloudRouters?: Maybe<Array<Maybe<GcpCloudRouter>>>;
   computeProject?: Maybe<Array<Maybe<GcpComputeProject>>>;
   createTime?: Maybe<Scalars['String']>;
   deleteTime?: Maybe<Scalars['String']>;
@@ -1312,7 +1363,6 @@ export type GcpProject = {
   etag?: Maybe<Scalars['String']>;
   firewall?: Maybe<Array<Maybe<GcpFirewall>>>;
   folder?: Maybe<Array<Maybe<GcpFolder>>>;
-  cloudRouters?: Maybe<Array<Maybe<GcpCloudRouter>>>;
   iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
   id: Scalars['String'];
   kmsCryptoKeys?: Maybe<Array<Maybe<GcpKmsCryptoKey>>>;

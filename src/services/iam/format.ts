@@ -30,7 +30,7 @@ export default ({
     cryptoKeyId,
     region,
     version,
-    bindings: bindings.map(binding => ({
+    bindings: bindings?.map(binding => ({
       id: cuid(),
       ...binding,
     })),
