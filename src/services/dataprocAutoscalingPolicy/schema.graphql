@@ -1,0 +1,22 @@
+type gcpDataprocAutoscalingPolicy implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    basicAlgorithmYarnConfigGracefulDecommissionTimeout: String @search(by: [hash, regexp])
+    basicAlgorithmYarnConfigScaleUpFactor: Float @search
+    basicAlgorithmYarnConfigScaleDownFactor: Float @search
+    basicAlgorithmYarnConfigScaleUpMinWorkerFraction: Float @search
+    basicAlgorithmYarnConfigScaleDownMinWorkerFraction: Float @search
+    basicAlgorithmCooldownPeriod: String @search(by: [hash, regexp])
+    workerConfigMinInstances: Int @search
+    workerConfigMaxInstances: Int @search
+    workerConfigWeight: Int @search
+    secondaryWorkerConfigMinInstances: Int @search
+    secondaryWorkerConfigMaxInstances: Int @search
+    secondaryWorkerConfigWeight: Int @search
+    labels: [gcpRawLabel]
+    project: [gcpProject] @hasInverse(field: dataprocAutoscalingPolicies)
+  }

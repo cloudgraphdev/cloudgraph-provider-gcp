@@ -40,5 +40,9 @@ export default {
   [services.serviceAccount]: 'gcpServiceAccount',
   [services.apiKey]: 'gcpApiKey',
   [services.computeProject]: 'gcpComputeProject',
+  [services.dataprocCluster]: 'gcpDataprocCluster',
+  [services.dataprocAutoscalingPolicy]: 'gcpDataprocAutoscalingPolicy',
+  [services.dataprocJob]: 'gcpDataprocJob',
+  [services.dataprocWorkflowTemplate]: 'gcpDataprocWorkflowTemplate',
   tag: 'gcpTag',
 }

@@ -1,0 +1,181 @@
+type gcpDataprocWorkflowTemplateHadoopJob
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    mainJarFileUri: String @search(by: [hash, regexp]) 
+    mainClass: String @search(by: [hash, regexp])
+    args: [String] @search(by: [hash])
+    jarFileUris: [String] @search(by: [hash])
+    fileUris: [String] @search(by: [hash])
+    archiveUris: [String] @search(by: [hash])
+    properties: [gcpKeyValue]
+    loggingConfig: [gcpKeyValue]
+  }
+
+type gcpDataprocWorkflowTemplateSparkJob
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    mainJarFileUri: String @search(by: [hash, regexp])
+    mainClass: String @search(by: [hash, regexp])
+    args: [String] @search(by: [hash])
+    jarFileUris: [String] @search(by: [hash])
+    fileUris: [String] @search(by: [hash])
+    archiveUris: [String] @search(by: [hash])
+    properties: [gcpKeyValue]
+    loggingConfig: [gcpKeyValue]
+  }
+
+type gcpDataprocWorkflowTemplatePySparkJob
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    mainPythonFileUri: String @search(by: [hash, regexp])
+    args: [String] @search(by: [hash])
+    pythonFileUris: [String] @search(by: [hash])
+    jarFileUris: [String] @search(by: [hash])
+    fileUris: [String] @search(by: [hash])
+    archiveUris: [String] @search(by: [hash])
+    properties: [gcpKeyValue]
+    loggingConfig: [gcpKeyValue]
+  }
+
+type gcpDataprocWorkflowTemplateHiveJob
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    queryFileUri: String @search(by: [hash, regexp])
+    queryList: [String] @search(by: [hash])
+    continueOnFailure: Boolean @search
+    scriptVariables: [gcpKeyValue]
+    properties: [gcpKeyValue]
+    jarFileUris: [String] @search(by: [hash])
+  }
+
+type gcpDataprocWorkflowTemplatePigJob
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    queryFileUri: String @search(by: [hash, regexp])
+    queryList: [String] @search(by: [hash])
+    continueOnFailure: Boolean @search
+    scriptVariables: [gcpKeyValue]
+    properties: [gcpKeyValue]
+    jarFileUris: [String] @search(by: [hash])
+    loggingConfig: [gcpKeyValue]
+  }
+
+type gcpDataprocWorkflowTemplateSparkRJob
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    mainRFileUri: String @search(by: [hash, regexp])
+    args: [String] @search(by: [hash])
+    fileUris: [String] @search(by: [hash])
+    archiveUris: [String] @search(by: [hash])
+    properties: [gcpKeyValue]
+    loggingConfig: [gcpKeyValue]
+  }
+
+type gcpDataprocWorkflowTemplateSparkSqlJob
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    queryFileUri: String @search(by: [hash, regexp])
+    queryList: [String] @search(by: [hash])
+    scriptVariables: [gcpKeyValue]
+    properties: [gcpKeyValue]
+    jarFileUris: [String] @search(by: [hash])
+    loggingConfig: [gcpKeyValue]
+  }
+
+type gcpDataprocWorkflowTemplatePrestoJob
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) {
+    queryFileUri: String @search(by: [hash, regexp])
+    queryList: [String] @search(by: [hash])
+    continueOnFailure: Boolean @search
+    outputFormat: String @search(by: [hash, regexp])
+    clientTags: [String] @search(by: [hash])
+    properties: [gcpKeyValue]
+    loggingConfig: [gcpKeyValue]
+  }
+
+type gcpDataprocWorkflowTemplateOrderedJob
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    id: String! @id
+    stepId: String @search(by: [hash, regexp])
+    hadoopJob: gcpDataprocWorkflowTemplateHadoopJob
+    sparkJob: gcpDataprocWorkflowTemplateSparkJob
+    pySparkJob: gcpDataprocWorkflowTemplatePySparkJob
+    hiveJob: gcpDataprocWorkflowTemplateHiveJob
+    pigJob: gcpDataprocWorkflowTemplatePigJob
+    sparkRJob: gcpDataprocWorkflowTemplateSparkRJob
+    sparkSqlJob: gcpDataprocWorkflowTemplateSparkSqlJob
+    prestoJob: gcpDataprocWorkflowTemplatePrestoJob
+    labels: [gcpRawLabel]
+    schedulingMaxFailuresPerHour: Int @search
+    schedulingMaxFailuresTotal: Int @search
+    prerequisiteStepIds: [String] @search(by: [hash])
+  }
+
+type gcpDataprocWorkflowTemplateParameter
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    id: String! @id
+    name: String @search(by: [hash, regexp])
+    fields: [String] @search(by: [hash])
+    description: String @search(by: [hash, regexp])
+    validationRegexes: [String] @search(by: [hash])
+    validationReges: [String] @search(by: [hash])
+    validationValues: [String] @search(by: [hash])
+  }
+
+type gcpDataprocWorkflowTemplate implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    version: Int @search
+    createTime: String @search(by: [hash, regexp])
+    updateTime: String @search(by: [hash, regexp])
+    placementManagedClusterName: String @search(by: [hash, regexp])
+    placementManagedClusterConfig: gcpDataprocClusterConfig,
+    placementManagedClusterLabels: [gcpRawLabel]
+    placementClusterSelectorZone: String @search(by: [hash, regexp])
+    placementClusterSelectorClusterLabels: [gcpKeyValue]
+    jobs: [gcpDataprocWorkflowTemplateOrderedJob],
+    parameters: [gcpDataprocWorkflowTemplateParameter]
+    dagTimeout: String @search(by: [hash, regexp])
+    labels: [gcpRawLabel]
+    dataprocClusters: [gcpDataprocCluster] @hasInverse(field: dataprocWorkflowTemplates)
+    project: [gcpProject] @hasInverse(field: dataprocWorkflowTemplates)
+  }

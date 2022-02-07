@@ -763,6 +763,14 @@
   dependencies:
     google-gax "^2.24.1"
 
+"@google-cloud/dataproc@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@google-cloud/dataproc/-/dataproc-3.2.0.tgz#27f4a8381c28c8e83842f5bf236b9d7dbc8e4072"
+  integrity sha512-LDvoXN7BXPmWp2QDgB5TTllHPjFWIa26l0mvKMa84Eo/ULyZ0YSWro0wqj6oII7k4n0A2+GgiDgORAfFVzWDfA==
+  dependencies:
+    google-gax "^2.24.1"
+    protobufjs "^6.8.6"
+
 "@google-cloud/dns@^2.2.3":
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/@google-cloud/dns/-/dns-2.2.3.tgz#83749d16611c1725c146560d4cc950f5662f523a"
@@ -9310,7 +9318,7 @@ proto3-json-serializer@^0.1.5:
   dependencies:
     protobufjs "^6.11.2"
 
-protobufjs@6.11.2, protobufjs@^6.10.0, protobufjs@^6.11.2:
+protobufjs@6.11.2, protobufjs@^6.10.0, protobufjs@^6.11.2, protobufjs@^6.8.6:
   version "6.11.2"
   resolved "https://registry.yarnpkg.com/protobufjs/-/protobufjs-6.11.2.tgz#de39fabd4ed32beaa08e9bb1e30d08544c1edf8b"
   integrity sha512-4BQJoPooKJl2G9j3XftkIXjoC9C0Av2NOrWmbLWT1vH32GcSUHjM0Arra6UfTsVyfMAuFzaLucXn1sadxJydAw==

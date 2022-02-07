@@ -11,3 +11,15 @@ interface gcpBaseResource
     kind: String @search(by: [hash, regexp])
     labels: [gcpRawLabel]
   }
+
+type gcpKeyValue
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  ) 
+  @key(fields: "id") {
+    id: String! @id @search(by: [hash])
+    key: String! @search(by: [hash, regexp])
+    value: String @search(by: [hash, regexp])
+  }
