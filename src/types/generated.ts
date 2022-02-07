@@ -1759,7 +1759,6 @@ export type GcpProject = {
   computeProject?: Maybe<Array<Maybe<GcpComputeProject>>>;
   createTime?: Maybe<Scalars['String']>;
   dataprocAutoscalingPolicies?: Maybe<Array<Maybe<GcpDataprocAutoscalingPolicy>>>;
-  dataprocCluster?: Maybe<Array<Maybe<GcpDataprocCluster>>>;
   dataprocClusters?: Maybe<Array<Maybe<GcpDataprocCluster>>>;
   dataprocJobs?: Maybe<Array<Maybe<GcpDataprocJob>>>;
   dataprocWorkflowTemplates?: Maybe<Array<Maybe<GcpDataprocWorkflowTemplate>>>;
