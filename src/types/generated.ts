@@ -1718,6 +1718,16 @@ export type GcpFileContentBuffer = {
   id: Scalars['String'];
 };
 
+export type GcpFirestoreDatabase = GcpBaseResource & {
+  appEngineIntegrationMode?: Maybe<Scalars['String']>;
+  concurrencyMode?: Maybe<Scalars['String']>;
+  createTime?: Maybe<Scalars['String']>;
+  keyPrefix?: Maybe<Scalars['String']>;
+  locationId?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+};
+
 export type GcpFirewall = {
   allowed?: Maybe<Array<Maybe<GcpFirewallAccess>>>;
   creationTimestamp?: Maybe<Scalars['String']>;
