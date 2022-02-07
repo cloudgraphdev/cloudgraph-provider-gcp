@@ -494,10 +494,48 @@ export type GcpBigQueryDataTransferRunErrorStatusDetail = {
 };
 
 export type GcpBigQueryDataset = GcpBaseResource & {
+  access?: Maybe<Array<Maybe<GcpBigQueryDatasetAccess>>>;
+  creationTime?: Maybe<Scalars['String']>;
+  datasetReference?: Maybe<GcpBigQueryDatasetReference>;
+  defaultEncryptionConfiguration?: Maybe<GcpBigQueryEncryptionConfiguration>;
+  defaultPartitionExpirationMs?: Maybe<Scalars['String']>;
+  defaultTableExpirationMs?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  etag?: Maybe<Scalars['String']>;
   friendlyName?: Maybe<Scalars['String']>;
+  lastModifiedTime?: Maybe<Scalars['String']>;
+  location?: Maybe<Scalars['String']>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
+  satisfiesPzs?: Maybe<Scalars['Boolean']>;
+  selfLink?: Maybe<Scalars['String']>;
   tables?: Maybe<Array<Maybe<GcpBigQueryTable>>>;
-  totalTables?: Maybe<Scalars['Int']>;
+};
+
+export type GcpBigQueryDatasetAccess = {
+  dataset?: Maybe<GcpBigQueryFeedbackDatasetAccessEntry>;
+  domain?: Maybe<Scalars['String']>;
+  groupByEmail?: Maybe<Scalars['String']>;
+  iamMember?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  role?: Maybe<Scalars['String']>;
+  routine?: Maybe<GcpBigQueryRoutineReference>;
+  specialGroup?: Maybe<Scalars['String']>;
+  userByEmail?: Maybe<Scalars['String']>;
+  view?: Maybe<GcpBigQueryTableReference>;
+};
+
+export type GcpBigQueryDatasetReference = {
+  datasetId?: Maybe<Scalars['String']>;
+  projectId?: Maybe<Scalars['String']>;
+};
+
+export type GcpBigQueryEncryptionConfiguration = {
+  kmsKeyName?: Maybe<Scalars['String']>;
+};
+
+export type GcpBigQueryFeedbackDatasetAccessEntry = {
+  dataset?: Maybe<GcpBigQueryDatasetReference>;
+  targetTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type GcpBigQueryOptions = {
@@ -530,6 +568,12 @@ export type GcpBigQueryReservationCapacityCommitmentFailureStatusDetail = {
   id: Scalars['String'];
   typeUrl?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
+};
+
+export type GcpBigQueryRoutineReference = {
+  datasetId?: Maybe<Scalars['String']>;
+  projectId?: Maybe<Scalars['String']>;
+  routineId?: Maybe<Scalars['String']>;
 };
 
 export type GcpBigQueryTable = GcpBaseResource & {
@@ -615,6 +659,12 @@ export type GcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamilyC
   qualifierEncoded?: Maybe<Scalars['String']>;
   qualifierString?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['String']>;
+};
+
+export type GcpBigQueryTableReference = {
+  datasetId?: Maybe<Scalars['String']>;
+  projectId?: Maybe<Scalars['String']>;
+  tableId?: Maybe<Scalars['String']>;
 };
 
 export type GcpBigQueryTableSchemaField = {

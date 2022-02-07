@@ -5,7 +5,7 @@ import getData from './data'
 import mutation from './mutation'
 
 export default class GcpBigQuery extends BaseService implements Service {
-  format  = format.bind(this)
+  format = format.bind(this)
 
   getData = getData.bind(this)
 

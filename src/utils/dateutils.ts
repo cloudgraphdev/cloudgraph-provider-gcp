@@ -39,6 +39,10 @@ export const createDiffSecs = (startDate: Date): number =>
   (new Date().getTime() - startDate.getTime()) / 1000
 
 export const toISOString = (seconds: string): string => {
-  if (!seconds) return null
+  if (!seconds && !seconds?.length) return null
   return new Date(parseInt(seconds, 10) * 1000).toISOString()
+}
+
+export const millisToSeconds = (millis: string): string => {
+  return millis?.length ? (parseInt(millis) / 1000).toString() : null
 }
