@@ -1,3 +1,17 @@
+# [0.28.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.27.0...0.28.0) (2022-02-07)
+
+
+### Features
+
+* **dataproc:** add connection cluster to jobs ([5cf4683](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/5cf4683d629136028a9ac703cf882c8304ee83e3))
+* **dataproc:** add dataproc autoscaling policy ([d9e606c](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/d9e606c797c0fe1b0dda68f8e6c2b7c4a35da0d6))
+* **dataproc:** add dataproc cluster ([81a56c9](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/81a56c92d401f5cbd1573d1a748e764e6490394d))
+* **dataproc:** add dataproc job ([a50fe18](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/a50fe18d0c089ae4c0f0fe652d80acbe3bf892b3))
+* **dataproc:** add dataproc package ([83efe7c](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/83efe7c1c268a5ad2e4d1bc97a1c0a03abe50d90))
+* **dataproc:** add workflow template ([503b32f](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/503b32fde89433dfcbb305c53ae019ebad690c3e))
+* **dataproc:** couple updates/fixes to the cluster ([8461717](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/84617175fa3e3f5e40ac6622efa301e259088c92))
+* **dataproc:** update README ([5ea82a4](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/5ea82a4b7876d7aa06b0a66f7bba5147d4246de4))
+
 # [0.27.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.26.0...0.27.0) (2022-02-03)
 
 
