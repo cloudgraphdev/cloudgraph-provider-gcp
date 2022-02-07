@@ -1,3 +1,10 @@
+## [0.28.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.28.0...0.28.1) (2022-02-07)
+
+
+### Bug Fixes
+
+* **bigQuery:** use API in dataset/table fetch ([bd8426d](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/bd8426d1769e5bf1635ab2da79eff94afed3ea14))
+
 # [0.28.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.27.0...0.28.0) (2022-02-07)
 
 
