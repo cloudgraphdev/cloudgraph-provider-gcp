@@ -1,3 +1,10 @@
+## [0.28.2](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.28.1...0.28.2) (2022-02-07)
+
+
+### Bug Fixes
+
+* Fixed error with project connection ([058891f](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/058891fd6104de00103928a10b2473a46c68ff35))
+
 ## [0.28.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.28.0...0.28.1) (2022-02-07)
 
 
