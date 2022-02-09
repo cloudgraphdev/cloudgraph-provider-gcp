@@ -279,7 +279,8 @@ export default class Provider extends CloudGraph.Client {
     }
     const resourceNames: string[] = sortResourcesDependencies(relations, [
       ...new Set<string>(configuredResources.split(',')),
-    ])
+    ]).concat(['label', 'tag'])
+
     const { projectId } = account
     const config = { ...account }
 
@@ -351,8 +352,6 @@ export default class Provider extends CloudGraph.Client {
     // data so we can pass along accountId
     // TODO: find a better way to handle this
     let mergedRawData: rawDataInterface[] = []
-    const tagRegion = GLOBAL_REGION
-    const tags = { name: 'tag', data: { [tagRegion]: [] } }
     const crawledAccounts = []
     for (const account of configuredAccounts) {
       const { projectId } = account
@@ -368,43 +367,6 @@ export default class Provider extends CloudGraph.Client {
           `${projectId} has already been crawled, skipping...`
         )
       }
-    }
-
-    // Handle global tag entities
-    try {
-      for (const { data: entityData } of rawData) {
-        for (const region of Object.keys(entityData)) {
-          const dataAtRegion = entityData[region]
-          dataAtRegion.forEach(singleEntity => {
-            if (!isEmpty(singleEntity.Tags)) {
-              for (const [key, value] of Object.entries(singleEntity.Tags)) {
-                if (
-                  !tags.data[tagRegion].find(
-                    ({ id }) => id === `${key}:${value}`
-                  )
-                ) {
-                  tags.data[tagRegion].push({
-                    id: `${key}:${value}`,
-                    key,
-                    value,
-                  })
-                }
-              }
-            }
-          })
-        }
-      }
-      const existingTagsIdx = rawData.findIndex(({ name }) => {
-        return name === 'tag'
-      })
-      if (existingTagsIdx > -1) {
-        rawData[existingTagsIdx] = tags
-      } else {
-        rawData.push(tags)
-      }
-    } catch (error: any) {
-      this.logger.error('There was an error aggregating tags')
-      this.logger.debug(error)
     }
 
     /**

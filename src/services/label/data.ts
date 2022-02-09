@@ -4,13 +4,13 @@ import CloudGraph from '@cloudgraph/sdk'
 import gcpLoggerText from '../../properties/logger'
 import { generateGcpErrorLog } from '../../utils'
 import { GcpServiceInput } from '../../types'
-import { GcpTag } from '../../types/generated'
+import { GcpLabel } from '../../types/generated'
 
 const lt = { ...gcpLoggerText }
 const { logger } = CloudGraph
-const serviceName = 'Tag'
+const serviceName = 'Label'
 
-export interface RawGcpTag extends GcpTag {
+export interface RawGcpLabel extends GcpLabel {
   id: string
   projectId: string
   region: string
@@ -20,10 +20,10 @@ export default async ({
   config,
   rawData,
 }: GcpServiceInput): Promise<{
-  [region: string]: RawGcpTag[]
+  [region: string]: RawGcpLabel[]
 }> =>
   new Promise(async resolve => {
-    const tagList: RawGcpTag[] = []
+    const labelList: RawGcpLabel[] = []
     const { projectId } = config
 
     try {
@@ -31,14 +31,15 @@ export default async ({
         for (const region of Object.keys(entityData)) {
           const dataAtRegion = entityData[region]
           dataAtRegion.forEach(singleEntity => {
-            if (!isEmpty(singleEntity.tags)) {
-              for (const [key, value] of Object.entries(singleEntity.tags)) {
+            if (!singleEntity.id) console.log(singleEntity)
+            if (!isEmpty(singleEntity.labels)) {
+              for (const [key, value] of Object.entries(singleEntity.labels)) {
                 if (
-                  !tagList.find(
+                  !labelList.find(
                     ({ id }) => id === `${singleEntity.id}:${key}:${value}`
                   )
                 ) {
-                  tagList.push({
+                  labelList.push({
                     id: `${singleEntity.id}:${key}:${value}`,
                     projectId,
                     key,
@@ -55,6 +56,6 @@ export default async ({
       generateGcpErrorLog(serviceName, '', error)
     }
 
-    logger.debug(lt.foundResources(serviceName, tagList.length))
-    resolve(groupBy(tagList, 'region'))
+    logger.debug(lt.foundResources(serviceName, labelList.length))
+    resolve(groupBy(labelList, 'region'))
   })
