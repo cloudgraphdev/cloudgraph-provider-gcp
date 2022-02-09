@@ -43,6 +43,8 @@ import GcpDataprocCluster from '../services/dataprocCluster'
 import GcpDataprocAutoscalingPolicy from '../services/dataprocAutoscalingPolicy'
 import GcpDataprocJob from '../services/dataprocJob'
 import GcpDataprocWorkflowTemplate from '../services/dataprocWorkflowTemplate'
+import GcpAiPlatformNotebook from '../services/aiPlatformNotebook'
+
 /**
  * serviceMap is an object that contains all currently supported services
  * serviceMap is used by the serviceFactory to produce instances of service classes
@@ -91,5 +93,6 @@ export default {
   [services.dataprocAutoscalingPolicy]: GcpDataprocAutoscalingPolicy,
   [services.dataprocJob]: GcpDataprocJob,
   [services.dataprocWorkflowTemplate]: GcpDataprocWorkflowTemplate,
+  [services.aiPlatformNotebook]: GcpAiPlatformNotebook,
   tag: GcpTag,
 }

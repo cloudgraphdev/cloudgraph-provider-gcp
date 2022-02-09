@@ -23,6 +23,54 @@ export type GcpAdvancedMachineFeatures = {
   threadsPerCore?: Maybe<Scalars['Int']>;
 };
 
+export type GcpAiPlatformNotebook = GcpBaseResource & {
+  acceleratorConfigCoreCount?: Maybe<Scalars['String']>;
+  acceleratorConfigType?: Maybe<Scalars['String']>;
+  bootDiskSizeGb?: Maybe<Scalars['String']>;
+  bootDiskType?: Maybe<Scalars['String']>;
+  containerImageRepository?: Maybe<Scalars['String']>;
+  containerImageTag?: Maybe<Scalars['String']>;
+  createTime?: Maybe<Scalars['String']>;
+  customGpuDriverPath?: Maybe<Scalars['String']>;
+  dataDiskSizeGb?: Maybe<Scalars['String']>;
+  dataDiskType?: Maybe<Scalars['String']>;
+  diskEncryption?: Maybe<Scalars['String']>;
+  installGpuDriver?: Maybe<Scalars['Boolean']>;
+  instanceOwners?: Maybe<Array<Maybe<Scalars['String']>>>;
+  kmsCryptoKeys?: Maybe<Array<Maybe<GcpKmsCryptoKey>>>;
+  machineType?: Maybe<Scalars['String']>;
+  metadata?: Maybe<Array<Maybe<GcpKeyValue>>>;
+  network?: Maybe<Array<Maybe<GcpNetwork>>>;
+  noProxyAccess?: Maybe<Scalars['Boolean']>;
+  noPublicIp?: Maybe<Scalars['Boolean']>;
+  noRemoveDataDisk?: Maybe<Scalars['Boolean']>;
+  postStartupScript?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  proxyUri?: Maybe<Scalars['String']>;
+  serviceAccount?: Maybe<Scalars['String']>;
+  state?: Maybe<Scalars['String']>;
+  subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
+  updateTime?: Maybe<Scalars['String']>;
+  vmImageImageFamily?: Maybe<Scalars['String']>;
+  vmImageImageName?: Maybe<Scalars['String']>;
+  vmImageProject?: Maybe<Scalars['String']>;
+};
+
+export type GcpAiPlatformNotebookDisk = {
+  autoDelete?: Maybe<Scalars['Boolean']>;
+  boot?: Maybe<Scalars['Boolean']>;
+  deviceName?: Maybe<Scalars['String']>;
+  diskSizeGb?: Maybe<Scalars['String']>;
+  guestOsFeaturesTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
+  id: Scalars['String'];
+  index?: Maybe<Scalars['String']>;
+  kind?: Maybe<Scalars['String']>;
+  licenses?: Maybe<Array<Maybe<Scalars['String']>>>;
+  mode?: Maybe<Scalars['String']>;
+  source?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
+};
+
 export type GcpAlertPolicy = GcpBaseResource & {
   combiner?: Maybe<Scalars['String']>;
   conditions?: Maybe<Array<Maybe<GcpAlertPolicyCondition>>>;
@@ -1836,6 +1884,7 @@ export type GcpKeyValue = {
 };
 
 export type GcpKmsCryptoKey = GcpBaseResource & {
+  aiPlatformNotebooks?: Maybe<Array<Maybe<GcpAiPlatformNotebook>>>;
   createTime?: Maybe<Scalars['String']>;
   destroyScheduledDuration?: Maybe<Scalars['String']>;
   iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
@@ -2016,6 +2065,7 @@ export type GcpMetadata = {
 };
 
 export type GcpNetwork = GcpBaseResource & {
+  aiPlatformNotebooks?: Maybe<Array<Maybe<GcpAiPlatformNotebook>>>;
   autoCreateSubnetworks?: Maybe<Scalars['Boolean']>;
   cdnBackendService?: Maybe<Array<Maybe<GcpCdnBackendService>>>;
   cloudRouters?: Maybe<Array<Maybe<GcpCloudRouter>>>;
@@ -2069,6 +2119,7 @@ export type GcpOrganization = GcpBaseResource & {
 };
 
 export type GcpProject = {
+  aiPlatformNotebooks?: Maybe<Array<Maybe<GcpAiPlatformNotebook>>>;
   alertPolicy?: Maybe<Array<Maybe<GcpAlertPolicy>>>;
   apiKeys?: Maybe<Array<Maybe<GcpApiKey>>>;
   assets?: Maybe<Array<Maybe<GcpAsset>>>;
@@ -2508,6 +2559,7 @@ export type GcpStruct = {
 };
 
 export type GcpSubnet = GcpBaseResource & {
+  aiPlatformNotebooks?: Maybe<Array<Maybe<GcpAiPlatformNotebook>>>;
   creationTimestamp?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   enableFlowLogs?: Maybe<Scalars['Boolean']>;

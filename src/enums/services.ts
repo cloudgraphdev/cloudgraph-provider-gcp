@@ -4,6 +4,7 @@ export default {
   assets: 'assets',
   // ai: 'ai',
   // aiPlatform: 'ai-platform',
+  aiPlatformNotebook: 'aiPlatformNotebooks',
   // ml: 'ml',
   // mlEngine: 'ml-engine',
   // notebooks: 'notebooks',
