@@ -31,7 +31,6 @@ export default async ({
         for (const region of Object.keys(entityData)) {
           const dataAtRegion = entityData[region]
           dataAtRegion.forEach(singleEntity => {
-            if (!singleEntity.id) console.log(singleEntity)
             if (!isEmpty(singleEntity.labels)) {
               for (const [key, value] of Object.entries(singleEntity.labels)) {
                 if (
