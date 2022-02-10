@@ -40,7 +40,7 @@ type gcpDnsManagedZone implements gcpBaseResource
   kind: String @search(by: [hash, regexp])
   dnsName: String @search(by: [hash, regexp])
   description: String @search(by: [hash, regexp])
-  nameServers: [String] @search(by: [hash, regexp])
+  nameServers: [String] @search(by: [hash])
   dnssecConfigKind: String @search(by: [hash, regexp])
   dnssecConfigState: String @search(by: [hash, regexp])
   dnssecConfigDefaultKeySpecs: [gcpDnsZoneDnssecConfigDefaultKeySpec]

@@ -22,9 +22,11 @@ type gcpProject @key(fields: "id") {
   bigQueryDataset: [gcpBigQueryDataset] @hasInverse(field: project)
   bigQueryConnection: [gcpBigQueryConnection] @hasInverse(field: project)
   bigQueryReservation: [gcpBigQueryReservation] @hasInverse(field: project)
-  bigQueryReservationCapacityCommitment: [gcpBigQueryReservationCapacityCommitment] @hasInverse(field: project)
+  bigQueryReservationCapacityCommitment: [gcpBigQueryReservationCapacityCommitment]
+    @hasInverse(field: project)
   bigQueryDataTransfer: [gcpBigQueryDataTransfer] @hasInverse(field: project)
-  bigQueryDataTransferRun: [gcpBigQueryDataTransferRun] @hasInverse(field: project)
+  bigQueryDataTransferRun: [gcpBigQueryDataTransferRun]
+    @hasInverse(field: project)
   vpcConnectors: [gcpVpcConnector] @hasInverse(field: project)
   kmsKeyRing: [gcpKmsKeyRing] @hasInverse(field: project)
   cloudRouters: [gcpCloudRouter] @hasInverse(field: project)
@@ -48,4 +50,10 @@ type gcpProject @key(fields: "id") {
   sqlInstances: [gcpSqlInstance] @hasInverse(field: project)
   serviceAccounts: [gcpServiceAccount] @hasInverse(field: project)
   kmsCryptoKeys: [gcpKmsCryptoKey] @hasInverse(field: project)
+  dataprocClusters: [gcpDataprocCluster] @hasInverse(field: project)
+  dataprocAutoscalingPolicies: [gcpDataprocAutoscalingPolicy]
+    @hasInverse(field: project)
+  dataprocJobs: [gcpDataprocJob] @hasInverse(field: project)
+  dataprocWorkflowTemplates: [gcpDataprocWorkflowTemplate]
+    @hasInverse(field: project)
 }

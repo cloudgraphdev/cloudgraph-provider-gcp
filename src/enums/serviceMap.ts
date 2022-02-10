@@ -39,7 +39,10 @@ import GcpSslPolicies from '../services/sslPolicy'
 import GcpServiceAccount from '../services/serviceAccount'
 import GcpApiKey from '../services/apiKey'
 import GcpComputeProject from '../services/computeProject'
-
+import GcpDataprocCluster from '../services/dataprocCluster'
+import GcpDataprocAutoscalingPolicy from '../services/dataprocAutoscalingPolicy'
+import GcpDataprocJob from '../services/dataprocJob'
+import GcpDataprocWorkflowTemplate from '../services/dataprocWorkflowTemplate'
 /**
  * serviceMap is an object that contains all currently supported services
  * serviceMap is used by the serviceFactory to produce instances of service classes
@@ -84,5 +87,9 @@ export default {
   [services.serviceAccount]: GcpServiceAccount,
   [services.apiKey]: GcpApiKey,
   [services.computeProject]: GcpComputeProject,
+  [services.dataprocCluster]: GcpDataprocCluster,
+  [services.dataprocAutoscalingPolicy]: GcpDataprocAutoscalingPolicy,
+  [services.dataprocJob]: GcpDataprocJob,
+  [services.dataprocWorkflowTemplate]: GcpDataprocWorkflowTemplate,
   tag: GcpTag,
 }

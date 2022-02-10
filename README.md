@@ -76,6 +76,10 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 | cloudFunction                         | project, vpc                                                                     |
 | cloudRouter                           | project                                                                          |
 | computeProject                        | project                                                                          |
+| dataprocClusters                      | project, dataprocJobs, dataprocWorkflowTemplate                                  |
+| dataprocAutoscalingPolicies           | project                                                                          |
+| dataprocJobs                          | project, dataprocClusters                                                        |
+| dataprocWorkflowTemplate              | project, dataprocClusters                                                        |
 | kmsCryptoKeys                         | iamPolicy, kmsKeyRing, project                                                   |
 | dnsManagedZone                        | project                                                                          |
 | dnsPolicy                             | project, network                                                                 |

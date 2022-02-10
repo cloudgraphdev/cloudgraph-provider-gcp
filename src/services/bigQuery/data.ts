@@ -1,54 +1,86 @@
-import { BigQuery } from '@google-cloud/bigquery'
+import { DNS } from '@google-cloud/dns'
+import bigquery from '@google-cloud/bigquery/build/src/types'
 import CloudGraph from '@cloudgraph/sdk'
 import groupBy from 'lodash/groupBy'
+import isEmpty from 'lodash/isEmpty'
 import gcpLoggerText from '../../properties/logger'
-import { GcpServiceInput } from '../../types'
+import { GcpCredentials, GcpServiceInput } from '../../types'
 import { generateGcpErrorLog, initTestEndpoint } from '../../utils'
-import { RawGcpBigQueryDataset } from './types'
-import { MULTI_REGIONS } from '../../config/constants'
+import { listData }  from '../../utils/fetchUtils'
 
 const lt = { ...gcpLoggerText }
 const { logger } = CloudGraph
 const serviceName = 'BigQuery Dataset'
 const apiEndpoint = initTestEndpoint(serviceName)
 
+export interface RawGcpBigQueryDataset extends bigquery.IDataset {
+  projectId: string
+  region: string
+  tables: RawGcpBigQueryTable[]
+}
+
+export interface RawGcpBigQueryTable extends bigquery.ITable {
+  projectId: string
+  region: string
+}
+
+export const listBigQueryDatasets = async (
+  config: GcpCredentials,
+  datasetsResult: RawGcpBigQueryDataset[]
+): Promise<void> =>
+  new Promise(async resolve => {
+    const { projectId } = config
+
+    try {
+      const service = new DNS({ ...config, apiEndpoint })
+      const dataSetlist = await listData({
+        service,
+        apiUri: `https://bigquery.googleapis.com/bigquery/v2/projects/${projectId}/datasets`,
+        dataFieldName: 'datasets',
+      })
+
+      for (const { datasetReference } of dataSetlist) {
+        const dataSetResponse = await listData({
+          service,
+          apiUri: `https://bigquery.googleapis.com/bigquery/v2/projects/${projectId}/datasets/${datasetReference?.datasetId}`,
+        })
+
+        if (!isEmpty(dataSetResponse)) {
+          const result = {
+            ...dataSetResponse[0],
+            region: dataSetResponse[0].location,
+            tables: [],
+            projectId,
+          }
+
+          const tableResponse = await listData({
+            service,
+            apiUri: `https://bigquery.googleapis.com/bigquery/v2/projects/${projectId}/datasets/${datasetReference?.datasetId}/tables`,
+            dataFieldName: 'tables',
+          })
+
+          for (const table of tableResponse) {
+            result.tables.push(table)
+          }
+          datasetsResult.push(result)
+        }
+      }
+    } catch (error) {
+      generateGcpErrorLog(serviceName, 'bigquery:datasets', error)
+    }
+    resolve()
+  })
+
 export default async ({
-  regions,
   config,
 }: GcpServiceInput): Promise<{
   [region: string]: RawGcpBigQueryDataset[]
-}> => {
-  const bigQueryClient = new BigQuery({ ...config, apiEndpoint })
-  const datasetsResult: RawGcpBigQueryDataset[] = []
-  const { projectId } = config
-  const allRegions = regions.split(',').concat(MULTI_REGIONS)
-  try {
-    const dataSetIter = bigQueryClient.getDatasetsStream()
-    for await (const dataSetResponse of dataSetIter) {
-      if (allRegions.includes(dataSetResponse.location)) {
-        const dsMetaData = dataSetResponse.metadata
-        const result = {
-          ...dsMetaData,
-          region: dataSetResponse.location,
-          Labels: dataSetResponse.labels,
-          tables: [],
-          projectId,
-        }
-        try {
-          const tableIter = dataSetResponse.getTablesStream()
-          for await (const tableResponse of tableIter) {
-            result.tables.push(tableResponse.metadata)
-          }
-          datasetsResult.push(result)
-        } catch (error) {
-          generateGcpErrorLog(serviceName, 'bigQuery:getTablesStream', error)
-        }
-      }
-    }
-  } catch (error) {
-    generateGcpErrorLog(serviceName, 'bigQuery:getDatasetsStream', error)
-  }
+}> =>
+  new Promise(async resolve => {
+    const datasetsResult: RawGcpBigQueryDataset[] = []
 
-  logger.debug(lt.foundResources(serviceName, datasetsResult.length))
-  return groupBy(datasetsResult, 'region')
-}
+    await listBigQueryDatasets(config, datasetsResult)
+
+    logger.debug(lt.foundResources(serviceName, datasetsResult.length))
+    resolve(groupBy(datasetsResult, 'region'))
+  })
