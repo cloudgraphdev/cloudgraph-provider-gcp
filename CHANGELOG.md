@@ -1,3 +1,15 @@
+# [0.29.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.28.2...0.29.0) (2022-02-11)
+
+
+### Features
+
+* **cdn:** add cdn backend bucket ([c9fd809](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/c9fd809412dfe60894f9bbab3d4089e635ad81fa))
+* **cdn:** add cdn url map ([5ad5f14](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/5ad5f14b1a41bd28fddb532412bf3b33f8509627))
+* **cdn:** fix Duration type value ([37ce7aa](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/37ce7aa8e4e9cfa71fb80e19964db35e08e14ed4))
+* **cdn:** merge main ([8744d71](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/8744d71b76edc55aa8f30051b2407ab21f92117c))
+* **cdn:** small fix ([02c4f45](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/02c4f451a5fccd172f827569b13268174116fb0a))
+* **cdn:** update README ([9332c02](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/9332c0269a30f00adcaccb2b47475e378394f439))
+
 ## [0.28.2](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.28.1...0.28.2) (2022-02-07)
 
 
