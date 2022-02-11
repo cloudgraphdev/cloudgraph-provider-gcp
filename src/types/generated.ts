@@ -689,6 +689,329 @@ export type GcpBoolValue = {
   value?: Maybe<Scalars['Boolean']>;
 };
 
+export type GcpCdnBackendBucket = GcpBaseResource & {
+  bucketName?: Maybe<Scalars['String']>;
+  cdnPolicy?: Maybe<GcpCdnBackendBucketCdnPolicy>;
+  cdnUrlMap?: Maybe<Array<Maybe<GcpCdnUrlMap>>>;
+  creationTimestamp?: Maybe<Scalars['String']>;
+  customResponseHeaders?: Maybe<Array<Maybe<Scalars['String']>>>;
+  description?: Maybe<Scalars['String']>;
+  enableCdn?: Maybe<Scalars['Boolean']>;
+  kind?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  selfLink?: Maybe<Scalars['String']>;
+};
+
+export type GcpCdnBackendBucketCdnPolicy = {
+  bypassCacheOnRequestHeaderNames?: Maybe<Array<Maybe<Scalars['String']>>>;
+  cacheMode?: Maybe<Scalars['String']>;
+  clientTtl?: Maybe<Scalars['Int']>;
+  defaultTtl?: Maybe<Scalars['Int']>;
+  maxTtl?: Maybe<Scalars['Int']>;
+  negativeCaching?: Maybe<Scalars['Boolean']>;
+  negativeCachingPolicy?: Maybe<Array<Maybe<GcpCdnBackendBucketCdnPolicyNegativeCachingPolicy>>>;
+  requestCoalescing?: Maybe<Scalars['Boolean']>;
+  serveWhileStale?: Maybe<Scalars['Int']>;
+  signedUrlCacheMaxAgeSec?: Maybe<Scalars['String']>;
+  signedUrlKeyNames?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type GcpCdnBackendBucketCdnPolicyNegativeCachingPolicy = {
+  code?: Maybe<Scalars['Int']>;
+  id: Scalars['String'];
+  ttl?: Maybe<Scalars['Int']>;
+};
+
+export type GcpCdnBackendService = GcpBaseResource & {
+  affinityCookieTtlSec?: Maybe<Scalars['Int']>;
+  backends?: Maybe<Array<Maybe<GcpCdnBackendServiceBackend>>>;
+  cdnPolicy?: Maybe<GcpCdnBackendServiceCdnPolicy>;
+  cdnUrlMap?: Maybe<Array<Maybe<GcpCdnUrlMap>>>;
+  circuitBreakersMaxConnections?: Maybe<Scalars['Int']>;
+  circuitBreakersMaxPendingRequests?: Maybe<Scalars['Int']>;
+  circuitBreakersMaxRequests?: Maybe<Scalars['Int']>;
+  circuitBreakersMaxRequestsPerConnection?: Maybe<Scalars['Int']>;
+  circuitBreakersMaxRetries?: Maybe<Scalars['Int']>;
+  connectionDrainingTimeoutSec?: Maybe<Scalars['Int']>;
+  consistentHashLoadBalancerSettingHttpCookie?: Maybe<Scalars['String']>;
+  consistentHashLoadBalancerSettingHttpCookieName?: Maybe<Scalars['String']>;
+  consistentHashLoadBalancerSettingHttpCookiePath?: Maybe<Scalars['String']>;
+  consistentHashLoadBalancerSettingHttpHeaderName?: Maybe<Scalars['String']>;
+  consistentHashLoadBalancerSettingMinimumRingSize?: Maybe<Scalars['String']>;
+  creationTimestamp?: Maybe<Scalars['String']>;
+  customRequestHeaders?: Maybe<Array<Maybe<Scalars['String']>>>;
+  customResponseHeaders?: Maybe<Array<Maybe<Scalars['String']>>>;
+  description?: Maybe<Scalars['String']>;
+  enableCDN?: Maybe<Scalars['Boolean']>;
+  failoverPolicyDisableConnectionDrainOnFailover?: Maybe<Scalars['Boolean']>;
+  failoverPolicyDropTrafficIfUnhealthy?: Maybe<Scalars['Boolean']>;
+  failoverPolicyFailoverRatio?: Maybe<Scalars['Float']>;
+  fingerprint?: Maybe<Scalars['String']>;
+  healthChecks?: Maybe<Array<Maybe<Scalars['String']>>>;
+  iapEnabled?: Maybe<Scalars['Boolean']>;
+  iapOauth2ClientId?: Maybe<Scalars['String']>;
+  kind?: Maybe<Scalars['String']>;
+  loadBalancingScheme?: Maybe<Scalars['String']>;
+  localityLbPolicy?: Maybe<Scalars['String']>;
+  logConfigEnable?: Maybe<Scalars['Boolean']>;
+  logConfigSampleRate?: Maybe<Scalars['Float']>;
+  maxStreamDuration?: Maybe<Scalars['String']>;
+  network?: Maybe<Array<Maybe<GcpNetwork>>>;
+  outlierDetection?: Maybe<GcpCdnBackendServiceOutlierDetection>;
+  port?: Maybe<Scalars['Int']>;
+  portName?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  protocol?: Maybe<Scalars['String']>;
+  securityPolicy?: Maybe<Scalars['String']>;
+  securitySettingClientTlsPolicy?: Maybe<Scalars['String']>;
+  securitySettingSubjectAltNames?: Maybe<Array<Maybe<Scalars['String']>>>;
+  selfLink?: Maybe<Scalars['String']>;
+  sessionAffinity?: Maybe<Scalars['String']>;
+  timeoutSec?: Maybe<Scalars['Int']>;
+};
+
+export type GcpCdnBackendServiceBackend = {
+  balancingMode?: Maybe<Scalars['String']>;
+  capacityScaler?: Maybe<Scalars['Float']>;
+  description?: Maybe<Scalars['String']>;
+  failover?: Maybe<Scalars['Boolean']>;
+  group?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  maxConnections?: Maybe<Scalars['Int']>;
+  maxConnectionsPerEndpoint?: Maybe<Scalars['Int']>;
+  maxConnectionsPerInstance?: Maybe<Scalars['Int']>;
+  maxRate?: Maybe<Scalars['Int']>;
+  maxRatePerEndpoint?: Maybe<Scalars['Float']>;
+  maxRatePerInstance?: Maybe<Scalars['Float']>;
+  maxUtilization?: Maybe<Scalars['Float']>;
+};
+
+export type GcpCdnBackendServiceCdnPolicy = {
+  bypassCacheOnRequestHeaderNames?: Maybe<Array<Maybe<Scalars['String']>>>;
+  cacheKeyPolicyIncludeHost?: Maybe<Scalars['Boolean']>;
+  cacheKeyPolicyIncludeProtocol?: Maybe<Scalars['Boolean']>;
+  cacheKeyPolicyIncludeQueryString?: Maybe<Scalars['Boolean']>;
+  cacheKeyPolicyQueryStringBlacklist?: Maybe<Array<Maybe<Scalars['String']>>>;
+  cacheKeyPolicyQueryStringWhitelist?: Maybe<Array<Maybe<Scalars['String']>>>;
+  cacheMode?: Maybe<Scalars['String']>;
+  clientTtl?: Maybe<Scalars['Int']>;
+  defaultTtl?: Maybe<Scalars['Int']>;
+  maxTtl?: Maybe<Scalars['Int']>;
+  negativeCaching?: Maybe<Scalars['Boolean']>;
+  negativeCachingPolicy?: Maybe<Array<Maybe<GcpCdnBackendServiceCdnPolicyNegativeCachingPolicy>>>;
+  requestCoalescing?: Maybe<Scalars['Boolean']>;
+  serveWhileStale?: Maybe<Scalars['Int']>;
+  signedUrlCacheMaxAgeSec?: Maybe<Scalars['String']>;
+  signedUrlKeyNames?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type GcpCdnBackendServiceCdnPolicyNegativeCachingPolicy = {
+  code?: Maybe<Scalars['Int']>;
+  id: Scalars['String'];
+  ttl?: Maybe<Scalars['Int']>;
+};
+
+export type GcpCdnBackendServiceOutlierDetection = {
+  baseEjectionTime?: Maybe<Scalars['String']>;
+  consecutiveErrors?: Maybe<Scalars['Int']>;
+  consecutiveGatewayFailure?: Maybe<Scalars['Int']>;
+  enforcingConsecutiveErrors?: Maybe<Scalars['Int']>;
+  enforcingConsecutiveGatewayFailure?: Maybe<Scalars['Int']>;
+  enforcingSuccessRate?: Maybe<Scalars['Int']>;
+  interval?: Maybe<Scalars['String']>;
+  maxEjectionPercent?: Maybe<Scalars['Int']>;
+  successRateMinimumHosts?: Maybe<Scalars['Int']>;
+  successRateRequestVolume?: Maybe<Scalars['Int']>;
+  successRateStdevFactor?: Maybe<Scalars['Int']>;
+};
+
+export type GcpCdnUrlMap = GcpBaseResource & {
+  cdnBackendBucket?: Maybe<Array<Maybe<GcpCdnBackendBucket>>>;
+  cdnBackendService?: Maybe<Array<Maybe<GcpCdnBackendService>>>;
+  creationTimestamp?: Maybe<Scalars['String']>;
+  defaultRouteAction?: Maybe<GcpCdnUrlMapRouteAction>;
+  defaultService?: Maybe<Scalars['String']>;
+  defaultUrlRedirectHostRedirect?: Maybe<Scalars['String']>;
+  defaultUrlRedirectHttpsRedirect?: Maybe<Scalars['Boolean']>;
+  defaultUrlRedirectPathRedirect?: Maybe<Scalars['String']>;
+  defaultUrlRedirectPrefixRedirect?: Maybe<Scalars['String']>;
+  defaultUrlRedirectRedirectResponseCode?: Maybe<Scalars['String']>;
+  defaultUrlRedirectStripQuery?: Maybe<Scalars['Boolean']>;
+  description?: Maybe<Scalars['String']>;
+  fingerprint?: Maybe<Scalars['String']>;
+  headerActionRequestHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd>>>;
+  headerActionRequestHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
+  headerActionResponseHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd>>>;
+  headerActionResponseHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
+  hostRules?: Maybe<Array<Maybe<GcpCdnUrlMapHostRule>>>;
+  kind?: Maybe<Scalars['String']>;
+  pathMatchers?: Maybe<Array<Maybe<GcpCdnUrlMapPathMatcher>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  selfLink?: Maybe<Scalars['String']>;
+  tests?: Maybe<Array<Maybe<GcpCdnUrlMapTest>>>;
+};
+
+export type GcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd = {
+  headerName?: Maybe<Scalars['String']>;
+  headerValue?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  replace?: Maybe<Scalars['Boolean']>;
+};
+
+export type GcpCdnUrlMapHostRule = {
+  description?: Maybe<Scalars['String']>;
+  hosts?: Maybe<Array<Maybe<Scalars['String']>>>;
+  id: Scalars['String'];
+  pathMatcher?: Maybe<Scalars['String']>;
+};
+
+export type GcpCdnUrlMapPathMatcher = {
+  defaultRouteAction?: Maybe<GcpCdnUrlMapRouteAction>;
+  defaultService?: Maybe<Scalars['String']>;
+  defaultUrlRedirectHostRedirect?: Maybe<Scalars['String']>;
+  defaultUrlRedirectHttpsRedirect?: Maybe<Scalars['Boolean']>;
+  defaultUrlRedirectPathRedirect?: Maybe<Scalars['String']>;
+  defaultUrlRedirectPrefixRedirect?: Maybe<Scalars['String']>;
+  defaultUrlRedirectRedirectResponseCode?: Maybe<Scalars['String']>;
+  defaultUrlRedirectStripQuery?: Maybe<Scalars['Boolean']>;
+  description?: Maybe<Scalars['String']>;
+  headerActionRequestHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd>>>;
+  headerActionRequestHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
+  headerActionResponseHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd>>>;
+  headerActionResponseHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
+  id: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
+  pathRules?: Maybe<Array<Maybe<GcpCdnUrlMapPathMatcherPathRule>>>;
+  routeRules?: Maybe<Array<Maybe<GcpCdnUrlMapPathMatcherPathRule>>>;
+};
+
+export type GcpCdnUrlMapPathMatcherPathRule = {
+  id: Scalars['String'];
+  paths?: Maybe<Array<Maybe<Scalars['String']>>>;
+  routeAction?: Maybe<GcpCdnUrlMapRouteAction>;
+  service?: Maybe<Scalars['String']>;
+  urlRedirectHostRedirect?: Maybe<Scalars['String']>;
+  urlRedirectHttpsRedirect?: Maybe<Scalars['Boolean']>;
+  urlRedirectPathRedirect?: Maybe<Scalars['String']>;
+  urlRedirectPrefixRedirect?: Maybe<Scalars['String']>;
+  urlRedirectRedirectResponseCode?: Maybe<Scalars['String']>;
+  urlRedirectStripQuery?: Maybe<Scalars['Boolean']>;
+};
+
+export type GcpCdnUrlMapPathMatcherRouteRule = {
+  description?: Maybe<Scalars['String']>;
+  headerActionRequestHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd>>>;
+  headerActionRequestHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
+  headerActionResponseHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd>>>;
+  headerActionResponseHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
+  id: Scalars['String'];
+  matchRules?: Maybe<Array<Maybe<GcpCdnUrlMapPathMatcherRouteRuleMatchRule>>>;
+  priority?: Maybe<Scalars['Int']>;
+  routeAction?: Maybe<GcpCdnUrlMapRouteAction>;
+  service?: Maybe<Scalars['String']>;
+  urlRedirectHostRedirect?: Maybe<Scalars['String']>;
+  urlRedirectHttpsRedirect?: Maybe<Scalars['Boolean']>;
+  urlRedirectPathRedirect?: Maybe<Scalars['String']>;
+  urlRedirectPrefixRedirect?: Maybe<Scalars['String']>;
+  urlRedirectRedirectResponseCode?: Maybe<Scalars['String']>;
+  urlRedirectStripQuery?: Maybe<Scalars['Boolean']>;
+};
+
+export type GcpCdnUrlMapPathMatcherRouteRuleMatchRule = {
+  fullPathMatch?: Maybe<Scalars['String']>;
+  headerMatches?: Maybe<Array<Maybe<GcpCdnUrlMapPathMatcherRouteRuleMatchRuleHttpHeaderMatch>>>;
+  id: Scalars['String'];
+  ignoreCase?: Maybe<Scalars['Boolean']>;
+  metadataFilters?: Maybe<Array<Maybe<GcpCdnUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter>>>;
+  prefixMatch?: Maybe<Scalars['String']>;
+  queryParameterMatches?: Maybe<Array<Maybe<GcpCdnUrlMapPathMatcherRouteRuleMatchRuleHttpQueryParameterMatch>>>;
+  regexMatch?: Maybe<Scalars['String']>;
+};
+
+export type GcpCdnUrlMapPathMatcherRouteRuleMatchRuleHttpHeaderMatch = {
+  exactMatch?: Maybe<Scalars['String']>;
+  headerName?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  invertMatch?: Maybe<Scalars['Boolean']>;
+  prefixMatch?: Maybe<Scalars['String']>;
+  presentMatch?: Maybe<Scalars['Boolean']>;
+  rangeMatchEnd?: Maybe<Scalars['String']>;
+  rangeMatchStart?: Maybe<Scalars['String']>;
+  regexMatch?: Maybe<Scalars['String']>;
+  suffixMatch?: Maybe<Scalars['String']>;
+};
+
+export type GcpCdnUrlMapPathMatcherRouteRuleMatchRuleHttpQueryParameterMatch = {
+  exactMatch?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
+  presentMatch?: Maybe<Scalars['Boolean']>;
+  regexMatch?: Maybe<Scalars['String']>;
+};
+
+export type GcpCdnUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter = {
+  filterLabels?: Maybe<Array<Maybe<GcpCdnUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel>>>;
+  filterMatchCriteria?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+};
+
+export type GcpCdnUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel = {
+  id: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
+export type GcpCdnUrlMapRouteAction = {
+  corsPolicyAllowCredentials?: Maybe<Scalars['Boolean']>;
+  corsPolicyAllowHeaders?: Maybe<Array<Maybe<Scalars['String']>>>;
+  corsPolicyAllowMethods?: Maybe<Array<Maybe<Scalars['String']>>>;
+  corsPolicyAllowOriginRegexes?: Maybe<Array<Maybe<Scalars['String']>>>;
+  corsPolicyAllowOrigins?: Maybe<Array<Maybe<Scalars['String']>>>;
+  corsPolicyDisabled?: Maybe<Scalars['Boolean']>;
+  corsPolicyExposeHeaders?: Maybe<Array<Maybe<Scalars['String']>>>;
+  corsPolicyMaxAge?: Maybe<Scalars['Int']>;
+  faultInjectionPolicyAbortHttpStatus?: Maybe<Scalars['Int']>;
+  faultInjectionPolicyAbortPercentage?: Maybe<Scalars['Float']>;
+  faultInjectionPolicyDelayFixedDelay?: Maybe<Scalars['String']>;
+  faultInjectionPolicyDelayPercentage?: Maybe<Scalars['Float']>;
+  maxStreamDuration?: Maybe<Scalars['String']>;
+  requestMirrorPolicyBackendService?: Maybe<Scalars['String']>;
+  retryPolicyNumRetries?: Maybe<Scalars['Int']>;
+  retryPolicyPerTryTimeout?: Maybe<Scalars['String']>;
+  retryPolicyRetryConditions?: Maybe<Array<Maybe<Scalars['String']>>>;
+  timeout?: Maybe<Scalars['String']>;
+  urlRewriteHostRewrite?: Maybe<Scalars['String']>;
+  urlRewritePathPrefixRewrite?: Maybe<Scalars['String']>;
+  weightedBackendServices?: Maybe<Array<Maybe<GcpCdnUrlMapRouteActionWeightedBackendService>>>;
+};
+
+export type GcpCdnUrlMapRouteActionWeightedBackendService = {
+  backendService?: Maybe<Scalars['String']>;
+  headerActionRequestHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd>>>;
+  headerActionRequestHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
+  headerActionResponseHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd>>>;
+  headerActionResponseHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
+  id: Scalars['String'];
+  weight?: Maybe<Scalars['Int']>;
+};
+
+export type GcpCdnUrlMapTest = {
+  description?: Maybe<Scalars['String']>;
+  expectedOutputUrl?: Maybe<Scalars['String']>;
+  expectedRedirectResponseCode?: Maybe<Scalars['Int']>;
+  headers?: Maybe<Array<Maybe<GcpCdnUrlMapTestHeader>>>;
+  host?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  path?: Maybe<Scalars['String']>;
+  service?: Maybe<Scalars['String']>;
+};
+
+export type GcpCdnUrlMapTestHeader = {
+  id: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
 export type GcpCloudFunction = GcpBaseResource & {
   availableMemoryMb?: Maybe<Scalars['Float']>;
   buildId?: Maybe<Scalars['String']>;
@@ -1694,6 +2017,7 @@ export type GcpMetadata = {
 
 export type GcpNetwork = GcpBaseResource & {
   autoCreateSubnetworks?: Maybe<Scalars['Boolean']>;
+  cdnBackendService?: Maybe<Array<Maybe<GcpCdnBackendService>>>;
   cloudRouters?: Maybe<Array<Maybe<GcpCloudRouter>>>;
   creationTimestamp?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
@@ -1754,6 +2078,9 @@ export type GcpProject = {
   bigQueryDataset?: Maybe<Array<Maybe<GcpBigQueryDataset>>>;
   bigQueryReservation?: Maybe<Array<Maybe<GcpBigQueryReservation>>>;
   bigQueryReservationCapacityCommitment?: Maybe<Array<Maybe<GcpBigQueryReservationCapacityCommitment>>>;
+  cdnBackendBucket?: Maybe<Array<Maybe<GcpCdnBackendBucket>>>;
+  cdnBackendService?: Maybe<Array<Maybe<GcpCdnBackendService>>>;
+  cdnUrlMap?: Maybe<Array<Maybe<GcpCdnUrlMap>>>;
   cloudFunction?: Maybe<Array<Maybe<GcpCloudFunction>>>;
   cloudRouters?: Maybe<Array<Maybe<GcpCloudRouter>>>;
   computeProject?: Maybe<Array<Maybe<GcpComputeProject>>>;
