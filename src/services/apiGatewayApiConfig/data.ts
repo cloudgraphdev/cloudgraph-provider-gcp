@@ -49,20 +49,22 @@ export default async ({
 
   try {
     for await (const api of apis) {
-      const apiIdSessions = api.id.split('/')
-      const apiName = apiIdSessions[apiIdSessions.length - 1]
-      const apiConfigIter = apiGatewayClient.listApiConfigsAsync({
-        parent: `projects/${projectId}/locations/${GLOBAL_REGION}/apis/${apiName}`,
-      })
-
-      for await (const {name, labels, ...apiConfig} of apiConfigIter) {
-        routerData.push({
-          id: name,
-          projectId,
-          region: GLOBAL_REGION,
-          Labels: labels,
-          ...apiConfig,
+      const apiIdSessions = api?.id?.split('/') || []
+      if (!isEmpty(apiIdSessions)) {
+        const apiName = apiIdSessions[apiIdSessions.length - 1]
+        const apiConfigIter = apiGatewayClient.listApiConfigsAsync({
+          parent: `projects/${projectId}/locations/${GLOBAL_REGION}/apis/${apiName}`,
         })
+
+        for await (const {name, labels, ...apiConfig} of apiConfigIter) {
+          routerData.push({
+            id: name,
+            projectId,
+            region: GLOBAL_REGION,
+            Labels: labels,
+            ...apiConfig,
+          })
+        }
       }
     }
   } catch (error) {
