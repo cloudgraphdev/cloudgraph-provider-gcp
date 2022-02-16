@@ -12,6 +12,9 @@ type gcpProject @key(fields: "id") {
   labels: [gcpRawLabel]
   alertPolicy: [gcpAlertPolicy] @hasInverse(field: project)
   apiKeys: [gcpApiKey] @hasInverse(field: project)
+  cdnBackendBucket: [gcpCdnBackendBucket] @hasInverse(field: project)
+  cdnBackendService: [gcpCdnBackendService] @hasInverse(field: project)
+  cdnUrlMap: [gcpCdnUrlMap] @hasInverse(field: project)
   cloudFunction: [gcpCloudFunction] @hasInverse(field: project)
   computeProject: [gcpComputeProject] @hasInverse(field: project)
   dnsManagedZone: [gcpDnsManagedZone] @hasInverse(field: project)

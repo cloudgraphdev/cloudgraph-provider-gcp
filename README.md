@@ -62,48 +62,51 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 
 # Supported Services
 
-| Service                               | Relations                                                                        |
-| ------------------------------------- | -------------------------------------------------------------------------------- |
-| alertPolicy                           | project                                                                          |
+| Service                               | Relations                                                                                           |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| alertPolicy                           | project                                                                                             |
 | apiGatewayGateways                    | project, apiGatewayApis, apiGatewayApiConfigs                                    |
 | apiGatewayApis                        | project, apiGatewayGateways                                                      |
 | apiGatewayApiConfigs                  | project, apiGatewayGateways                                                      |
-| apiKeys                               | project                                                                          |
-| assets                                | project                                                                          |
-| bigQueryDataset                       | project                                                                          |
-| bigQueryConnection                    | project                                                                          |
-| bigQueryDataTransfer                  | bigQueryDataTransferRun, project                                                 |
-| bigQueryDataTransferRun               | project                                                                          |
-| bigQueryReservation                   | project                                                                          |
-| bigQueryReservationCapacityCommitment | project                                                                          |
-| cloudFunction                         | project, vpc                                                                     |
-| cloudRouter                           | project                                                                          |
-| computeProject                        | project                                                                          |
-| dataprocClusters                      | project, dataprocJobs, dataprocWorkflowTemplate                                  |
-| dataprocAutoscalingPolicies           | project                                                                          |
-| dataprocJobs                          | project, dataprocClusters                                                        |
-| dataprocWorkflowTemplate              | project, dataprocClusters                                                        |
-| kmsCryptoKeys                         | iamPolicy, kmsKeyRing, project                                                   |
-| dnsManagedZone                        | project                                                                          |
-| dnsPolicy                             | project, network                                                                 |
-| firewall                              | network, project                                                                 |
-| folder                                | iamPolicy, organization, project                                                 |
-| kmsKeyRing                            | kmsCryptoKeys, project                                                           |
-| iamPolicy                             | folder, kmsCryptoKeys, project                                                   |
-| logBucket                             | logView, project                                                                 |
-| logMetric                             | project                                                                          |
-| logSink                               | project                                                                          |
-| logView                               | logBucket, project                                                               |
-| network                               | cloudRouter, dnsPolicy, firewall, project, sqlInstances, subnet, vmInstance, vpc |
-| organization                          | folder, project                                                                  |
-| project                               | ALL SERVICES                                                                     |
-| secretManager                         | project                                                                          |
-| serviceAccount                        | project                                                                          |
-| sqlInstances                          | project, network                                                                 |
-| sslPolicies                           | project                                                                          |
-| storageBucket                         | project                                                                          |
-| subnet                                | project, network, vmInstance, vpc                                                |
-| targetSslProxies                      | project                                                                          |
-| targetHttpsProxies                    | project                                                                          |
-| vmInstance                            | project, network, subnet                                                         |
-| vpcConnectors                         | cloudFunction, project, network, subnet                                          |
+| apiKeys                               | project                                                                                             |
+| assets                                | project                                                                                             |
+| bigQueryDataset                       | project                                                                                             |
+| bigQueryConnection                    | project                                                                                             |
+| bigQueryDataTransfer                  | bigQueryDataTransferRun, project                                                                    |
+| bigQueryDataTransferRun               | project                                                                                             |
+| bigQueryReservation                   | project                                                                                             |
+| bigQueryReservationCapacityCommitment | project                                                                                             |
+| cdnBackendBucket                      | project, cdnUrlMap                                                                                  |
+| cdnBackendService                     | project, cdnUrlMap, network                                                                         |
+| cdnUrlMap                             | project, cdnBackendBucket, cdnBackendService                                                        |
+| cloudFunction                         | project, vpc                                                                                        |
+| cloudRouter                           | project                                                                                             |
+| computeProject                        | project                                                                                             |
+| dataprocClusters                      | project, dataprocJobs, dataprocWorkflowTemplate                                                     |
+| dataprocAutoscalingPolicies           | project                                                                                             |
+| dataprocJobs                          | project, dataprocClusters                                                                           |
+| dataprocWorkflowTemplate              | project, dataprocClusters                                                                           |
+| kmsCryptoKeys                         | iamPolicy, kmsKeyRing, project                                                                      |
+| dnsManagedZone                        | project                                                                                             |
+| dnsPolicy                             | project, network                                                                                    |
+| firewall                              | network, project                                                                                    |
+| folder                                | iamPolicy, organization, project                                                                    |
+| kmsKeyRing                            | kmsCryptoKeys, project                                                                              |
+| iamPolicy                             | folder, kmsCryptoKeys, project                                                                      |
+| logBucket                             | logView, project                                                                                    |
+| logMetric                             | project                                                                                             |
+| logSink                               | project                                                                                             |
+| logView                               | logBucket, project                                                                                  |
+| network                               | cloudRouter, dnsPolicy, firewall, project, sqlInstances, subnet, vmInstance, vpc, cdnBackendService |
+| organization                          | folder, project                                                                                     |
+| project                               | ALL SERVICES                                                                                        |
+| secretManager                         | project                                                                                             |
+| serviceAccount                        | project                                                                                             |
+| sqlInstances                          | project, network                                                                                    |
+| sslPolicies                           | project                                                                                             |
+| storageBucket                         | project                                                                                             |
+| subnet                                | project, network, vmInstance, vpc                                                                   |
+| targetSslProxies                      | project                                                                                             |
+| targetHttpsProxies                    | project                                                                                             |
+| vmInstance                            | project, network, subnet                                                                            |
+| vpcConnectors                         | cloudFunction, project, network, subnet                                                             |
