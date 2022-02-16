@@ -1718,6 +1718,17 @@ export type GcpFileContentBuffer = {
   id: Scalars['String'];
 };
 
+export type GcpFirestoreDatabase = GcpBaseResource & {
+  appEngineIntegrationMode?: Maybe<Scalars['String']>;
+  concurrencyMode?: Maybe<Scalars['String']>;
+  createTime?: Maybe<Scalars['String']>;
+  keyPrefix?: Maybe<Scalars['String']>;
+  locationId?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  type?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+};
+
 export type GcpFirewall = {
   allowed?: Maybe<Array<Maybe<GcpFirewallAccess>>>;
   creationTimestamp?: Maybe<Scalars['String']>;
@@ -2094,6 +2105,7 @@ export type GcpProject = {
   dnsManagedZone?: Maybe<Array<Maybe<GcpDnsManagedZone>>>;
   dnsPolicy?: Maybe<Array<Maybe<GcpDnsPolicy>>>;
   etag?: Maybe<Scalars['String']>;
+  firestoreDatabases?: Maybe<Array<Maybe<GcpFirestoreDatabase>>>;
   firewall?: Maybe<Array<Maybe<GcpFirewall>>>;
   folder?: Maybe<Array<Maybe<GcpFolder>>>;
   iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
