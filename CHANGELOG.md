@@ -1,3 +1,11 @@
+# [0.30.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.29.0...0.30.0) (2022-02-16)
+
+
+### Features
+
+* **firestore:** add firestore databasecd ([e692909](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/e69290991881b91f57165af4d418f5251eae6bb4))
+* **firestore:** add project connection ([6b93c39](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/6b93c39186f7220453d6781117ffcb3cfde3de45))
+
 # [0.29.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.28.2...0.29.0) (2022-02-11)
 
 
