@@ -47,6 +47,6 @@ export default {
   [services.dataprocAutoscalingPolicy]: 'gcpDataprocAutoscalingPolicy',
   [services.dataprocJob]: 'gcpDataprocJob',
   [services.dataprocWorkflowTemplate]: 'gcpDataprocWorkflowTemplate',
-  [services.firestore]: 'gcpFirestoreDatabase',
+  [services.firestoreDatabase]: 'gcpFirestoreDatabase',
   tag: 'gcpTag',
 }

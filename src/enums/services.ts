@@ -46,7 +46,7 @@ export default {
   bigQueryDataTransferRun: 'bigQueryDataTransferRun',
   // databaseMigration: 'database-migration',
   // datastore: 'datastore',
-  firestore: 'firestores',
+  firestoreDatabase: 'firestoreDatabases',
   cloudRouter: 'cloudRouters',
   firewall: 'firewall',
   // spanner: 'spanner',

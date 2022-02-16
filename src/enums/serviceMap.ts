@@ -43,7 +43,7 @@ import GcpDataprocCluster from '../services/dataprocCluster'
 import GcpDataprocAutoscalingPolicy from '../services/dataprocAutoscalingPolicy'
 import GcpDataprocJob from '../services/dataprocJob'
 import GcpDataprocWorkflowTemplate from '../services/dataprocWorkflowTemplate'
-import GcpFirestore from '../services/firestore'
+import GcpFirestoreDatabase from '../services/firestore'
 
 /**
  * serviceMap is an object that contains all currently supported services
@@ -93,6 +93,6 @@ export default {
   [services.dataprocAutoscalingPolicy]: GcpDataprocAutoscalingPolicy,
   [services.dataprocJob]: GcpDataprocJob,
   [services.dataprocWorkflowTemplate]: GcpDataprocWorkflowTemplate,
-  [services.firestore]: GcpFirestore,
+  [services.firestoreDatabase]: GcpFirestoreDatabase,
   tag: GcpTag,
 }

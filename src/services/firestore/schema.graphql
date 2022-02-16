@@ -12,4 +12,5 @@ type gcpFirestoreDatabase implements gcpBaseResource
     concurrencyMode: String @search(by: [hash, regexp])
     appEngineIntegrationMode: String @search(by: [hash, regexp])
     keyPrefix: String @search(by: [hash, regexp])
+    project: [gcpProject] @hasInverse(field: firestoreDatabases)
 }
