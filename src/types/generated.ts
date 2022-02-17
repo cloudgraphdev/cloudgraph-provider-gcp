@@ -2136,7 +2136,7 @@ export type GcpProject = {
   organization?: Maybe<Array<Maybe<GcpOrganization>>>;
   parent?: Maybe<Scalars['String']>;
   projectId?: Maybe<Scalars['String']>;
-  secretManager?: Maybe<Array<Maybe<GcpSecret>>>;
+  secrets?: Maybe<Array<Maybe<GcpSecret>>>;
   serviceAccounts?: Maybe<Array<Maybe<GcpServiceAccount>>>;
   sqlInstances?: Maybe<Array<Maybe<GcpSqlInstance>>>;
   sslPolicies?: Maybe<Array<Maybe<GcpSslPolicy>>>;
