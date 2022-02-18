@@ -12,8 +12,8 @@ const { logger } = CloudGraph
 const serviceName = 'Project'
 const apiEndpoint = initTestEndpoint(serviceName)
 
-export interface RawGcpProject
-  extends google.cloud.resourcemanager.v3.IProject {
+export interface RawGcpProject extends google.cloud.resourcemanager.v3.IProject {
+  id: string
   region: string
 }
 
@@ -31,6 +31,7 @@ export const listProjectsData = async (
       for await (const response of iterable) {
         if (response) {
           projectList.push({
+            id: response?.name,
             ...response,
             region: GLOBAL_REGION,
           })

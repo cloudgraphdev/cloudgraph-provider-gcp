@@ -4,7 +4,7 @@ import getConnections from './connections';
 import getData from './data'
 import mutation from './mutation';
 
-export default class GcpTag extends BaseService implements Service {
+export default class GcpLabel extends BaseService implements Service {
   format = ({service}: {service: any}): any => service
 
   getConnections = getConnections.bind(this)

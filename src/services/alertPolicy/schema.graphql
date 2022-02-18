@@ -1,7 +1,7 @@
 type gcpAlertPolicy implements gcpBaseResource @key(fields: "id") {
   displayName: String @search(by: [hash, regexp])
   documentation: gcpAlertPolicyDocumentation
-  userLabels: [gcpRawLabel]
+  labels: [gcpRawLabel]
   conditions: [gcpAlertPolicyCondition]
   combiner: String @search(by: [hash, regexp])
   enabled: gcpBoolValue

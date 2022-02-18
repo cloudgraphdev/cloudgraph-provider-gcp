@@ -30,10 +30,10 @@ export type GcpAlertPolicy = GcpBaseResource & {
   displayName?: Maybe<Scalars['String']>;
   documentation?: Maybe<GcpAlertPolicyDocumentation>;
   enabled?: Maybe<GcpBoolValue>;
+  labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
   mutationRecord?: Maybe<GcpAlertPolicyMutationRecord>;
   notificationChannels?: Maybe<Array<Maybe<Scalars['String']>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
-  userLabels?: Maybe<Array<Maybe<GcpRawLabel>>>;
   validity?: Maybe<GcpRpcStatus>;
 };
 
@@ -1897,6 +1897,20 @@ export type GcpKmsKeyRing = GcpBaseResource & {
   project?: Maybe<Array<Maybe<GcpProject>>>;
 };
 
+export type GcpLabel = GcpBaseResource & {
+  alertPolicy?: Maybe<Array<Maybe<GcpAlertPolicy>>>;
+  cloudFunction?: Maybe<Array<Maybe<GcpCloudFunction>>>;
+  dnsManagedZone?: Maybe<Array<Maybe<GcpDnsManagedZone>>>;
+  id: Scalars['String'];
+  key: Scalars['String'];
+  kmsCryptoKey?: Maybe<Array<Maybe<GcpKmsCryptoKey>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  secrets?: Maybe<Array<Maybe<GcpSecret>>>;
+  storageBucket?: Maybe<Array<Maybe<GcpStorageBucket>>>;
+  value: Scalars['String'];
+  vmInstance?: Maybe<Array<Maybe<GcpVmInstance>>>;
+};
+
 export type GcpLabelDescriptor = {
   description?: Maybe<Scalars['String']>;
   id: Scalars['String'];
@@ -2122,7 +2136,7 @@ export type GcpProject = {
   organization?: Maybe<Array<Maybe<GcpOrganization>>>;
   parent?: Maybe<Scalars['String']>;
   projectId?: Maybe<Scalars['String']>;
-  secretManager?: Maybe<Array<Maybe<GcpSecret>>>;
+  secrets?: Maybe<Array<Maybe<GcpSecret>>>;
   serviceAccounts?: Maybe<Array<Maybe<GcpServiceAccount>>>;
   sqlInstances?: Maybe<Array<Maybe<GcpSqlInstance>>>;
   sslPolicies?: Maybe<Array<Maybe<GcpSslPolicy>>>;
@@ -2557,11 +2571,14 @@ export type GcpSubnetSecondaryRange = {
   rangeName?: Maybe<Scalars['String']>;
 };
 
-export type GcpTag = {
+export type GcpTag = GcpBaseResource & {
+  folder?: Maybe<Array<Maybe<GcpFolder>>>;
   id: Scalars['String'];
   key: Scalars['String'];
-  kms?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;
+  organization?: Maybe<Array<Maybe<GcpOrganization>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
   value: Scalars['String'];
+  vmInstance?: Maybe<Array<Maybe<GcpVmInstance>>>;
 };
 
 export type GcpTargetHttpsProxy = GcpBaseResource & {

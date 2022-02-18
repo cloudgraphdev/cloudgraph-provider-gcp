@@ -39,7 +39,7 @@ type gcpProject @key(fields: "id") {
   firewall: [gcpFirewall] @hasInverse(field: project)
   folder: [gcpFolder] @hasInverse(field: project)
   organization: [gcpOrganization] @hasInverse(field: project)
-  secretManager: [gcpSecret] @hasInverse(field: project)
+  secrets: [gcpSecret] @hasInverse(field: project)
   sslPolicies: [gcpSslPolicy] @hasInverse(field: project)
   network: [gcpNetwork] @hasInverse(field: project)
   subnet: [gcpSubnet] @hasInverse(field: project)
