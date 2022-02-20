@@ -1,0 +1,16 @@
+type gcpFirestoreDatabase implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    createTime: String @search(by: [hash, regexp])
+    updateTime: String @search(by: [hash, regexp])
+    locationId: String @search(by: [hash, regexp])
+    type: String @search(by: [hash, regexp])
+    concurrencyMode: String @search(by: [hash, regexp])
+    appEngineIntegrationMode: String @search(by: [hash, regexp])
+    keyPrefix: String @search(by: [hash, regexp])
+    project: [gcpProject] @hasInverse(field: firestoreDatabases)
+}

@@ -87,6 +87,7 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 | kmsCryptoKeys                         | aiPlatformNotebooks, iamPolicy, kmsKeyRing, project                                                                      |
 | dnsManagedZone                        | project                                                                                                                  |
 | dnsPolicy                             | project, network                                                                                                         |
+| firestores                            | project                                                                                                                  |
 | firewall                              | network, project                                                                                                         |
 | folder                                | iamPolicy, organization, project                                                                                         |
 | kmsKeyRing                            | kmsCryptoKeys, project                                                                                                   |

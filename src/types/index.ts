@@ -32,6 +32,8 @@ export interface rawDataInterface {
   projectId?: string
   region?: string
   data: any
+  labels?: LabelMap
+  tags?: TagMap
   network?: string[]
   subnet?: string[]
   vpcConnector?: string[]

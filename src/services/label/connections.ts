@@ -28,7 +28,7 @@ export default ({
     for (const region of regions) {
       if (instances?.data?.[region]) {
         const filtered = instances.data[region].filter(
-          ({ tags }: rawDataInterface) => !!tags
+          ({ labels }: rawDataInterface) => !!labels
         )
 
         for (const instance of filtered) {
@@ -45,8 +45,8 @@ export default ({
     }
   }
   
-  const tagResult = {
+  const labelResult = {
     [id]: connections,
   }
-  return tagResult
+  return labelResult
 }

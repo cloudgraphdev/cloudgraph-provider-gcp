@@ -48,5 +48,6 @@ export default {
   [services.dataprocJob]: 'gcpDataprocJob',
   [services.dataprocWorkflowTemplate]: 'gcpDataprocWorkflowTemplate',
   [services.aiPlatformNotebook]: 'gcpAiPlatformNotebook',
+  [services.firestoreDatabase]: 'gcpFirestoreDatabase',
   tag: 'gcpTag',
 }

@@ -15,7 +15,6 @@ import GcpCdnUrlMap from '../services/cdnUrlMap'
 import GcpDnsManagedZone from '../services/dnsManagedZone'
 import GcpVpc from '../services/vpc'
 import GcpIam from '../services/iam'
-import GcpTag from '../services/tag'
 import GcpLogBucket from '../services/logBucket'
 import GcpLogSink from '../services/logSink'
 import GcpLogView from '../services/logView'
@@ -44,6 +43,9 @@ import GcpDataprocAutoscalingPolicy from '../services/dataprocAutoscalingPolicy'
 import GcpDataprocJob from '../services/dataprocJob'
 import GcpDataprocWorkflowTemplate from '../services/dataprocWorkflowTemplate'
 import GcpAiPlatformNotebook from '../services/aiPlatformNotebook'
+import GcpFirestoreDatabase from '../services/firestore'
+import GcpLabel from '../services/label'
+import GcpTag from '../services/tag'
 
 /**
  * serviceMap is an object that contains all currently supported services
@@ -94,5 +96,7 @@ export default {
   [services.dataprocJob]: GcpDataprocJob,
   [services.dataprocWorkflowTemplate]: GcpDataprocWorkflowTemplate,
   [services.aiPlatformNotebook]: GcpAiPlatformNotebook,
+  [services.firestoreDatabase]: GcpFirestoreDatabase,
+  label: GcpLabel,
   tag: GcpTag,
 }

@@ -7,7 +7,7 @@ type gcpSecret implements gcpBaseResource @key(fields: "id") {
   ttl: gcpDuration
   etag: String @search(by: [hash, regexp])
   rotation: gcpSecretReplicationStatusRotation
-  project: [gcpProject] @hasInverse(field: secretManager)
+  project: [gcpProject] @hasInverse(field: secrets)
 }
 
 type gcpSecretReplication
