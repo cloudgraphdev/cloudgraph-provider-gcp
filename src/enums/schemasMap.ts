@@ -50,5 +50,6 @@ export default {
   [services.apiGatewayGateway]: 'gcpApiGatewayGateway',
   [services.apiGatewayApi]: 'gcpApiGatewayApi',
   [services.apiGatewayApiConfig]: 'gcpApiGatewayApiConfig',
+  [services.firestoreDatabase]: 'gcpFirestoreDatabase',
   tag: 'gcpTag',
 }

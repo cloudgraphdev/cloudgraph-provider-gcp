@@ -4,23 +4,25 @@ import isEmpty from 'lodash/isEmpty'
 
 export const listData = async ({
     service,
+    accessToken,
     apiUri,
     dataFieldName,
     method = 'GET',
   }: {
-  service: Service,
+  service?: Service,
+  accessToken?: string | null | undefined,
   apiUri: string,
   dataFieldName?: string,
   method?: string,
 }): Promise<any[]> => {
-  const accessToken = await service.authClient.getAccessToken()
+  const accToken = accessToken || await service.authClient.getAccessToken()
 
   const fullData = []
   let resp = await fetch(apiUri, {
     method,
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${accessToken}`,
+      'Authorization': `Bearer ${accToken}`,
     },
   })
   let respJson = await resp.json()

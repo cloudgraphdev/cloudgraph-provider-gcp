@@ -15,7 +15,6 @@ import GcpCdnUrlMap from '../services/cdnUrlMap'
 import GcpDnsManagedZone from '../services/dnsManagedZone'
 import GcpVpc from '../services/vpc'
 import GcpIam from '../services/iam'
-import GcpTag from '../services/tag'
 import GcpLogBucket from '../services/logBucket'
 import GcpLogSink from '../services/logSink'
 import GcpLogView from '../services/logView'
@@ -46,6 +45,9 @@ import GcpDataprocWorkflowTemplate from '../services/dataprocWorkflowTemplate'
 import GcpApiGatewayGateway from '../services/apiGatewayGateway'
 import GcpApiGatewayApi from '../services/apiGatewayApi'
 import GcpApiGatewayApiConfig from '../services/apiGatewayApiConfig'
+import GcpFirestoreDatabase from '../services/firestore'
+import GcpLabel from '../services/label'
+import GcpTag from '../services/tag'
 
 /**
  * serviceMap is an object that contains all currently supported services
@@ -98,5 +100,7 @@ export default {
   [services.apiGatewayGateway]: GcpApiGatewayGateway,
   [services.apiGatewayApi]: GcpApiGatewayApi,
   [services.apiGatewayApiConfig]: GcpApiGatewayApiConfig,
+  [services.firestoreDatabase]: GcpFirestoreDatabase,
+  label: GcpLabel,
   tag: GcpTag,
 }

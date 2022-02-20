@@ -1,22 +1,15 @@
-type gcpTag implements gcpBaseResource @key(fields: "id") {
+type gcpLabel implements gcpBaseResource @key(fields: "id") {
   id: String! @id @search(by: [hash])
   key: String! @search(by: [hash, regexp])
   value: String! @search(by: [hash, regexp])
-  folder: [gcpFolder]
-  organization: [gcpOrganization]
+  alertPolicy: [gcpAlertPolicy]
+  cloudFunction: [gcpCloudFunction]
+  dnsManagedZone: [gcpDnsManagedZone]
+  kmsCryptoKey: [gcpKmsCryptoKey]
   project: [gcpProject]
+  secrets: [gcpSecret]
+  storageBucket: [gcpStorageBucket]
   vmInstance: [gcpVmInstance]
-}
-
-type gcpRawTag
-  @generate(
-    query: { get: false, query: false, aggregate: false }
-    mutation: { add: false, delete: false }
-    subscription: false
-  ) {
-  id: String! @id
-  key: String
-  value: String
 }
 
 type gcpRawLabel

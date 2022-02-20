@@ -1,6 +1,6 @@
 {
   "name": "@cloudgraph/cg-provider-gcp",
-  "version": "0.29.0",
+  "version": "0.31.0",
   "description": "CloudGraph provider plugin for GCP used to fetch GCP cloud data.",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
@@ -41,7 +41,9 @@
     "@google-cloud/bigquery-reservation": "^1.4.0",
     "@google-cloud/compute": "^3.0.0",
     "@google-cloud/dataproc": "^3.2.0",
+    "@google-cloud/datastore": "^6.6.2",
     "@google-cloud/dns": "^2.2.3",
+    "@google-cloud/firestore": "^5.0.2",
     "@google-cloud/functions": "^1.2.0",
     "@google-cloud/kms": "^2.10.0",
     "@google-cloud/logging": "^9.6.4",

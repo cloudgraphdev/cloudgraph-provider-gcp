@@ -1,3 +1,23 @@
+# [0.31.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.30.0...0.31.0) (2022-02-18)
+
+
+### Bug Fixes
+
+* **label:** pluralize secretManager ([853d37b](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/853d37bfd2854070998ca60d6e68d9e0721f7320))
+
+
+### Features
+
+* **label/tag:** add labels/tags as services ([d07fdd5](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/d07fdd58530c2efb48ac55914179c8f84f64a182))
+
+# [0.30.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.29.0...0.30.0) (2022-02-16)
+
+
+### Features
+
+* **firestore:** add firestore databasecd ([e692909](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/e69290991881b91f57165af4d418f5251eae6bb4))
+* **firestore:** add project connection ([6b93c39](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/6b93c39186f7220453d6781117ffcb3cfde3de45))
+
 # [0.29.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.28.2...0.29.0) (2022-02-11)
 
 

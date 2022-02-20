@@ -35,7 +35,7 @@ export default ({
     region,
     displayName,
     documentation,
-    userLabels: formatLabelsFromMap(userLabels),
+    labels: formatLabelsFromMap(userLabels),
     conditions: conditions?.map(condition => ({
       id: cuid(),
       name: condition?.name,
