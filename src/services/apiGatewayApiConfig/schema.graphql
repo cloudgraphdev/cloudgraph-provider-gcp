@@ -1,0 +1,31 @@
+type gcpApiGatewayConfigGrpcServiceDefinition
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    id: String! @id @search(by: [hash])
+    fileDescriptorSet: String @search(by: [hash, regexp])
+    source: [String] @search(by: [hash])
+  }
+
+type gcpApiGatewayApiConfig implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    labels: [gcpRawLabel]
+    createTime: String @search(by: [hash, regexp])
+    updateTime: String @search(by: [hash, regexp])
+    gatewayServiceAccount: String @search(by: [hash, regexp])
+    serviceConfigId: String @search(by: [hash, regexp])
+    state: String @search(by: [hash, regexp])
+    openapiDocuments: [String] @search(by: [hash])
+    grpcServices: [gcpApiGatewayConfigGrpcServiceDefinition]
+    managedServiceConfigs: [String] @search(by: [hash])
+    apiGatewayGateways: [gcpApiGatewayGateway] @hasInverse(field: apiGatewayApiConfigs)
+    project: [gcpProject] @hasInverse(field: apiGatewayApiConfigs)
+  }

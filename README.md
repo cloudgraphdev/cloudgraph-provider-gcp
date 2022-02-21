@@ -65,6 +65,9 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 | Service                               | Relations                                                                                           |
 | ------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | alertPolicy                           | project                                                                                             |
+| apiGatewayGateways                    | project, apiGatewayApis, apiGatewayApiConfigs                                                       |
+| apiGatewayApis                        | project, apiGatewayGateways                                                                         |
+| apiGatewayApiConfigs                  | project, apiGatewayGateways                                                                         |
 | apiKeys                               | project                                                                                             |
 | assets                                | project                                                                                             |
 | bigQueryDataset                       | project                                                                                             |

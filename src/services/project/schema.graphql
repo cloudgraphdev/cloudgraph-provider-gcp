@@ -56,5 +56,8 @@ type gcpProject @key(fields: "id") {
   dataprocJobs: [gcpDataprocJob] @hasInverse(field: project)
   dataprocWorkflowTemplates: [gcpDataprocWorkflowTemplate]
     @hasInverse(field: project)
+  apiGatewayGateways: [gcpApiGatewayGateway] @hasInverse(field: project)
+  apiGatewayApis: [gcpApiGatewayApi] @hasInverse(field: project)
+  apiGatewayApiConfigs: [gcpApiGatewayApiConfig] @hasInverse(field: project)
   firestoreDatabases: [gcpFirestoreDatabase] @hasInverse(field: project)
 }

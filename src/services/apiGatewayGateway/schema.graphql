@@ -1,0 +1,15 @@
+type gcpApiGatewayGateway implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    labels: [gcpRawLabel]
+    createTime: String @search(by: [hash, regexp])
+    updateTime: String @search(by: [hash, regexp])
+    state: String @search(by: [hash, regexp])
+    apiGatewayApis: [gcpApiGatewayApi] @hasInverse(field: apiGatewayGateways)
+    apiGatewayApiConfigs: [gcpApiGatewayApiConfig] @hasInverse(field: apiGatewayGateways)
+    project: [gcpProject] @hasInverse(field: apiGatewayGateways)
+  }
