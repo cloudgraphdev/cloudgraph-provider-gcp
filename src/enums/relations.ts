@@ -3,7 +3,7 @@ import services from './services'
 /**
  * Set relations between services to data sharing
  * The key of the object represents the parent or base service,
- * it might contain a array of dependant or childs that must be executed after the parent
+ * it might contain an array of dependant or children that must be executed after the parent
  */
 export default {
   [services.storageBucket]: [services.iamPolicy],
@@ -14,4 +14,5 @@ export default {
   [services.kmsKeyRing]: [services.kmsCryptoKeys],
   [services.kmsCryptoKeys]: [services.iamPolicy],
   [services.bigQueryDataTransfer]: [services.bigQueryDataTransferRun],
+  [services.apiGatewayApi]: [services.apiGatewayApiConfig],
 }

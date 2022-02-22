@@ -1,3 +1,11 @@
+# [0.32.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.31.0...0.32.0) (2022-02-21)
+
+
+### Features
+
+* **apigateway:** add api gateway ([0f3a5a9](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/0f3a5a907adfd1c434bd8b168a2f1c634d52f469))
+* **apigateway:** update README ([05ff0a5](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/05ff0a55f4dbc9e980892a8e224a19ed4ae2ce01))
+
 # [0.31.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.30.0...0.31.0) (2022-02-18)
 
 

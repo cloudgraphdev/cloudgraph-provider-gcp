@@ -147,6 +147,45 @@ export type GcpAny = {
   value?: Maybe<Scalars['String']>;
 };
 
+export type GcpApiGatewayApi = GcpBaseResource & {
+  apiGatewayGateways?: Maybe<Array<Maybe<GcpApiGatewayGateway>>>;
+  createTime?: Maybe<Scalars['String']>;
+  managedService?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  state?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+};
+
+export type GcpApiGatewayApiConfig = GcpBaseResource & {
+  apiGatewayGateways?: Maybe<Array<Maybe<GcpApiGatewayGateway>>>;
+  createTime?: Maybe<Scalars['String']>;
+  gatewayServiceAccount?: Maybe<Scalars['String']>;
+  grpcServices?: Maybe<Array<Maybe<GcpApiGatewayConfigGrpcServiceDefinition>>>;
+  labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
+  managedServiceConfigs?: Maybe<Array<Maybe<Scalars['String']>>>;
+  openapiDocuments?: Maybe<Array<Maybe<Scalars['String']>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  serviceConfigId?: Maybe<Scalars['String']>;
+  state?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+};
+
+export type GcpApiGatewayConfigGrpcServiceDefinition = {
+  fileDescriptorSet?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  source?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type GcpApiGatewayGateway = GcpBaseResource & {
+  apiGatewayApiConfigs?: Maybe<Array<Maybe<GcpApiGatewayApiConfig>>>;
+  apiGatewayApis?: Maybe<Array<Maybe<GcpApiGatewayApi>>>;
+  createTime?: Maybe<Scalars['String']>;
+  labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  state?: Maybe<Scalars['String']>;
+  updateTime?: Maybe<Scalars['String']>;
+};
+
 export type GcpApiKey = GcpBaseResource & {
   createTime?: Maybe<Scalars['String']>;
   deleteTime?: Maybe<Scalars['String']>;
@@ -2146,6 +2185,9 @@ export type GcpOrganization = GcpBaseResource & {
 export type GcpProject = {
   aiPlatformNotebooks?: Maybe<Array<Maybe<GcpAiPlatformNotebook>>>;
   alertPolicy?: Maybe<Array<Maybe<GcpAlertPolicy>>>;
+  apiGatewayApiConfigs?: Maybe<Array<Maybe<GcpApiGatewayApiConfig>>>;
+  apiGatewayApis?: Maybe<Array<Maybe<GcpApiGatewayApi>>>;
+  apiGatewayGateways?: Maybe<Array<Maybe<GcpApiGatewayGateway>>>;
   apiKeys?: Maybe<Array<Maybe<GcpApiKey>>>;
   assets?: Maybe<Array<Maybe<GcpAsset>>>;
   bigQueryConnection?: Maybe<Array<Maybe<GcpBigQueryConnection>>>;
