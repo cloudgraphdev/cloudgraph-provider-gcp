@@ -8,7 +8,7 @@ type gcpLogMetric implements gcpBaseResource @key(fields: "id") {
   createTime: String @search(by: [hash, regexp])
   updateTime: String @search(by: [hash, regexp])
   version: String @search(by: [hash, regexp])
-  project: [gcpProject] @hasInverse(field: logMetric)
+  project: [gcpProject] @hasInverse(field: logMetrics)
 }
 
 type gcpLogMetricDescriptor

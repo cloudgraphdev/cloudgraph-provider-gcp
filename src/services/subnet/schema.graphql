@@ -15,10 +15,10 @@ type gcpSubnet implements gcpBaseResource @key(fields: "id") {
   secondaryIpRanges: [gcpSubnetSecondaryRange]
   selfLink: String @search(by: [hash, regexp])
   state: String @search(by: [hash, regexp])
-  project: [gcpProject] @hasInverse(field: subnet)
-  network: [gcpNetwork] @hasInverse(field: subnet)
-  vpcConnectors: [gcpVpcConnector] @hasInverse(field: subnet)
-  vmInstance: [gcpVmInstance] @hasInverse(field: subnet)
+  project: [gcpProject] @hasInverse(field: subnets)
+  network: [gcpNetwork] @hasInverse(field: subnets)
+  vpcConnectors: [gcpVpcConnector] @hasInverse(field: subnets)
+  vmInstances: [gcpVmInstance] @hasInverse(field: subnet)
 }
 
 type gcpSubnetLogConfig

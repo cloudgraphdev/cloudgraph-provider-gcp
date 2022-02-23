@@ -79,17 +79,17 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 | cdnBackendBucket                      | project, cdnUrlMap                                                                                  |
 | cdnBackendService                     | project, cdnUrlMap, network                                                                         |
 | cdnUrlMap                             | project, cdnBackendBucket, cdnBackendService                                                        |
-| cloudFunction                         | project, vpc                                                                                        |
-| cloudRouter                           | project                                                                                             |
+| cloudFunction                         | project, vpcConnectors                                                                              |
+| cloudRouters                          | project                                                                                             |
 | computeProject                        | project                                                                                             |
-| dataprocClusters                      | project, dataprocJobs, dataprocWorkflowTemplate                                                     |
+| dataprocClusters                      | project, dataprocJobs, dataprocWorkflowTemplates                                                    |
 | dataprocAutoscalingPolicies           | project                                                                                             |
 | dataprocJobs                          | project, dataprocClusters                                                                           |
-| dataprocWorkflowTemplate              | project, dataprocClusters                                                                           |
+| dataprocWorkflowTemplates             | project, dataprocClusters                                                                           |
 | kmsCryptoKeys                         | iamPolicy, kmsKeyRing, project                                                                      |
 | dnsManagedZone                        | project                                                                                             |
 | dnsPolicy                             | project, network                                                                                    |
-| firestores                            | project                                                                                             |
+| firestoreDatabases                    | project                                                                                             |
 | firewall                              | network, project                                                                                    |
 | folder                                | iamPolicy, organization, project                                                                    |
 | kmsKeyRing                            | kmsCryptoKeys, project                                                                              |
@@ -98,15 +98,15 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 | logMetric                             | project                                                                                             |
 | logSink                               | project                                                                                             |
 | logView                               | logBucket, project                                                                                  |
-| network                               | cloudRouter, dnsPolicy, firewall, project, sqlInstances, subnet, vmInstance, vpc, cdnBackendService |
+| network                               | cloudRouters, dnsPolicy, firewall, project, sqlInstances, subnet, vmInstance, vpcConnectors, cdnBackendService |
 | organization                          | folder, project                                                                                     |
 | project                               | ALL SERVICES                                                                                        |
 | secretManager                         | project                                                                                             |
-| serviceAccount                        | project                                                                                             |
+| serviceAccounts                       | project                                                                                             |
 | sqlInstances                          | project, network                                                                                    |
 | sslPolicies                           | project                                                                                             |
 | storageBucket                         | project                                                                                             |
-| subnet                                | project, network, vmInstance, vpc                                                                   |
+| subnet                                | project, network, vmInstance, vpcConnectors                                                         |
 | targetSslProxies                      | project                                                                                             |
 | targetHttpsProxies                    | project                                                                                             |
 | vmInstance                            | project, network, subnet                                                                            |

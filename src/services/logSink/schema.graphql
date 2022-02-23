@@ -14,7 +14,7 @@ type gcpLogSink @key(fields: "id") {
   bigqueryOptions: gcpBigQueryOptions
   createTime: String @search(by: [hash, regexp])
   updateTime: String @search(by: [hash, regexp])
-  project: [gcpProject] @hasInverse(field: logSink)
+  project: [gcpProject] @hasInverse(field: logSinks)
 }
 
 type gcpLogExclusion {

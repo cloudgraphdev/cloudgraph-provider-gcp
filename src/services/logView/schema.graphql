@@ -7,6 +7,6 @@ type gcpLogView {
   createTime: String @search(by: [hash, regexp])
   updateTime: String @search(by: [hash, regexp])
   filter: String @search(by: [hash, regexp])
-  project: [gcpProject] @hasInverse(field: logView)
+  project: [gcpProject] @hasInverse(field: logViews)
   logBucket: [gcpLogBucket] @hasInverse(field: logView)
 }

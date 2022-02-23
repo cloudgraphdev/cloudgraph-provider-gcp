@@ -22,7 +22,7 @@ type gcpStorageBucket @key(fields: "id") {
   pollIntervalMs: Int @search
   userProject: String @search(by: [hash, regexp])
   iamPolicy: [gcpIamPolicy] @hasInverse(field: storageBucket)
-  project: [gcpProject] @hasInverse(field: storageBucket)
+  project: [gcpProject] @hasInverse(field: storageBuckets)
 }
 
 type gcpStorageBucketIamConfiguration

@@ -9,8 +9,8 @@ type gcpIamPolicy @key(fields: "id") {
   bindings: [gcpIamBinding]
   auditConfigs: [gcpIamPolicyAuditConfig]
   etag: String @search(by: [hash, regexp])
-  project: [gcpProject] @hasInverse(field: iamPolicy)
-  folder: [gcpFolder] @hasInverse(field: iamPolicy)
+  project: [gcpProject] @hasInverse(field: iamPolicies)
+  folder: [gcpFolder] @hasInverse(field: iamPolicies)
   storageBucket: [gcpStorageBucket] @hasInverse(field: iamPolicy)
   kmsCryptoKeys: [gcpKmsCryptoKey] @hasInverse(field: iamPolicy)
 }
