@@ -9,7 +9,7 @@ type gcpAlertPolicy implements gcpBaseResource @key(fields: "id") {
   notificationChannels: [String] @search(by: [hash])
   creationRecord: gcpAlertPolicyMutationRecord
   mutationRecord: gcpAlertPolicyMutationRecord
-  project: [gcpProject] @hasInverse(field: alertPolicy)
+  project: [gcpProject] @hasInverse(field: alertPolicies)
 }
 
 type gcpAlertPolicyDocumentation

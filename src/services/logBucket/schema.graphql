@@ -10,5 +10,5 @@ type gcpLogBucket @key(fields: "id") {
   locked: Boolean @search
   lifecycleState: String @search(by: [hash, regexp])
   logView: [gcpLogView] @hasInverse(field: logBucket)
-  project: [gcpProject] @hasInverse(field: logBucket)
+  project: [gcpProject] @hasInverse(field: logBuckets)
 }

@@ -1,0 +1,16 @@
+export default {
+  alertPolicy: 'alertPolicies',
+  cloudFunction: 'cloudFunctions',
+  dnsManagedZone: 'dnsManagedZones',
+  dnsPolicy: 'dnsPolicies',
+  iamPolicy: 'iamPolicies',
+  logBucket: 'logBuckets',
+  logMetric: 'logMetrics',
+  logView: 'logViews',
+  logSink: 'logSinks',
+  storageBucket: 'storageBuckets',
+  firewall: 'firewalls',
+  network: 'networks',
+  subnet: 'subnets',
+  vmInstance: 'vmInstances',
+}

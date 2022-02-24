@@ -35,9 +35,9 @@ type gcpVmInstance implements gcpBaseResource @key(fields: "id") {
   statusMessage: String @search(by: [hash, regexp])
   tags: gcpComputeTags
   zone: String @search(by: [hash, regexp])
-  project: [gcpProject] @hasInverse(field: vmInstance)
-  network: [gcpNetwork] @hasInverse(field: vmInstance)
-  subnet: [gcpSubnet] @hasInverse(field: vmInstance)
+  project: [gcpProject] @hasInverse(field: vmInstances)
+  network: [gcpNetwork] @hasInverse(field: vmInstances)
+  subnet: [gcpSubnet] @hasInverse(field: vmInstances)
 }
 
 type gcpAdvancedMachineFeatures

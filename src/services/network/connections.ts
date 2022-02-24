@@ -3,6 +3,7 @@ import { rawDataInterface } from '../../types'
 import { RawGcpNetwork } from './data'
 import { GLOBAL_REGION } from '../../config/constants'
 import services from '../../enums/services'
+import aliases from '../../enums/serviceAliases'
 
 export default ({
   account,
@@ -47,7 +48,7 @@ export default ({
                 id,
                 resourceType: serviceName,
                 relation: 'child',
-                field: serviceName,
+                field: aliases[serviceName] ? aliases[serviceName] : serviceName,
               })
             }
           }

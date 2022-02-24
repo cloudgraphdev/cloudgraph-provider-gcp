@@ -3,6 +3,10 @@ import { rawDataInterface } from '../../types'
 import { RawGcpVpc } from './data'
 import { GLOBAL_REGION } from '../../config/constants'
 import services from '../../enums/services'
+const aliases = {
+  cloudFunction: 'cloudFunctions',
+  subnet: 'subnets',
+}
 
 export default ({
   account,
@@ -44,7 +48,7 @@ export default ({
                 id,
                 resourceType: serviceName,
                 relation: 'child',
-                field: serviceName,
+                field: aliases[serviceName] ? aliases[serviceName] : serviceName,
               })
             }
           }
