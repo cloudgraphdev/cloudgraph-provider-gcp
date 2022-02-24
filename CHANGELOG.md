@@ -1,3 +1,10 @@
+## [0.32.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.32.0...0.32.1) (2022-02-24)
+
+
+### Bug Fixes
+
+* **connections:** naming aliases, pluralize connections ([aa834d5](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/aa834d5ebeb6d980b14948113e7280645011f8ab))
+
 # [0.32.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.31.0...0.32.0) (2022-02-21)
 
 
