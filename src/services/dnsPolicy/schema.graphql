@@ -21,6 +21,6 @@ type gcpDnsPolicy implements gcpBaseResource
   alternativeNameServerConfigKind: String @search(by: [hash, regexp])
   alternativeNameServerConfigTargetNameServers: [gcpDnsPolicyAlternativeNameServerConfigTargetNameServer]
   enableLogging: Boolean @search
-  network: [gcpNetwork] @hasInverse(field: dnsPolicy)
-  project: [gcpProject] @hasInverse(field: dnsPolicy)
+  network: [gcpNetwork] @hasInverse(field: dnsPolicies)
+  project: [gcpProject] @hasInverse(field: dnsPolicies)
 }

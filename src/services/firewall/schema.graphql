@@ -19,8 +19,8 @@ type gcpFirewall {
   sourceTags: [String] @search(by: [hash])
   targetServiceAccounts: [String] @search(by: [hash])
   targetTags: [String] @search(by: [hash])
-  network: [gcpNetwork] @hasInverse(field: firewall)
-  project: [gcpProject] @hasInverse(field: firewall)
+  network: [gcpNetwork] @hasInverse(field: firewalls)
+  project: [gcpProject] @hasInverse(field: firewalls)
 }
 
 type gcpFirewallAccess

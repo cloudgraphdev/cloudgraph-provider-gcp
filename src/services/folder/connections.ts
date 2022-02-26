@@ -40,7 +40,7 @@ export default ({
           id: policy.id,
           resourceType: services.iamPolicy,
           relation: 'child',
-          field: 'iamPolicy',
+          field: 'iamPolicies',
         })
       }
     }

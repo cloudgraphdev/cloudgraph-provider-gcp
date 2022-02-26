@@ -63,5 +63,5 @@ type gcpDnsManagedZone implements gcpBaseResource
   serviceDirectoryConfigNamespaceDeactivateTime: String @search(by: [hash, regexp])
   cloudLoggingConfigKind: String @search(by: [hash, regexp])
   cloudLoggingConfigEnableLogging: Boolean @search
-  project: [gcpProject] @hasInverse(field: dnsManagedZone)
+  project: [gcpProject] @hasInverse(field: dnsManagedZones)
 }

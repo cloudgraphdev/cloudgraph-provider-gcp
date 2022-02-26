@@ -1857,10 +1857,10 @@ export type GcpFolder = GcpBaseResource & {
   deleteTime?: Maybe<Scalars['String']>;
   displayName?: Maybe<Scalars['String']>;
   etag?: Maybe<Scalars['String']>;
-  iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
+  iamPolicies?: Maybe<Array<Maybe<GcpIamPolicy>>>;
   organization?: Maybe<Array<Maybe<GcpOrganization>>>;
   parent?: Maybe<Scalars['String']>;
-  project?: Maybe<Array<Maybe<GcpProject>>>;
+  projects?: Maybe<Array<Maybe<GcpProject>>>;
   state?: Maybe<Scalars['String']>;
   updateTime?: Maybe<Scalars['String']>;
 };
@@ -2135,8 +2135,8 @@ export type GcpNetwork = GcpBaseResource & {
   cloudRouters?: Maybe<Array<Maybe<GcpCloudRouter>>>;
   creationTimestamp?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
-  dnsPolicy?: Maybe<Array<Maybe<GcpDnsPolicy>>>;
-  firewall?: Maybe<Array<Maybe<GcpFirewall>>>;
+  dnsPolicies?: Maybe<Array<Maybe<GcpDnsPolicy>>>;
+  firewalls?: Maybe<Array<Maybe<GcpFirewall>>>;
   gatewayIPv4?: Maybe<Scalars['String']>;
   ipV4Range?: Maybe<Scalars['String']>;
   kind?: Maybe<Scalars['String']>;
@@ -2146,8 +2146,8 @@ export type GcpNetwork = GcpBaseResource & {
   routingConfig?: Maybe<GcpNetworkRoutingConfig>;
   selfLink?: Maybe<Scalars['String']>;
   sqlInstances?: Maybe<Array<Maybe<GcpSqlInstance>>>;
-  subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
-  vmInstance?: Maybe<Array<Maybe<GcpVmInstance>>>;
+  subnets?: Maybe<Array<Maybe<GcpSubnet>>>;
+  vmInstances?: Maybe<Array<Maybe<GcpVmInstance>>>;
   vpcConnectors?: Maybe<Array<Maybe<GcpVpcConnector>>>;
 };
 
@@ -2176,15 +2176,15 @@ export type GcpOrganization = GcpBaseResource & {
   directoryCustomerId?: Maybe<Scalars['String']>;
   displayName?: Maybe<Scalars['String']>;
   etag?: Maybe<Scalars['String']>;
-  folder?: Maybe<Array<Maybe<GcpFolder>>>;
-  project?: Maybe<Array<Maybe<GcpProject>>>;
+  folders?: Maybe<Array<Maybe<GcpFolder>>>;
+  projects?: Maybe<Array<Maybe<GcpProject>>>;
   state?: Maybe<Scalars['String']>;
   updateTime?: Maybe<Scalars['String']>;
 };
 
 export type GcpProject = {
   aiPlatformNotebooks?: Maybe<Array<Maybe<GcpAiPlatformNotebook>>>;
-  alertPolicy?: Maybe<Array<Maybe<GcpAlertPolicy>>>;
+  alertPolicies?: Maybe<Array<Maybe<GcpAlertPolicy>>>;
   apiGatewayApiConfigs?: Maybe<Array<Maybe<GcpApiGatewayApiConfig>>>;
   apiGatewayApis?: Maybe<Array<Maybe<GcpApiGatewayApi>>>;
   apiGatewayGateways?: Maybe<Array<Maybe<GcpApiGatewayGateway>>>;
@@ -2199,7 +2199,7 @@ export type GcpProject = {
   cdnBackendBucket?: Maybe<Array<Maybe<GcpCdnBackendBucket>>>;
   cdnBackendService?: Maybe<Array<Maybe<GcpCdnBackendService>>>;
   cdnUrlMap?: Maybe<Array<Maybe<GcpCdnUrlMap>>>;
-  cloudFunction?: Maybe<Array<Maybe<GcpCloudFunction>>>;
+  cloudFunctions?: Maybe<Array<Maybe<GcpCloudFunction>>>;
   cloudRouters?: Maybe<Array<Maybe<GcpCloudRouter>>>;
   computeProject?: Maybe<Array<Maybe<GcpComputeProject>>>;
   createTime?: Maybe<Scalars['String']>;
@@ -2209,23 +2209,23 @@ export type GcpProject = {
   dataprocWorkflowTemplates?: Maybe<Array<Maybe<GcpDataprocWorkflowTemplate>>>;
   deleteTime?: Maybe<Scalars['String']>;
   displayName?: Maybe<Scalars['String']>;
-  dnsManagedZone?: Maybe<Array<Maybe<GcpDnsManagedZone>>>;
-  dnsPolicy?: Maybe<Array<Maybe<GcpDnsPolicy>>>;
+  dnsManagedZones?: Maybe<Array<Maybe<GcpDnsManagedZone>>>;
+  dnsPolicies?: Maybe<Array<Maybe<GcpDnsPolicy>>>;
   etag?: Maybe<Scalars['String']>;
   firestoreDatabases?: Maybe<Array<Maybe<GcpFirestoreDatabase>>>;
-  firewall?: Maybe<Array<Maybe<GcpFirewall>>>;
+  firewalls?: Maybe<Array<Maybe<GcpFirewall>>>;
   folder?: Maybe<Array<Maybe<GcpFolder>>>;
-  iamPolicy?: Maybe<Array<Maybe<GcpIamPolicy>>>;
+  iamPolicies?: Maybe<Array<Maybe<GcpIamPolicy>>>;
   id: Scalars['String'];
   kmsCryptoKeys?: Maybe<Array<Maybe<GcpKmsCryptoKey>>>;
   kmsKeyRing?: Maybe<Array<Maybe<GcpKmsKeyRing>>>;
   labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
-  logBucket?: Maybe<Array<Maybe<GcpLogBucket>>>;
-  logMetric?: Maybe<Array<Maybe<GcpLogMetric>>>;
-  logSink?: Maybe<Array<Maybe<GcpLogSink>>>;
-  logView?: Maybe<Array<Maybe<GcpLogView>>>;
+  logBuckets?: Maybe<Array<Maybe<GcpLogBucket>>>;
+  logMetrics?: Maybe<Array<Maybe<GcpLogMetric>>>;
+  logSinks?: Maybe<Array<Maybe<GcpLogSink>>>;
+  logViews?: Maybe<Array<Maybe<GcpLogView>>>;
   name?: Maybe<Scalars['String']>;
-  network?: Maybe<Array<Maybe<GcpNetwork>>>;
+  networks?: Maybe<Array<Maybe<GcpNetwork>>>;
   organization?: Maybe<Array<Maybe<GcpOrganization>>>;
   parent?: Maybe<Scalars['String']>;
   projectId?: Maybe<Scalars['String']>;
@@ -2234,12 +2234,12 @@ export type GcpProject = {
   sqlInstances?: Maybe<Array<Maybe<GcpSqlInstance>>>;
   sslPolicies?: Maybe<Array<Maybe<GcpSslPolicy>>>;
   state?: Maybe<Scalars['String']>;
-  storageBucket?: Maybe<Array<Maybe<GcpStorageBucket>>>;
-  subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
+  storageBuckets?: Maybe<Array<Maybe<GcpStorageBucket>>>;
+  subnets?: Maybe<Array<Maybe<GcpSubnet>>>;
   targetHttpsProxies?: Maybe<Array<Maybe<GcpTargetHttpsProxy>>>;
   targetSslProxies?: Maybe<Array<Maybe<GcpTargetSslProxy>>>;
   updateTime?: Maybe<Scalars['String']>;
-  vmInstance?: Maybe<Array<Maybe<GcpVmInstance>>>;
+  vmInstances?: Maybe<Array<Maybe<GcpVmInstance>>>;
   vpcConnectors?: Maybe<Array<Maybe<GcpVpcConnector>>>;
 };
 
@@ -2646,7 +2646,7 @@ export type GcpSubnet = GcpBaseResource & {
   secondaryIpRanges?: Maybe<Array<Maybe<GcpSubnetSecondaryRange>>>;
   selfLink?: Maybe<Scalars['String']>;
   state?: Maybe<Scalars['String']>;
-  vmInstance?: Maybe<Array<Maybe<GcpVmInstance>>>;
+  vmInstances?: Maybe<Array<Maybe<GcpVmInstance>>>;
   vpcConnectors?: Maybe<Array<Maybe<GcpVpcConnector>>>;
 };
 
@@ -2763,7 +2763,7 @@ export type GcpVmInstanceServiceAccount = {
 };
 
 export type GcpVpcConnector = {
-  cloudFunction?: Maybe<Array<Maybe<GcpCloudFunction>>>;
+  cloudFunctions?: Maybe<Array<Maybe<GcpCloudFunction>>>;
   connectedProjects?: Maybe<Array<Maybe<Scalars['String']>>>;
   id: Scalars['String'];
   ipCidrRange?: Maybe<Scalars['String']>;
@@ -2775,5 +2775,5 @@ export type GcpVpcConnector = {
   projectId: Scalars['String'];
   region?: Maybe<Scalars['String']>;
   state?: Maybe<Scalars['String']>;
-  subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
+  subnets?: Maybe<Array<Maybe<GcpSubnet>>>;
 };

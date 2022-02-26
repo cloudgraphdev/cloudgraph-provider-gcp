@@ -19,8 +19,8 @@ type gcpCloudFunction implements gcpBaseResource @key(fields: "id") {
   vpcConnectorEgressSettings: String @search(by: [hash, regexp])
   ingressSettings: String @search(by: [hash, regexp])
   buildId: String @search(by: [hash, regexp])
-  project: [gcpProject] @hasInverse(field: cloudFunction)
-  vpcConnectors: [gcpVpcConnector] @hasInverse(field: cloudFunction)
+  project: [gcpProject] @hasInverse(field: cloudFunctions)
+  vpcConnectors: [gcpVpcConnector] @hasInverse(field: cloudFunctions)
 }
 
 type gcpCloudFunctionSourceRepository

@@ -39,7 +39,7 @@ export default ({
         id: view.name,
         resourceType: services.folder,
         relation: 'child',
-        field: 'folder',
+        field: 'folders',
       })
     }
   }

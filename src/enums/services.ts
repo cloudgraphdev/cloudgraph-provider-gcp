@@ -82,7 +82,6 @@ export default {
   logView: 'logView',
   organization: 'organization',
   network: 'network',
-  // organizations: 'organizations',
   project: 'project',
   sqlInstances: 'sqlInstances',
   sslPolicies: 'sslPolicies',

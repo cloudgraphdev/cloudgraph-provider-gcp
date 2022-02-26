@@ -10,13 +10,13 @@ type gcpNetwork implements gcpBaseResource @key(fields: "id") {
   routingConfig: gcpNetworkRoutingConfig
   selfLink: String @search(by: [hash, regexp])
   cdnBackendService: [gcpCdnBackendService] @hasInverse(field: network)
-  dnsPolicy: [gcpDnsPolicy] @hasInverse(field: network)
-  firewall: [gcpFirewall] @hasInverse(field: network)
-  project: [gcpProject] @hasInverse(field: network)
+  dnsPolicies: [gcpDnsPolicy] @hasInverse(field: network)
+  firewalls: [gcpFirewall] @hasInverse(field: network)
+  project: [gcpProject] @hasInverse(field: networks)
   sqlInstances: [gcpSqlInstance] @hasInverse(field: network)
-  subnet: [gcpSubnet] @hasInverse(field: network)
+  subnets: [gcpSubnet] @hasInverse(field: network)
   vpcConnectors: [gcpVpcConnector] @hasInverse(field: network)
-  vmInstance: [gcpVmInstance] @hasInverse(field: network)
+  vmInstances: [gcpVmInstance] @hasInverse(field: network)
   cloudRouters: [gcpCloudRouter] @hasInverse(field: network)
   aiPlatformNotebooks: [gcpAiPlatformNotebook] @hasInverse(field: network)
 }
