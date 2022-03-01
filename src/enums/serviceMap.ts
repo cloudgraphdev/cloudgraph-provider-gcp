@@ -42,6 +42,7 @@ import GcpDataprocCluster from '../services/dataprocCluster'
 import GcpDataprocAutoscalingPolicy from '../services/dataprocAutoscalingPolicy'
 import GcpDataprocJob from '../services/dataprocJob'
 import GcpDataprocWorkflowTemplate from '../services/dataprocWorkflowTemplate'
+import GcpAiPlatformNotebook from '../services/aiPlatformNotebook'
 import GcpApiGatewayGateway from '../services/apiGatewayGateway'
 import GcpApiGatewayApi from '../services/apiGatewayApi'
 import GcpApiGatewayApiConfig from '../services/apiGatewayApiConfig'
@@ -97,6 +98,7 @@ export default {
   [services.dataprocAutoscalingPolicy]: GcpDataprocAutoscalingPolicy,
   [services.dataprocJob]: GcpDataprocJob,
   [services.dataprocWorkflowTemplate]: GcpDataprocWorkflowTemplate,
+  [services.aiPlatformNotebook]: GcpAiPlatformNotebook,
   [services.apiGatewayGateway]: GcpApiGatewayGateway,
   [services.apiGatewayApi]: GcpApiGatewayApi,
   [services.apiGatewayApiConfig]: GcpApiGatewayApiConfig,

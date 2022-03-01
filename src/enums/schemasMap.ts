@@ -47,6 +47,7 @@ export default {
   [services.dataprocAutoscalingPolicy]: 'gcpDataprocAutoscalingPolicy',
   [services.dataprocJob]: 'gcpDataprocJob',
   [services.dataprocWorkflowTemplate]: 'gcpDataprocWorkflowTemplate',
+  [services.aiPlatformNotebook]: 'gcpAiPlatformNotebook',
   [services.apiGatewayGateway]: 'gcpApiGatewayGateway',
   [services.apiGatewayApi]: 'gcpApiGatewayApi',
   [services.apiGatewayApiConfig]: 'gcpApiGatewayApiConfig',

@@ -32,5 +32,6 @@ type gcpKmsCryptoKey implements gcpBaseResource
     kmsKeyRingId: String @search(by: [hash, regexp])
     iamPolicy: [gcpIamPolicy] @hasInverse(field: kmsCryptoKeys)
     kmsKeyRing: [gcpKmsKeyRing] @hasInverse(field: kmsCryptoKeys)
+    aiPlatformNotebooks: [gcpAiPlatformNotebook] @hasInverse(field: kmsCryptoKeys)
     project: [gcpProject] @hasInverse(field: kmsCryptoKeys)
   }

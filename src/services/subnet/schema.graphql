@@ -19,6 +19,7 @@ type gcpSubnet implements gcpBaseResource @key(fields: "id") {
   network: [gcpNetwork] @hasInverse(field: subnets)
   vpcConnectors: [gcpVpcConnector] @hasInverse(field: subnets)
   vmInstances: [gcpVmInstance] @hasInverse(field: subnet)
+  aiPlatformNotebooks: [gcpAiPlatformNotebook] @hasInverse(field: subnet)
 }
 
 type gcpSubnetLogConfig

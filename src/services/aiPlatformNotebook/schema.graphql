@@ -1,0 +1,57 @@
+type gcpAiPlatformNotebookDisk
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  )
+  @key(fields: "id") {
+    id: String! @id
+    autoDelete: Boolean @search
+    boot: Boolean @search
+    deviceName: String @search(by: [hash, regexp])
+    diskSizeGb: String @search(by: [hash, regexp])
+    guestOsFeaturesTypes: [String] @search(by: [hash])
+    index: String @search(by: [hash, regexp])
+    kind: String @search(by: [hash, regexp])
+    licenses: [String] @search(by: [hash])
+    mode: String @search(by: [hash, regexp])
+    source: String @search(by: [hash, regexp])
+    type: String @search(by: [hash, regexp])
+  }
+
+type gcpAiPlatformNotebook implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+  )
+  @key(fields: "id") {
+    vmImageProject: String @search(by: [hash, regexp])
+    vmImageImageName: String @search(by: [hash, regexp])
+    vmImageImageFamily: String @search(by: [hash, regexp])
+    containerImageRepository: String @search(by: [hash, regexp])
+    containerImageTag: String @search(by: [hash, regexp])
+    postStartupScript: String @search(by: [hash, regexp])
+    proxyUri: String @search(by: [hash, regexp])
+    instanceOwners: [String] @search(by: [hash])
+    serviceAccount: String @search(by: [hash, regexp])
+    machineType: String @search(by: [hash, regexp])
+    acceleratorConfigType: String @search(by: [hash, regexp])
+    acceleratorConfigCoreCount: String @search(by: [hash, regexp])
+    state: String @search(by: [hash, regexp])
+    installGpuDriver: Boolean @search
+    customGpuDriverPath: String @search(by: [hash, regexp])
+    bootDiskType: String @search(by: [hash, regexp])
+    bootDiskSizeGb: String @search(by: [hash, regexp])
+    dataDiskType: String @search(by: [hash, regexp])
+    dataDiskSizeGb: String @search(by: [hash, regexp])
+    noRemoveDataDisk: Boolean @search
+    diskEncryption: String @search(by: [hash, regexp])
+    noPublicIp: Boolean @search
+    noProxyAccess: Boolean @search
+    metadata: [gcpKeyValue]
+    createTime: String @search(by: [hash, regexp])
+    updateTime: String @search(by: [hash, regexp])
+    network: [gcpNetwork] @hasInverse(field: aiPlatformNotebooks)
+    subnet: [gcpSubnet] @hasInverse(field: aiPlatformNotebooks)
+    kmsCryptoKeys: [gcpKmsCryptoKey] @hasInverse(field: aiPlatformNotebooks)
+    project: [gcpProject] @hasInverse(field: aiPlatformNotebooks)
+  }
