@@ -74,7 +74,12 @@ export default ({
       autoDelete: disk?.autoDelete,
       boot: disk?.boot,
       deviceName: disk?.deviceName,
-      diskEncryptionKey: disk?.diskEncryptionKey,
+      diskEncryptionKey: {
+        kmsKeyName: disk?.diskEncryptionKey?.kmsKeyName,
+        kmsKeyServiceAccount: disk?.diskEncryptionKey?.kmsKeyServiceAccount,
+        rawKey: disk?.diskEncryptionKey?.rawKey,
+        sha256: disk?.diskEncryptionKey?.sha256,
+      },
       index: disk?.index,
       kind: disk?.kind,
       licenses: disk?.licenses,
