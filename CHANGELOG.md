@@ -1,3 +1,15 @@
+# [0.33.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.32.1...0.33.0) (2022-03-01)
+
+
+### Bug Fixes
+
+* **vmInstance:** explicit format fields diskEncryptionKey ([40e8c9c](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/40e8c9ca4dd1a84986067f4de332ef1af7e1a167))
+
+
+### Features
+
+* **aiPlatformNotebook:** update README ([b0b7785](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/b0b778540f1f238d55e16455d19c698ab1a418b1))
+
 ## [0.32.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.32.0...0.32.1) (2022-02-24)
 
 
