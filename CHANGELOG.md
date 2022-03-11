@@ -1,3 +1,10 @@
+# [0.34.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.33.0...0.34.0) (2022-03-11)
+
+
+### Features
+
+* **service:** GCP add new connections sslPolicy <-> targetSslProxy AND... ([d52e703](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/d52e7031c06705e122194afe86ae5eed5130241d))
+
 # [0.33.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.32.1...0.33.0) (2022-03-01)
 
 
