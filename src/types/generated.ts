@@ -2581,6 +2581,8 @@ export type GcpSslPolicy = GcpBaseResource & {
   profile?: Maybe<Scalars['String']>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
   selfLink?: Maybe<Scalars['String']>;
+  targetHttpsProxies?: Maybe<Array<Maybe<GcpTargetHttpsProxy>>>;
+  targetSslProxies?: Maybe<Array<Maybe<GcpTargetSslProxy>>>;
   warnings?: Maybe<Array<Maybe<GcpComputeWarnings>>>;
 };
 
@@ -2687,7 +2689,7 @@ export type GcpTargetHttpsProxy = GcpBaseResource & {
   selfLink?: Maybe<Scalars['String']>;
   serverTlsPolicy?: Maybe<Scalars['String']>;
   sslCertificates?: Maybe<Array<Maybe<Scalars['String']>>>;
-  sslPolicy?: Maybe<Scalars['String']>;
+  sslPolicy?: Maybe<Array<Maybe<GcpSslPolicy>>>;
   urlMap?: Maybe<Scalars['String']>;
 };
 
@@ -2700,7 +2702,7 @@ export type GcpTargetSslProxy = GcpBaseResource & {
   selfLink?: Maybe<Scalars['String']>;
   service?: Maybe<Scalars['String']>;
   sslCertificates?: Maybe<Array<Maybe<Scalars['String']>>>;
-  sslPolicy?: Maybe<Scalars['String']>;
+  sslPolicy?: Maybe<Array<Maybe<GcpSslPolicy>>>;
 };
 
 export type GcpValue = {

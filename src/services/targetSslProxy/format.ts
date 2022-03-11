@@ -19,7 +19,6 @@ export default ({
     proxyHeader,
     selfLink,
     sslCertificates,
-    sslPolicy,
   } = service
 
   return {
@@ -34,6 +33,5 @@ export default ({
     selfLink,
     service: service?.service,
     sslCertificates,
-    sslPolicy,
   }
 }

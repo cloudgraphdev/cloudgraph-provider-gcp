@@ -23,7 +23,6 @@ export default ({
     selfLink,
     serverTlsPolicy,
     sslCertificates,
-    sslPolicy,
     urlMap,
   } = service
 
@@ -42,7 +41,6 @@ export default ({
     selfLink,
     serverTlsPolicy,
     sslCertificates,
-    sslPolicy,
     urlMap,
   }
 }
