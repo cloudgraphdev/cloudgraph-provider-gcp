@@ -10,6 +10,8 @@ type gcpSslPolicy implements gcpBaseResource @key(fields: "id") {
   selfLink: String @search(by: [hash, regexp])
   warnings: [gcpComputeWarnings]
   project: [gcpProject] @hasInverse(field: sslPolicies)
+  targetSslProxies: [gcpTargetSslProxy] @hasInverse(field: sslPolicy)
+  targetHttpsProxies: [gcpTargetHttpsProxy] @hasInverse(field: sslPolicy)
 }
 
 type gcpComputeWarnings
