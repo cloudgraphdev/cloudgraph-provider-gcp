@@ -22,6 +22,9 @@ export interface RawGcpStorageBucket {
   iam: any
   pollIntervalMs?: number
   userProject?: string
+  labels?: {
+    [key: string]: string
+  }
 }
 
 export const listStorageBucketsData = async (
@@ -43,6 +46,7 @@ export const listStorageBucketsData = async (
           id: bucket.name,
           ...bucket,
           projectId,
+          labels: bucket?.metadata?.labels,
           region: regions.includes(location) ? location : GLOBAL_REGION,
         })
       }

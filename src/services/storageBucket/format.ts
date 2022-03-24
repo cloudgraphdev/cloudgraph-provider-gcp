@@ -16,6 +16,7 @@ export default ({
     name,
     pollIntervalMs,
     userProject,
+    labels,
   } = service
 
   return {
@@ -33,10 +34,10 @@ export default ({
     defaultEventBasedHold: metadata.defaultEventBasedHold,
     timeCreated: metadata.timeCreated,
     updated: metadata.updated,
-    labels: Object.keys(metadata.labels || {}).map(key => ({
+    labels: Object.keys(labels || {}).map(key => ({
       id: cuid(),
       key,
-      value: metadata.labels[key],
+      value: labels[key],
     })),
     iamConfiguration: metadata.iamConfiguration,
     locationType: metadata.locationType,
