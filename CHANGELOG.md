@@ -1,3 +1,10 @@
+## [0.34.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.34.0...0.34.1) (2022-03-24)
+
+
+### Bug Fixes
+
+* **storageBucket:** add labels on raw output ([d0d8eb8](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/commit/d0d8eb8f1c2ce7ec813328e0163f07a1d090bf78))
+
 # [0.34.0](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.33.0...0.34.0) (2022-03-11)
 
 
