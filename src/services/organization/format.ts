@@ -2,7 +2,7 @@ import { google } from '@google-cloud/resource-manager/build/protos/protos'
 import { GcpOrganization } from '../../types/generated'
 import { RawGcpOrganization } from './data'
 import { toISOString } from '../../utils/dateutils'
-import { enumKeyToString } from '../../utils/format'
+import { enumKeyToString, formatKeyValuesFromMap } from '../../utils/format'
 
 export default ({
   service,
@@ -22,6 +22,7 @@ export default ({
     updateTime,
     deleteTime,
     etag,
+    tags = {},
   } = service
 
   return {
@@ -36,5 +37,6 @@ export default ({
     updateTime: toISOString(updateTime?.seconds?.toString()),
     deleteTime: toISOString(deleteTime?.seconds?.toString()),
     etag,
+    tags: formatKeyValuesFromMap(tags),
   }
 }

@@ -1,6 +1,6 @@
 import cuid from 'cuid'
 import { google } from '@google-cloud/bigquery-data-transfer/build/protos/protos'
-import { GcpKeyValue, GcpRawLabel, GcpRawTag, GcpBigQueryDataTransferParam } from '../types/generated'
+import { GcpKeyValue, GcpKeyValues, GcpRawLabel, GcpRawTag, GcpBigQueryDataTransferParam } from '../types/generated'
 import { TagMap, LabelMap, KeyValueMapMap } from '../types'
 
 export const formatKeyValueMap = (keyValueMap: KeyValueMapMap): GcpKeyValue[] => {
@@ -11,11 +11,22 @@ export const formatKeyValueMap = (keyValueMap: KeyValueMapMap): GcpKeyValue[] =>
   }))
 }
 
+export const formatKeyValuesMap = (keyValueMap: KeyValueMapMap): GcpKeyValues[] => {
+  return Object.keys(keyValueMap || {}).map(key => ({
+    id: cuid(),
+    key,
+    values: keyValueMap[key] as string[]
+  }))
+}
+
 // We need an id here to enfore uniqueness for Dgraph, otherwise we get duplicate tags
 export const formatLabelsFromMap = (labels: LabelMap): GcpRawLabel[] => formatKeyValueMap(labels)
 
 // We need an id here to enfore uniqueness for Dgraph, otherwise we get duplicate tags
 export const formatTagsFromMap = (tags: TagMap): GcpRawTag[] => formatKeyValueMap(tags)
+
+// We need an id here to enfore uniqueness for Dgraph, otherwise we get duplicate tags
+export const formatKeyValuesFromMap = (tags: TagMap): GcpKeyValues[] => formatKeyValuesMap(tags)
 
 export const obfuscateSensitiveString = (s: string): string => {
   const stars = '*'.repeat(Math.min(30, s.length - 6))

@@ -1933,6 +1933,12 @@ export type GcpKeyValue = {
   value?: Maybe<Scalars['String']>;
 };
 
+export type GcpKeyValues = {
+  id: Scalars['String'];
+  key: Scalars['String'];
+  values?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
 export type GcpKmsCryptoKey = GcpBaseResource & {
   aiPlatformNotebooks?: Maybe<Array<Maybe<GcpAiPlatformNotebook>>>;
   createTime?: Maybe<Scalars['String']>;
@@ -2179,6 +2185,7 @@ export type GcpOrganization = GcpBaseResource & {
   folders?: Maybe<Array<Maybe<GcpFolder>>>;
   projects?: Maybe<Array<Maybe<GcpProject>>>;
   state?: Maybe<Scalars['String']>;
+  tags?: Maybe<Array<Maybe<GcpKeyValues>>>;
   updateTime?: Maybe<Scalars['String']>;
 };
 
@@ -2668,11 +2675,9 @@ export type GcpSubnetSecondaryRange = {
 };
 
 export type GcpTag = GcpBaseResource & {
-  folder?: Maybe<Array<Maybe<GcpFolder>>>;
   id: Scalars['String'];
   key: Scalars['String'];
   organization?: Maybe<Array<Maybe<GcpOrganization>>>;
-  project?: Maybe<Array<Maybe<GcpProject>>>;
   value: Scalars['String'];
   vmInstance?: Maybe<Array<Maybe<GcpVmInstance>>>;
 };

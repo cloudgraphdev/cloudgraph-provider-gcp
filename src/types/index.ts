@@ -4,7 +4,7 @@ export interface Tags {
 }
 
 export interface TagMap {
-  [property: string]: string
+  [property: string]: string | string []
 }
 
 export interface LabelMap {
@@ -12,13 +12,7 @@ export interface LabelMap {
 }
 
 export interface KeyValueMapMap {
-  [k: string]: string | number | boolean | Long
-}
-
-export interface GcpServiceInput {
-  regions: string
-  config: GcpCredentials
-  rawData: rawDataInterface[]
+  [k: string]: string | number | boolean | Long | string[]
 }
 
 export interface GcpCredentials {
@@ -37,4 +31,10 @@ export interface rawDataInterface {
   network?: string[]
   subnet?: string[]
   vpcConnector?: string[]
+}
+
+export interface GcpServiceInput {
+  regions: string
+  config: GcpCredentials
+  rawData: rawDataInterface[]
 }
