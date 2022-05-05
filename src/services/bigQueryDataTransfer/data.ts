@@ -5,7 +5,6 @@ import { google } from '@google-cloud/bigquery-data-transfer/build/protos/protos
 import gcpLoggerText from '../../properties/logger'
 import { GcpServiceInput } from '../../types'
 import { generateGcpErrorLog, initTestEndpoint } from '../../utils'
-import { MULTI_REGIONS } from '../../config/constants'
 
 const lt = { ...gcpLoggerText }
 const { logger } = CloudGraph
@@ -27,9 +26,8 @@ export default async ({
   const dataTransferClient = new bigqueryDataTransfer.v1.DataTransferServiceClient({ ...config, apiEndpoint })
   const { projectId } = config
   const dataTransferResult: RawGcpBigQueryDataTransfer[] = []
-  const allRegions = regions.split(',').concat(MULTI_REGIONS)
   try {
-    for (const region of allRegions) {
+    for (const region of regions.split(',')) {
       const parent = dataTransferClient.projectPath(projectId)
       const dataTransferConfigsIter = dataTransferClient.listTransferConfigsAsync({
         parent: `${parent}/locations/${region}`,

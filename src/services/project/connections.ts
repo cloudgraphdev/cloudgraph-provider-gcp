@@ -1,7 +1,7 @@
 import { ServiceConnection } from '@cloudgraph/sdk'
 import { rawDataInterface } from '../../types'
 import { RawGcpProject } from './data'
-import { GLOBAL_REGION, MULTI_REGIONS } from '../../config/constants'
+import { GLOBAL_REGION } from '../../config/constants'
 import services from '../../enums/services'
 import aliases from '../../enums/serviceAliases'
 
@@ -28,7 +28,7 @@ export default ({
       data: { [property: string]: any[] }
     } = data.find(({ name }) => name === serviceName)
 
-    const regions = [region, GLOBAL_REGION, ...MULTI_REGIONS]
+    const regions = [region, GLOBAL_REGION]
     for (const region of regions) {
       if (instances?.data?.[region]) {
         const filtered = instances.data[region].filter(

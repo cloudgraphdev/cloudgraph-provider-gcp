@@ -27,6 +27,9 @@ export const regionMap = {
   europeWest2: 'europe-west2',            
   europeWest3: 'europe-west3',            
   europeWest6: 'europe-west6',    
+  // multi-region
+  eu: 'EU',
+  us: 'US',  
 }
 
 const {
@@ -57,7 +60,10 @@ const {
   europeCentral2,               
   europeWest2,            
   europeWest3,            
-  europeWest6,    
+  europeWest6,
+  // multi-region
+  eu,
+  us,    
 } = regionMap
 
 export default [
@@ -88,5 +94,8 @@ export default [
   europeCentral2,          
   europeWest2,            
   europeWest3,            
-  europeWest6,    
+  europeWest6,  
+  // multi-region
+  eu,
+  us,      
 ]

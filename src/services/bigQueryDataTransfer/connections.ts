@@ -1,7 +1,6 @@
 import { ServiceConnection } from '@cloudgraph/sdk'
 import { RawGcpBigQueryDataTransfer } from './data'
 import { RawGcpBigQueryDataTransferRun } from '../bigQueryDataTransferRun/data'
-import { MULTI_REGIONS } from '../../config/constants'
 
 import services from '../../enums/services'
 
@@ -18,7 +17,6 @@ export default ({
 } => {
   const { name: id } = service
   const connections: ServiceConnection[] = []
-  const regions = [region, ...MULTI_REGIONS]
 
   /**
    * Find transfer runs
@@ -28,20 +26,18 @@ export default ({
     data: { [property: string]: any[] }
   } = data.find(({ name }) => name === services.bigQueryDataTransferRun)
 
-  for (const region of regions) {
-    if (transferRuns?.data?.[region]) {
-      const filtered = transferRuns.data[region].filter(
-        ({ dataTransferId }: RawGcpBigQueryDataTransferRun) => dataTransferId === id
-      )
+  if (transferRuns?.data?.[region]) {
+    const filtered = transferRuns.data[region].filter(
+      ({ dataTransferId }: RawGcpBigQueryDataTransferRun) => dataTransferId === id
+    )
 
-      for (const { name } of filtered) {
-        connections.push({
-          id: name,
-          resourceType: services.bigQueryDataTransferRun,
-          relation: 'child',
-          field: 'transferRuns',
-        })
-      }
+    for (const { name } of filtered) {
+      connections.push({
+        id: name,
+        resourceType: services.bigQueryDataTransferRun,
+        relation: 'child',
+        field: 'transferRuns',
+      })
     }
   }
 
