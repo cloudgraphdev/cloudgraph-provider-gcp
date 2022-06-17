@@ -590,6 +590,7 @@ export type GcpBigQueryDataset = GcpBaseResource & {
   description?: Maybe<Scalars['String']>;
   etag?: Maybe<Scalars['String']>;
   friendlyName?: Maybe<Scalars['String']>;
+  labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
   lastModifiedTime?: Maybe<Scalars['String']>;
   location?: Maybe<Scalars['String']>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
@@ -1987,6 +1988,7 @@ export type GcpKmsKeyRing = GcpBaseResource & {
 
 export type GcpLabel = GcpBaseResource & {
   alertPolicy?: Maybe<Array<Maybe<GcpAlertPolicy>>>;
+  bigQueryDataset?: Maybe<Array<Maybe<GcpBigQueryDataset>>>;
   cloudFunction?: Maybe<Array<Maybe<GcpCloudFunction>>>;
   dnsManagedZone?: Maybe<Array<Maybe<GcpDnsManagedZone>>>;
   id: Scalars['String'];

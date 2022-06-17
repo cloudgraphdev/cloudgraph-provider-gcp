@@ -10,6 +10,7 @@ type gcpLabel implements gcpBaseResource @key(fields: "id") {
   secrets: [gcpSecret]
   storageBucket: [gcpStorageBucket]
   vmInstance: [gcpVmInstance]
+  bigQueryDataset: [gcpBigQueryDataset]
 }
 
 type gcpRawLabel
