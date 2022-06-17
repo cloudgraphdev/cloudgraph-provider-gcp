@@ -2,9 +2,7 @@ type gcpTag implements gcpBaseResource @key(fields: "id") {
   id: String! @id @search(by: [hash])
   key: String! @search(by: [hash, regexp])
   value: String! @search(by: [hash, regexp])
-  folder: [gcpFolder]
   organization: [gcpOrganization]
-  project: [gcpProject]
   vmInstance: [gcpVmInstance]
 }
 

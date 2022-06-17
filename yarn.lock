@@ -897,10 +897,10 @@
   resolved "https://registry.yarnpkg.com/@google-cloud/promisify/-/promisify-2.0.4.tgz#9d8705ecb2baa41b6b2673f3a8e9b7b7e1abc52a"
   integrity sha512-j8yRSSqswWi1QqUGKVEKOG03Q7qOoZP6/h2zN2YO+F5h2+DHU0bSrHCK9Y7lo2DI9fBd8qGAw795sf+3Jva4yA==
 
-"@google-cloud/resource-manager@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@google-cloud/resource-manager/-/resource-manager-3.0.0.tgz#4e81309e3523a410d61eda37d86884b53303bb5a"
-  integrity sha512-gumfF1JiglfnvhRPhpjjc9JbfcdNhcSKSbpYxAMUpFkjiPYd5z01NzEpiSwB/ucT8nUuFCqUrCHVel6gPLXk2g==
+"@google-cloud/resource-manager@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@google-cloud/resource-manager/-/resource-manager-3.2.0.tgz#dd0ad3e7efd591d56e06f4318fb1e4798a66fff2"
+  integrity sha512-5LDQ/l7QY7+TCHQzeK8+MKTwt79IxYb5hO5m3v0fd8b+VLBZhKp5bK9usluZZgdnyY7d0zIWsA1MiKtEHEzusA==
   dependencies:
     google-gax "^2.24.1"
 
