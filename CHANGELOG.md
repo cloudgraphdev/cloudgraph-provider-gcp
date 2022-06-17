@@ -1,3 +1,10 @@
+## [0.34.2-alpha.1](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.34.1...0.34.2-alpha.1) (2022-06-17)
+
+
+### Bug Fixes
+
+* **bigQuery:** add labels in bigQueryDataset ([357524f](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/357524f7865036954906419c735a8a4daf71e10c))
+
 ## [0.34.1](https://gitlab.com/auto-cloud/cloudgraph/provider/cloudgraph-provider-gcp/compare/0.34.0...0.34.1) (2022-03-24)
 
 
