@@ -56,7 +56,10 @@ export default ({
       usage: quota?.usage,
     })),
     selfLink,
-    usageExportLocation,
+    usageExportLocation: {
+      bucketName: usageExportLocation?.bucketName,
+      reportNamePrefix: usageExportLocation?.reportNamePrefix
+    },
     xpnProjectStatus: enumKeyToString(google.cloud.compute.v1.Project.XpnProjectStatus, xpnProjectStatus),
   }
 }
