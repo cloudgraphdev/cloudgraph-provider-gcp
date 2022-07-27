@@ -1,3 +1,10 @@
+## [0.34.2-alpha.2](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.34.2-alpha.1...0.34.2-alpha.2) (2022-07-27)
+
+
+### Bug Fixes
+
+* computeProject unknown field _reportNamePrefix ([0c7560e](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/0c7560ebe0ffa69d56635abddb5b51328cf98f35))
+
 ## [0.34.2-alpha.1](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.34.1...0.34.2-alpha.1) (2022-06-17)
 
 
