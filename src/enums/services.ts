@@ -16,7 +16,7 @@ export default {
   // recommender: 'recommender',
   // services: 'services',
   // anthos: 'anthos',
-  // billing: 'billing',
+  billing: 'billing',
   // artifacts: 'artifacts',
   // builds: 'builds',
   // scheduler: 'scheduler',
