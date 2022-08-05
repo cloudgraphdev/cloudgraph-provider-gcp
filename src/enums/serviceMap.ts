@@ -49,6 +49,7 @@ import GcpApiGatewayApiConfig from '../services/apiGatewayApiConfig'
 import GcpFirestoreDatabase from '../services/firestore'
 import GcpLabel from '../services/label'
 import GcpTag from '../services/tag'
+import GcpBilling from '../services/billing'
 
 /**
  * serviceMap is an object that contains all currently supported services
@@ -63,6 +64,7 @@ export default {
   [services.bigQueryReservationCapacityCommitment]: GcpBigQueryReservationCapacityCommitment,
   [services.bigQueryDataTransfer]: GcpBigQueryDataTransfer,
   [services.bigQueryDataTransferRun]: GcpBigQueryDataTransferRun,
+  [services.billing]: GcpBilling,
   [services.kmsKeyRing]: GcpKmsKeyRing,
   [services.kmsCryptoKeys]: GcpKmsCryptoKey,
   [services.cloudRouter]: GcpCloudRouter,

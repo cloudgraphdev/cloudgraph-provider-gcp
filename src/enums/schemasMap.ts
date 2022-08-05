@@ -12,6 +12,7 @@ export default {
   [services.bigQueryReservationCapacityCommitment]: 'gcpBigQueryReservationCapacityCommitment',
   [services.bigQueryDataTransfer]: 'gcpBigQueryDataTransfer',
   [services.bigQueryDataTransferRun]: 'gcpBigQueryDataTransferRun',
+  [services.billing]: 'gcpBilling',
   [services.kmsKeyRing]: 'gcpKmsKeyRing',
   [services.kmsCryptoKeys]: 'gcpKmsCryptoKey',
   [services.cdnBackendBucket]: 'gcpCdnBackendBucket',

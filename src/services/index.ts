@@ -15,12 +15,8 @@ import regions from '../enums/regions'
 import serviceMap from '../enums/serviceMap'
 import schemasMap from '../enums/schemasMap'
 import services from '../enums/services'
-import { GcpCredentials, rawDataInterface } from '../types'
-import {
-  DEFAULT_REGION,
-  DEFAULT_RESOURCES,
-  GLOBAL_REGION,
-} from '../config/constants'
+import { GcpBilling, GcpCredentials, rawDataInterface } from '../types'
+import { DEFAULT_REGION, DEFAULT_RESOURCES } from '../config/constants'
 import relations from '../enums/relations'
 
 export const enums = {
@@ -61,6 +57,21 @@ export default class Provider extends CloudGraph.Client {
     ])
   }
 
+  async askForGcpBillingConfig(): Promise<GcpBilling> {
+    return this.interface.prompt([
+      {
+        type: 'input',
+        message: 'Please input a valid billing account id: ',
+        name: 'billingAccountId',
+      },
+      {
+        type: 'input',
+        message: 'Please input a valid billing bigQuery Dataset: ',
+        name: 'bigQueryDataset',
+      },
+    ])
+  }
+
   logSelectedAccessRegionsAndResources(
     subscriptionsToLog: string[],
     regionsToLog: string,
@@ -88,6 +99,7 @@ export default class Provider extends CloudGraph.Client {
     const result: { [key: string]: any } = { ...providerSettings }
 
     const accounts: GcpCredentials[] = []
+    let billingConfig: GcpBilling
 
     /**
      * Multi subscription setup flow
@@ -122,6 +134,28 @@ export default class Provider extends CloudGraph.Client {
     }
 
     result.accounts = accounts
+
+    /**
+     * Billing bigQuery setup flow
+     */
+    if (isEmpty(billingConfig)) {
+      const { addBillingConfig } = await this.interface.prompt([
+        {
+          type: 'confirm',
+          message: 'Do you want to configure export cloud Billing data to BigQuery?',
+          name: 'addBillingConfig',
+          default: true,
+        },
+      ])
+      if (addBillingConfig) {
+        const { billingAccountId, bigQueryDataset } =
+          await this.askForGcpBillingConfig()
+        if (billingAccountId && bigQueryDataset) {
+          billingConfig = { billingAccountId, bigQueryDataset }
+        }
+      }
+    }
+    result.billing = billingConfig || {}
 
     const { regions: regionsAnswer } = await this.interface.prompt([
       {
@@ -264,7 +298,8 @@ export default class Provider extends CloudGraph.Client {
 
   private async getRawData(
     account: GcpCredentials,
-    opts?: Opts
+    opts?: Opts,
+    billing?: GcpBilling
   ): Promise<rawDataInterface[]> {
     let { regions: configuredRegions, resources: configuredResources } =
       this.config
@@ -282,7 +317,7 @@ export default class Provider extends CloudGraph.Client {
     ]).concat(['label', 'tag'])
 
     const { projectId } = account
-    const config = { ...account }
+    const config = { ...account, billing }
 
     this.printGcpCredentials(account)
 
@@ -339,6 +374,9 @@ export default class Provider extends CloudGraph.Client {
       configuredResources = Object.values(this.properties.services).join(',')
     }
 
+    // Billing config
+    const { billing = {} } = this.config
+
     this.logSelectedAccessRegionsAndResources(
       configuredAccounts.map(acct => {
         return acct.projectId
@@ -358,7 +396,7 @@ export default class Provider extends CloudGraph.Client {
 
       if (!crawledAccounts.find(val => val === projectId)) {
         crawledAccounts.push(projectId)
-        const newRawData = await this.getRawData(account, opts)
+        const newRawData = await this.getRawData(account, opts, billing)
         mergedRawData = this.mergeRawData(mergedRawData, newRawData)
         rawData = [...rawData, ...newRawData]
       } else {
