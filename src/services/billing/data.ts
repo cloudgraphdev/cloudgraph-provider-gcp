@@ -181,7 +181,7 @@ export default async ({
 
     const commonArgs = {
       timePeriod: {
-        Start: getDaysAgo(60), // TODO: change to 30 !!!
+        Start: getDaysAgo(30),
         End: today,
       },
     }
