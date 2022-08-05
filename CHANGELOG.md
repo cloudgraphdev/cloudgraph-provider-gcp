@@ -1,3 +1,10 @@
+# [0.35.0-alpha.1](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.34.2-alpha.2...0.35.0-alpha.1) (2022-08-05)
+
+
+### Features
+
+* **service:** Added GCP Billing service ([3a457f9](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/3a457f9d4e0418e36214fcbd1c90e9c6d226a4b0))
+
 ## [0.34.2-alpha.2](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.34.2-alpha.1...0.34.2-alpha.2) (2022-07-27)
 
 
