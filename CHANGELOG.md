@@ -1,3 +1,10 @@
+# [0.35.0-alpha.2](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.35.0-alpha.1...0.35.0-alpha.2) (2022-08-08)
+
+
+### Bug Fixes
+
+* **service:** Fix days ago value changed for test purposes ([841458c](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/841458c5ff3b80958a02f5813ca5902342ac02eb))
+
 # [0.35.0-alpha.1](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.34.2-alpha.2...0.35.0-alpha.1) (2022-08-05)
 
 
