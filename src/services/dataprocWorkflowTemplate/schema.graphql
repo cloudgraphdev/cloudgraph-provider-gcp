@@ -171,7 +171,7 @@ type gcpDataprocWorkflowTemplate implements gcpBaseResource
     placementManagedClusterConfig: gcpDataprocClusterConfig,
     placementManagedClusterLabels: [gcpRawLabel]
     placementClusterSelectorZone: String @search(by: [hash, regexp])
-    placementClusterSelectorClusterLabels: [gcpKeyValue]
+    placementClusterSelectorLabels: [gcpKeyValue]
     jobs: [gcpDataprocWorkflowTemplateOrderedJob],
     parameters: [gcpDataprocWorkflowTemplateParameter]
     dagTimeout: String @search(by: [hash, regexp])

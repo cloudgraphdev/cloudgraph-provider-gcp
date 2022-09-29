@@ -55,10 +55,10 @@ type gcpSecretReplicationUserManagedStatusReplicaStatus
   ) {
   id: String! @id
   location: String @search(by: [hash, regexp])
-  customerManagedEncryption: gcpSecretReplicationUserManagedStatusCustomerManagedEncryptionStatus
+  customerManagedEncryption: gcpSecretReplicationUserEncryptionStatus
 }
 
-type gcpSecretReplicationUserManagedStatusCustomerManagedEncryptionStatus
+type gcpSecretReplicationUserEncryptionStatus
   @generate(
     query: { get: false, query: true, aggregate: false }
     mutation: { add: false, delete: false }

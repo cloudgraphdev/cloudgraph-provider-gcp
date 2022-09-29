@@ -24,7 +24,7 @@ type gcpBigQueryTableViewUserDefinedFunctionResource
     inlineCode: String @search(by: [hash, regexp])
   }
 
-type gcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamilyColumn
+type gcpBigQueryTableConfigColumnFamilyColumn
   @generate(
     query: { get: true, query: true, aggregate: true }
     mutation: { add: true, delete: false }
@@ -38,7 +38,7 @@ type gcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamilyColumn
     onlyReadLatest: Boolean @search
   }
 
-type gcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamily
+type gcpBigQueryTableConfigColumnFamily
   @generate(
     query: { get: true, query: true, aggregate: true }
     mutation: { add: true, delete: false }
@@ -47,7 +47,7 @@ type gcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamily
     familyId: String @search(by: [hash, regexp])
     type: String @search(by: [hash, regexp])
     encoding: String @search(by: [hash, regexp])
-    columns: [gcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamilyColumn]
+    columns: [gcpBigQueryTableConfigColumnFamilyColumn]
     onlyReadLatest: Boolean @search
   }
 
@@ -98,7 +98,7 @@ type gcpBigQueryTable implements gcpBaseResource
     externalDataConfigurationCsvOptionsAllowQuotedNewlines: Boolean @search
     externalDataConfigurationCsvOptionsAllowJaggedRows: Boolean @search
     externalDataConfigurationCsvOptionsEncoding: String @search(by: [hash, regexp])
-    externalDataConfigurationBigtableOptionsColumnFamilies: [gcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamily]
+    externalDataConfigOptionsColumnFamilies: [gcpBigQueryTableConfigColumnFamily]
     externalDataConfigurationBigtableOptionsIgnoreUnspecifiedColumnFamilies: Boolean @search
     externalDataConfigurationBigtableOptionsReadRowkeyAsString: Boolean @search
     externalDataConfigurationGoogleSheetsOptionsSkipLeadingRows: String @search(by: [hash, regexp])

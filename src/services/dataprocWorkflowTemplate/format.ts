@@ -269,7 +269,7 @@ export default ({
     placementManagedClusterConfig: formatClusterConfig(placement?.managedCluster?.config || {}),
     placementManagedClusterLabels: formatLabelsFromMap(placement?.managedCluster?.labels || {}),
     placementClusterSelectorZone: placement?.clusterSelector?.zone || '',
-    placementClusterSelectorClusterLabels: formatKeyValueMap(placement?.clusterSelector?.clusterLabels || {}),
+    placementClusterSelectorLabels: formatKeyValueMap(placement?.clusterSelector?.clusterLabels || {}),
     jobs: jobs?.map(formatJob) || [],
     parameters: parameters?.map(formatParameter) || [],
     dagTimeout: dagTimeout?.seconds?.toString()  || '',

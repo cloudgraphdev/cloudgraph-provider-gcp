@@ -1,6 +1,6 @@
 import { google } from '@google-cloud/bigquery-reservation/build/protos/protos'
 import cuid from 'cuid'
-import { GcpBigQueryReservationCapacityCommitment } from '../../types/generated'
+import { GcpBigQueryReservationCapacity } from '../../types/generated'
 import { toISOString } from '../../utils/dateutils'
 
 import { enumKeyToString } from '../../utils/format'
@@ -13,7 +13,7 @@ export default ({
 }: {
   service: RawGcpBigQueryReservationCapacityCommitment
   region: string
-}): GcpBigQueryReservationCapacityCommitment => {
+}): GcpBigQueryReservationCapacity => {
   const {
     name,
     slotCount,

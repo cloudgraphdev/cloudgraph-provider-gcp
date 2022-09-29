@@ -1,5 +1,5 @@
-export default `mutation($input: [AddgcpBigQueryReservationCapacityCommitmentInput!]!) {
-  addgcpBigQueryReservationCapacityCommitment(input: $input, upsert: true) {
+export default `mutation($input: [AddgcpBigQueryReservationCapacityInput!]!) {
+  addgcpBigQueryReservationCapacity(input: $input, upsert: true) {
     numUids
   }
 }`;

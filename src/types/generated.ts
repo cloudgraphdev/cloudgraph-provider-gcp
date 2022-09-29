@@ -638,11 +638,11 @@ export type GcpBigQueryReservation = GcpBaseResource & {
   updateTime?: Maybe<Scalars['String']>;
 };
 
-export type GcpBigQueryReservationCapacityCommitment = GcpBaseResource & {
+export type GcpBigQueryReservationCapacity = GcpBaseResource & {
   commitmentEndTime?: Maybe<Scalars['String']>;
   commitmentStartTime?: Maybe<Scalars['String']>;
   failureStatusCode?: Maybe<Scalars['Int']>;
-  failureStatusDetails?: Maybe<Array<Maybe<GcpBigQueryReservationCapacityCommitmentFailureStatusDetail>>>;
+  failureStatusDetails?: Maybe<Array<Maybe<GcpBigQueryReservationFailureStatusDetail>>>;
   failureStatusMessage?: Maybe<Scalars['String']>;
   plan?: Maybe<Scalars['String']>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
@@ -651,7 +651,7 @@ export type GcpBigQueryReservationCapacityCommitment = GcpBaseResource & {
   state?: Maybe<Scalars['String']>;
 };
 
-export type GcpBigQueryReservationCapacityCommitmentFailureStatusDetail = {
+export type GcpBigQueryReservationFailureStatusDetail = {
   id: Scalars['String'];
   typeUrl?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
@@ -669,9 +669,9 @@ export type GcpBigQueryTable = GcpBaseResource & {
   description?: Maybe<Scalars['String']>;
   encryptionConfigurationKmsKeyName?: Maybe<Scalars['String']>;
   expirationTime?: Maybe<Scalars['String']>;
+  externalDataConfigOptionsColumnFamilies?: Maybe<Array<Maybe<GcpBigQueryTableConfigColumnFamily>>>;
   externalDataConfigurationAutodetect?: Maybe<Scalars['Boolean']>;
   externalDataConfigurationAvroOptionsUseAvroLogicalTypes?: Maybe<Scalars['Boolean']>;
-  externalDataConfigurationBigtableOptionsColumnFamilies?: Maybe<Array<Maybe<GcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamily>>>;
   externalDataConfigurationBigtableOptionsIgnoreUnspecifiedColumnFamilies?: Maybe<Scalars['Boolean']>;
   externalDataConfigurationBigtableOptionsReadRowkeyAsString?: Maybe<Scalars['Boolean']>;
   externalDataConfigurationCompression?: Maybe<Scalars['String']>;
@@ -729,8 +729,8 @@ export type GcpBigQueryTable = GcpBaseResource & {
   viewUserDefinedFunctionResources?: Maybe<Array<Maybe<GcpBigQueryTableViewUserDefinedFunctionResource>>>;
 };
 
-export type GcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamily = {
-  columns?: Maybe<Array<Maybe<GcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamilyColumn>>>;
+export type GcpBigQueryTableConfigColumnFamily = {
+  columns?: Maybe<Array<Maybe<GcpBigQueryTableConfigColumnFamilyColumn>>>;
   encoding?: Maybe<Scalars['String']>;
   familyId?: Maybe<Scalars['String']>;
   id: Scalars['String'];
@@ -738,7 +738,7 @@ export type GcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamily 
   type?: Maybe<Scalars['String']>;
 };
 
-export type GcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamilyColumn = {
+export type GcpBigQueryTableConfigColumnFamilyColumn = {
   encoding?: Maybe<Scalars['String']>;
   fieldName?: Maybe<Scalars['String']>;
   id: Scalars['String'];
@@ -926,19 +926,19 @@ export type GcpCdnUrlMap = GcpBaseResource & {
   defaultUrlRedirectStripQuery?: Maybe<Scalars['Boolean']>;
   description?: Maybe<Scalars['String']>;
   fingerprint?: Maybe<Scalars['String']>;
-  headerActionRequestHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd>>>;
-  headerActionRequestHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
-  headerActionResponseHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd>>>;
-  headerActionResponseHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
   hostRules?: Maybe<Array<Maybe<GcpCdnUrlMapHostRule>>>;
   kind?: Maybe<Scalars['String']>;
   pathMatchers?: Maybe<Array<Maybe<GcpCdnUrlMapPathMatcher>>>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
+  requestHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteServiceHeaders>>>;
+  requestHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
+  responseHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteServiceHeaders>>>;
+  responseHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
   selfLink?: Maybe<Scalars['String']>;
   tests?: Maybe<Array<Maybe<GcpCdnUrlMapTest>>>;
 };
 
-export type GcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd = {
+export type GcpCdnUrlMapDefaultRouteServiceHeaders = {
   headerName?: Maybe<Scalars['String']>;
   headerValue?: Maybe<Scalars['String']>;
   id: Scalars['String'];
@@ -962,14 +962,25 @@ export type GcpCdnUrlMapPathMatcher = {
   defaultUrlRedirectRedirectResponseCode?: Maybe<Scalars['String']>;
   defaultUrlRedirectStripQuery?: Maybe<Scalars['Boolean']>;
   description?: Maybe<Scalars['String']>;
-  headerActionRequestHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd>>>;
-  headerActionRequestHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
-  headerActionResponseHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd>>>;
-  headerActionResponseHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
   id: Scalars['String'];
   name?: Maybe<Scalars['String']>;
   pathRules?: Maybe<Array<Maybe<GcpCdnUrlMapPathMatcherPathRule>>>;
+  requestHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteServiceHeaders>>>;
+  requestHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
+  responseHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteServiceHeaders>>>;
+  responseHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
   routeRules?: Maybe<Array<Maybe<GcpCdnUrlMapPathMatcherPathRule>>>;
+};
+
+export type GcpCdnUrlMapPathMatcherMatchRule = {
+  fullPathMatch?: Maybe<Scalars['String']>;
+  headerMatches?: Maybe<Array<Maybe<GcpCdnUrlMapPathRuleHttpHeaderMatch>>>;
+  id: Scalars['String'];
+  ignoreCase?: Maybe<Scalars['Boolean']>;
+  metadataFilters?: Maybe<Array<Maybe<GcpCdnUrlMapPathRuleMetadataFilter>>>;
+  prefixMatch?: Maybe<Scalars['String']>;
+  queryParameterMatches?: Maybe<Array<Maybe<GcpCdnUrlMapPathRuleHttpQueryParameter>>>;
+  regexMatch?: Maybe<Scalars['String']>;
 };
 
 export type GcpCdnUrlMapPathMatcherPathRule = {
@@ -987,13 +998,13 @@ export type GcpCdnUrlMapPathMatcherPathRule = {
 
 export type GcpCdnUrlMapPathMatcherRouteRule = {
   description?: Maybe<Scalars['String']>;
-  headerActionRequestHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd>>>;
-  headerActionRequestHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
-  headerActionResponseHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd>>>;
-  headerActionResponseHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
   id: Scalars['String'];
-  matchRules?: Maybe<Array<Maybe<GcpCdnUrlMapPathMatcherRouteRuleMatchRule>>>;
+  matchRules?: Maybe<Array<Maybe<GcpCdnUrlMapPathMatcherMatchRule>>>;
   priority?: Maybe<Scalars['Int']>;
+  requestHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteServiceHeaders>>>;
+  requestHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
+  responseHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteServiceHeaders>>>;
+  responseHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
   routeAction?: Maybe<GcpCdnUrlMapRouteAction>;
   service?: Maybe<Scalars['String']>;
   urlRedirectHostRedirect?: Maybe<Scalars['String']>;
@@ -1004,18 +1015,7 @@ export type GcpCdnUrlMapPathMatcherRouteRule = {
   urlRedirectStripQuery?: Maybe<Scalars['Boolean']>;
 };
 
-export type GcpCdnUrlMapPathMatcherRouteRuleMatchRule = {
-  fullPathMatch?: Maybe<Scalars['String']>;
-  headerMatches?: Maybe<Array<Maybe<GcpCdnUrlMapPathMatcherRouteRuleMatchRuleHttpHeaderMatch>>>;
-  id: Scalars['String'];
-  ignoreCase?: Maybe<Scalars['Boolean']>;
-  metadataFilters?: Maybe<Array<Maybe<GcpCdnUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter>>>;
-  prefixMatch?: Maybe<Scalars['String']>;
-  queryParameterMatches?: Maybe<Array<Maybe<GcpCdnUrlMapPathMatcherRouteRuleMatchRuleHttpQueryParameterMatch>>>;
-  regexMatch?: Maybe<Scalars['String']>;
-};
-
-export type GcpCdnUrlMapPathMatcherRouteRuleMatchRuleHttpHeaderMatch = {
+export type GcpCdnUrlMapPathRuleHttpHeaderMatch = {
   exactMatch?: Maybe<Scalars['String']>;
   headerName?: Maybe<Scalars['String']>;
   id: Scalars['String'];
@@ -1028,7 +1028,7 @@ export type GcpCdnUrlMapPathMatcherRouteRuleMatchRuleHttpHeaderMatch = {
   suffixMatch?: Maybe<Scalars['String']>;
 };
 
-export type GcpCdnUrlMapPathMatcherRouteRuleMatchRuleHttpQueryParameterMatch = {
+export type GcpCdnUrlMapPathRuleHttpQueryParameter = {
   exactMatch?: Maybe<Scalars['String']>;
   id: Scalars['String'];
   name?: Maybe<Scalars['String']>;
@@ -1036,13 +1036,13 @@ export type GcpCdnUrlMapPathMatcherRouteRuleMatchRuleHttpQueryParameterMatch = {
   regexMatch?: Maybe<Scalars['String']>;
 };
 
-export type GcpCdnUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter = {
-  filterLabels?: Maybe<Array<Maybe<GcpCdnUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel>>>;
+export type GcpCdnUrlMapPathRuleMetadataFilter = {
+  filterLabels?: Maybe<Array<Maybe<GcpCdnUrlMapPathRuleMetadataFilterLabel>>>;
   filterMatchCriteria?: Maybe<Scalars['String']>;
   id: Scalars['String'];
 };
 
-export type GcpCdnUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel = {
+export type GcpCdnUrlMapPathRuleMetadataFilterLabel = {
   id: Scalars['String'];
   name?: Maybe<Scalars['String']>;
   value?: Maybe<Scalars['String']>;
@@ -1069,16 +1069,16 @@ export type GcpCdnUrlMapRouteAction = {
   timeout?: Maybe<Scalars['String']>;
   urlRewriteHostRewrite?: Maybe<Scalars['String']>;
   urlRewritePathPrefixRewrite?: Maybe<Scalars['String']>;
-  weightedBackendServices?: Maybe<Array<Maybe<GcpCdnUrlMapRouteActionWeightedBackendService>>>;
+  weightedBackendServices?: Maybe<Array<Maybe<GcpCdnUrlMapRouteActionWeightedService>>>;
 };
 
-export type GcpCdnUrlMapRouteActionWeightedBackendService = {
+export type GcpCdnUrlMapRouteActionWeightedService = {
   backendService?: Maybe<Scalars['String']>;
-  headerActionRequestHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd>>>;
-  headerActionRequestHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
-  headerActionResponseHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd>>>;
-  headerActionResponseHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
   id: Scalars['String'];
+  requestHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteServiceHeaders>>>;
+  requestHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
+  responseHeadersToAdd?: Maybe<Array<Maybe<GcpCdnUrlMapDefaultRouteServiceHeaders>>>;
+  responseHeadersToRemove?: Maybe<Array<Maybe<Scalars['String']>>>;
   weight?: Maybe<Scalars['Int']>;
 };
 
@@ -1425,7 +1425,7 @@ export type GcpDataprocClusterConfigNodeInitializationAction = {
 };
 
 export type GcpDataprocClusterConfigSecurity = {
-  identityConfigUserServiceAccountMapping?: Maybe<Array<Maybe<GcpKeyValue>>>;
+  identityConfigUsrAccMapping?: Maybe<Array<Maybe<GcpKeyValue>>>;
   kerberosConfigCrossRealmTrustAdminServer?: Maybe<Scalars['String']>;
   kerberosConfigCrossRealmTrustKdc?: Maybe<Scalars['String']>;
   kerberosConfigCrossRealmTrustRealm?: Maybe<Scalars['String']>;
@@ -1597,7 +1597,7 @@ export type GcpDataprocWorkflowTemplate = GcpBaseResource & {
   jobs?: Maybe<Array<Maybe<GcpDataprocWorkflowTemplateOrderedJob>>>;
   labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
   parameters?: Maybe<Array<Maybe<GcpDataprocWorkflowTemplateParameter>>>;
-  placementClusterSelectorClusterLabels?: Maybe<Array<Maybe<GcpKeyValue>>>;
+  placementClusterSelectorLabels?: Maybe<Array<Maybe<GcpKeyValue>>>;
   placementClusterSelectorZone?: Maybe<Scalars['String']>;
   placementManagedClusterConfig?: Maybe<GcpDataprocClusterConfig>;
   placementManagedClusterLabels?: Maybe<Array<Maybe<GcpRawLabel>>>;
@@ -2195,7 +2195,7 @@ export type GcpProject = {
   bigQueryDataTransferRun?: Maybe<Array<Maybe<GcpBigQueryDataTransferRun>>>;
   bigQueryDataset?: Maybe<Array<Maybe<GcpBigQueryDataset>>>;
   bigQueryReservation?: Maybe<Array<Maybe<GcpBigQueryReservation>>>;
-  bigQueryReservationCapacityCommitment?: Maybe<Array<Maybe<GcpBigQueryReservationCapacityCommitment>>>;
+  bigQueryReservationCapacity?: Maybe<Array<Maybe<GcpBigQueryReservationCapacity>>>;
   cdnBackendBucket?: Maybe<Array<Maybe<GcpCdnBackendBucket>>>;
   cdnBackendService?: Maybe<Array<Maybe<GcpCdnBackendService>>>;
   cdnUrlMap?: Maybe<Array<Maybe<GcpCdnUrlMap>>>;
@@ -2318,16 +2318,16 @@ export type GcpSecretReplicationStatusTopic = {
   name?: Maybe<Scalars['String']>;
 };
 
+export type GcpSecretReplicationUserEncryptionStatus = {
+  kmsKeyVersionName?: Maybe<Scalars['String']>;
+};
+
 export type GcpSecretReplicationUserManagedStatus = {
   replicas?: Maybe<Array<Maybe<GcpSecretReplicationUserManagedStatusReplicaStatus>>>;
 };
 
-export type GcpSecretReplicationUserManagedStatusCustomerManagedEncryptionStatus = {
-  kmsKeyVersionName?: Maybe<Scalars['String']>;
-};
-
 export type GcpSecretReplicationUserManagedStatusReplicaStatus = {
-  customerManagedEncryption?: Maybe<GcpSecretReplicationUserManagedStatusCustomerManagedEncryptionStatus>;
+  customerManagedEncryption?: Maybe<GcpSecretReplicationUserEncryptionStatus>;
   id: Scalars['String'];
   location?: Maybe<Scalars['String']>;
 };

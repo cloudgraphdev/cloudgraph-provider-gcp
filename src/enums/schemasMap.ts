@@ -9,7 +9,7 @@ export default {
   [services.bigQueryDataset]: 'gcpBigQueryDataset',
   [services.bigQueryConnection]: 'gcpBigQueryConnection',
   [services.bigQueryReservation]: 'gcpBigQueryReservation',
-  [services.bigQueryReservationCapacityCommitment]: 'gcpBigQueryReservationCapacityCommitment',
+  [services.bigQueryReservationCapacityCommitment]: 'gcpBigQueryReservationCapacity',
   [services.bigQueryDataTransfer]: 'gcpBigQueryDataTransfer',
   [services.bigQueryDataTransferRun]: 'gcpBigQueryDataTransferRun',
   [services.kmsKeyRing]: 'gcpKmsKeyRing',

@@ -100,7 +100,7 @@ type gcpDataprocClusterConfigSecurity
     kerberosConfigKdcDbKeyUri: String @search(by: [hash, regexp])
     kerberosConfigTgtLifetimeHours: Int @search
     kerberosConfigRealm: String @search(by: [hash, regexp])
-    identityConfigUserServiceAccountMapping: [gcpKeyValue]
+    identityConfigUsrAccMapping: [gcpKeyValue]
   }
 
 type gcpDataprocClusterConfigLifecycleConfig
