@@ -2,7 +2,7 @@ import cuid from 'cuid'
 import {
   GcpBigQueryDataset,
   GcpBigQueryTable,
-  GcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamily,
+  GcpBigQueryTableConfigColumnFamily,
   GcpBigQueryTableSchemaField,
   GcpBigQueryTableViewUserDefinedFunctionResource,
 } from '../../types/generated'
@@ -47,7 +47,7 @@ const formatTableViewUserDefinedFunctionResource = ({
   inlineCode,
 })
 
-const formatColumnFamily = (columnFamily): GcpBigQueryTableExternalDataConfigurationBigtableOptionColumnFamily => {
+const formatColumnFamily = (columnFamily): GcpBigQueryTableConfigColumnFamily => {
   const {
     familyId,
     type,
@@ -161,7 +161,7 @@ const formatTable = (table: RawGcpBigQueryTable): GcpBigQueryTable => {
     externalDataConfigurationCsvOptionsAllowQuotedNewlines: externalDataConfiguration?.csvOptions?.allowQuotedNewlines || false,
     externalDataConfigurationCsvOptionsAllowJaggedRows: externalDataConfiguration?.csvOptions?.allowJaggedRows || false,
     externalDataConfigurationCsvOptionsEncoding: externalDataConfiguration?.csvOptions?.encoding || '',
-    externalDataConfigurationBigtableOptionsColumnFamilies: externalDataConfiguration?.bigtableOptions?.columnFamilies?.map(
+    externalDataConfigOptionsColumnFamilies: externalDataConfiguration?.bigtableOptions?.columnFamilies?.map(
       columnFamily => formatColumnFamily(columnFamily)
     ) || [],
     externalDataConfigurationBigtableOptionsIgnoreUnspecifiedColumnFamilies:

@@ -8,12 +8,12 @@ import {
   GcpCdnUrlMapPathMatcher,
   GcpCdnUrlMapPathMatcherPathRule,
   GcpCdnUrlMapPathMatcherRouteRule,
-  GcpCdnUrlMapPathMatcherRouteRuleMatchRule,
-  GcpCdnUrlMapPathMatcherRouteRuleMatchRuleHttpHeaderMatch,
-  GcpCdnUrlMapPathMatcherRouteRuleMatchRuleHttpQueryParameterMatch,
-  GcpCdnUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter,
+  GcpCdnUrlMapPathMatcherMatchRule,
+  GcpCdnUrlMapPathRuleHttpHeaderMatch,
+  GcpCdnUrlMapPathRuleHttpQueryParameter,
+  GcpCdnUrlMapPathRuleMetadataFilter,
   GcpCdnUrlMapRouteAction,
-  GcpCdnUrlMapRouteActionWeightedBackendService,
+  GcpCdnUrlMapRouteActionWeightedService,
   GcpCdnUrlMapTest,
 } from '../../types/generated'
 
@@ -21,11 +21,11 @@ const formatWeightedBackendService = ({
   backendService,
   headerAction,
   weight,
-}: google.cloud.compute.v1.IWeightedBackendService): GcpCdnUrlMapRouteActionWeightedBackendService => {
+}: google.cloud.compute.v1.IWeightedBackendService): GcpCdnUrlMapRouteActionWeightedService => {
   return {
     id: cuid(),
     backendService,
-    headerActionRequestHeadersToAdd: headerAction?.requestHeadersToAdd?.map(({
+    requestHeadersToAdd: headerAction?.requestHeadersToAdd?.map(({
       headerName,
       headerValue,
       replace,
@@ -37,8 +37,8 @@ const formatWeightedBackendService = ({
         replace,
       }
     }) || [],
-    headerActionRequestHeadersToRemove: headerAction?.requestHeadersToRemove || [],
-    headerActionResponseHeadersToAdd: headerAction?.responseHeadersToAdd?.map(({
+    requestHeadersToRemove: headerAction?.requestHeadersToRemove || [],
+    responseHeadersToAdd: headerAction?.responseHeadersToAdd?.map(({
       headerName,
       headerValue,
       replace,
@@ -50,7 +50,7 @@ const formatWeightedBackendService = ({
         replace,
       }
     }) || [],
-    headerActionResponseHeadersToRemove: headerAction?.responseHeadersToRemove || [],
+    responseHeadersToRemove: headerAction?.responseHeadersToRemove || [],
     weight,
   }
 }
@@ -120,7 +120,7 @@ const formatPathMatcherRouteRuleMatchRuleHttpHeaderMatch = ({
   rangeMatch,
   regexMatch,
   suffixMatch,
-}: google.cloud.compute.v1.IHttpHeaderMatch): GcpCdnUrlMapPathMatcherRouteRuleMatchRuleHttpHeaderMatch => {
+}: google.cloud.compute.v1.IHttpHeaderMatch): GcpCdnUrlMapPathRuleHttpHeaderMatch => {
   return {
     id: cuid(),
     exactMatch,
@@ -138,7 +138,7 @@ const formatPathMatcherRouteRuleMatchRuleHttpHeaderMatch = ({
 const formatPathMatcherRouteRuleMatchRuleMetadataFilter = ({
   filterLabels = [],
   filterMatchCriteria,
-}: google.cloud.compute.v1.IMetadataFilter): GcpCdnUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter => {
+}: google.cloud.compute.v1.IMetadataFilter): GcpCdnUrlMapPathRuleMetadataFilter => {
   return {
     id: cuid(),
     filterLabels: filterLabels?.map(
@@ -161,7 +161,7 @@ const formatPathMatcherRouteRuleMatchRuleHttpQueryParameterMatch = ({
   name,
   presentMatch,
   regexMatch,
-}: google.cloud.compute.v1.IHttpQueryParameterMatch): GcpCdnUrlMapPathMatcherRouteRuleMatchRuleHttpQueryParameterMatch => {
+}: google.cloud.compute.v1.IHttpQueryParameterMatch): GcpCdnUrlMapPathRuleHttpQueryParameter => {
   return {
     id: cuid(),
     exactMatch,
@@ -179,7 +179,7 @@ const formatPathMatcherRouteRuleMatchRules = ({
   prefixMatch,
   queryParameterMatches = [],
   regexMatch,
-}: google.cloud.compute.v1.IHttpRouteRuleMatch): GcpCdnUrlMapPathMatcherRouteRuleMatchRule => {
+}: google.cloud.compute.v1.IHttpRouteRuleMatch): GcpCdnUrlMapPathMatcherMatchRule => {
   return {
     id: cuid(),
     fullPathMatch,
@@ -206,7 +206,7 @@ const formatPathMatcherRouteRule = ({
   return {
     id: cuid(),
     description,
-    headerActionRequestHeadersToAdd: headerAction?.requestHeadersToAdd?.map(({
+    requestHeadersToAdd: headerAction?.requestHeadersToAdd?.map(({
       headerName,
       headerValue,
       replace,
@@ -218,8 +218,8 @@ const formatPathMatcherRouteRule = ({
         replace,
       }
     }) || [],
-    headerActionRequestHeadersToRemove: headerAction?.requestHeadersToRemove || [],
-    headerActionResponseHeadersToAdd: headerAction?.responseHeadersToAdd?.map(({
+    requestHeadersToRemove: headerAction?.requestHeadersToRemove || [],
+    responseHeadersToAdd: headerAction?.responseHeadersToAdd?.map(({
       headerName,
       headerValue,
       replace,
@@ -231,7 +231,7 @@ const formatPathMatcherRouteRule = ({
         replace,
       }
     }) || [],
-    headerActionResponseHeadersToRemove: headerAction?.responseHeadersToRemove || [],
+    responseHeadersToRemove: headerAction?.responseHeadersToRemove || [],
     matchRules: matchRules?.map(matchRule => formatPathMatcherRouteRuleMatchRules(matchRule)),
     priority,
     routeAction: formatRouteAction(routeAction),
@@ -270,7 +270,7 @@ const formatPathMatcher = ({
       enumKeyToString(google.cloud.compute.v1.HttpRedirectAction.RedirectResponseCode, defaultUrlRedirect?.redirectResponseCode) || '',
     defaultUrlRedirectStripQuery: defaultUrlRedirect?.stripQuery || false,
     description,
-    headerActionRequestHeadersToAdd: headerAction?.requestHeadersToAdd?.map(({
+    requestHeadersToAdd: headerAction?.requestHeadersToAdd?.map(({
       headerName,
       headerValue,
       replace,
@@ -282,8 +282,8 @@ const formatPathMatcher = ({
         replace,
       }
     }) || [],
-    headerActionRequestHeadersToRemove: headerAction?.requestHeadersToRemove || [],
-    headerActionResponseHeadersToAdd: headerAction?.responseHeadersToAdd?.map(({
+    requestHeadersToRemove: headerAction?.requestHeadersToRemove || [],
+    responseHeadersToAdd: headerAction?.responseHeadersToAdd?.map(({
       headerName,
       headerValue,
       replace,
@@ -295,7 +295,7 @@ const formatPathMatcher = ({
         replace,
       }
     }) || [],
-    headerActionResponseHeadersToRemove: headerAction?.responseHeadersToRemove || [],
+    responseHeadersToRemove: headerAction?.responseHeadersToRemove || [],
     pathRules: pathRules?.map(pathRule => formatPathMatcherPathRule(pathRule)),
     routeRules: routeRules?.map(routeRule => formatPathMatcherRouteRule(routeRule)),
   }
@@ -376,7 +376,7 @@ export default ({
     defaultUrlRedirectStripQuery: defaultUrlRedirect?.stripQuery || false,
     description,
     fingerprint,
-    headerActionRequestHeadersToAdd: headerAction?.requestHeadersToAdd?.map(({
+    requestHeadersToAdd: headerAction?.requestHeadersToAdd?.map(({
       headerName,
       headerValue,
       replace,
@@ -388,8 +388,8 @@ export default ({
         replace,
       }
     }) || [],
-    headerActionRequestHeadersToRemove: headerAction?.requestHeadersToRemove || [],
-    headerActionResponseHeadersToAdd: headerAction?.responseHeadersToAdd?.map(({
+    requestHeadersToRemove: headerAction?.requestHeadersToRemove || [],
+    responseHeadersToAdd: headerAction?.responseHeadersToAdd?.map(({
       headerName,
       headerValue,
       replace,
@@ -401,7 +401,7 @@ export default ({
         replace,
       }
     }) || [],
-    headerActionResponseHeadersToRemove: headerAction?.responseHeadersToRemove || [],
+    responseHeadersToRemove: headerAction?.responseHeadersToRemove || [],
     hostRules: hostRules?.map(({
       description: hostRuleDescription,
       hosts,

@@ -57,19 +57,30 @@ export default ({
     state,
     databaseVersion,
     settings: {
-      ...settings,
       settingsVersion: settings?.settingsVersion?.value?.toString(),
+      authorizedGaeApplications: settings?.authorizedGaeApplications || [],
+      tier: settings?.tier,
+      kind: settings?.kind,
       userLabels: formatLabelsFromMap(settings?.userLabels),
-      storageAutoResizeLimit: settings?.storageAutoResizeLimit?.value?.toString(),
+      availabilityType: settings?.availabilityType,
+      pricingPlan: settings?.pricingPlan,
+      replicationType: settings?.replicationType,
+      storageAutoResizeLimit:
+        settings?.storageAutoResizeLimit?.value?.toString(),
+      activationPolicy: settings?.activationPolicy,
       ipConfiguration: {
         ...settings?.ipConfiguration,
         ipv4Enabled: settings?.ipConfiguration?.ipv4Enabled?.value,
         requireSsl: settings?.ipConfiguration?.requireSsl?.value,
-        authorizedNetworks: settings?.ipConfiguration?.authorizedNetworks?.map(network => ({
-          id: cuid(),
-          ...network,
-          expirationTime: toISOString(network?.expirationTime?.seconds?.toString()),
-        })),
+        authorizedNetworks: settings?.ipConfiguration?.authorizedNetworks?.map(
+          network => ({
+            id: cuid(),
+            ...network,
+            expirationTime: toISOString(
+              network?.expirationTime?.seconds?.toString()
+            ),
+          })
+        ),
       },
       storageAutoResize: settings?.storageAutoResize?.value,
       databaseFlags: settings?.databaseFlags?.map(flag => ({
@@ -83,16 +94,23 @@ export default ({
       },
       backupConfiguration: {
         ...settings?.backupConfiguration,
-        startTime: toISOString(settings?.backupConfiguration?.startTime?.seconds?.toString()),
+        startTime: toISOString(
+          settings?.backupConfiguration?.startTime?.seconds?.toString()
+        ),
         enabled: settings?.backupConfiguration?.enabled?.value,
-        binaryLogEnabled: settings?.backupConfiguration?.binaryLogEnabled?.value,
-        replicationLogArchivingEnabled: settings?.backupConfiguration?.replicationLogArchivingEnabled?.value,
-        pointInTimeRecoveryEnabled: settings?.backupConfiguration?.pointInTimeRecoveryEnabled?.value,
-        transactionLogRetentionDays: settings?.backupConfiguration?.transactionLogRetentionDays?.value?.toString(),
+        binaryLogEnabled:
+          settings?.backupConfiguration?.binaryLogEnabled?.value,
+        replicationLogArchivingEnabled:
+          settings?.backupConfiguration?.replicationLogArchivingEnabled?.value,
+        pointInTimeRecoveryEnabled:
+          settings?.backupConfiguration?.pointInTimeRecoveryEnabled?.value,
+        transactionLogRetentionDays:
+          settings?.backupConfiguration?.transactionLogRetentionDays?.value?.toString(),
         backupRetentionSettings: {
           ...settings?.backupConfiguration?.backupRetentionSettings,
-          retainedBackups: settings?.backupConfiguration?.backupRetentionSettings?.retainedBackups?.value?.toString(),
-        }
+          retainedBackups:
+            settings?.backupConfiguration?.backupRetentionSettings?.retainedBackups?.value?.toString(),
+        },
       },
       databaseReplicationEnabled: settings?.databaseReplicationEnabled?.value,
       crashSafeReplicationEnabled: settings?.crashSafeReplicationEnabled?.value,
@@ -103,9 +121,25 @@ export default ({
       })),
       insightsConfig: {
         ...settings?.insightsConfig,
-        queryStringLength: settings?.insightsConfig?.queryStringLength?.value?.toString(),
-        queryPlansPerMinute: settings?.insightsConfig?.queryPlansPerMinute?.value?.toString(),
+        queryStringLength:
+          settings?.insightsConfig?.queryStringLength?.value?.toString(),
+        queryPlansPerMinute:
+          settings?.insightsConfig?.queryPlansPerMinute?.value?.toString(),
       },
+      dataDiskType: settings?.dataDiskType,
+      collation: settings?.collation,
+      locationPreference: settings?.locationPreference
+        ? {
+            followGaeApplication: settings.locationPreference.followGaeApplication,
+            zone: settings.locationPreference.zone,
+            secondaryZone: settings.locationPreference.secondaryZone,
+            kind: settings.kind,
+          }
+        : {},
+      activeDirectoryConfig: settings?.activeDirectoryConfig ? {
+        kind: settings.activeDirectoryConfig.kind,
+        domain: settings.activeDirectoryConfig.domain,
+      } : {}
     },
     etag,
     failoverReplica: {
@@ -124,7 +158,9 @@ export default ({
     serverCaCert: {
       ...serverCaCert,
       createTime: toISOString(serverCaCert?.createTime?.seconds?.toString()),
-      expirationTime: toISOString(serverCaCert?.expirationTime?.seconds?.toString()),
+      expirationTime: toISOString(
+        serverCaCert?.expirationTime?.seconds?.toString()
+      ),
     },
     instanceType,
     ipv6Address,
@@ -134,9 +170,13 @@ export default ({
       ...replicaConfiguration,
       mysqlReplicaConfiguration: {
         ...replicaConfiguration?.mysqlReplicaConfiguration,
-        connectRetryInterval: replicaConfiguration?.mysqlReplicaConfiguration?.connectRetryInterval?.value?.toString(),
-        masterHeartbeatPeriod: replicaConfiguration?.mysqlReplicaConfiguration?.masterHeartbeatPeriod?.value?.toString(),
-        verifyServerCertificate: replicaConfiguration?.mysqlReplicaConfiguration?.verifyServerCertificate?.value,
+        connectRetryInterval:
+          replicaConfiguration?.mysqlReplicaConfiguration?.connectRetryInterval?.value?.toString(),
+        masterHeartbeatPeriod:
+          replicaConfiguration?.mysqlReplicaConfiguration?.masterHeartbeatPeriod?.value?.toString(),
+        verifyServerCertificate:
+          replicaConfiguration?.mysqlReplicaConfiguration
+            ?.verifyServerCertificate?.value,
       },
       failoverTarget: replicaConfiguration?.failoverTarget?.value,
     },
@@ -151,7 +191,9 @@ export default ({
     rootPassword,
     scheduledMaintenance: {
       ...scheduledMaintenance,
-      startTime: toISOString(scheduledMaintenance?.startTime?.seconds?.toString()),
+      startTime: toISOString(
+        scheduledMaintenance?.startTime?.seconds?.toString()
+      ),
     },
     satisfiesPzs: satisfiesPzs?.value,
     outOfDiskReport,

@@ -1,4 +1,4 @@
-type gcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd
+type gcpCdnUrlMapDefaultRouteServiceHeaders
   @generate(
     query: { get: false, query: true, aggregate: false }
     mutation: { add: false, delete: false }
@@ -11,7 +11,7 @@ type gcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd
     replace: Boolean @search
   }
 
-type gcpCdnUrlMapRouteActionWeightedBackendService
+type gcpCdnUrlMapRouteActionWeightedService
   @generate(
     query: { get: false, query: true, aggregate: false }
     mutation: { add: false, delete: false }
@@ -20,10 +20,10 @@ type gcpCdnUrlMapRouteActionWeightedBackendService
   @key(fields: "id") {
     id: String! @id
     backendService: String @search(by: [hash, regexp])
-    headerActionRequestHeadersToAdd: [gcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd]
-    headerActionRequestHeadersToRemove: [String] @search(by: [hash])
-    headerActionResponseHeadersToAdd: [gcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd]
-    headerActionResponseHeadersToRemove: [String] @search(by: [hash])
+    requestHeadersToAdd: [gcpCdnUrlMapDefaultRouteServiceHeaders]
+    requestHeadersToRemove: [String] @search(by: [hash])
+    responseHeadersToAdd: [gcpCdnUrlMapDefaultRouteServiceHeaders]
+    responseHeadersToRemove: [String] @search(by: [hash])
     weight: Int @search
   }
 
@@ -53,7 +53,7 @@ type gcpCdnUrlMapRouteAction
     timeout: String @search(by: [hash, regexp])
     urlRewriteHostRewrite: String @search(by: [hash, regexp])
     urlRewritePathPrefixRewrite: String @search(by: [hash, regexp])
-    weightedBackendServices: [gcpCdnUrlMapRouteActionWeightedBackendService]
+    weightedBackendServices: [gcpCdnUrlMapRouteActionWeightedService]
   }
 
 type gcpCdnUrlMapHostRule
@@ -87,15 +87,15 @@ type gcpCdnUrlMapPathMatcher
     defaultUrlRedirectRedirectResponseCode: String @search(by: [hash, regexp])
     defaultUrlRedirectStripQuery: Boolean @search
     description: String @search(by: [hash, regexp])
-    headerActionRequestHeadersToAdd: [gcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd]
-    headerActionRequestHeadersToRemove: [String] @search(by: [hash])
-    headerActionResponseHeadersToAdd: [gcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd]
-    headerActionResponseHeadersToRemove: [String] @search(by: [hash])
+    requestHeadersToAdd: [gcpCdnUrlMapDefaultRouteServiceHeaders]
+    requestHeadersToRemove: [String] @search(by: [hash])
+    responseHeadersToAdd: [gcpCdnUrlMapDefaultRouteServiceHeaders]
+    responseHeadersToRemove: [String] @search(by: [hash])
     pathRules: [gcpCdnUrlMapPathMatcherPathRule]
     routeRules: [gcpCdnUrlMapPathMatcherPathRule]
   }
 
-type gcpCdnUrlMapPathMatcherRouteRuleMatchRuleHttpHeaderMatch
+type gcpCdnUrlMapPathRuleHttpHeaderMatch
   @generate(
     query: { get: false, query: true, aggregate: false }
     mutation: { add: false, delete: false }
@@ -114,7 +114,7 @@ type gcpCdnUrlMapPathMatcherRouteRuleMatchRuleHttpHeaderMatch
     suffixMatch: String @search(by: [hash, regexp])
   }
 
-type gcpCdnUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel
+type gcpCdnUrlMapPathRuleMetadataFilterLabel
   @generate(
     query: { get: false, query: true, aggregate: false }
     mutation: { add: false, delete: false }
@@ -126,7 +126,7 @@ type gcpCdnUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel
     value: String @search(by: [hash, regexp])
   }
 
-type gcpCdnUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter
+type gcpCdnUrlMapPathRuleMetadataFilter
   @generate(
     query: { get: false, query: true, aggregate: false }
     mutation: { add: false, delete: false }
@@ -134,11 +134,11 @@ type gcpCdnUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter
   )
   @key(fields: "id") {
     id: String! @id
-    filterLabels: [gcpCdnUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel]
+    filterLabels: [gcpCdnUrlMapPathRuleMetadataFilterLabel]
     filterMatchCriteria: String @search(by: [hash, regexp])
   }
 
-type gcpCdnUrlMapPathMatcherRouteRuleMatchRuleHttpQueryParameterMatch
+type gcpCdnUrlMapPathRuleHttpQueryParameter
   @generate(
     query: { get: false, query: true, aggregate: false }
     mutation: { add: false, delete: false }
@@ -152,7 +152,7 @@ type gcpCdnUrlMapPathMatcherRouteRuleMatchRuleHttpQueryParameterMatch
     regexMatch: String @search(by: [hash, regexp])
   }
 
-type gcpCdnUrlMapPathMatcherRouteRuleMatchRule
+type gcpCdnUrlMapPathMatcherMatchRule
   @generate(
     query: { get: false, query: true, aggregate: false }
     mutation: { add: false, delete: false }
@@ -161,11 +161,11 @@ type gcpCdnUrlMapPathMatcherRouteRuleMatchRule
   @key(fields: "id") {
     id: String! @id
     fullPathMatch: String @search(by: [hash, regexp])
-    headerMatches: [gcpCdnUrlMapPathMatcherRouteRuleMatchRuleHttpHeaderMatch]
+    headerMatches: [gcpCdnUrlMapPathRuleHttpHeaderMatch]
     ignoreCase: Boolean @search
-    metadataFilters: [gcpCdnUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter]
+    metadataFilters: [gcpCdnUrlMapPathRuleMetadataFilter]
     prefixMatch: String @search(by: [hash, regexp])
-    queryParameterMatches: [gcpCdnUrlMapPathMatcherRouteRuleMatchRuleHttpQueryParameterMatch]
+    queryParameterMatches: [gcpCdnUrlMapPathRuleHttpQueryParameter]
     regexMatch: String @search(by: [hash, regexp])
   }
 
@@ -178,11 +178,11 @@ type gcpCdnUrlMapPathMatcherRouteRule
   @key(fields: "id") {
     id: String! @id
     description: String @search(by: [hash, regexp])
-    headerActionRequestHeadersToAdd: [gcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd]
-    headerActionRequestHeadersToRemove: [String] @search(by: [hash])
-    headerActionResponseHeadersToAdd: [gcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd]
-    headerActionResponseHeadersToRemove: [String] @search(by: [hash])
-    matchRules: [gcpCdnUrlMapPathMatcherRouteRuleMatchRule]
+    requestHeadersToAdd: [gcpCdnUrlMapDefaultRouteServiceHeaders]
+    requestHeadersToRemove: [String] @search(by: [hash])
+    responseHeadersToAdd: [gcpCdnUrlMapDefaultRouteServiceHeaders]
+    responseHeadersToRemove: [String] @search(by: [hash])
+    matchRules: [gcpCdnUrlMapPathMatcherMatchRule]
     priority: Int @search
     routeAction: gcpCdnUrlMapRouteAction
     service: String @search(by: [hash, regexp])
@@ -260,10 +260,10 @@ type gcpCdnUrlMap implements gcpBaseResource
     defaultUrlRedirectStripQuery: Boolean @search
     description: String @search(by: [hash, regexp])
     fingerprint: String @search(by: [hash, regexp])
-    headerActionRequestHeadersToAdd: [gcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd]
-    headerActionRequestHeadersToRemove: [String] @search(by: [hash])
-    headerActionResponseHeadersToAdd: [gcpCdnUrlMapDefaultRouteActionWeightedBackendServiceHeadersToAdd]
-    headerActionResponseHeadersToRemove: [String] @search(by: [hash])
+    requestHeadersToAdd: [gcpCdnUrlMapDefaultRouteServiceHeaders]
+    requestHeadersToRemove: [String] @search(by: [hash])
+    responseHeadersToAdd: [gcpCdnUrlMapDefaultRouteServiceHeaders]
+    responseHeadersToRemove: [String] @search(by: [hash])
     hostRules: [gcpCdnUrlMapHostRule]
     kind: String @search(by: [hash, regexp])
     pathMatchers: [gcpCdnUrlMapPathMatcher]

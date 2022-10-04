@@ -135,7 +135,7 @@ const formatClusterConfigSecurity = ({
     kerberosConfigKdcDbKeyUri: kerberosConfig?.kdcDbKeyUri || '',
     kerberosConfigTgtLifetimeHours: kerberosConfig?.tgtLifetimeHours || 0,
     kerberosConfigRealm: kerberosConfig?.realm || '',
-    identityConfigUserServiceAccountMapping: formatKeyValueMap(identityConfig?.userServiceAccountMapping),
+    identityConfigUsrAccMapping: formatKeyValueMap(identityConfig?.userServiceAccountMapping),
   }
 }
 
