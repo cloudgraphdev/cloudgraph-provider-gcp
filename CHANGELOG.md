@@ -1,3 +1,11 @@
+## [0.35.1-beta.1](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.35.0...0.35.1-beta.1) (2022-11-28)
+
+
+### Bug Fixes
+
+* snyk remediation fixes ([e6fe708](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/e6fe708735b886381743d88945193d8dd3648085))
+* snyk remediation fixes re ([e6b5084](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/e6b508475fa556e6b8102fd1a05df9cd2dc930b2))
+
 ## [0.35.1-alpha.2](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.35.1-alpha.1...0.35.1-alpha.2) (2022-11-28)
 
 
