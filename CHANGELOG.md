@@ -1,3 +1,18 @@
+# [0.35.0-beta.1](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.34.1...0.35.0-beta.1) (2022-11-28)
+
+
+### Bug Fixes
+
+* **bigQuery:** add labels in bigQueryDataset ([357524f](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/357524f7865036954906419c735a8a4daf71e10c))
+* computeProject unknown field _reportNamePrefix ([0c7560e](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/0c7560ebe0ffa69d56635abddb5b51328cf98f35))
+* cve vulnerabilities remediations ([ce7dd8f](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/ce7dd8f481f2ad3d86723ccae44ceaf31b3cd9a8))
+* **service:** Fix days ago value changed for test purposes ([841458c](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/841458c5ff3b80958a02f5813ca5902342ac02eb))
+
+
+### Features
+
+* **service:** Added GCP Billing service ([3a457f9](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/3a457f9d4e0418e36214fcbd1c90e9c6d226a4b0))
+
 # [0.35.0-alpha.3](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.35.0-alpha.2...0.35.0-alpha.3) (2022-11-28)
 
 
