@@ -1,3 +1,10 @@
+# [0.35.0-alpha.3](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.35.0-alpha.2...0.35.0-alpha.3) (2022-11-28)
+
+
+### Bug Fixes
+
+* cve vulnerabilities remediations ([ce7dd8f](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/ce7dd8f481f2ad3d86723ccae44ceaf31b3cd9a8))
+
 # [0.35.0-alpha.2](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.35.0-alpha.1...0.35.0-alpha.2) (2022-08-08)
 
 
