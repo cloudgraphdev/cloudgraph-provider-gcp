@@ -99,7 +99,6 @@
   "resolutions": {
     "**/braces": "^2.3.1",
     "**/glob-parent": "^5.1.2",
-    "**/jsdoc": "^4.0.0",
     "**/uri-js": "^3.0.1"
   }
 }
