@@ -15,16 +15,17 @@ export interface KeyValueMapMap {
   [k: string]: string | number | boolean | Long
 }
 
-export interface GcpServiceInput {
-  regions: string
-  config: GcpCredentials
-  rawData: rawDataInterface[]
+export interface GcpBilling {
+  billingAccountId: string
+  bigQueryDataset: string
 }
-
 export interface GcpCredentials {
   projectId: string
   keyFilename: string
   email?: string
+}
+export interface GcpConfig extends GcpCredentials {
+  billing?: GcpBilling
 }
 
 export interface rawDataInterface {
@@ -37,4 +38,10 @@ export interface rawDataInterface {
   network?: string[]
   subnet?: string[]
   vpcConnector?: string[]
+}
+
+export interface GcpServiceInput {
+  regions: string
+  config: GcpConfig
+  rawData: rawDataInterface[]
 }

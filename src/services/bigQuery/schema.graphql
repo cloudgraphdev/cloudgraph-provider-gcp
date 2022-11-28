@@ -136,6 +136,7 @@ type gcpBigQueryDataset implements gcpBaseResource
   defaultPartitionExpirationMs: String @search(by: [hash, regexp])
   access: [gcpBigQueryDatasetAccess]
   creationTime: String @search(by: [hash, regexp])
+  labels: [gcpRawLabel]
   lastModifiedTime: String @search(by: [hash, regexp])
   location: String @search(by: [hash, regexp])
   defaultEncryptionConfiguration: gcpBigQueryEncryptionConfiguration

@@ -590,6 +590,7 @@ export type GcpBigQueryDataset = GcpBaseResource & {
   description?: Maybe<Scalars['String']>;
   etag?: Maybe<Scalars['String']>;
   friendlyName?: Maybe<Scalars['String']>;
+  labels?: Maybe<Array<Maybe<GcpRawLabel>>>;
   lastModifiedTime?: Maybe<Scalars['String']>;
   location?: Maybe<Scalars['String']>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
@@ -770,6 +771,16 @@ export type GcpBigQueryTableViewUserDefinedFunctionResource = {
   id: Scalars['String'];
   inlineCode?: Maybe<Scalars['String']>;
   resourceUri?: Maybe<Scalars['String']>;
+};
+
+export type GcpBilling = GcpBaseResource & {
+  last30Days?: Maybe<Array<Maybe<GcpServiceBillingInfo>>>;
+  last30DaysDailyAverage?: Maybe<Array<Maybe<GcpServiceBillingInfo>>>;
+  monthToDate?: Maybe<Array<Maybe<GcpServiceBillingInfo>>>;
+  monthToDateDailyAverage?: Maybe<Array<Maybe<GcpServiceBillingInfo>>>;
+  region?: Maybe<Scalars['String']>;
+  totalCostLast30Days?: Maybe<GcpTotalBillingInfo>;
+  totalCostMonthToDate?: Maybe<GcpTotalBillingInfo>;
 };
 
 export type GcpBoolValue = {
@@ -1987,6 +1998,7 @@ export type GcpKmsKeyRing = GcpBaseResource & {
 
 export type GcpLabel = GcpBaseResource & {
   alertPolicy?: Maybe<Array<Maybe<GcpAlertPolicy>>>;
+  bigQueryDataset?: Maybe<Array<Maybe<GcpBigQueryDataset>>>;
   cloudFunction?: Maybe<Array<Maybe<GcpCloudFunction>>>;
   dnsManagedZone?: Maybe<Array<Maybe<GcpDnsManagedZone>>>;
   id: Scalars['String'];
@@ -2351,6 +2363,13 @@ export type GcpServiceAccountKey = {
   validBeforeTime?: Maybe<Scalars['String']>;
 };
 
+export type GcpServiceBillingInfo = {
+  cost?: Maybe<Scalars['Float']>;
+  currency?: Maybe<Scalars['String']>;
+  formattedCost?: Maybe<Scalars['String']>;
+  name: Scalars['String'];
+};
+
 export type GcpShieldedInstanceConfig = {
   enableIntegrityMonitoring?: Maybe<Scalars['Boolean']>;
   enableSecureBoot?: Maybe<Scalars['Boolean']>;
@@ -2703,6 +2722,12 @@ export type GcpTargetSslProxy = GcpBaseResource & {
   service?: Maybe<Scalars['String']>;
   sslCertificates?: Maybe<Array<Maybe<Scalars['String']>>>;
   sslPolicy?: Maybe<Array<Maybe<GcpSslPolicy>>>;
+};
+
+export type GcpTotalBillingInfo = {
+  cost?: Maybe<Scalars['Float']>;
+  currency?: Maybe<Scalars['String']>;
+  formattedCost?: Maybe<Scalars['String']>;
 };
 
 export type GcpValue = {
