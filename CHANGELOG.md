@@ -1,3 +1,10 @@
+# [0.35.0-alpha.4](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.35.0-alpha.3...0.35.0-alpha.4) (2022-11-28)
+
+
+### Bug Fixes
+
+* snyk remediation fixes ([e6fe708](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/e6fe708735b886381743d88945193d8dd3648085))
+
 # [0.35.0-alpha.3](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.35.0-alpha.2...0.35.0-alpha.3) (2022-11-28)
 
 
