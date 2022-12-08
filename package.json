@@ -42,6 +42,7 @@
     "@google-cloud/dataproc": "^3.2.0",
     "@google-cloud/datastore": "^6.6.2",
     "@google-cloud/dns": "^2.2.3",
+    "@google-cloud/essential-contacts": "^2.0.2",
     "@google-cloud/firestore": "^5.0.2",
     "@google-cloud/functions": "^1.2.0",
     "@google-cloud/kms": "^2.10.0",

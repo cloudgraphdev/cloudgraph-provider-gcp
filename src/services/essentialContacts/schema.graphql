@@ -1,0 +1,14 @@
+type gcpEssentialContact implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    email: String @search(by: [hash, regexp])
+    notificationCategorySubscriptions: [String] @search(by: [hash])
+    languageTag: String @search(by: [hash, regexp])
+    validationState: String @search(by: [hash, regexp])
+    validateTime: String @search(by: [hash, regexp])
+    project: [gcpProject] @hasInverse(field: essentialContacts)
+}

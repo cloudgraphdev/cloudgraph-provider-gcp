@@ -75,7 +75,7 @@ export default {
   // cloudShell: 'cloud-shell',
   // debug: 'debug',
   // deploymentManager: 'deployment-manager',
-  // essentialContacts: 'essential-contacts',
+  essentialContacts: 'essentialContacts',
   logBucket: 'logBucket',
   logMetric: 'logMetric',
   logSink: 'logSink',
