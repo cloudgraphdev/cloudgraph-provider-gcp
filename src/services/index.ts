@@ -339,7 +339,7 @@ export default class Provider extends CloudGraph.Client {
           this.logger.success(`${resource} scan completed`)
         } else {
           this.logger.warn(
-            `Skipping service ${resource} as there was an issue getting data for it. Is it currently supported????`
+            `Skipping service ${resource} as there was an issue getting data for it. Is it currently supported?`
           )
         }
       }
