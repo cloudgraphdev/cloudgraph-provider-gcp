@@ -31,49 +31,21 @@ export default async ({
      * Get all EssentialContacts
      */
     try {
-      // const essentialContactsClient = new EssentialContactsServiceClient({ ...config, apiEndpoint });
-      // const iterable = essentialContactsClient.listContactsAsync({
-      //   parent: `projects/${projectId}`,
-      // })
+      const essentialContactsClient = new EssentialContactsServiceClient({ ...config, apiEndpoint });
+      const iterable = essentialContactsClient.listContactsAsync({
+        parent: `projects/${projectId}`,
+      })
 
-      // for await (const response of iterable) {
-      //   if (response) {
-      //     essentialContactList.push({
-      //       id: response.name,
-      //       projectId,
-      //       region: GLOBAL_REGION,
-      //       ...response,
-      //     })
-      //   }
-      // }
-      essentialContactList.push({
-        id: 'a',
-        projectId,
-        region: GLOBAL_REGION,
-        name: 'a',
-        email: 'a@gmail.com',
-        notificationCategorySubscriptions: [
-          google.cloud.essentialcontacts.v1.NotificationCategory.TECHNICAL,
-          google.cloud.essentialcontacts.v1.NotificationCategory.BILLING,
-          google.cloud.essentialcontacts.v1.NotificationCategory.LEGAL,
-        ],
-        languageTag: '',
-        validationState: google.cloud.essentialcontacts.v1.ValidationState.VALIDATION_STATE_UNSPECIFIED,
-      })
-      essentialContactList.push({
-        id: 'b',
-        projectId,
-        region: GLOBAL_REGION,
-        name: 'b',
-        email: 'b@gmail.com',
-        notificationCategorySubscriptions: [
-          google.cloud.essentialcontacts.v1.NotificationCategory.TECHNICAL,
-          google.cloud.essentialcontacts.v1.NotificationCategory.BILLING,
-          google.cloud.essentialcontacts.v1.NotificationCategory.LEGAL,
-        ],
-        languageTag: '',
-        validationState: google.cloud.essentialcontacts.v1.ValidationState.VALIDATION_STATE_UNSPECIFIED,
-      })
+      for await (const response of iterable) {
+        if (response) {
+          essentialContactList.push({
+            id: response.name,
+            projectId,
+            region: GLOBAL_REGION,
+            ...response,
+          })
+        }
+      }
     } catch (error) {
       generateGcpErrorLog(serviceName, 'essentialContacts:listContactsAsync', error)
     }
