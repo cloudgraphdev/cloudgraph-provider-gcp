@@ -1,3 +1,12 @@
+# [0.36.0-alpha.1](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.35.1...0.36.0-alpha.1) (2022-12-12)
+
+
+### Features
+
+* **CG-1312:** add essential contacts ([305da4f](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/305da4fa52a319b36a07a141dae2eb1a5572079e))
+* **CG-1312:** remove a debug text ([4bc8b5b](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/4bc8b5bfad7702945d5fe6e8891c53d64c7337a4))
+* **CG-1312:** update fetch data and README ([07d58db](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/07d58db8db3a1e55aaf18a4fd55959170b8012fa))
+
 ## [0.35.1](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.35.0...0.35.1) (2022-11-28)
 
 
