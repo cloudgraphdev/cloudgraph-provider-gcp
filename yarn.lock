@@ -755,6 +755,13 @@
     lodash.groupby "^4.6.0"
     string-format-obj "^1.1.1"
 
+"@google-cloud/essential-contacts@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@google-cloud/essential-contacts/-/essential-contacts-2.0.2.tgz#7f65929989f48613f411110823125ebd79c703c2"
+  integrity sha512-Y1/zrkLL9FVtfnAQ2MY5g4tdGhuISfjCiQodV2RjALZtz+AJ+ne6eY6gjWhR37jcYwWVpH9wzdnEiWQp8T/QFA==
+  dependencies:
+    google-gax "^3.5.2"
+
 "@google-cloud/firestore@^5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@google-cloud/firestore/-/firestore-5.0.2.tgz#36923fde45987f928a220d347f341c5602f9e340"
