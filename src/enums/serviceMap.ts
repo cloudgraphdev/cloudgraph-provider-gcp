@@ -50,6 +50,7 @@ import GcpFirestoreDatabase from '../services/firestore'
 import GcpLabel from '../services/label'
 import GcpTag from '../services/tag'
 import GcpBilling from '../services/billing'
+import GcpEssentialContacts from '../services/essentialContacts'
 
 /**
  * serviceMap is an object that contains all currently supported services
@@ -105,6 +106,7 @@ export default {
   [services.apiGatewayApi]: GcpApiGatewayApi,
   [services.apiGatewayApiConfig]: GcpApiGatewayApiConfig,
   [services.firestoreDatabase]: GcpFirestoreDatabase,
+  [services.essentialContacts]: GcpEssentialContacts,
   label: GcpLabel,
   tag: GcpTag,
 }
