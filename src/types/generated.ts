@@ -1803,6 +1803,15 @@ export type GcpDuration = {
   seconds?: Maybe<Scalars['String']>;
 };
 
+export type GcpEssentialContact = GcpBaseResource & {
+  email?: Maybe<Scalars['String']>;
+  languageTag?: Maybe<Scalars['String']>;
+  notificationCategorySubscriptions?: Maybe<Array<Maybe<Scalars['String']>>>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  validateTime?: Maybe<Scalars['String']>;
+  validationState?: Maybe<Scalars['String']>;
+};
+
 export type GcpExpr = {
   description?: Maybe<Scalars['String']>;
   expression?: Maybe<Scalars['String']>;
@@ -2223,6 +2232,7 @@ export type GcpProject = {
   displayName?: Maybe<Scalars['String']>;
   dnsManagedZones?: Maybe<Array<Maybe<GcpDnsManagedZone>>>;
   dnsPolicies?: Maybe<Array<Maybe<GcpDnsPolicy>>>;
+  essentialContacts?: Maybe<Array<Maybe<GcpEssentialContact>>>;
   etag?: Maybe<Scalars['String']>;
   firestoreDatabases?: Maybe<Array<Maybe<GcpFirestoreDatabase>>>;
   firewalls?: Maybe<Array<Maybe<GcpFirewall>>>;

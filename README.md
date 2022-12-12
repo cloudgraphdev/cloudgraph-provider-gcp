@@ -90,6 +90,7 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 | kmsCryptoKeys                         | aiPlatformNotebooks, iamPolicy, kmsKeyRing, project                                                                                 |
 | dnsManagedZone                        | project                                                                                                                             |
 | dnsPolicy                             | project, network                                                                                                                    |
+| essentialContacts                     | project                                                                                                                             |
 | firestoreDatabases                    | project                                                                                                                             |
 | firewall                              | network, project                                                                                                                    |
 | folder                                | iamPolicy, organization, project                                                                                                    |
@@ -105,10 +106,10 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 | secretManager                         | project                                                                                                                             |
 | serviceAccounts                       | project                                                                                                                             |
 | sqlInstances                          | project, network                                                                                                                    |
-| sslPolicies                           | project, targetHttpsProxies, targetSslProxies                                                                                                                    |
+| sslPolicies                           | project, targetHttpsProxies, targetSslProxies                                                                                       |
 | storageBucket                         | project                                                                                                                             |
 | subnet                                | project, network, vmInstance, vpcConnectors, aiPlatformNotebooks                                                                    |
-| targetSslProxies                      | project, sslPolicies                                                                                                                         |
-| targetHttpsProxies                    | project, sslPolicies                                                                                                                         |
+| targetSslProxies                      | project, sslPolicies                                                                                                                |
+| targetHttpsProxies                    | project, sslPolicies                                                                                                                |
 | vmInstance                            | project, network, subnet                                                                                                            |
 | vpcConnectors                         | cloudFunction, project, network, subnet                                                                                             |
