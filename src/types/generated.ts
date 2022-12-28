@@ -18,6 +18,52 @@ export type GcpAcceleratorConfig = {
   id: Scalars['String'];
 };
 
+export type GcpAccessApproval = GcpBaseResource & {
+  approve?: Maybe<GcpAccessApprovalApprove>;
+  dismiss?: Maybe<GcpAccessApprovalDismiss>;
+  name?: Maybe<Scalars['String']>;
+  project?: Maybe<Array<Maybe<GcpProject>>>;
+  requestTime?: Maybe<Scalars['String']>;
+  requestedExpiration?: Maybe<Scalars['String']>;
+  requestedLocations?: Maybe<GcpAccessApprovalRequestedLocations>;
+  requestedReason?: Maybe<GcpAccessApprovalRequestedReason>;
+  requestedResourceName?: Maybe<Scalars['String']>;
+  requestedResourceProperties?: Maybe<GcpAccessApprovalRequestedResourceProperties>;
+};
+
+export type GcpAccessApprovalApprove = {
+  approveTime?: Maybe<Scalars['String']>;
+  autoApproved?: Maybe<Scalars['Boolean']>;
+  expireTime?: Maybe<Scalars['String']>;
+  invalidateTime?: Maybe<Scalars['String']>;
+  signatureInfo?: Maybe<GcpAccessApprovalApproveSignatureInfo>;
+};
+
+export type GcpAccessApprovalApproveSignatureInfo = {
+  customerKmsKeyVersion?: Maybe<Scalars['String']>;
+  googlePublicKeyPem?: Maybe<Scalars['String']>;
+  signature?: Maybe<Scalars['String']>;
+};
+
+export type GcpAccessApprovalDismiss = {
+  dismissTime?: Maybe<Scalars['String']>;
+  implicit?: Maybe<Scalars['Boolean']>;
+};
+
+export type GcpAccessApprovalRequestedLocations = {
+  principalOfficeCountry?: Maybe<Scalars['String']>;
+  principalPhysicalLocationCountry?: Maybe<Scalars['String']>;
+};
+
+export type GcpAccessApprovalRequestedReason = {
+  detail?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
+};
+
+export type GcpAccessApprovalRequestedResourceProperties = {
+  excludesDescendants?: Maybe<Scalars['Boolean']>;
+};
+
 export type GcpAdvancedMachineFeatures = {
   enableNestedVirtualization?: Maybe<Scalars['Boolean']>;
   threadsPerCore?: Maybe<Scalars['Int']>;
@@ -2204,6 +2250,7 @@ export type GcpOrganization = GcpBaseResource & {
 };
 
 export type GcpProject = {
+  accessApprovals?: Maybe<Array<Maybe<GcpAccessApproval>>>;
   aiPlatformNotebooks?: Maybe<Array<Maybe<GcpAiPlatformNotebook>>>;
   alertPolicies?: Maybe<Array<Maybe<GcpAlertPolicy>>>;
   apiGatewayApiConfigs?: Maybe<Array<Maybe<GcpApiGatewayApiConfig>>>;

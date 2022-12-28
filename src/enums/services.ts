@@ -55,7 +55,7 @@ export default {
   // spanner: 'spanner',
   // activeDirectory: 'active-directory',
   // identity: 'identity',
-  // accessApproval: 'access-approval',
+  accessApproval: 'accessApproval',
   // accessContextManager: 'access-context-manager',
   // auth: 'auth',
   folder: 'folder',
