@@ -1,0 +1,81 @@
+type gcpAccessApprovalRequestedResourceProperties
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+    excludesDescendants: Boolean @search
+  }
+
+type gcpAccessApprovalRequestedReason
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+    type: String @search(by: [hash, regexp])
+    detail: String @search(by: [hash, regexp])
+  }
+
+type gcpAccessApprovalRequestedLocations
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+    principalOfficeCountry: String @search(by: [hash, regexp])
+    principalPhysicalLocationCountry: String @search(by: [hash, regexp])
+  }
+
+type gcpAccessApprovalApproveSignatureInfo
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+    signature: String @search(by: [hash, regexp])
+    googlePublicKeyPem: String @search(by: [hash, regexp])
+    customerKmsKeyVersion: String @search(by: [hash, regexp])
+  }
+
+type gcpAccessApprovalApprove
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+    approveTime: String @search(by: [hash, regexp])
+    expireTime: String @search(by: [hash, regexp])
+    invalidateTime: String @search(by: [hash, regexp])
+    signatureInfo: gcpAccessApprovalApproveSignatureInfo
+    autoApproved: Boolean @search
+  }
+
+type gcpAccessApprovalDismiss
+  @generate(
+    query: { get: false, query: true, aggregate: false }
+    mutation: { add: false, delete: false }
+    subscription: false
+  ) {
+    dismissTime: String @search(by: [hash, regexp])
+    implicit: Boolean @search
+  }
+
+type gcpAccessApproval implements gcpBaseResource
+  @generate(
+    query: { get: true, query: true, aggregate: true }
+    mutation: { add: true, delete: false }
+    subscription: false
+  )
+  @key(fields: "id") {
+    name: String @search(by: [hash, regexp])
+    requestedResourceName: String @search(by: [hash, regexp])
+    requestedResourceProperties: gcpAccessApprovalRequestedResourceProperties
+    requestedReason: gcpAccessApprovalRequestedReason
+    requestedLocations: gcpAccessApprovalRequestedLocations
+    requestTime: String @search(by: [hash, regexp])
+    requestedExpiration: String @search(by: [hash, regexp])
+    approve: gcpAccessApprovalApprove
+    dismiss: gcpAccessApprovalDismiss
+    project: [gcpProject] @hasInverse(field: accessApprovals)
+  }
