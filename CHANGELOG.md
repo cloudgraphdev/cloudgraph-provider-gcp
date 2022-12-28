@@ -1,3 +1,10 @@
+# [0.37.0-alpha.1](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.36.0...0.37.0-alpha.1) (2022-12-28)
+
+
+### Features
+
+* **CG-1320:** add gcp access approval service support ([65b8852](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/65b8852463220f902dc65ced2c8b0f798593bda6))
+
 # [0.36.0](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.35.1...0.36.0) (2022-12-12)
 
 
