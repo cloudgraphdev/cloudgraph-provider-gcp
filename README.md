@@ -64,6 +64,7 @@ CloudGraph GCP Provider will ask you what regions you would like to crawl and wi
 
 | Service                               | Relations                                                                                                                           |
 | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| accessApproval                        | project                                                                                                                             |
 | aiPlatformNotebooks                   | project, kmsCryptoKeys, network, subnet                                                                                             |
 | alertPolicy                           | project                                                                                                                             |
 | apiGatewayGateways                    | project, apiGatewayApis, apiGatewayApiConfigs                                                                                       |

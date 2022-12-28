@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@cloudgraph/sdk": "0.22.1",
+    "@google-cloud/access-approval": "^2.1.2",
     "@google-cloud/api-gateway": "^1.2.1",
     "@google-cloud/asset": "^3.22.0",
     "@google-cloud/bigquery": "^5.10.0",
