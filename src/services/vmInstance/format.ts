@@ -220,7 +220,7 @@ export default ({
     startRestricted,
     status: enumKeyToString(google.cloud.compute.v1.Instance.Status, status),
     statusMessage,
-    tags: {
+    networkTags: {
       fingerprint: tags?.fingerprint,
       items: tags?.items,
     },

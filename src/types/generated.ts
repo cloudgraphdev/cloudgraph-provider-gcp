@@ -2822,6 +2822,7 @@ export type GcpVmInstance = GcpBaseResource & {
   minCpuPlatform?: Maybe<Scalars['String']>;
   network?: Maybe<Array<Maybe<GcpNetwork>>>;
   networkInterfaces?: Maybe<Array<Maybe<GcpComputeNetworkInterface>>>;
+  networkTags?: Maybe<GcpComputeTags>;
   privateIpv6GoogleAccess?: Maybe<Scalars['String']>;
   project?: Maybe<Array<Maybe<GcpProject>>>;
   reservationAffinity?: Maybe<GcpReservationAffinity>;
@@ -2836,7 +2837,6 @@ export type GcpVmInstance = GcpBaseResource & {
   status?: Maybe<Scalars['String']>;
   statusMessage?: Maybe<Scalars['String']>;
   subnet?: Maybe<Array<Maybe<GcpSubnet>>>;
-  tags?: Maybe<GcpComputeTags>;
   zone?: Maybe<Scalars['String']>;
 };
 
