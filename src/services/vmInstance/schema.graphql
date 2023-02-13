@@ -33,7 +33,7 @@ type gcpVmInstance implements gcpBaseResource @key(fields: "id") {
   startRestricted: Boolean @search
   status: String @search(by: [hash, regexp])
   statusMessage: String @search(by: [hash, regexp])
-  tags: gcpComputeTags
+  networkTags: gcpComputeTags
   zone: String @search(by: [hash, regexp])
   project: [gcpProject] @hasInverse(field: vmInstances)
   network: [gcpNetwork] @hasInverse(field: vmInstances)
