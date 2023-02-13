@@ -1,3 +1,17 @@
+## [0.37.1-beta.1](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.37.0...0.37.1-beta.1) (2023-02-13)
+
+
+### Bug Fixes
+
+* **services:** update vm instance tags to be networkTags ([9d1856e](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/9d1856ec8847b5bb15d4c8a6987b3c7d1a448d3e))
+
+## [0.37.1-alpha.1](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.37.0...0.37.1-alpha.1) (2023-02-13)
+
+
+### Bug Fixes
+
+* **services:** update vm instance tags to be networkTags ([9d1856e](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/9d1856ec8847b5bb15d4c8a6987b3c7d1a448d3e))
+
 # [0.37.0](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.36.0...0.37.0) (2022-12-28)
 
 
