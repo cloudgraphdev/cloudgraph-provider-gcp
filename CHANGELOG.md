@@ -1,3 +1,24 @@
+## [0.37.2-alpha.2](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.37.2-alpha.1...0.37.2-alpha.2) (2023-03-08)
+
+
+### Bug Fixes
+
+* **services:** fix for autoscaling policy ([61bb7e2](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/61bb7e29e04d81fe29020c7185a4beebb4327f61))
+
+## [0.37.2-alpha.1](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.37.1...0.37.2-alpha.1) (2023-03-08)
+
+
+### Bug Fixes
+
+* **services:** update dataproc policy/workflow template id field to use name and be unique ([45ab59f](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/45ab59ff1e287e3449c45d7fae9b3f08418f7240))
+
+## [0.37.1](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.37.0...0.37.1) (2023-02-13)
+
+
+### Bug Fixes
+
+* **services:** update vm instance tags to be networkTags ([9d1856e](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/9d1856ec8847b5bb15d4c8a6987b3c7d1a448d3e))
+
 ## [0.37.1-beta.1](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.37.0...0.37.1-beta.1) (2023-02-13)
 
 

@@ -30,7 +30,6 @@ export default async ({
       /**
        * Get all the Dataproc Autoscaling Policies
        */
-        
       try {
         const dataprocClient = new AutoscalingPolicyServiceClient({ 
           ...config,
