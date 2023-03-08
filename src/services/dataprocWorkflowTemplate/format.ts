@@ -244,7 +244,6 @@ export default ({
   region: string
 }): GcpDataprocWorkflowTemplate => {
   const {
-    id,
     name,
     projectId,
     version,
@@ -258,7 +257,7 @@ export default ({
   } = service
 
   return {
-    id,
+    id: name,
     projectId,
     region,
     name,

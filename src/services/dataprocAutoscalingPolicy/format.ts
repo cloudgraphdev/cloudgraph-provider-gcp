@@ -12,7 +12,6 @@ export default ({
   region: string
 }): GcpDataprocAutoscalingPolicy => {
   const {
-    id,
     projectId,
     name,
     basicAlgorithm = {},
@@ -22,7 +21,7 @@ export default ({
   } = service
 
   return {
-    id,
+    id: name,
     projectId,
     region,
     name,
