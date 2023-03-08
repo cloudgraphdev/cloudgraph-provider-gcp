@@ -1,3 +1,10 @@
+## [0.37.1-alpha.2](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.37.1-alpha.1...0.37.1-alpha.2) (2023-03-08)
+
+
+### Bug Fixes
+
+* **services:** update dataproc policy/workflow template id field to use name and be unique ([45ab59f](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/45ab59ff1e287e3449c45d7fae9b3f08418f7240))
+
 ## [0.37.1-alpha.1](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.37.0...0.37.1-alpha.1) (2023-02-13)
 
 
