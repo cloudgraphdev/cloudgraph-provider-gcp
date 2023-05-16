@@ -1,3 +1,10 @@
+# [0.38.0](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.37.2...0.38.0) (2023-05-16)
+
+
+### Features
+
+* add new regions ([db435d2](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/db435d27b76e9120c13f71f4a770cf7e7da239ad))
+
 # [0.38.0-beta.1](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.37.2...0.38.0-beta.1) (2023-05-16)
 
 
