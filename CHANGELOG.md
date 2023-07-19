@@ -1,3 +1,17 @@
+# [0.39.0-alpha.1](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.38.0...0.39.0-alpha.1) (2023-07-19)
+
+
+### Features
+
+* collect provider errors ([c39093a](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/c39093ab6cb78c07ed60d365b2071d94b366cad8))
+
+# [0.38.0](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.37.2...0.38.0) (2023-05-16)
+
+
+### Features
+
+* add new regions ([db435d2](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/commit/db435d27b76e9120c13f71f4a770cf7e7da239ad))
+
 # [0.38.0-beta.1](https://github.com/cloudgraphdev/cloudgraph-provider-gcp/compare/0.37.2...0.38.0-beta.1) (2023-05-16)
 
 

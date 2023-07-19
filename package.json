@@ -1,6 +1,6 @@
 {
   "name": "@cloudgraph/cg-provider-gcp",
-  "version": "0.38.0-beta.1",
+  "version": "0.39.0-alpha.1",
   "description": "CloudGraph provider plugin for GCP used to fetch GCP cloud data.",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
@@ -31,7 +31,7 @@
     "terraform:cleanup": "rimraf ./tests/terraform/{.terraform,.terraform.lock.hcl,tfplan} ./tests/terraform/*.{tfstate,tfplan,backup}"
   },
   "dependencies": {
-    "@cloudgraph/sdk": "0.22.1",
+    "@cloudgraph/sdk": "0.23.0",
     "@google-cloud/access-approval": "^2.1.2",
     "@google-cloud/api-gateway": "^1.2.1",
     "@google-cloud/asset": "^3.22.0",
