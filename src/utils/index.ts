@@ -1,4 +1,5 @@
 import CloudGraph from '@cloudgraph/sdk'
+import { ProviderError } from '@cloudgraph/sdk/dist/src/types'
 import environment from '../config/environment'
 
 const { logger } = CloudGraph
@@ -14,6 +15,12 @@ export function initTestEndpoint(service?: string): string | undefined {
   return endpoint
 }
 
+const errorsHistory: ProviderError[] = []
+
+export function getAllProviderErrors(): ProviderError[] {
+  return errorsHistory
+}
+
 export function generateGcpErrorLog(
   service: string,
   functionName: string,
@@ -23,4 +30,10 @@ export function generateGcpErrorLog(
     `There was a problem getting data for service ${service}, CG encountered an error calling ${functionName}`
   )
   logger.debug(err.message)
+
+  errorsHistory.push({
+    service,
+    function: functionName,
+    message: err?.message,
+  })
 }
