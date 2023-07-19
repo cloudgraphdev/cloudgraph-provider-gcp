@@ -18,6 +18,7 @@ import services from '../enums/services'
 import { GcpBilling, GcpCredentials, rawDataInterface } from '../types'
 import { DEFAULT_REGION, DEFAULT_RESOURCES } from '../config/constants'
 import relations from '../enums/relations'
+import { getAllProviderErrors } from '../utils'
 
 export const enums = {
   services,
@@ -142,7 +143,8 @@ export default class Provider extends CloudGraph.Client {
       const { addBillingConfig } = await this.interface.prompt([
         {
           type: 'confirm',
-          message: 'Do you want to configure export cloud Billing data to BigQuery?',
+          message:
+            'Do you want to configure export cloud Billing data to BigQuery?',
           name: 'addBillingConfig',
           default: true,
         },
@@ -525,6 +527,7 @@ export default class Provider extends CloudGraph.Client {
       }
     }
 
+    result.errors = getAllProviderErrors()
     return result
   }
 }
